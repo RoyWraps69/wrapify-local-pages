@@ -7,7 +7,7 @@ import MiniCart from '@/components/print-ship/shopping-cart/MiniCart';
 import SEOSchema from '@/components/SEOSchema';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
-import { Package, Shield, Palette, Truck, TShirt } from 'lucide-react';
+import { Package, Shield, Palette, Truck, Shirt } from 'lucide-react';
 import { shopItems } from '@/components/print-ship/data/installers';
 import { ShopItem } from '@/components/print-ship/types/installer';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
@@ -54,7 +54,7 @@ const ProductCard = ({ item, onAddToCart }: {
       gradientClass = "bg-gradient-to-r from-slate-500 to-zinc-600";
       break;
     case 'merchandise':
-      icon = <TShirt size={64} className="text-white" />;
+      icon = <Shirt size={64} className="text-white" />;
       gradientClass = "bg-gradient-to-r from-wrap-blue to-blue-600";
       break;
     default:
@@ -160,7 +160,7 @@ const ShoppingPage = () => {
                 variant={activeCategory === 'merchandise' ? "default" : "outline"}
                 onClick={() => setActiveCategory('merchandise')}
               >
-                <TShirt className="mr-2 h-4 w-4" /> Merchandise
+                <Shirt className="mr-2 h-4 w-4" /> Merchandise
               </Button>
               <Button 
                 variant={activeCategory === 'wrap_material' ? "default" : "outline"}
