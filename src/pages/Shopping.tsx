@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -89,7 +88,7 @@ const ProductCard = ({ item, onAddToCart }: {
 };
 
 // Filter items by category
-const filterItemsByCategory = (items: ShopItem[], category: string) => {
+const filterItemsByCategory = (items: ShopItem[], category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping' | 'merchandise') => {
   return items.filter(item => item.category === category);
 };
 
