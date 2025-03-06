@@ -52,7 +52,7 @@ const ServicePage: React.FC = () => {
     hero: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
   };
 
-  const pageTitle = `${service.title} | Chicago Fleet Wraps`;
+  const pageTitle = `${service.title} | Wrapping The World`;
   const pageDescription = service.description;
 
   const serviceFaqs = [
@@ -91,7 +91,7 @@ const ServicePage: React.FC = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <link rel="canonical" href={`https://chicagofleetwraps.com/services/${serviceType}`} />
+        <link rel="canonical" href={`https://wrappingtheworld.com/services/${serviceType}`} />
       </Helmet>
       <Navbar />
       <main>
@@ -110,7 +110,7 @@ const ServicePage: React.FC = () => {
                 {service.description}
               </p>
               <p className="mb-6 text-wrap-grey text-lg">
-                At Chicago Fleet Wraps, we take pride in delivering top-quality {service.title.toLowerCase()} that meet your needs. 
+                At Wrapping The World, we take pride in delivering top-quality {service.title.toLowerCase()} that meet your needs. 
                 Our team uses the best materials and skilled techniques to make sure you get great results.
               </p>
               <p className="mb-6 text-wrap-grey text-lg">

@@ -35,7 +35,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               Top Car Wraps & Protection in {townName}
             </h1>
             <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto">
-              Chicago Fleet Wraps offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
+              Wrapping The World offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
             <div className="mb-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">

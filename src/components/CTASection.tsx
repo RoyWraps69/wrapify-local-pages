@@ -24,7 +24,7 @@ const CTASection: React.FC<CTASectionProps> = ({ townName = 'Chicago' }) => {
             Ready to Transform & Protect Your Car in {townName}?
           </h2>
           <p className="text-wrap-light/90 text-lg mb-8 max-w-3xl mx-auto">
-            Contact Chicago Fleet Wraps today for a free talk and quote. 
+            Contact Wrapping The World today for a free talk and quote. 
             Our team of car wrap and protection experts serving {townName} is ready to help you create the perfect 
             business fleet wraps, color change wraps, ceramic coatings, or paint protection for your work fleet or personal car.
           </p>

@@ -12,6 +12,8 @@ import Services from "./pages/Services";
 import ServicePage from "./pages/ServicePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
+import CaseStudies from "./pages/CaseStudies";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -40,6 +42,8 @@ const App = () => {
               <Route path="/services/:serviceType" element={<ServicePage />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/case-studies" element={<CaseStudies />} />
               
               {/* Town Pages - Ensure these routes work correctly */}
               <Route path="/locations/:townSlug" element={<TownPage />} />

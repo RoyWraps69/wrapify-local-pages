@@ -32,11 +32,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center space-x-2">
-          <span className="font-serif font-bold text-2xl text-wrap-blue">Chicago Fleet Wraps</span>
+          <span className="font-serif font-bold text-2xl text-wrap-blue">Wrapping The World</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           <Link to="/" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Home
           </Link>
@@ -46,8 +46,14 @@ const Navbar = () => {
           <Link to="/gallery" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Gallery
           </Link>
+          <Link to="/case-studies" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
+            Case Studies
+          </Link>
+          <Link to="/blog" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
+            Blog
+          </Link>
           <Link to="/about" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
-            About Us
+            About
           </Link>
           <Link to="/contact" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Contact
@@ -107,6 +113,20 @@ const Navbar = () => {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Gallery
+          </Link>
+          <Link 
+            to="/case-studies" 
+            className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Case Studies
+          </Link>
+          <Link 
+            to="/blog" 
+            className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Blog
           </Link>
           <Link 
             to="/about" 
