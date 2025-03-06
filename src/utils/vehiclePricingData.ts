@@ -1,4 +1,3 @@
-
 // Define the vehicle category and pricing structures
 export interface VehicleSize {
   category: string;
@@ -67,7 +66,7 @@ export const wrapMaterials: WrapMaterial[] = [
     id: "standard",
     name: "Standard Vinyl",
     description: "Quality vinyl with 5-7 year durability",
-    pricePerSqFt: 9.50,
+    pricePerSqFt: 7.50,
     durabilityYears: 5,
     features: ["Digitally printed graphics", "UV laminated", "Conformable to simple curves"]
   },
@@ -75,7 +74,7 @@ export const wrapMaterials: WrapMaterial[] = [
     id: "premium",
     name: "Premium Cast Vinyl",
     description: "High-performance vinyl with 7-9 year durability",
-    pricePerSqFt: 12.75,
+    pricePerSqFt: 10.75,
     durabilityYears: 7,
     features: ["Superior conformability", "Enhanced color vibrancy", "Resistant to shrinking and lifting"]
   },
@@ -83,7 +82,7 @@ export const wrapMaterials: WrapMaterial[] = [
     id: "color-change",
     name: "Color Change Wrap",
     description: "Specialty color change films with unique finishes",
-    pricePerSqFt: 15.95,
+    pricePerSqFt: 13.95,
     durabilityYears: 5,
     features: ["Matte, gloss, satin, or metallic finishes", "Air-release technology", "Highly conformable"]
   }
@@ -149,7 +148,6 @@ export const shippingOptions: ShippingOption[] = [
   }
 ];
 
-// Function to calculate total price based on vehicle details and options
 export const calculateWrapPrice = (
   vehicleSize: VehicleSize,
   material: WrapMaterial,
@@ -164,25 +162,18 @@ export const calculateWrapPrice = (
   pricePerSqFt: number;
   totalSqFt: number;
 } => {
-  // Calculate square footage based on coverage percentage
   const totalSqFt = vehicleSize.squareFeet * coverage;
   
-  // Calculate material cost
   const materialCost = totalSqFt * material.pricePerSqFt;
   
-  // Add design fee
   const designFee = designOption.priceAdjustment;
   
-  // Add shipping cost
   const shippingFee = shipping.price;
   
-  // Calculate subtotal (material cost only)
   const subtotal = materialCost;
   
-  // Calculate total price
   const total = subtotal + designFee + shippingFee;
   
-  // Calculate effective price per square foot
   const pricePerSqFt = total / totalSqFt;
   
   return {
