@@ -30,10 +30,12 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom'],
-          // Fix the ui path to avoid loading the directory directly
-          ui: ['/src/components/ui/index.ts']
+          // Fix the ui path to use the index.ts file
+          ui: ['src/components/ui/index.ts']
         }
       }
     }
-  }
+  },
+  // Base path for production (important for Netlify)
+  base: '/'
 }));

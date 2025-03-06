@@ -21,9 +21,9 @@ This will create a `dist` directory with all the necessary files for deployment.
 
 ## Deployment Options
 
-### 1. Netlify
+### 1. Netlify (Recommended)
 
-#### Using the Netlify CLI:
+#### Using Netlify CLI:
 
 1. Install the Netlify CLI:
    ```bash
@@ -37,7 +37,7 @@ This will create a `dist` directory with all the necessary files for deployment.
 
 3. Deploy the site:
    ```bash
-   netlify deploy
+   netlify deploy --prod
    ```
 
 4. Follow the prompts. When asked for the publish directory, enter `dist`.
@@ -45,7 +45,20 @@ This will create a `dist` directory with all the necessary files for deployment.
 #### Using the Netlify Web Interface:
 
 1. Go to [Netlify](https://app.netlify.com/)
-2. Drag and drop the `dist` folder to the designated area, or connect your Git repository.
+2. Click "New site from Git"
+3. Select your Git provider and repository
+4. Configure build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. Click "Deploy site"
+
+#### Netlify Configuration:
+
+The `netlify.toml` file in the root of the project contains the necessary configuration for Netlify, including:
+- Build command and publish directory
+- SPA routing redirects
+- Cache control headers
+- Environment variables
 
 ### 2. Vercel
 
@@ -58,7 +71,7 @@ This will create a `dist` directory with all the necessary files for deployment.
 
 2. Deploy the site:
    ```bash
-   vercel
+   vercel --prod
    ```
 
 #### Using the Vercel Web Interface:
@@ -96,4 +109,6 @@ If your application uses environment variables, make sure to set them up in your
 
 ## Troubleshooting
 
-If you encounter routing issues, check the `netlify.toml` file which includes redirects to handle client-side routing.
+If you encounter routing issues on Netlify, the `netlify.toml` file includes the necessary redirects to handle client-side routing.
+
+For other deployment issues, check the build logs in your deployment platform for specific error messages.
