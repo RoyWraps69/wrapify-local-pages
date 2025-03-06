@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   townName = 'Chicago',
-  backgroundImage = 'https://images.unsplash.com/photo-1584813470613-5b1c1cad3d69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+  backgroundImage = 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
 }) => {
   // Get the town's government website URL
   const townData = getTownByName(townName);
@@ -21,7 +21,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <section 
       className="hero-section relative bg-cover bg-center min-h-[600px]"
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`
+        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.85), rgba(29, 53, 87, 0.6)), url(${backgroundImage})`,
+        backgroundAttachment: 'fixed'
       }}
     >
       <div className="container mx-auto px-4 h-full flex items-center relative z-10 py-20">
@@ -55,7 +56,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="mt-8 flex flex-wrap items-center text-wrap-light/70">
               <span className="text-sm">Serving <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">{townName}</a> and surrounding areas</span>
               <span className="mx-3 hidden sm:inline">•</span>
-              <span className="text-sm">Premium 3M & Avery Dennison Materials</span>
+              <span className="text-sm">Premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com/en/home/graphics-products/digital-printing-films.html" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
               <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">5+ Years Durability</span>
             </div>
@@ -63,8 +64,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
-      {/* Design element */}
-      <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-2/5 h-80 bg-wrap-red/10 backdrop-blur-md rounded-l-3xl z-0"></div>
+      {/* Enhanced design elements */}
+      <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-2/5 h-80 bg-wrap-red/10 backdrop-blur-md rounded-l-3xl z-0 shadow-xl"></div>
+      <div className="hidden lg:block absolute bottom-20 right-32 w-32 h-32 bg-wrap-blue/20 backdrop-blur-sm rounded-full z-0 animate-pulse"></div>
+      <div className="hidden lg:block absolute top-32 left-1/4 w-16 h-16 bg-wrap-red/20 backdrop-blur-sm rounded-full z-0 animate-pulse"></div>
     </section>
   );
 };

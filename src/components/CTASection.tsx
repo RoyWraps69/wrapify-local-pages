@@ -39,7 +39,7 @@ const CTASection: React.FC<CTASectionProps> = ({ townName = 'Chicago' }) => {
             </Link>
           </div>
           <p className="text-wrap-light/70 text-sm">
-            Serving <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">{townName}</a> and surrounding areas with premium vehicle wrap, ceramic coating, and paint protection film services. 
+            Serving <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">{townName}</a> and surrounding areas with premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> and <a href="https://graphics.averydennison.com/en/home/graphics-products/digital-printing-films.html" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> vehicle wrap, ceramic coating, and paint protection film services. 
             We offer mobile service throughout the greater Chicago area.
           </p>
         </div>
