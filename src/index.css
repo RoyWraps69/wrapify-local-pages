@@ -151,6 +151,73 @@
   .section-subtitle {
     @apply text-lg text-wrap-grey max-w-2xl mx-auto mb-12;
   }
+
+  /* Animation classes */
+  .animate-on-scroll {
+    opacity: 0;
+    transition: all 0.7s ease-out;
+  }
+
+  .animate-on-scroll.animated {
+    opacity: 1;
+  }
+
+  .fade-up {
+    transform: translateY(40px);
+  }
+
+  .fade-up.animated {
+    transform: translateY(0);
+  }
+
+  .fade-right {
+    transform: translateX(-40px);
+  }
+
+  .fade-right.animated {
+    transform: translateX(0);
+  }
+
+  .fade-left {
+    transform: translateX(40px);
+  }
+
+  .fade-left.animated {
+    transform: translateX(0);
+  }
+
+  .scale-up {
+    transform: scale(0.8);
+  }
+
+  .scale-up.animated {
+    transform: scale(1);
+  }
+
+  .tilt-card {
+    transition: transform 0.5s ease;
+  }
+
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
+
+  .floating {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(45deg, #e53e3e, #f56565);
+  }
 }
 
 .reveal {
@@ -185,4 +252,51 @@
 
 .mobile-menu.closed {
   transform: translateX(-100%);
+}
+
+/* Enhanced button hover effects */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #e53e3e, #f56565);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+/* Parallax effect */
+.parallax {
+  transform: translateY(0);
+  transition: transform 0.2s linear;
+}
+
+/* Pulse animation for attention */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-ring 2s infinite;
 }

@@ -1,7 +1,6 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import HeroSection from '@/components/HeroSection';
+import DynamicHeroSection from '@/components/DynamicHeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import ProcessSection from '@/components/ProcessSection';
@@ -16,10 +15,13 @@ import TownDescription from '@/components/TownDescription';
 import MapSection from '@/components/MapSection';
 import { getTownData } from '@/utils/townData';
 import { Helmet } from 'react-helmet-async';
+import useScrollAnimation from '@/hooks/useScrollAnimation';
 
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
   const navigate = useNavigate();
+  
+  useScrollAnimation();
   
   console.log("TownPage rendering with townSlug:", townSlug);
   
@@ -34,10 +36,8 @@ const TownPage: React.FC = () => {
       return;
     }
     
-    // Scroll to top on town page load
     window.scrollTo(0, 0);
     
-    // Add structured data for this specific town
     const townStructuredData = {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -61,7 +61,6 @@ const TownPage: React.FC = () => {
       "serviceType": "Vehicle Wraps & Protection"
     };
     
-    // Log successful town page load for analytics
     console.log(`Town page loaded successfully for: ${townData?.name}`);
     
   }, [townSlug, townData, navigate]);
@@ -183,16 +182,43 @@ const TownPage: React.FC = () => {
       />
       <Navbar />
       <main className="town-page" itemScope itemType="https://schema.org/WebPage">
-        <HeroSection townName={name} />
-        <TownDescription townName={name} townData={townData} />
-        <ServicesSection townName={name} />
-        <BenefitsSection townName={name} />
-        <ProcessSection townName={name} />
-        <GalleryShowcase townName={name} itemLimit={6} />
-        <TestimonialSection townName={name} />
-        <FAQSection townName={name} faqs={locationFaqs} />
-        <MapSection townName={name} mapUrl={mapUrl} />
-        <CTASection townName={name} />
+        <DynamicHeroSection townName={name} />
+        
+        <div className="animate-on-scroll fade-up">
+          <TownDescription townName={name} townData={townData} />
+        </div>
+        
+        <div className="services-section animate-on-scroll fade-up">
+          <ServicesSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <BenefitsSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <ProcessSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <GalleryShowcase townName={name} itemLimit={6} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <TestimonialSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <FAQSection townName={name} faqs={locationFaqs} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <MapSection townName={name} mapUrl={mapUrl} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <CTASection townName={name} />
+        </div>
       </main>
       <Footer />
     </>

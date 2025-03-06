@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOSchema from '@/components/SEOSchema';
@@ -8,8 +8,18 @@ import ProcessSection from '@/components/ProcessSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import CTASection from '@/components/CTASection';
 import FAQSection from '@/components/FAQSection';
+import DynamicHeroSection from '@/components/DynamicHeroSection';
+import useScrollAnimation from '@/hooks/useScrollAnimation';
 
 const Services = () => {
+  // Initialize scroll animations
+  useScrollAnimation();
+  
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <>
       <SEOSchema 
@@ -19,21 +29,23 @@ const Services = () => {
         pageUrl="https://wrappingtheworld.com/services"
       />
       <Navbar />
-      <main className="pt-24">
-        <div className="container mx-auto px-4 mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-wrap-blue mb-6">
+      <main>
+        <DynamicHeroSection townName="Chicago" />
+        
+        <div className="container mx-auto px-4 mb-16 pt-24">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-wrap-blue mb-6 animate-on-scroll fade-up">
             Professional Vehicle Wrapping, Ceramic Coating & Paint Protection Services in Chicago
           </h1>
-          <p className="text-wrap-grey text-lg mb-6 max-w-3xl">
+          <p className="text-wrap-grey text-lg mb-6 max-w-3xl animate-on-scroll fade-up">
             At Wrapping The World, we deliver industry-leading vehicle transformation and protection solutions designed to enhance and shield your vehicles. 
             Our comprehensive range of services includes commercial fleet branding, nano-ceramic paint protection, self-healing paint protection film, custom vehicle graphics, and premium color change wraps for businesses and individuals throughout Chicago and the surrounding suburbs.
           </p>
-          <p className="text-wrap-grey text-lg mb-6 max-w-3xl">
+          <p className="text-wrap-grey text-lg mb-6 max-w-3xl animate-on-scroll fade-up">
             Using only the highest quality 3M and Avery Dennison vinyl materials and advanced ceramic coating technologies, our professional installation team ensures durable, weather-resistant finishes that protect your vehicle's original paint while delivering maximum visual impact and long-lasting protection. 
             From concept to completion, we provide end-to-end vehicle enhancement solutions tailored specifically to your business needs and protection requirements.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl tilt-card animate-on-scroll fade-right">
               <h2 className="text-2xl font-serif font-semibold text-wrap-blue mb-4">Vehicle Wrapping Services</h2>
               <ul className="space-y-2 text-wrap-grey">
                 <li className="flex items-start">
@@ -62,7 +74,7 @@ const Services = () => {
                 </li>
               </ul>
             </div>
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl tilt-card animate-on-scroll fade-left">
               <h2 className="text-2xl font-serif font-semibold text-wrap-blue mb-4">Vehicle Protection Services</h2>
               <ul className="space-y-2 text-wrap-grey">
                 <li className="flex items-start">
@@ -92,12 +104,14 @@ const Services = () => {
               </ul>
             </div>
           </div>
-          <p className="text-wrap-grey text-lg mb-12 max-w-3xl">
+          <p className="text-wrap-grey text-lg mb-12 max-w-3xl animate-on-scroll fade-up">
             Whether you need complete fleet branding solutions for your Chicago business vehicles, advanced ceramic coating protection, self-healing paint protection film, custom color change wraps for personal vehicles, or 
             partial wraps and decals, our expertise and professional service ensure outstanding, head-turning results with superior protection every time.
           </p>
         </div>
-        <ServicesSection townName="Chicago" />
+        <div id="services-section" className="services-section">
+          <ServicesSection townName="Chicago" />
+        </div>
         <BenefitsSection townName="Chicago" />
         <ProcessSection townName="Chicago" />
         <FAQSection townName="Chicago" />
