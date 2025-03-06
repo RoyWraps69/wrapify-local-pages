@@ -16,6 +16,7 @@ import PriceCalculator from './PriceCalculator';
 import PriceSummary from './PriceSummary';
 import WrapAddOns from './WrapAddOns';
 import BottomCTA from './BottomCTA';
+import UploadArtwork from './UploadArtwork';
 
 const PrintShipSection: React.FC = () => {
   // State for selected options
@@ -65,6 +66,9 @@ const PrintShipSection: React.FC = () => {
     <section className="py-16 bg-white" id="print-ship">
       <div className="container mx-auto px-4">
         <PrintShipHeader />
+
+        {/* Upload Artwork Link - New Addition */}
+        <UploadArtwork />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left column - Pricing Calculator */}
