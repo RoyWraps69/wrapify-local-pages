@@ -1,9 +1,10 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { InfoIcon, ShoppingCart, CreditCard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
+import { useToast } from '@/components/ui/use-toast';
 
 interface PriceSummaryProps {
   price: {
@@ -20,6 +21,8 @@ interface PriceSummaryProps {
 
 const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] }) => {
   const { addItem, setIsCartOpen } = useShoppingCart();
+  const { toast } = useToast();
+  const navigate = useNavigate();
   
   const handleAddToCart = () => {
     // Create a complete wrap package item
@@ -32,6 +35,10 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
     };
     
     addItem(wrapPackage);
+    toast({
+      title: "Added to cart!",
+      description: "Your custom wrap package has been added to the cart.",
+    });
     setIsCartOpen(true);
   };
   

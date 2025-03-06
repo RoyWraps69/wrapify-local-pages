@@ -1,83 +1,69 @@
 
-import React from 'react';
-import { ShopItem } from '@/components/print-ship/types/installer';
-import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
-import { shopItems } from '@/components/print-ship/data/installers';
-
+import React, { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import CartButton from '@/components/print-ship/shopping-cart/CartButton';
+import MiniCart from '@/components/print-ship/shopping-cart/MiniCart';
 import ShopHeader from './ShopHeader';
 import CategoryNavigation from './CategoryNavigation';
-import ShopFooter from './ShopFooter';
 import CategorySectionRenderer from './CategorySectionRenderer';
-
-// Filter items by category
-const filterItemsByCategory = (items: ShopItem[], category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping' | 'merchandise') => {
-  return items.filter(item => item.category === category);
-};
+import ShopFooter from './ShopFooter';
+import { shopItems } from '@/components/print-ship/data/installers';
+import ProductDetails from './ProductDetails';
 
 interface ShoppingContentProps {
   activeCategory: string;
   setActiveCategory: (category: string) => void;
 }
 
-const ShoppingContent = ({ activeCategory, setActiveCategory }: ShoppingContentProps) => {
-  const { addItem } = useShoppingCart();
+const ShoppingContent: React.FC<ShoppingContentProps> = ({ 
+  activeCategory, 
+  setActiveCategory 
+}) => {
+  const params = useParams();
+  const navigate = useNavigate();
+  const productId = params.productId;
   
-  const handleAddToCart = (item: ShopItem) => {
-    addItem(item);
+  const selectedProduct = productId 
+    ? shopItems.find(item => item.id === productId) 
+    : null;
+  
+  const handleBackToShop = () => {
+    navigate('/shopping');
   };
   
-  const wrapMaterials = filterItemsByCategory(shopItems, 'wrap_material');
-  const protectionItems = filterItemsByCategory(shopItems, 'protection');
-  const designServices = filterItemsByCategory(shopItems, 'design');
-  const merchandiseItems = filterItemsByCategory(shopItems, 'merchandise');
-  
   return (
-    <main className="pt-20 md:pt-24 overflow-x-hidden">
-      <ShopHeader setActiveCategory={setActiveCategory} />
-      <CategoryNavigation activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-      
-      {/* Merchandise Section */}
-      <CategorySectionRenderer
-        activeCategory={activeCategory}
-        categoryKey="merchandise"
-        items={merchandiseItems}
-        title="Wrapping The World Merchandise"
-        description="Show your love for vehicle wraps with our premium quality t-shirts featuring the Wrapping The World logo."
-        onAddToCart={handleAddToCart}
-      />
-
-      {/* Wrap Materials Section */}
-      <CategorySectionRenderer
-        activeCategory={activeCategory}
-        categoryKey="wrap_material"
-        items={wrapMaterials}
-        title="Premium Wrap Materials"
-        description="Professional-grade vinyl materials for every vehicle wrap project. Available for direct purchase or print-and-ship service."
-        onAddToCart={handleAddToCart}
-      />
-
-      {/* Protection Products Section */}
-      <CategorySectionRenderer
-        activeCategory={activeCategory}
-        categoryKey="protection"
-        items={protectionItems}
-        title="Protection Products"
-        description="Keep your vehicle wrap looking fresh and protected with these premium protection options."
-        onAddToCart={handleAddToCart}
-      />
-
-      {/* Design Services Section */}
-      <CategorySectionRenderer
-        activeCategory={activeCategory}
-        categoryKey="design"
-        items={designServices}
-        title="Professional Design Services"
-        description="Expert design services to ensure your vehicle wrap project turns out perfectly."
-        onAddToCart={handleAddToCart}
-      />
-
-      <ShopFooter setActiveCategory={setActiveCategory} />
-    </main>
+    <div className="py-6 md:py-12">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-serif text-wrap-blue">
+            {selectedProduct ? selectedProduct.name : 'Shop Wrapping Materials & Merchandise'}
+          </h1>
+          <CartButton />
+        </div>
+        
+        <MiniCart />
+        
+        {selectedProduct ? (
+          <ProductDetails 
+            product={selectedProduct} 
+            onBackToShop={handleBackToShop}
+          />
+        ) : (
+          <>
+            <ShopHeader />
+            
+            <CategoryNavigation 
+              activeCategory={activeCategory} 
+              setActiveCategory={setActiveCategory} 
+            />
+            
+            <CategorySectionRenderer activeCategory={activeCategory} />
+            
+            <ShopFooter />
+          </>
+        )}
+      </div>
+    </div>
   );
 };
 

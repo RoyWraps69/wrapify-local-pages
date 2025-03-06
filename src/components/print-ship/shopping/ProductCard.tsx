@@ -3,13 +3,15 @@ import React from 'react';
 import { Package, Shield, Palette, Shirt } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ShopItem } from '@/components/print-ship/types/installer';
+import { Link } from 'react-router-dom';
+import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
 
 interface ProductCardProps {
   item: ShopItem;
-  onAddToCart: (item: ShopItem) => void;
 }
 
-const ProductCard = ({ item, onAddToCart }: ProductCardProps) => {
+const ProductCard = ({ item }: ProductCardProps) => {
+  const { addItem } = useShoppingCart();
   let icon;
   let gradientClass = "bg-gradient-to-r from-blue-500 to-purple-500";
   
@@ -33,8 +35,17 @@ const ProductCard = ({ item, onAddToCart }: ProductCardProps) => {
       icon = <Package size={64} className="text-white" />;
   }
   
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addItem(item);
+  };
+  
   return (
-    <div className="bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden transition-all hover:shadow-lg">
+    <Link 
+      to={`/shopping/${item.id}`} 
+      className="block bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden transition-all hover:shadow-lg"
+    >
       <div className={`h-48 ${item.color ? '' : gradientClass} flex items-center justify-center`} 
            style={item.color ? { backgroundColor: item.color } : {}}>
         {item.image ? (
@@ -51,13 +62,13 @@ const ProductCard = ({ item, onAddToCart }: ProductCardProps) => {
           <Button 
             variant="outline" 
             className="border-wrap-red text-wrap-red hover:bg-wrap-red hover:text-white"
-            onClick={() => onAddToCart(item)}
+            onClick={handleAddToCart}
           >
             Add to Cart
           </Button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

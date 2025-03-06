@@ -4,13 +4,12 @@ import { Award, Check, ShoppingCart, TrendingUp, BadgePercent, Trophy } from 'lu
 import { Button } from '@/components/ui/button';
 import { ShopItem } from '../types/installer';
 import { useToast } from '@/components/ui/use-toast';
+import { useShoppingCart } from '../shopping-cart/ShoppingCart';
+import { Link } from 'react-router-dom';
 
-interface PremiumListingPromoProps {
-  addToCart: (item: ShopItem) => void;
-}
-
-const PremiumListingPromo: React.FC<PremiumListingPromoProps> = ({ addToCart }) => {
+const PremiumListingPromo: React.FC = () => {
   const { toast } = useToast();
+  const { addItem } = useShoppingCart();
   const [selectedTerm, setSelectedTerm] = useState<'1_month' | '3_months' | '6_months' | '12_months'>('1_month');
   
   const premiumPlans: ShopItem[] = [
@@ -51,7 +50,7 @@ const PremiumListingPromo: React.FC<PremiumListingPromoProps> = ({ addToCart }) 
   ];
 
   const handleAddToCart = (item: ShopItem) => {
-    addToCart(item);
+    addItem(item);
     toast({
       title: "Added to cart!",
       description: `${item.name} has been added to your cart.`,
@@ -162,12 +161,21 @@ const PremiumListingPromo: React.FC<PremiumListingPromoProps> = ({ addToCart }) 
           </span>
         </div>
         
-        <Button 
-          className="w-full bg-amber-500 hover:bg-amber-600"
-          onClick={() => handleAddToCart(getPlan(selectedTerm))}
-        >
-          <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
-        </Button>
+        <div className="grid grid-cols-2 gap-3">
+          <Button 
+            className="w-full bg-amber-500 hover:bg-amber-600"
+            onClick={() => handleAddToCart(getPlan(selectedTerm))}
+          >
+            <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
+          </Button>
+          
+          <Link
+            to={`/shopping/${getPlan(selectedTerm).id}`}
+            className="flex items-center justify-center w-full py-2 px-4 border border-amber-500 text-amber-600 rounded-md hover:bg-amber-50 transition-colors"
+          >
+            View Details
+          </Link>
+        </div>
       </div>
       
       <p className="text-xs text-center text-wrap-grey">
