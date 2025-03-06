@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';
-import { Search, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { Search, MapPin, Phone, Mail, ExternalLink, UserPlus } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
+import InstallerSubmissionForm from './InstallerSubmissionForm';
 
 interface Installer {
   id: number;
@@ -193,6 +194,7 @@ const InstallerDirectory: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredInstallers, setFilteredInstallers] = useState<Installer[]>(installers);
   const [selectedInstaller, setSelectedInstaller] = useState<Installer | null>(null);
+  const [showSubmissionForm, setShowSubmissionForm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -260,7 +262,23 @@ const InstallerDirectory: React.FC = () => {
         <p className="text-wrap-grey max-w-3xl mx-auto">
           Professional installation rates vary by location. Connect with top-rated wrap installers in major cities across the USA.
         </p>
+        <div className="mt-4">
+          <Button 
+            variant="outline" 
+            onClick={() => setShowSubmissionForm(!showSubmissionForm)}
+            className="mx-auto"
+          >
+            <UserPlus className="mr-2 h-4 w-4" />
+            {showSubmissionForm ? "Hide Application Form" : "Apply to Join Our Installer Network"}
+          </Button>
+        </div>
       </div>
+
+      {showSubmissionForm && (
+        <div className="max-w-3xl mx-auto mb-10">
+          <InstallerSubmissionForm />
+        </div>
+      )}
 
       {!selectedInstaller ? (
         <>
