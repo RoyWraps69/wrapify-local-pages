@@ -7,6 +7,10 @@ Allow: /
 # Disallow specific pages
 Disallow: /not-found
 Disallow: /admin/
+Disallow: /thank-you
+Disallow: /api/
+Disallow: /temp/
+Disallow: /*?*
 
 # Allow all important sections
 Allow: /services/
@@ -14,6 +18,9 @@ Allow: /gallery
 Allow: /about
 Allow: /contact
 Allow: /locations/
+Allow: /blog/
+Allow: /resources/
+Allow: /case-studies/
 
 # Crawl-delay for non-Google bots
 User-agent: *
@@ -22,11 +29,18 @@ Crawl-delay: 1
 # Specific instructions for Google
 User-agent: Googlebot
 Allow: /
+Allow: /*.js*
+Allow: /*.css*
 
 # Specific instructions for Google Images
 User-agent: Googlebot-Image
 Allow: /gallery
 Allow: /services/
+Allow: /images/
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+Allow: /*.webp$
 
 # Specific instructions for Bing
 User-agent: Bingbot
@@ -35,5 +49,17 @@ Allow: /
 # Allow all Town pages for full local SEO crawling
 Allow: /locations/*
 
-# Sitemap location
+# Allow Google to index JavaScript and CSS
+User-agent: Googlebot
+Allow: /*.js$
+Allow: /*.css$
+
+# Mobile-specific instructions
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Sitemap locations
 Sitemap: https://wrappingtheworld.com/sitemap.xml
+Sitemap: https://wrappingtheworld.com/sitemap-services.xml
+Sitemap: https://wrappingtheworld.com/sitemap-towns.xml
+Sitemap: https://wrappingtheworld.com/sitemap-blog.xml

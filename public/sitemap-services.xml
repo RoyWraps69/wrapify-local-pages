@@ -1,0 +1,141 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main Services Page -->
+  <url>
+    <loc>https://wrappingtheworld.com/services</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/vehicle-wrapping-showcase.jpg</image:loc>
+      <image:title>Professional Vehicle Wrapping Services</image:title>
+      <image:caption>Premium vehicle wraps for commercial fleets and personal vehicles</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/ceramic-coating-application.jpg</image:loc>
+      <image:title>Ceramic Coating Application</image:title>
+      <image:caption>Professional ceramic coating for long-lasting vehicle protection</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Individual Service Pages - Fleet Wraps -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/commercial-fleet-wraps</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/commercial-fleet-wraps.jpg</image:loc>
+      <image:title>Commercial Fleet Wrapping</image:title>
+      <image:caption>Transform your business fleet into mobile billboards</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Individual Service Pages - Color Change Wraps -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/color-change-wraps</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/color-change-wraps.jpg</image:loc>
+      <image:title>Color Change Vehicle Wraps</image:title>
+      <image:caption>Premium vehicle color transformation services</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Individual Service Pages - Ceramic Coatings -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/ceramic-coatings</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/ceramic-coating-service.jpg</image:loc>
+      <image:title>Ceramic Coating Protection</image:title>
+      <image:caption>Long-lasting hydrophobic protection for vehicles</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Individual Service Pages - Paint Protection Film -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/paint-protection</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/paint-protection-film.jpg</image:loc>
+      <image:title>Paint Protection Film Installation</image:title>
+      <image:caption>Self-healing clear bra protection for vehicle paint</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Individual Service Pages - Vehicle Graphics -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/vehicle-graphics</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/vehicle-graphics-decals.jpg</image:loc>
+      <image:title>Custom Vehicle Graphics</image:title>
+      <image:caption>Partial wraps and custom graphics for vehicles</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Print and Ship Service Page -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/print-ship</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/print-ship-service.jpg</image:loc>
+      <image:title>Print and Ship Wrap Service</image:title>
+      <image:caption>Premium wraps designed and printed in Chicago, shipped nationwide</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- 3D Customizer Tool Page -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/3d-customizer</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/services/3d-vehicle-customizer.jpg</image:loc>
+      <image:title>3D Vehicle Wrap Customizer</image:title>
+      <image:caption>Interactive tool to visualize vehicle wraps before installation</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Specialized Vehicle Wrap Pages -->
+  <url>
+    <loc>https://wrappingtheworld.com/services/food-truck-wraps</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wrappingtheworld.com/services/construction-vehicle-wraps</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wrappingtheworld.com/services/service-van-wraps</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wrappingtheworld.com/services/specialty-vehicle-wraps</loc>
+    <lastmod>2024-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
