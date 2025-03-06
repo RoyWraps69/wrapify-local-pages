@@ -64,10 +64,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
-      {/* Enhanced design elements */}
-      <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-2/5 h-80 bg-wrap-red/10 backdrop-blur-md rounded-l-3xl z-0 shadow-xl"></div>
-      <div className="hidden lg:block absolute bottom-20 right-32 w-32 h-32 bg-wrap-blue/20 backdrop-blur-sm rounded-full z-0 animate-pulse"></div>
-      <div className="hidden lg:block absolute top-32 left-1/4 w-16 h-16 bg-wrap-red/20 backdrop-blur-sm rounded-full z-0 animate-pulse"></div>
+      {/* Remove the design elements that create the fuzzy placeholder effect */}
     </section>
   );
 };
