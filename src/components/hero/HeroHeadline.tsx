@@ -29,6 +29,11 @@ const HeroHeadline: React.FC<HeroHeadlineProps> = ({ townName }) => {
       <h2 className="text-xl md:text-2xl text-white/90 mb-2 font-light">
         <span className="italic">Chicago's Premier Vehicle Wrap Service Now in {townName}</span>
       </h2>
+      
+      {/* Nationwide service indicator */}
+      <p className="text-lg text-white/80 font-light">
+        <span className="underline decoration-wrap-red decoration-2 underline-offset-4">Now Serving Nationwide</span> with Print & Ship Options
+      </p>
     </>
   );
 };

@@ -8,6 +8,8 @@ import ServicesSection from '@/components/ServicesSection';
 import TestimonialSection from '@/components/TestimonialSection';
 import SEOSchema from '@/components/SEOSchema';
 import FAQSection from '@/components/FAQSection';
+import NationwideSection from '@/components/nationwide/NationwideSection';
+import PrintShipSection from '@/components/print-ship/PrintShipSection';
 import { getAllTowns } from '@/utils/townData';
 import { Helmet } from 'react-helmet-async';
 
@@ -140,6 +142,13 @@ const Index = () => {
         </section>
         
         <TestimonialSection townName="Chicago" />
+        
+        {/* Add the nationwide section */}
+        <NationwideSection />
+        
+        {/* Add the print & ship section */}
+        <PrintShipSection />
+        
         <FAQSection townName="Chicago" />
         
         <section className="py-16 bg-gray-50" id="service-areas">

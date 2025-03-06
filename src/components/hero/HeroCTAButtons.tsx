@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, Phone, Truck } from 'lucide-react';
 
 interface HeroCTAButtonsProps {
   townName: string;
@@ -27,6 +27,13 @@ const HeroCTAButtons: React.FC<HeroCTAButtonsProps> = ({ townName }) => {
         <Phone className="w-5 h-5" />
         <span>Call For {townName} Service</span>
       </a>
+      <Link 
+        to="/print-ship" 
+        className="flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg"
+      >
+        <Truck className="w-5 h-5" />
+        <span>Nationwide Print & Ship</span>
+      </Link>
       
       {/* Mobile service availability indicator */}
       <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 text-white/70 text-sm">
