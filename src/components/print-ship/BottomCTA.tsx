@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Send } from 'lucide-react';
+import { Send, Shield } from 'lucide-react';
 
 const BottomCTA: React.FC = () => {
   return (
@@ -19,10 +19,11 @@ const BottomCTA: React.FC = () => {
           Get Started
         </Link>
         <Link 
-          to="/gallery" 
-          className="px-6 py-3 bg-gray-100 text-wrap-blue font-medium rounded-md hover:bg-gray-200 transition-colors"
+          to="/wrap-insurance" 
+          className="px-6 py-3 bg-gray-100 text-wrap-blue font-medium rounded-md hover:bg-gray-200 transition-colors inline-flex items-center justify-center gap-2"
         >
-          View Our Work
+          <Shield className="w-4 h-4" />
+          View Insurance Options
         </Link>
       </div>
     </div>

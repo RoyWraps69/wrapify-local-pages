@@ -13,10 +13,10 @@ import ServicePage from "./pages/ServicePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
-import CaseStudies from "./pages/CaseStudies";
 import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
 import PrintShip from "./pages/PrintShip";
+import WrapInsurance from "./pages/WrapInsurance";
 
 // Resource Pages
 import VinylWrapCareGuide from "./pages/resources/VinylWrapCareGuide";
@@ -64,9 +64,9 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/print-ship" element={<PrintShip />} />
+              <Route path="/wrap-insurance" element={<WrapInsurance />} />
               
               {/* Town Pages */}
               <Route path="/locations/:townSlug" element={<TownPage />} />

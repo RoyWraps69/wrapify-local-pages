@@ -23,8 +23,8 @@ const QuickLinks = () => {
           </Link>
         </li>
         <li>
-          <Link to="/case-studies" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
-            Case Studies
+          <Link to="/print-ship" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
+            Print & Ship
           </Link>
         </li>
         <li>

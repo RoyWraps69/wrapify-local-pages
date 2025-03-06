@@ -14,6 +14,7 @@ import {
 import PrintShipHeader from './PrintShipHeader';
 import PriceCalculator from './PriceCalculator';
 import PriceSummary from './PriceSummary';
+import WrapAddOns from './WrapAddOns';
 import BottomCTA from './BottomCTA';
 
 const PrintShipSection: React.FC = () => {
@@ -23,10 +24,12 @@ const PrintShipSection: React.FC = () => {
   const [selectedDesign, setSelectedDesign] = useState<DesignOption>(designOptions[0]);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOption>(shippingOptions[0]);
   const [coverage, setCoverage] = useState(1); // 100% coverage by default
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [price, setPrice] = useState({ 
     subtotal: 0, 
     designFee: 0, 
     shippingFee: 0, 
+    addOnsFee: 0,
     total: 0,
     pricePerSqFt: 0,
     totalSqFt: 0
@@ -34,15 +37,29 @@ const PrintShipSection: React.FC = () => {
 
   // Calculate price when options change
   useEffect(() => {
-    const newPrice = calculateWrapPrice(
+    const basePrice = calculateWrapPrice(
       selectedVehicle,
       selectedMaterial,
       selectedDesign,
       selectedShipping,
       coverage
     );
-    setPrice(newPrice);
-  }, [selectedVehicle, selectedMaterial, selectedDesign, selectedShipping, coverage]);
+    
+    // Calculate add-ons pricing
+    let addOnsFee = 0;
+    if (selectedAddOns.includes('ceramic')) addOnsFee += 299;
+    if (selectedAddOns.includes('ppf')) addOnsFee += 349;
+    if (selectedAddOns.includes('insurance')) addOnsFee += 49.99;
+    
+    // Update total price with add-ons
+    const newTotal = basePrice.total + addOnsFee;
+    
+    setPrice({
+      ...basePrice,
+      addOnsFee,
+      total: newTotal
+    });
+  }, [selectedVehicle, selectedMaterial, selectedDesign, selectedShipping, coverage, selectedAddOns]);
 
   return (
     <section className="py-16 bg-white" id="print-ship">
@@ -65,8 +82,14 @@ const PrintShipSection: React.FC = () => {
           />
           
           {/* Right column - Price Summary and CTA */}
-          <PriceSummary price={price} />
+          <PriceSummary price={price} selectedAddOns={selectedAddOns} />
         </div>
+        
+        {/* Add-ons Section */}
+        <WrapAddOns 
+          selectedAddOns={selectedAddOns}
+          setSelectedAddOns={setSelectedAddOns}
+        />
         
         {/* Bottom CTA */}
         <BottomCTA />

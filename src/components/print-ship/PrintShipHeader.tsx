@@ -11,7 +11,7 @@ const PrintShipHeader: React.FC = () => {
         Premium Wraps Delivered Nationwide
       </h2>
       <p className="text-wrap-grey text-lg max-w-3xl mx-auto">
-        High-quality vehicle wraps designed and printed in Chicago, shipped directly to you or your installer anywhere in the United States.
+        High-quality vehicle wraps designed and printed in Chicago, shipped directly to you or your installer anywhere in the United States. Enhance your wrap with ceramic coating, PPF protection, or insurance coverage.
       </p>
     </div>
   );

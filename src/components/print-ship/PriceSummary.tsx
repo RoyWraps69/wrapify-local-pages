@@ -8,13 +8,15 @@ interface PriceSummaryProps {
     subtotal: number;
     designFee: number;
     shippingFee: number;
+    addOnsFee?: number;
     total: number;
     pricePerSqFt: number;
     totalSqFt: number;
   };
+  selectedAddOns?: string[];
 }
 
-const PriceSummary: React.FC<PriceSummaryProps> = ({ price }) => {
+const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] }) => {
   return (
     <div>
       <div className="bg-wrap-blue text-white p-6 rounded-lg shadow-lg mb-8">
@@ -33,6 +35,14 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price }) => {
             <span>Shipping</span>
             <span>${price.shippingFee.toFixed(2)}</span>
           </div>
+          
+          {(selectedAddOns?.length > 0 && price.addOnsFee) && (
+            <div className="flex justify-between border-b border-white/20 pb-2">
+              <span>Add-ons</span>
+              <span>${price.addOnsFee.toFixed(2)}</span>
+            </div>
+          )}
+          
           <div className="flex justify-between text-xl font-bold">
             <span>Total Price</span>
             <span>${price.total.toFixed(2)}</span>

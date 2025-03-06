@@ -46,8 +46,8 @@ const Navbar = () => {
           <Link to="/gallery" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Gallery
           </Link>
-          <Link to="/case-studies" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
-            Case Studies
+          <Link to="/print-ship" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
+            Print & Ship
           </Link>
           <Link to="/blog" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Blog
@@ -115,11 +115,11 @@ const Navbar = () => {
             Gallery
           </Link>
           <Link 
-            to="/case-studies" 
+            to="/print-ship" 
             className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Case Studies
+            Print & Ship
           </Link>
           <Link 
             to="/blog" 
