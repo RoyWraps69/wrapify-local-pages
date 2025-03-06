@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, Check, ChevronDown } from 'lucide-react';
+import { ArrowRight, Phone, Check, ChevronDown, Sparkles, Star } from 'lucide-react';
 import { getTownByName } from '@/utils/townData';
 import { cn } from '@/lib/utils';
 
@@ -29,6 +29,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
 }) => {
   const [activeBackground, setActiveBackground] = useState(4); // Start with fleet image
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollPos, setScrollPos] = useState(0);
   
   useEffect(() => {
     // Show content with animation on load
@@ -39,7 +40,17 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       setActiveBackground((prev) => (prev + 1) % heroBackgrounds.length);
     }, 5000);
     
-    return () => clearInterval(interval);
+    // Parallax scroll effect
+    const handleScroll = () => {
+      setScrollPos(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
   
   // Get the town's government website URL
@@ -73,13 +84,22 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
           )}
           style={{
             backgroundImage: `url(${backgroundImage || bg})`,
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
           }}
         >
-          {/* Semi-transparent overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          {/* Animated overlay with gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
         </div>
       ))}
+      
+      {/* Animated particles effect */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute w-4 h-4 bg-wrap-red/30 rounded-full top-1/4 left-1/4 animate-ping"></div>
+        <div className="absolute w-3 h-3 bg-white/20 rounded-full top-1/3 right-1/4 animate-ping" style={{animationDelay: '0.5s'}}></div>
+        <div className="absolute w-2 h-2 bg-wrap-red/20 rounded-full bottom-1/3 left-1/3 animate-ping" style={{animationDelay: '1s'}}></div>
+        <div className="absolute w-5 h-5 bg-white/30 rounded-full bottom-1/4 right-1/3 animate-ping" style={{animationDelay: '1.5s'}}></div>
+      </div>
       
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
@@ -87,19 +107,34 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             "transition-all duration-1000 transform",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            <span className="inline-block px-4 py-1 bg-wrap-red/20 text-wrap-light rounded-full text-sm font-medium mb-6 animate-pulse">
-              Premium Car Wraps & Protection in {townName}
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
-              Top Car Wraps & Protection in {townName}
+            {/* Animated badge with sparkle effect */}
+            <div className="inline-flex items-center gap-1 px-4 py-1 bg-gradient-to-r from-wrap-red/80 to-wrap-red rounded-full text-sm font-medium mb-6 shadow-lg animate-pulse">
+              <Sparkles className="text-white w-4 h-4" />
+              <span className="text-white">Premium Car Wraps & Protection in {townName}</span>
+              <Sparkles className="text-white w-4 h-4" />
+            </div>
+            
+            {/* Enhanced headline with text gradient */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold mb-6 text-balance">
+              <span className="bg-gradient-to-r from-white via-white to-wrap-red/90 bg-clip-text text-transparent">
+                Top Car Wraps & Protection
+              </span>
+              <br />
+              <span className="text-white">in {townName}</span>
             </h1>
-            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
+            
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto backdrop-blur-sm bg-black/10 p-4 rounded-lg">
               Wrapping The World offers premier car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
             <div className="mb-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
-              <div className="bg-black/30 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:bg-black/40 hover:shadow-lg">
-                <h3 className="text-white font-medium mb-2">Car Wrapping</h3>
+              <div className="bg-black/50 backdrop-blur-md p-4 rounded-lg transition-all duration-300 hover:bg-black/60 hover:shadow-lg border border-white/10 group hover:-translate-y-1">
+                <h3 className="text-white font-medium mb-2 flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-wrap-red to-wrap-red/70 flex items-center justify-center mr-2 group-hover:scale-110 transition-transform">
+                    <Star className="text-white" size={14} />
+                  </div>
+                  Car Wrapping
+                </h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
@@ -118,8 +153,13 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
                   Learn more <ArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" size={12} />
                 </Link>
               </div>
-              <div className="bg-black/30 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:bg-black/40 hover:shadow-lg">
-                <h3 className="text-white font-medium mb-2">Car Protection</h3>
+              <div className="bg-black/50 backdrop-blur-md p-4 rounded-lg transition-all duration-300 hover:bg-black/60 hover:shadow-lg border border-white/10 group hover:-translate-y-1">
+                <h3 className="text-white font-medium mb-2 flex items-center">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-wrap-red to-wrap-red/70 flex items-center justify-center mr-2 group-hover:scale-110 transition-transform">
+                    <Star className="text-white" size={14} />
+                  </div>
+                  Car Protection
+                </h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
@@ -143,15 +183,17 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 to="/contact" 
-                className="btn-primary flex items-center justify-center gap-2 group relative overflow-hidden"
+                className="relative overflow-hidden group px-6 py-3 rounded-md bg-gradient-to-r from-wrap-red to-wrap-red/80 text-white font-medium shadow-xl hover:shadow-wrap-red/30 transition-all duration-300 hover:scale-105"
               >
-                <span className="relative z-10">Get a Free Quote for {townName}</span>
-                <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform relative z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Get a Free Quote for {townName}
+                  <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </Link>
               <a 
                 href="tel:+13125971286" 
-                className="btn-secondary flex items-center justify-center gap-2 hover:scale-105 transition-transform"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg"
               >
                 <Phone className="w-5 h-5" />
                 <span>Call For {townName} Service</span>
@@ -165,9 +207,14 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
               <span className="text-sm">5+ Years Durability</span>
             </div>
             
-            {/* Scroll indicator */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce" onClick={scrollToServices}>
-              <ChevronDown className="text-white/80 hover:text-white transition-colors" size={32} />
+            {/* Enhanced scroll indicator */}
+            <div 
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform" 
+              onClick={scrollToServices}
+            >
+              <div className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 animate-bounce shadow-lg">
+                <ChevronDown className="text-white" size={24} />
+              </div>
             </div>
           </div>
         </div>
