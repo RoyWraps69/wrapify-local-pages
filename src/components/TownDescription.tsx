@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { towns } from '@/utils/townData';
 
 interface TownDescriptionProps {
   townName: string;
