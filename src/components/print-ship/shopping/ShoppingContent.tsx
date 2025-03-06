@@ -6,11 +6,10 @@ import { shopItems } from '@/components/print-ship/data/installers';
 
 import ShopHeader from './ShopHeader';
 import CategoryNavigation from './CategoryNavigation';
-import CategorySection from './CategorySection';
-import ProductCard from './ProductCard';
 import ShopFooter from './ShopFooter';
+import CategorySectionRenderer from './CategorySectionRenderer';
 
-// Filter items by category
+// Filter items by category - fixed type for category parameter
 const filterItemsByCategory = (items: ShopItem[], category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping' | 'merchandise') => {
   return items.filter(item => item.category === category);
 };
@@ -38,60 +37,44 @@ const ShoppingContent = ({ activeCategory, setActiveCategory }: ShoppingContentP
       <CategoryNavigation activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
       
       {/* Merchandise Section */}
-      {(activeCategory === 'all' || activeCategory === 'merchandise') && (
-        <CategorySection 
-          title="Wrapping The World Merchandise" 
-          description="Show your love for vehicle wraps with our premium quality t-shirts featuring the Wrapping The World logo."
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {merchandiseItems.map(item => (
-              <ProductCard key={item.id} item={item} onAddToCart={handleAddToCart} />
-            ))}
-          </div>
-        </CategorySection>
-      )}
+      <CategorySectionRenderer
+        activeCategory={activeCategory}
+        categoryKey="merchandise"
+        items={merchandiseItems}
+        title="Wrapping The World Merchandise"
+        description="Show your love for vehicle wraps with our premium quality t-shirts featuring the Wrapping The World logo."
+        onAddToCart={handleAddToCart}
+      />
 
       {/* Wrap Materials Section */}
-      {(activeCategory === 'all' || activeCategory === 'wrap_material') && (
-        <CategorySection 
-          title="Premium Wrap Materials" 
-          description="Professional-grade vinyl materials for every vehicle wrap project. Available for direct purchase or print-and-ship service."
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {wrapMaterials.map(item => (
-              <ProductCard key={item.id} item={item} onAddToCart={handleAddToCart} />
-            ))}
-          </div>
-        </CategorySection>
-      )}
+      <CategorySectionRenderer
+        activeCategory={activeCategory}
+        categoryKey="wrap_material"
+        items={wrapMaterials}
+        title="Premium Wrap Materials"
+        description="Professional-grade vinyl materials for every vehicle wrap project. Available for direct purchase or print-and-ship service."
+        onAddToCart={handleAddToCart}
+      />
 
       {/* Protection Products Section */}
-      {(activeCategory === 'all' || activeCategory === 'protection') && (
-        <CategorySection 
-          title="Protection Products" 
-          description="Keep your vehicle wrap looking fresh and protected with these premium protection options."
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {protectionItems.map(item => (
-              <ProductCard key={item.id} item={item} onAddToCart={handleAddToCart} />
-            ))}
-          </div>
-        </CategorySection>
-      )}
+      <CategorySectionRenderer
+        activeCategory={activeCategory}
+        categoryKey="protection"
+        items={protectionItems}
+        title="Protection Products"
+        description="Keep your vehicle wrap looking fresh and protected with these premium protection options."
+        onAddToCart={handleAddToCart}
+      />
 
       {/* Design Services Section */}
-      {(activeCategory === 'all' || activeCategory === 'design') && (
-        <CategorySection 
-          title="Professional Design Services" 
-          description="Expert design services to ensure your vehicle wrap project turns out perfectly."
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {designServices.map(item => (
-              <ProductCard key={item.id} item={item} onAddToCart={handleAddToCart} />
-            ))}
-          </div>
-        </CategorySection>
-      )}
+      <CategorySectionRenderer
+        activeCategory={activeCategory}
+        categoryKey="design"
+        items={designServices}
+        title="Professional Design Services"
+        description="Expert design services to ensure your vehicle wrap project turns out perfectly."
+        onAddToCart={handleAddToCart}
+      />
 
       <ShopFooter setActiveCategory={setActiveCategory} />
     </main>
