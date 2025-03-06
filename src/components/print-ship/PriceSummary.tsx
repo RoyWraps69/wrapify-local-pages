@@ -1,7 +1,9 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { InfoIcon } from 'lucide-react';
+import { InfoIcon, ShoppingCart, CreditCard } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
 
 interface PriceSummaryProps {
   price: {
@@ -17,6 +19,22 @@ interface PriceSummaryProps {
 }
 
 const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] }) => {
+  const { addItem, setIsCartOpen } = useShoppingCart();
+  
+  const handleAddToCart = () => {
+    // Create a complete wrap package item
+    const wrapPackage = {
+      id: `wrap_package_${Date.now()}`,
+      name: 'Custom Wrap Package',
+      description: `Complete wrap package with ${price.totalSqFt.toFixed(0)} sq ft of material and all selected add-ons`,
+      price: price.total,
+      category: 'wrap_material' as const,
+    };
+    
+    addItem(wrapPackage);
+    setIsCartOpen(true);
+  };
+  
   return (
     <div>
       <div className="bg-wrap-blue text-white p-6 rounded-lg shadow-lg mb-8">
@@ -54,12 +72,21 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
           </div>
         </div>
         
-        <Link 
-          to="/contact" 
-          className="block w-full py-3 text-center bg-wrap-red hover:bg-red-600 text-white font-medium rounded-md transition-colors"
-        >
-          Request Detailed Quote
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <Button 
+            onClick={handleAddToCart}
+            className="flex-1 bg-wrap-red hover:bg-red-600 text-white font-medium"
+          >
+            <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
+          </Button>
+          
+          <Link 
+            to="/contact" 
+            className="flex-1 block py-3 text-center bg-wrap-red/20 hover:bg-wrap-red/30 text-white font-medium rounded-md transition-colors"
+          >
+            Request Detailed Quote
+          </Link>
+        </div>
       </div>
       
       <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">

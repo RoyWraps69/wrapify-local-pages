@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   vehicleSizes, 
@@ -18,6 +17,7 @@ import WrapAddOns from './WrapAddOns';
 import BottomCTA from './BottomCTA';
 import UploadArtwork from './UploadArtwork';
 import InstallerDirectory from './InstallerDirectory';
+import ColorPicker from './ColorPicker';
 import { ShoppingCartProvider } from './shopping-cart/ShoppingCart';
 
 const PrintShipSection: React.FC = () => {
@@ -82,6 +82,9 @@ const PrintShipSection: React.FC = () => {
 
           {/* Upload Artwork Link */}
           <UploadArtwork />
+          
+          {/* Avery Color Chart */}
+          <ColorPicker />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left column - Pricing Calculator */}

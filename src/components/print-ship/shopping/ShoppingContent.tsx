@@ -9,7 +9,7 @@ import CategoryNavigation from './CategoryNavigation';
 import ShopFooter from './ShopFooter';
 import CategorySectionRenderer from './CategorySectionRenderer';
 
-// Filter items by category - fixed type for category parameter
+// Filter items by category
 const filterItemsByCategory = (items: ShopItem[], category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping' | 'merchandise') => {
   return items.filter(item => item.category === category);
 };

@@ -35,7 +35,8 @@ const ProductCard = ({ item, onAddToCart }: ProductCardProps) => {
   
   return (
     <div className="bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden transition-all hover:shadow-lg">
-      <div className={`h-48 ${gradientClass} flex items-center justify-center`}>
+      <div className={`h-48 ${item.color ? '' : gradientClass} flex items-center justify-center`} 
+           style={item.color ? { backgroundColor: item.color } : {}}>
         {item.image ? (
           <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
         ) : (

@@ -25,6 +25,7 @@ export interface ShopItem {
   featured?: boolean;
   bestValue?: boolean;
   image?: string;
+  color?: string; // Added for color selection
 }
 
 export interface CartItem extends ShopItem {

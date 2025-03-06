@@ -1,4 +1,4 @@
-import { Installer } from '../types/installer';
+import { Installer, ShopItem } from '../types/installer';
 
 export const installers: Installer[] = [
   {
@@ -178,7 +178,7 @@ export const installers: Installer[] = [
   },
 ];
 
-export const shopItems = [
+export const shopItems: ShopItem[] = [
   {
     id: 'premium_1_month',
     name: 'Premium Listing - 1 Month',
@@ -228,12 +228,67 @@ export const shopItems = [
     price: 12.99,
     category: 'wrap_material',
   },
+  {
+    id: 'diy_kit',
+    name: 'DIY Installation Kit',
+    description: 'Complete toolkit for DIY wrap installation',
+    price: 189.99,
+    category: 'wrap_material',
+  },
+  {
+    id: 'wrap_gloss_white',
+    name: 'Gloss White Vinyl Wrap',
+    description: 'Gloss white premium vinyl wrap material',
+    price: 13.99,
+    category: 'wrap_material',
+    color: '#FFFFFF'
+  },
+  {
+    id: 'wrap_gloss_black',
+    name: 'Gloss Black Vinyl Wrap',
+    description: 'Gloss black premium vinyl wrap material',
+    price: 13.99,
+    category: 'wrap_material',
+    color: '#000000'
+  },
+  {
+    id: 'wrap_matte_black',
+    name: 'Matte Black Vinyl Wrap',
+    description: 'Matte black premium vinyl wrap material',
+    price: 14.99,
+    category: 'wrap_material',
+    color: '#1A1A1A'
+  },
+  {
+    id: 'wrap_silver_metallic',
+    name: 'Silver Metallic Vinyl Wrap',
+    description: 'Metallic silver premium vinyl wrap material',
+    price: 15.99,
+    category: 'wrap_material',
+    color: '#C0C0C0'
+  },
+  {
+    id: 'wrap_red',
+    name: 'Gloss Red Vinyl Wrap',
+    description: 'Vibrant red premium vinyl wrap material',
+    price: 14.99,
+    category: 'wrap_material',
+    color: '#FF0000'
+  },
+  {
+    id: 'wrap_blue',
+    name: 'Gloss Blue Vinyl Wrap',
+    description: 'Deep blue premium vinyl wrap material',
+    price: 14.99,
+    category: 'wrap_material',
+    color: '#0000FF'
+  },
   
   {
     id: 'ceramic_coating',
     name: 'Ceramic Coating Protection',
     description: 'Advanced ceramic coating for wrap protection',
-    price: 299.00,
+    price: 399.99,
     category: 'protection',
   },
   {
