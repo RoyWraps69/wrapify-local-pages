@@ -13,12 +13,12 @@ interface GalleryItem {
 
 interface GalleryShowcaseProps {
   townName?: string;
-  limitToItems?: number;
+  itemLimit?: number;
 }
 
 const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({ 
   townName = 'Chicago',
-  limitToItems
+  itemLimit
 }) => {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   
@@ -109,7 +109,7 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
     ? galleryItems.filter(item => item.category === activeFilter) 
     : galleryItems;
     
-  const displayItems = limitToItems ? filteredItems.slice(0, limitToItems) : filteredItems;
+  const displayItems = itemLimit ? filteredItems.slice(0, itemLimit) : filteredItems;
 
   return (
     <section className="py-20 bg-gray-50">
@@ -186,7 +186,7 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
           ))}
         </div>
 
-        {limitToItems && limitToItems < galleryItems.length && (
+        {itemLimit && itemLimit < galleryItems.length && (
           <div className="text-center mt-12">
             <Link to="/gallery" className="btn-primary">
               View All Projects

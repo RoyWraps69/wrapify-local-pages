@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -23,12 +22,10 @@ const TownPage: React.FC = () => {
   const townData = getTownData(townSlug || '');
   
   useEffect(() => {
-    // If town data is not found, redirect to 404
     if (!townData && townSlug) {
       navigate('/not-found', { replace: true });
     }
     
-    // Scroll to top when the component mounts or townSlug changes
     window.scrollTo(0, 0);
   }, [townSlug, townData, navigate]);
   
@@ -42,7 +39,6 @@ const TownPage: React.FC = () => {
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from Chicago's top-rated vehicle enhancement company.`;
   const pageUrl = `https://chicagofleetwraps.com/locations/${townSlug}`;
 
-  // Create custom FAQs with location-specific info
   const locationFaqs = [
     {
       question: `Where can I get professional vehicle wraps in ${name}?`,
