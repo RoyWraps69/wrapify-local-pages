@@ -29,6 +29,31 @@ Allow: /regions/michigan
 Allow: /regions/indiana
 Allow: /regions/wisconsin
 
+# Town/city pages explicitly allowed for better indexing
+Allow: /locations/chicago
+Allow: /locations/evanston
+Allow: /locations/oak-park
+Allow: /locations/naperville
+Allow: /locations/schaumburg
+Allow: /locations/detroit
+Allow: /locations/grand-rapids
+Allow: /locations/ann-arbor
+Allow: /locations/lansing
+Allow: /locations/kalamazoo
+Allow: /locations/battle-creek
+Allow: /locations/indianapolis
+Allow: /locations/fort-wayne
+Allow: /locations/south-bend
+Allow: /locations/gary
+Allow: /locations/hammond
+Allow: /locations/merrillville
+Allow: /locations/milwaukee
+Allow: /locations/madison
+Allow: /locations/green-bay
+Allow: /locations/kenosha
+Allow: /locations/racine
+Allow: /locations/waukesha
+
 # Crawl-delay for non-Google bots
 User-agent: *
 Crawl-delay: 1
