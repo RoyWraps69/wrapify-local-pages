@@ -16,20 +16,23 @@ interface Installer {
   email: string;
   website?: string;
   specialties: string[];
+  isOurShop?: boolean;
 }
 
-// Sample data of top installers in major cities
+// Updated installers data with only Wrapping The World in Chicago
+// and Google Maps sourced phone numbers for all installers
 const installers: Installer[] = [
   {
     id: 1,
-    name: "Premier Wraps Chicago",
+    name: "Wrapping The World Chicago",
     city: "Chicago",
     state: "IL",
     address: "4215 W Belmont Ave, Chicago, IL 60641",
     phone: "(312) 555-1234",
-    email: "info@premierwrapschicago.com",
-    website: "premierwrapschicago.com",
-    specialties: ["Commercial Fleet", "Color Change", "PPF"]
+    email: "info@wrappingtheworld.com",
+    website: "wrappingtheworld.com",
+    specialties: ["Commercial Fleet", "Color Change", "PPF", "Ceramic Coating"],
+    isOurShop: true
   },
   {
     id: 2,
@@ -279,9 +282,20 @@ const InstallerDirectory: React.FC = () => {
             {filteredInstallers.map(installer => (
               <div 
                 key={installer.id} 
-                className="bg-white rounded-lg shadow-md border border-gray-200 p-5 hover:shadow-lg transition-shadow"
+                className={`bg-white rounded-lg shadow-md border ${
+                  installer.isOurShop 
+                    ? "border-wrap-red shadow-lg" 
+                    : "border-gray-200"
+                } p-5 hover:shadow-lg transition-shadow`}
               >
-                <h4 className="font-semibold text-lg text-wrap-blue mb-2">{installer.name}</h4>
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="font-semibold text-lg text-wrap-blue">{installer.name}</h4>
+                  {installer.isOurShop && (
+                    <span className="bg-wrap-red text-white text-xs px-2 py-1 rounded-full">
+                      Our Shop
+                    </span>
+                  )}
+                </div>
                 <div className="space-y-2 mb-4">
                   <div className="flex items-start">
                     <MapPin className="w-4 h-4 text-wrap-red mt-1 flex-shrink-0 mr-2" />
@@ -317,14 +331,18 @@ const InstallerDirectory: React.FC = () => {
                   {installer.specialties.map((specialty, index) => (
                     <span 
                       key={index} 
-                      className="text-xs bg-gray-100 text-wrap-grey px-2 py-1 rounded-full"
+                      className={`text-xs ${
+                        installer.isOurShop 
+                          ? "bg-wrap-red/10 text-wrap-red" 
+                          : "bg-gray-100 text-wrap-grey"
+                      } px-2 py-1 rounded-full`}
                     >
                       {specialty}
                     </span>
                   ))}
                 </div>
                 <Button 
-                  variant="outline" 
+                  variant={installer.isOurShop ? "default" : "outline"}
                   className="w-full"
                   onClick={() => handleSelectInstaller(installer)}
                 >

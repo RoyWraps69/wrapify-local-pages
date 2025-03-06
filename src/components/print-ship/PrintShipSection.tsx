@@ -71,12 +71,14 @@ const PrintShipSection: React.FC = () => {
         {/* Installation Notice */}
         <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-center">
           <p className="text-amber-800 font-medium">
-            <span className="underline">Important:</span> Pricing below is for wrap materials and shipping only. Professional installation is not included.
-            We can connect you with local installers in your area upon request.
+            <span className="underline font-bold">Important:</span> Pricing below is for wrap materials and shipping only. Professional installation is not included.
+            <a href="#installer-network" className="text-wrap-red hover:underline ml-1">
+              Find a certified installer in your area below.
+            </a>
           </p>
         </div>
 
-        {/* Upload Artwork Link - New Addition */}
+        {/* Upload Artwork Link */}
         <UploadArtwork />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -104,8 +106,8 @@ const PrintShipSection: React.FC = () => {
           setSelectedAddOns={setSelectedAddOns}
         />
         
-        {/* Local Installers Directory - New Addition */}
-        <div className="mt-16 border-t border-gray-200 pt-12">
+        {/* Local Installers Directory */}
+        <div id="installer-network" className="mt-16 border-t border-gray-200 pt-12">
           <h2 className="text-3xl font-serif font-semibold text-wrap-blue text-center mb-4">
             Professional Installation Network
           </h2>
