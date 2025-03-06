@@ -7,6 +7,7 @@ export const useNavbarState = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegionsOpen, setIsRegionsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -39,6 +40,9 @@ export const useNavbarState = () => {
   // Close mobile menu when navigating
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    // Close dropdowns when navigating
+    setIsRegionsOpen(false);
+    setIsServicesOpen(false);
     // Scroll to top on route change
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -50,6 +54,8 @@ export const useNavbarState = () => {
     isLoggedIn,
     isRegionsOpen,
     setIsRegionsOpen,
+    isServicesOpen,
+    setIsServicesOpen,
     location
   };
 };

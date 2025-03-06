@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ChevronDown, Phone, ShoppingBag } from 'lucide-react';
+import { MapPin, ChevronDown, Phone, ShoppingBag, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileMenuProps {
@@ -19,6 +19,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   setIsRegionsOpen,
   setIsMobileMenuOpen
 }) => {
+  const [isServicesOpen, setIsServicesOpen] = React.useState(false);
+
   return (
     <div 
       className={cn(
@@ -34,13 +36,58 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         >
           Home
         </Link>
-        <Link 
-          to="/services" 
-          className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          Services
-        </Link>
+        
+        {/* Mobile Services Dropdown */}
+        <div className="py-2 border-b border-gray-100">
+          <div 
+            className="flex items-center justify-between text-wrap-blue font-medium text-xl"
+            onClick={() => setIsServicesOpen(!isServicesOpen)}
+          >
+            <span>Services</span>
+            <ChevronDown 
+              size={18} 
+              className={cn(
+                "transition-transform",
+                isServicesOpen ? "rotate-180" : ""
+              )} 
+            />
+          </div>
+          
+          {isServicesOpen && (
+            <div className="mt-2 ml-8 flex flex-col space-y-3">
+              <Link 
+                to="/services" 
+                className="text-wrap-blue"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                All Services
+              </Link>
+              <Link 
+                to="/print-ship" 
+                className="text-wrap-blue"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Print & Ship
+              </Link>
+              <Link 
+                to="/wrap-insurance" 
+                className="text-wrap-blue flex items-center gap-1"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Shield size={14} />
+                <span>Insurance</span>
+              </Link>
+              <Link 
+                to="/shopping" 
+                className="text-wrap-blue flex items-center gap-1"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <ShoppingBag size={14} />
+                <span>Shopping</span>
+              </Link>
+            </div>
+          )}
+        </div>
         
         {/* Mobile Regions Dropdown */}
         <div className="py-2 border-b border-gray-100">
@@ -101,27 +148,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           onClick={() => setIsMobileMenuOpen(false)}
         >
           Gallery
-        </Link>
-        <Link 
-          to="/print-ship" 
-          className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          Print & Ship
-        </Link>
-        <Link 
-          to="/wrap-insurance" 
-          className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          Insurance
-        </Link>
-        <Link 
-          to="/shopping" 
-          className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          Shopping
         </Link>
         <Link 
           to="/contact" 

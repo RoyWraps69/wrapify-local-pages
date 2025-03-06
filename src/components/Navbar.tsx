@@ -15,7 +15,9 @@ const Navbar = () => {
     setIsMobileMenuOpen,
     isLoggedIn,
     isRegionsOpen,
-    setIsRegionsOpen
+    setIsRegionsOpen,
+    isServicesOpen,
+    setIsServicesOpen
   } = useNavbarState();
 
   return (
