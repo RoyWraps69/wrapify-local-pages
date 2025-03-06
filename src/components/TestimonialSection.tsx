@@ -136,12 +136,12 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
 
         <div className="text-center mt-12">
           <a 
-            href="https://www.google.com/search?q=chicago+fleet+wraps+reviews"
+            href="https://www.google.com/search?q=chicago+fleet+wraps"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-wrap-blue hover:text-wrap-red transition-colors"
           >
-            <span>See more reviews on Google</span>
+            <span>Find us on Google</span>
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
