@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
@@ -19,23 +19,24 @@ import { getTownData } from '@/utils/townData';
 
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
+  const navigate = useNavigate();
   const townData = getTownData(townSlug || '');
   
+  useEffect(() => {
+    // If town data is not found, redirect to 404
+    if (!townData && townSlug) {
+      navigate('/not-found', { replace: true });
+    }
+    
+    // Scroll to top when the component mounts or townSlug changes
+    window.scrollTo(0, 0);
+  }, [townSlug, townData, navigate]);
+  
   if (!townData) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">Town Not Found</h1>
-          <p className="mb-6">We couldn't find information for this location.</p>
-          <a href="/" className="bg-wrap-blue text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition-all">
-            Return Home
-          </a>
-        </div>
-      </div>
-    );
+    return null; // Will be redirected by the useEffect
   }
   
-  const { name } = townData;
+  const { name, mapUrl } = townData;
   
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name} | Chicago Fleet Wraps`;
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from Chicago's top-rated vehicle enhancement company.`;
@@ -112,6 +113,19 @@ const TownPage: React.FC = () => {
         </p>
       )
     },
+    {
+      question: `How long do vehicle wraps last in the ${name} climate?`,
+      answer: (
+        <p>
+          In {name}'s climate, professionally installed vehicle wraps typically last 5-7 years. Our premium 
+          3M and Avery Dennison vinyl materials are specifically engineered to withstand the Midwest's extreme 
+          temperature variations, from hot summers to frigid winters. To maximize longevity, we recommend 
+          regular gentle washing and keeping wrapped vehicles garaged when possible. Our {name} clients 
+          enjoy excellent durability, with proper maintenance ensuring your wrap maintains its vibrant 
+          appearance for years.
+        </p>
+      )
+    },
   ];
 
   return (
@@ -129,10 +143,10 @@ const TownPage: React.FC = () => {
         <ServicesSection townName={name} />
         <BenefitsSection townName={name} />
         <ProcessSection townName={name} />
-        <GalleryShowcase townName={name} />
+        <GalleryShowcase townName={name} itemLimit={6} />
         <TestimonialSection townName={name} />
         <FAQSection townName={name} faqs={locationFaqs} />
-        <MapSection townName={name} />
+        <MapSection townName={name} mapEmbedUrl={mapUrl} />
         <CTASection townName={name} />
       </main>
       <Footer />
