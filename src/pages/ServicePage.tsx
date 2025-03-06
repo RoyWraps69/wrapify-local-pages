@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import CTASection from '@/components/CTASection';
 import FAQSection from '@/components/FAQSection';
+import ProcessSection from '@/components/ProcessSection';
 
 interface ServiceInfo {
   title: string;
@@ -121,6 +122,7 @@ const ServicePage: React.FC = () => {
           </div>
         </section>
         
+        <ProcessSection />
         <FAQSection faqs={serviceFaqs} />
         <CTASection />
       </main>
