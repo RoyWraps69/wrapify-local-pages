@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -34,7 +33,7 @@ const caseStudies: CaseStudy[] = [
   {
     id: 'food-truck-rebrand',
     title: 'Street Eats Food Truck: Complete Rebrand & Wrap Case Study',
-    excerpt: 'See how we helped Street Eats Food Truck stand out in Chicago's competitive food scene with a vibrant, attention-grabbing full vehicle wrap.',
+    excerpt: "See how we helped Street Eats Food Truck stand out in Chicago's competitive food scene with a vibrant, attention-grabbing full vehicle wrap.",
     image: 'https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     logo: 'https://via.placeholder.com/150x60',
     industry: 'Food & Beverage',
@@ -72,7 +71,7 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: 'construction-fleet-branding',
-    title: 'Unified Brand Identity: Elite Construction's Fleet Transformation',
+    title: "Unified Brand Identity: Elite Construction's Fleet Transformation",
     excerpt: 'How we helped this construction company create a professional, cohesive look across their diverse fleet of vehicles, from pickups to equipment trucks.',
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     logo: 'https://via.placeholder.com/150x60',
@@ -86,7 +85,7 @@ const caseStudies: CaseStudy[] = [
   {
     id: 'sports-car-color-change',
     title: 'From Silver to Satin Blue: A Dramatic Color Change Transformation',
-    excerpt: 'Follow the journey of this sports car's complete makeover with a premium satin blue vinyl wrap, dramatically changing its appearance without affecting resale value.',
+    excerpt: "Follow the journey of this sports car's complete makeover with a premium satin blue vinyl wrap, dramatically changing its appearance without affecting resale value.",
     image: 'https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     logo: 'https://via.placeholder.com/150x60',
     industry: 'Personal Vehicles',
