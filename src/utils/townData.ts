@@ -1,4 +1,3 @@
-
 interface Town {
   id: string;
   name: string;
@@ -142,7 +141,95 @@ export const towns: Town[] = [
     description: "Arlington Heights is an affluent suburb northwest of Chicago, known for Arlington Park Racetrack and a vibrant downtown district. The community's high median income makes it a prime market for premium vehicle wrap services.",
     businessCount: 2800,
     keywords: ["Arlington Heights vehicle wraps", "car wrapping Arlington Heights", "fleet wraps Arlington Heights", "luxury vehicle wraps Arlington Heights"],
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47438.37673349172!2d-88.02045917233143!3d42.159436651328804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fb472ae7e8151%3A0x7cdf31e5a8b02bbb!2sArlington%20Heights%2C%20IL!5e0!3m2!1sen!2sus!4v1683567418857!5m2!1sen!2sus"
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47438.37673349172!2d-88.02045917233143!3d42.159436651328804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fa1e600d2e70b%3A0xd3528b0ba2ba3cb5!2sArlington%20Heights%2C%20IL!5e0!3m2!1sen!2sus!4v1683567418857!5m2!1sen!2sus"
+  },
+  {
+    id: "joliet",
+    name: "Joliet",
+    state: "IL",
+    distance: 40,
+    population: 148172,
+    description: "Joliet is one of the largest cities in Illinois and a major transportation hub. With its industrial background and growing commercial sector, businesses in Joliet can benefit significantly from fleet wraps and vehicle graphics that increase visibility throughout this expansive area.",
+    businessCount: 4200,
+    keywords: ["Joliet vehicle wraps", "car wrapping Joliet IL", "Joliet business fleet wraps", "commercial vehicle graphics Joliet"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95241.6090148498!2d-88.12900757775143!3d41.52410877775202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e7d5b5e5a1159%3A0x713020608e79be9!2sJoliet%2C%20IL!5e0!3m2!1sen!2sus!4v1683567567467!5m2!1sen!2sus"
+  },
+  {
+    id: "waukegan",
+    name: "Waukegan",
+    state: "IL",
+    distance: 36,
+    population: 86075,
+    description: "Waukegan is a diverse city on Lake Michigan's shore with a mix of industrial, commercial, and residential areas. As the county seat of Lake County, Waukegan businesses can reach a wide audience with professionally designed vehicle wraps.",
+    businessCount: 2700,
+    keywords: ["Waukegan vehicle wraps", "car wrapping Waukegan IL", "Lake County vehicle graphics", "Waukegan fleet branding"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47357.07170864696!2d-87.87316257217442!3d42.3649926264184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fecadc2d1a1cf%3A0xcf6168f9c8788591!2sWaukegan%2C%20IL!5e0!3m2!1sen!2sus!4v1683567627467!5m2!1sen!2sus"
+  },
+  {
+    id: "elgin",
+    name: "Elgin",
+    state: "IL",
+    distance: 40,
+    population: 111683,
+    description: "Elgin is a vibrant city with a strong manufacturing history and growing service sector. Its strategic location along the Fox River and major highways makes it an ideal place for businesses to utilize vehicle wraps for maximum visibility throughout the region.",
+    businessCount: 3500,
+    keywords: ["Elgin vehicle wraps", "car wrapping Elgin IL", "Fox Valley vehicle graphics", "Elgin fleet branding"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47497.70423154066!2d-88.3112027725288!3d42.0591691132493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880f132cb8621669%3A0x7c49300f3be064b2!2sElgin%2C%20IL!5e0!3m2!1sen!2sus!4v1683567687467!5m2!1sen!2sus"
+  },
+  {
+    id: "bolingbrook",
+    name: "Bolingbrook",
+    state: "IL",
+    distance: 30,
+    population: 75201,
+    description: "Bolingbrook is a rapidly growing suburb with extensive retail development and business parks. Companies in Bolingbrook can take advantage of vehicle wraps to increase brand recognition in this affluent and expanding market.",
+    businessCount: 2000,
+    keywords: ["Bolingbrook vehicle wraps", "car wrapping Bolingbrook IL", "Bolingbrook fleet graphics", "business vehicle wraps Bolingbrook"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47629.28401140732!2d-88.13562397273981!3d41.80541981890175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e5a179988e233%3A0x8de6fb015c9c4fc7!2sBolingbrook%2C%20IL!5e0!3m2!1sen!2sus!4v1683567747467!5m2!1sen!2sus"
+  },
+  {
+    id: "hoffman-estates",
+    name: "Hoffman Estates",
+    state: "IL",
+    distance: 32,
+    population: 51252,
+    description: "Hoffman Estates is home to major corporate headquarters and a significant retail presence. The business-friendly environment makes it an ideal location for companies to invest in professional vehicle wraps to enhance their brand presence.",
+    businessCount: 1800,
+    keywords: ["Hoffman Estates vehicle wraps", "car wrapping Hoffman Estates", "Northwest suburbs fleet graphics", "corporate vehicle branding Hoffman Estates"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47438.372343582326!2d-88.15269767233143!3d42.15943915132694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fa0f73faa4c43%3A0x17da3c1e7b49f143!2sHoffman%20Estates%2C%20IL!5e0!3m2!1sen!2sus!4v1683567807467!5m2!1sen!2sus"
+  },
+  {
+    id: "downers-grove",
+    name: "Downers Grove",
+    state: "IL",
+    distance: 22,
+    population: 49504,
+    description: "Downers Grove is an upscale western suburb with excellent transportation access and a thriving downtown. Its mix of residential charm and commercial activity creates an ideal environment for vehicle wrap advertising.",
+    businessCount: 1700,
+    keywords: ["Downers Grove vehicle wraps", "car wrapping Downers Grove", "western suburbs fleet graphics", "Downers Grove business vehicle branding"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47592.14563624025!2d-88.04532177267087!3d41.8747701079204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e4f5029c8c45d%3A0x39b4fdaadc80f6d0!2sDowners%20Grove%2C%20IL!5e0!3m2!1sen!2sus!4v1683567867467!5m2!1sen!2sus"
+  },
+  {
+    id: "glenview",
+    name: "Glenview",
+    state: "IL",
+    distance: 18,
+    population: 47680,
+    description: "Glenview is an affluent north suburban community with a strong retail and corporate presence. The high-income demographic makes it an excellent market for premium vehicle wraps and specialized automotive aesthetics.",
+    businessCount: 1900,
+    keywords: ["Glenview vehicle wraps", "car wrapping Glenview IL", "North Shore vehicle graphics", "luxury car wraps Glenview"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47470.33761842983!2d-87.83338277240157!3d42.1084806999051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fc5592327a405%3A0x97bde0b9666d3ad8!2sGlenview%2C%20IL!5e0!3m2!1sen!2sus!4v1683567927467!5m2!1sen!2sus"
+  },
+  {
+    id: "palatine",
+    name: "Palatine",
+    state: "IL",
+    distance: 30,
+    population: 68557,
+    description: "Palatine is a northwest suburban community with a diverse economic base. Its strategic location near major highways provides excellent opportunities for business vehicle wraps to gain visibility across the Chicago metropolitan area.",
+    businessCount: 2100,
+    keywords: ["Palatine vehicle wraps", "car wrapping Palatine IL", "Northwest suburban fleet graphics", "Palatine business vehicle branding"],
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d47447.96246889156!2d-88.05868717236641!3d42.1454991525124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fa1e600d2e70b%3A0xd3528b0ba2ba3cb5!2sPalatine%2C%20IL!5e0!3m2!1sen!2sus!4v1683567987467!5m2!1sen!2sus"
   }
 ];
 
