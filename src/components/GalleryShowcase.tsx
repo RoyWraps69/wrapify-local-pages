@@ -165,6 +165,11 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
                 src={item.image} 
                 alt={item.title}
                 className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  console.log(`Failed to load image: ${target.src}`);
+                  target.src = "/placeholder.svg"; // Fallback image if original fails to load
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-wrap-blue/90 to-transparent opacity-90"></div>
               <div className="absolute bottom-0 left-0 p-6 text-white">
