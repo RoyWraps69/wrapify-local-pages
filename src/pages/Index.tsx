@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,7 +9,14 @@ import SEOSchema from '@/components/SEOSchema';
 import { getAllTowns } from '@/utils/townData';
 
 const Index = () => {
+  console.log("Index component rendering");
+  
+  useEffect(() => {
+    console.log("Index component mounted");
+  }, []);
+  
   const towns = getAllTowns();
+  console.log("Towns data:", towns);
   
   return (
     <>
