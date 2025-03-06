@@ -15,12 +15,23 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       style={{ backgroundImage: `url(${regionImage})` }}
     >
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-          Vehicle Wrapping & Protection in {regionName}
-        </h1>
-        <p className="text-xl max-w-2xl mb-8">
-          Premium commercial fleet wraps, ceramic coatings, and paint protection services throughout {regionName}. Your local source for exceptional vehicle transformation.
-        </p>
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+              <span className="font-bold">WRAPPING THE WORLD</span>
+              <br />
+              in {regionName}
+            </h1>
+            <p className="text-xl max-w-2xl mb-8">
+              Premium commercial fleet wraps, ceramic coatings, and paint protection services throughout {regionName}. Your local source for exceptional vehicle transformation.
+            </p>
+          </div>
+          <img 
+            src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
+            alt="WRAPPING THE WORLD" 
+            className="w-48 h-auto mt-6 md:mt-0 drop-shadow-lg"
+          />
+        </div>
         <div className="flex flex-wrap gap-4">
           <Link to="/contact" className="bg-wrap-red hover:bg-wrap-red/90 text-white px-6 py-3 rounded-md transition-colors">
             Request a Free Quote

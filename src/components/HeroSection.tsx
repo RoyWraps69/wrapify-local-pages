@@ -28,14 +28,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className="animate-fade-up">
+            {/* Added logo */}
+            <div className="flex justify-center mb-6">
+              <img 
+                src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
+                alt="WRAPPING THE WORLD" 
+                className="w-52 h-auto"
+              />
+            </div>
+            
             <span className="inline-block px-4 py-1 bg-wrap-red/20 text-wrap-light rounded-full text-sm font-medium mb-6">
-              Car Wraps, Ceramic Coatings & Paint Protection in {townName}
+              <span className="font-bold">WRAPPING THE WORLD</span> - Car Wraps & Protection in {townName}
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
               Top Car Wraps & Protection in {townName}
             </h1>
             <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto">
-              Wrapping The World offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
+              <span className="font-bold">WRAPPING THE WORLD</span> offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
             <div className="mb-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
@@ -86,7 +95,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 to="/contact" 
                 className="btn-primary flex items-center justify-center gap-2 group"
               >
-                <span>Get a Free Quote for {townName}</span>
+                <span>Get a Free <span className="font-bold">WRAPPING THE WORLD</span> Quote</span>
                 <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <a 
@@ -98,7 +107,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </a>
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-center text-wrap-light/70">
-              <span className="text-sm">Serving {townName} and nearby areas</span>
+              <span className="text-sm"><span className="font-bold">WRAPPING THE WORLD</span> - Serving {townName} and nearby areas</span>
               <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">Quality <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
               <span className="mx-3 hidden sm:inline">•</span>
