@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -20,6 +19,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
     "@type": "LocalBusiness",
     "name": "Chicago Fleet Wraps",
     "image": "https://chicagofleetwraps.com/logo.png",
+    "logo": "https://chicagofleetwraps.com/logo.png",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "123 Wrap Street",
@@ -28,14 +28,15 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "postalCode": "60601",
       "addressCountry": "US"
     },
-    "description": `Professional vehicle wrapping services in ${townName} and surrounding areas. Specializing in commercial fleet wraps, color change wraps, and custom vehicle graphics.`,
+    "description": `Professional vehicle wrapping services in ${townName} and surrounding areas. Specializing in commercial fleet wraps, color change wraps, custom vehicle graphics, and business vehicle branding with premium 3M and Avery Dennison materials.`,
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 41.8781,
       "longitude": -87.6298
     },
-    "url": pageUrl,
+    "url": "https://chicagofleetwraps.com",
     "telephone": "+13125555555",
+    "email": "info@chicagofleetwraps.com",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -51,22 +52,53 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       }
     ],
     "priceRange": "$$",
-    "areaServed": {
-      "@type": "City",
-      "name": townName
-    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": townName
+      },
+      {
+        "@type": "City",
+        "name": "Chicago"
+      },
+      {
+        "@type": "State",
+        "name": "Illinois"
+      }
+    ],
     "sameAs": [
       "https://www.facebook.com/chicagofleetwraps",
       "https://www.instagram.com/chicagofleetwraps",
       "https://twitter.com/chifleetwraps",
       "https://www.linkedin.com/company/chicago-fleet-wraps"
-    ]
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Vehicle Wrap Services",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Commercial Fleet Wraps",
+          "description": "Complete branding solutions for business vehicle fleets"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Color Change Wraps",
+          "description": "Full vehicle color transformation with premium vinyl"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Custom Vehicle Graphics",
+          "description": "Partial wraps and custom vinyl graphics for vehicles"
+        }
+      ]
+    }
   };
   
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": `Vehicle Wrapping Services in ${townName}`,
+    "name": `Professional Vehicle Wrapping Services in ${townName}`,
     "serviceType": "Vehicle Wraps",
     "provider": {
       "@type": "LocalBusiness",
@@ -76,22 +108,36 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "@type": "City",
       "name": townName
     },
-    "description": `Professional vehicle wrapping services for businesses and individuals in ${townName}. Commercial fleet wraps, color change wraps, and custom graphics.`,
-    "offers": {
-      "@type": "Offer",
-      "price": "1000.00",
-      "priceCurrency": "USD",
-      "priceSpecification": {
-        "@type": "UnitPriceSpecification",
-        "price": "1000.00",
-        "priceCurrency": "USD",
-        "referenceQuantity": {
-          "@type": "QuantitativeValue",
-          "value": "1",
-          "unitText": "VEHICLE"
-        }
+    "description": `Premium quality vehicle wrapping services for businesses and individuals in ${townName}. Commercial fleet wraps, color change wraps, and custom graphics using 3M and Avery Dennison materials.`,
+    "offers": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Commercial Fleet Wrapping"
+        },
+        "description": `Professional fleet vehicle branding for ${townName} businesses`,
+        "areaServed": townName
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Color Change Wraps"
+        },
+        "description": `Complete vehicle color transformation services in ${townName}`,
+        "areaServed": townName
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Partial Vehicle Wraps"
+        },
+        "description": `Partial wraps and custom graphics for vehicles in ${townName}`,
+        "areaServed": townName
       }
-    }
+    ]
   };
   
   const faqSchema = {
@@ -100,10 +146,10 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
     "mainEntity": [
       {
         "@type": "Question",
-        "name": `Where can I get a car wrap in ${townName}?`,
+        "name": `Where can I get a professional car wrap in ${townName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Chicago Fleet Wraps provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses.`
+          "text": `Chicago Fleet Wraps provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, and custom vehicle graphics.`
         }
       },
       {
@@ -111,15 +157,31 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         "name": `How much does it cost to wrap a vehicle in ${townName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `The cost of wrapping a vehicle in ${townName} varies depending on several factors including vehicle size, complexity of the surface area, type of wrap, quality of vinyl used, and design complexity. Contact us for a free, personalized quote specific to your vehicle and requirements.`
+          "text": `The cost of wrapping a vehicle in ${townName} varies depending on several factors including vehicle size, complexity of the surface area, type of wrap (commercial, color change, partial), quality of vinyl used, and design complexity. Commercial fleet wraps typically range from $2,500-$5,000 per vehicle, while premium color change wraps range from $3,000-$6,000 depending on vehicle size. Contact us for a free, personalized quote specific to your vehicle and requirements.`
         }
       },
       {
         "@type": "Question",
-        "name": `How long does a vehicle wrap last in ${townName}'s climate?`,
+        "name": `How long does a professional vehicle wrap last in ${townName}'s climate?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `A professional vehicle wrap installed by Chicago Fleet Wraps typically lasts 5-7 years in ${townName}'s climate. We use premium vinyl materials specifically designed to withstand local weather conditions, including hot summers and cold winters.`
+          "text": `A professional vehicle wrap installed by Chicago Fleet Wraps typically lasts 5-7 years in ${townName}'s climate. We use premium 3M and Avery Dennison vinyl materials specifically designed to withstand local weather conditions, including hot summers and cold winters. With proper maintenance and care, commercial fleet wraps and color change wraps can maintain their appearance and effectiveness throughout this period.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `Will a vehicle wrap damage my car's paint?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `No, a professionally installed vehicle wrap from Chicago Fleet Wraps will not damage your car's paint. In fact, wraps provide protection for your vehicle's original paint from UV rays, minor scratches, and small debris. When removed correctly by our ${townName} experts, your original paint will remain in the same condition as when it was wrapped, often in better condition than exposed painted surfaces.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What types of businesses benefit most from fleet wraps in ${townName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Many types of businesses in ${townName} benefit from professional fleet wraps, including: service businesses (plumbing, electrical, HVAC), delivery services, construction companies, real estate agencies, food and catering businesses, retail stores with delivery vehicles, and any business with vehicles that travel throughout ${townName}. Fleet wraps transform ordinary vehicles into powerful mobile advertising that generates thousands of impressions daily.`
         }
       }
     ]
