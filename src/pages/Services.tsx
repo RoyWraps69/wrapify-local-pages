@@ -9,6 +9,7 @@ import BenefitsSection from '@/components/BenefitsSection';
 import CTASection from '@/components/CTASection';
 import FAQSection from '@/components/FAQSection';
 import DynamicHeroSection from '@/components/DynamicHeroSection';
+import RegionalCoverageSection from '@/components/services/RegionalCoverageSection';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -27,19 +28,19 @@ const Services = () => {
       <SEOSchema 
         townName="Chicago"
         pageTitle="Professional Vehicle Wrapping, Ceramic Coating & Paint Protection | Wrapping The World"
-        pageDescription="Discover our premium vehicle wrapping and protection services including commercial fleet branding, ceramic coatings, paint protection film, color change wraps, and custom vehicle graphics for businesses throughout Chicago."
+        pageDescription="Discover our premium vehicle wrapping and protection services including commercial fleet branding, ceramic coatings, paint protection film, color change wraps, and custom vehicle graphics for businesses throughout Chicago and the Midwest."
         pageUrl="https://wrappingtheworld.com/services"
       />
       
       <Helmet>
-        <meta name="keywords" content="vehicle wraps Chicago, commercial fleet wraps, ceramic coating Chicago, paint protection film, color change wraps, 3M vehicle wraps, Avery Dennison wraps, business vehicle branding, car wrap installation, mobile advertising Chicago, vehicle graphics Chicago, automotive paint protection, hydrophobic coating, car wrap pricing Chicago, premium vehicle wraps, custom car wraps, vinyl vehicle wrap, food truck wraps Chicago, construction vehicle branding, service van wraps" />
+        <meta name="keywords" content="vehicle wraps Chicago, commercial fleet wraps, ceramic coating Chicago, paint protection film, color change wraps, 3M vehicle wraps, Avery Dennison wraps, business vehicle branding, car wrap installation, mobile advertising Midwest, vehicle graphics Illinois, automotive paint protection Michigan, hydrophobic coating Indiana, car wrap pricing Wisconsin, premium vehicle wraps, custom car wraps, vinyl vehicle wrap, food truck wraps Chicago, construction vehicle branding, service van wraps" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://wrappingtheworld.com/services" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Professional Vehicle Wrapping & Protection Services | Wrapping The World" />
-        <meta property="og:description" content="Transform your vehicles with premium wraps, ceramic coatings, and paint protection film. Chicago's leading vehicle transformation specialists for businesses and individuals." />
+        <meta property="og:description" content="Transform your vehicles with premium wraps, ceramic coatings, and paint protection film. Chicago's leading vehicle transformation specialists for businesses and individuals throughout the Midwest." />
         <meta property="og:url" content="https://wrappingtheworld.com/services" />
         <meta property="og:image" content="https://wrappingtheworld.com/og-services-image.jpg" />
         <meta property="og:image:alt" content="Professional vehicle wrap installation in Chicago" />
@@ -49,7 +50,7 @@ const Services = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Professional Vehicle Wrapping & Protection Services | Wrapping The World" />
-        <meta name="twitter:description" content="Transform your vehicles with premium wraps, ceramic coatings, and paint protection film. Chicago's leading vehicle transformation specialists for businesses and individuals." />
+        <meta name="twitter:description" content="Transform your vehicles with premium wraps, ceramic coatings, and paint protection film. Chicago's leading vehicle transformation specialists for businesses and individuals throughout the Midwest." />
         <meta name="twitter:image" content="https://wrappingtheworld.com/twitter-services-image.jpg" />
         
         {/* Additional SEO Meta Tags */}
@@ -67,12 +68,12 @@ const Services = () => {
         
         <div className="container mx-auto px-4 mb-16 pt-24">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-wrap-blue mb-6 animate-on-scroll fade-up" itemProp="name">
-            Professional Vehicle Wrapping, Ceramic Coating & Paint Protection Services in Chicago
+            Professional Vehicle Wrapping, Ceramic Coating & Paint Protection Services in Chicago and the Midwest
           </h1>
           <div itemProp="description">
             <p className="text-wrap-grey text-lg mb-6 max-w-3xl animate-on-scroll fade-up">
               At <span itemProp="provider" itemScope itemType="https://schema.org/LocalBusiness"><span itemProp="name">Wrapping The World</span></span>, we deliver industry-leading vehicle transformation and protection solutions designed to enhance and shield your vehicles. 
-              Our comprehensive range of services includes commercial fleet branding, nano-ceramic paint protection, self-healing paint protection film, custom vehicle graphics, and premium color change wraps for businesses and individuals throughout Chicago and the surrounding suburbs.
+              Our comprehensive range of services includes commercial fleet branding, nano-ceramic paint protection, self-healing paint protection film, custom vehicle graphics, and premium color change wraps for businesses and individuals throughout Chicago and the entire Midwest region.
             </p>
             <p className="text-wrap-grey text-lg mb-6 max-w-3xl animate-on-scroll fade-up">
               Using only the highest quality <strong>3M and Avery Dennison vinyl materials</strong> and advanced ceramic coating technologies, our professional installation team ensures durable, weather-resistant finishes that protect your vehicle's original paint while delivering maximum visual impact and long-lasting protection. 
@@ -158,33 +159,19 @@ const Services = () => {
           </div>
           
           <p className="text-wrap-grey text-lg mb-12 max-w-3xl animate-on-scroll fade-up">
-            Whether you need complete fleet branding solutions for your Chicago business vehicles, advanced ceramic coating protection, self-healing paint protection film, custom color change wraps for personal vehicles, or 
+            Whether you need complete fleet branding solutions for your Midwest business vehicles, advanced ceramic coating protection, self-healing paint protection film, custom color change wraps for personal vehicles, or 
             partial wraps and decals, our expertise and professional service ensure outstanding, head-turning results with superior protection every time.
           </p>
-          
-          <div className="mt-8 mb-16">
-            <h2 className="text-3xl font-serif font-semibold text-wrap-blue mb-4">
-              Service Areas in Chicago and Surrounding Suburbs
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 text-sm">
-              <Link to="/locations/chicago" className="text-wrap-blue hover:text-wrap-red transition-colors">Chicago</Link>
-              <Link to="/locations/evanston" className="text-wrap-blue hover:text-wrap-red transition-colors">Evanston</Link>
-              <Link to="/locations/oak-park" className="text-wrap-blue hover:text-wrap-red transition-colors">Oak Park</Link>
-              <Link to="/locations/naperville" className="text-wrap-blue hover:text-wrap-red transition-colors">Naperville</Link>
-              <Link to="/locations/schaumburg" className="text-wrap-blue hover:text-wrap-red transition-colors">Schaumburg</Link>
-              <Link to="/locations/arlington-heights" className="text-wrap-blue hover:text-wrap-red transition-colors">Arlington Heights</Link>
-              <Link to="/locations/skokie" className="text-wrap-blue hover:text-wrap-red transition-colors">Skokie</Link>
-              <Link to="/locations/des-plaines" className="text-wrap-blue hover:text-wrap-red transition-colors">Des Plaines</Link>
-              <Link to="/locations/palatine" className="text-wrap-blue hover:text-wrap-red transition-colors">Palatine</Link>
-              <Link to="/locations/orland-park" className="text-wrap-blue hover:text-wrap-red transition-colors">Orland Park</Link>
-            </div>
-          </div>
         </div>
         
         <div id="services-section" className="services-section">
           <ServicesSection townName="Chicago" />
         </div>
         <BenefitsSection townName="Chicago" />
+        
+        {/* Add Regional Coverage Section */}
+        <RegionalCoverageSection />
+        
         <ProcessSection townName="Chicago" />
         
         {/* Enhanced FAQ Section with Schema.org markup */}
@@ -200,21 +187,21 @@ const Services = () => {
             </div>
             <div className="max-w-3xl mx-auto" itemScope itemType="https://schema.org/FAQPage">
               <div className="mb-6 p-5 bg-white rounded-lg shadow-md" itemScope itemType="https://schema.org/Question">
-                <h3 className="text-xl font-medium text-wrap-blue mb-2" itemProp="name">How much does it cost to wrap a vehicle in Chicago?</h3>
+                <h3 className="text-xl font-medium text-wrap-blue mb-2" itemProp="name">How much does it cost to wrap a vehicle in the Midwest?</h3>
                 <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                   <div itemProp="text">
                     <p className="text-wrap-grey">
-                      Vehicle wrap pricing in Chicago varies based on several factors: vehicle size, wrap complexity, material quality, and design requirements. For commercial fleet wraps, pricing typically ranges from $2,500-$5,000 per vehicle. Premium color change wraps range from $3,000-$6,000 depending on the vehicle. Partial wraps start at $1,200. Every project is unique, so we provide free, detailed quotes specific to your requirements.
+                      Vehicle wrap pricing in the Midwest varies based on several factors: vehicle size, wrap complexity, material quality, and design requirements. For commercial fleet wraps, pricing typically ranges from $2,500-$5,000 per vehicle. Premium color change wraps range from $3,000-$6,000 depending on the vehicle. Partial wraps start at $1,200. Every project is unique, so we provide free, detailed quotes specific to your requirements.
                     </p>
                   </div>
                 </div>
               </div>
               <div className="mb-6 p-5 bg-white rounded-lg shadow-md" itemScope itemType="https://schema.org/Question">
-                <h3 className="text-xl font-medium text-wrap-blue mb-2" itemProp="name">How long do vehicle wraps last in Chicago's climate?</h3>
+                <h3 className="text-xl font-medium text-wrap-blue mb-2" itemProp="name">How long do vehicle wraps last in the Midwest climate?</h3>
                 <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                   <div itemProp="text">
                     <p className="text-wrap-grey">
-                      Professionally installed vehicle wraps from Wrapping The World typically last 5-7 years in Chicago's varied climate. Our premium 3M and Avery Dennison vinyl materials are specifically engineered to withstand harsh Chicago winters, hot summers, road salt, and UV exposure. With proper maintenance and care, your vehicle wrap will maintain its vibrant appearance and promotional effectiveness throughout this period.
+                      Professionally installed vehicle wraps from Wrapping The World typically last 5-7 years in the varied Midwest climate. Our premium 3M and Avery Dennison vinyl materials are specifically engineered to withstand harsh Midwest winters, hot summers, road salt, and UV exposure. With proper maintenance and care, your vehicle wrap will maintain its vibrant appearance and promotional effectiveness throughout this period.
                     </p>
                   </div>
                 </div>
@@ -224,7 +211,7 @@ const Services = () => {
                 <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                   <div itemProp="text">
                     <p className="text-wrap-grey">
-                      No, our professionally installed vehicle wraps will not damage your car's original paint. In fact, high-quality vinyl wraps provide protection for your vehicle's factory paint from UV rays, minor scratches, and environmental contaminants. When properly removed by our Chicago experts, your original paint will remain in the same condition as when it was wrapped, often in better condition than exposed painted surfaces.
+                      No, our professionally installed vehicle wraps will not damage your car's original paint. In fact, high-quality vinyl wraps provide protection for your vehicle's factory paint from UV rays, minor scratches, and environmental contaminants. When properly removed by our Midwest experts, your original paint will remain in the same condition as when it was wrapped, often in better condition than exposed painted surfaces.
                     </p>
                   </div>
                 </div>

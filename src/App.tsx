@@ -42,6 +42,12 @@ import PaymentOptions from "./pages/support/PaymentOptions";
 import OurTeam from "./pages/about/OurTeam";
 import Careers from "./pages/about/Careers";
 
+// Regional Pages
+import IllinoisRegion from "./pages/regions/Illinois";
+import MichiganRegion from "./pages/regions/Michigan";
+import IndianaRegion from "./pages/regions/Indiana";
+import WisconsinRegion from "./pages/regions/Wisconsin";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -88,6 +94,12 @@ const App = () => {
               
               {/* Town Pages */}
               <Route path="/locations/:townSlug" element={<TownPage />} />
+              
+              {/* Regional Pages */}
+              <Route path="/regions/illinois" element={<IllinoisRegion />} />
+              <Route path="/regions/michigan" element={<MichiganRegion />} />
+              <Route path="/regions/indiana" element={<IndianaRegion />} />
+              <Route path="/regions/wisconsin" element={<WisconsinRegion />} />
               
               {/* Resource Pages */}
               <Route path="/vinyl-wrap-care-guide" element={<VinylWrapCareGuide />} />

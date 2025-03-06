@@ -21,6 +21,13 @@ Allow: /locations/
 Allow: /blog/
 Allow: /resources/
 Allow: /case-studies/
+Allow: /regions/
+
+# Regional focus areas
+Allow: /regions/illinois
+Allow: /regions/michigan
+Allow: /regions/indiana
+Allow: /regions/wisconsin
 
 # Crawl-delay for non-Google bots
 User-agent: *
@@ -36,6 +43,7 @@ Allow: /*.css*
 User-agent: Googlebot-Image
 Allow: /gallery
 Allow: /services/
+Allow: /regions/
 Allow: /images/
 Allow: /*.jpg$
 Allow: /*.png$
@@ -63,3 +71,4 @@ Sitemap: https://wrappingtheworld.com/sitemap.xml
 Sitemap: https://wrappingtheworld.com/sitemap-services.xml
 Sitemap: https://wrappingtheworld.com/sitemap-towns.xml
 Sitemap: https://wrappingtheworld.com/sitemap-blog.xml
+Sitemap: https://wrappingtheworld.com/sitemap-midwest.xml
