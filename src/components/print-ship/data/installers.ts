@@ -23,7 +23,10 @@ export const installers: Installer[] = [
     phone: "(212) 555-6789",
     email: "info@nycvehiclewrapping.com",
     website: "nycvehiclewrapping.com",
-    specialties: ["Luxury Vehicles", "Commercial Fleet", "Ceramic Coating"]
+    specialties: ["Luxury Vehicles", "Commercial Fleet", "Ceramic Coating"],
+    isPremium: true,
+    featured: true,
+    premiumUntil: "2023-12-31"
   },
   {
     id: 3,
@@ -34,7 +37,9 @@ export const installers: Installer[] = [
     phone: "(323) 555-4321",
     email: "hello@lawrapkings.com",
     website: "lawrapkings.com",
-    specialties: ["Custom Designs", "High-End Vehicles", "PPF"]
+    specialties: ["Custom Designs", "High-End Vehicles", "PPF"],
+    isPremium: true,
+    premiumUntil: "2023-11-15"
   },
   {
     id: 4,
@@ -56,7 +61,9 @@ export const installers: Installer[] = [
     phone: "(602) 555-3456",
     email: "info@phoenixautofilms.com",
     website: "phoenixautofilms.com",
-    specialties: ["Heat-Resistant Wraps", "Commercial Fleet", "Ceramic Coating"]
+    specialties: ["Heat-Resistant Wraps", "Commercial Fleet", "Ceramic Coating"],
+    isPremium: true,
+    premiumUntil: "2023-10-30"
   },
   {
     id: 6,
@@ -154,7 +161,7 @@ export const installers: Installer[] = [
     address: "6201 Fairview Rd, Charlotte, NC 28210",
     phone: "(704) 555-0123",
     email: "info@charlottevehiclewraps.com",
-    website: "charlottevehiclewraps.com",
+    website: "charlottevehiclewrapping.com",
     specialties: ["Commercial Fleet", "Custom Designs", "PPF"]
   },
   {
@@ -167,5 +174,121 @@ export const installers: Installer[] = [
     email: "info@seattleautofilms.com",
     website: "seattleautofilms.com",
     specialties: ["Commercial Vehicles", "Marine Wraps", "Ceramic Coating"]
+  },
+];
+
+export const shopItems = [
+  // Premium Listing Items
+  {
+    id: 'premium_1_month',
+    name: 'Premium Listing - 1 Month',
+    description: 'Boost your visibility for 1 month',
+    price: 9.99,
+    category: 'premium_listing',
+    term: '1_month',
+  },
+  {
+    id: 'premium_3_months',
+    name: 'Premium Listing - 3 Months',
+    description: 'Boost your visibility for 3 months',
+    price: 27.99,
+    category: 'premium_listing',
+    term: '3_months',
+  },
+  {
+    id: 'premium_6_months',
+    name: 'Premium Listing - 6 Months',
+    description: 'Boost your visibility for 6 months',
+    price: 53.99,
+    category: 'premium_listing',
+    term: '6_months',
+    bestValue: true,
+  },
+  {
+    id: 'premium_12_months',
+    name: 'Premium Listing - 12 Months',
+    description: 'Boost your visibility for 12 months',
+    price: 99.99,
+    category: 'premium_listing',
+    term: '12_months',
+    featured: true,
+  },
+  
+  // Wrap Material Items
+  {
+    id: 'wrap_standard',
+    name: 'Standard Wrap Material',
+    description: '5-year vinyl wrap material',
+    price: 8.99,
+    category: 'wrap_material',
+  },
+  {
+    id: 'wrap_premium',
+    name: 'Premium Wrap Material',
+    description: '7-year premium vinyl wrap material',
+    price: 12.99,
+    category: 'wrap_material',
+  },
+  
+  // Protection Items
+  {
+    id: 'ceramic_coating',
+    name: 'Ceramic Coating Protection',
+    description: 'Advanced ceramic coating for wrap protection',
+    price: 299.00,
+    category: 'protection',
+  },
+  {
+    id: 'ppf',
+    name: 'Paint Protection Film (PPF)',
+    description: 'Additional protection for high-impact areas',
+    price: 349.00,
+    category: 'protection',
+  },
+  {
+    id: 'insurance',
+    name: 'Wrap Insurance',
+    description: '1-year coverage against damage',
+    price: 49.99,
+    category: 'protection',
+  },
+  
+  // Design Services
+  {
+    id: 'design_basic',
+    name: 'Basic Design Service',
+    description: 'Simple design customization',
+    price: 199.00,
+    category: 'design',
+  },
+  {
+    id: 'design_premium',
+    name: 'Premium Design Service',
+    description: 'Custom design with unlimited revisions',
+    price: 499.00,
+    category: 'design',
+  },
+  
+  // Shipping Options
+  {
+    id: 'shipping_standard',
+    name: 'Standard Shipping',
+    description: '5-7 business days',
+    price: 15.99,
+    category: 'shipping',
+  },
+  {
+    id: 'shipping_express',
+    name: 'Express Shipping',
+    description: '2-3 business days',
+    price: 29.99,
+    category: 'shipping',
+  },
+  {
+    id: 'shipping_overnight',
+    name: 'Overnight Shipping',
+    description: 'Next business day delivery',
+    price: 49.99,
+    category: 'shipping',
   },
 ];

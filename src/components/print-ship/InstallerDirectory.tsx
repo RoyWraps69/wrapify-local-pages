@@ -7,15 +7,19 @@ import InstallerSubmissionForm from './InstallerSubmissionForm';
 import SearchForm from './installer-directory/SearchForm';
 import InstallersList from './installer-directory/InstallersList';
 import ContactForm from './installer-directory/ContactForm';
-import { Installer } from './types/installer';
+import PremiumListingPromo from './installer-directory/PremiumListingPromo';
+import MiniCart from './shopping-cart/MiniCart';
+import { ShoppingCartProvider, useShoppingCart } from './shopping-cart/ShoppingCart';
+import { Installer, ShopItem } from './types/installer';
 import { installers } from './data/installers';
 
-const InstallerDirectory: React.FC = () => {
+const InstallerDirectoryContent: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredInstallers, setFilteredInstallers] = useState<Installer[]>(installers);
   const [selectedInstaller, setSelectedInstaller] = useState<Installer | null>(null);
   const [showSubmissionForm, setShowSubmissionForm] = useState(false);
   const { toast } = useToast();
+  const { addItem } = useShoppingCart();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,6 +40,10 @@ const InstallerDirectory: React.FC = () => {
 
   const handleSelectInstaller = (installer: Installer) => {
     setSelectedInstaller(installer);
+  };
+  
+  const handleAddToCart = (item: ShopItem) => {
+    addItem(item);
   };
 
   return (
@@ -65,6 +73,8 @@ const InstallerDirectory: React.FC = () => {
         </div>
       )}
 
+      <MiniCart />
+
       {!selectedInstaller ? (
         <>
           <SearchForm 
@@ -73,11 +83,18 @@ const InstallerDirectory: React.FC = () => {
             handleSearch={handleSearch}
           />
 
-          <InstallersList 
-            installers={filteredInstallers}
-            onSelectInstaller={handleSelectInstaller}
-            searchQuery={searchQuery}
-          />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2">
+              <InstallersList 
+                installers={filteredInstallers}
+                onSelectInstaller={handleSelectInstaller}
+                searchQuery={searchQuery}
+              />
+            </div>
+            <div>
+              <PremiumListingPromo addToCart={handleAddToCart} />
+            </div>
+          </div>
         </>
       ) : (
         <ContactForm 
@@ -86,6 +103,14 @@ const InstallerDirectory: React.FC = () => {
         />
       )}
     </div>
+  );
+};
+
+const InstallerDirectory: React.FC = () => {
+  return (
+    <ShoppingCartProvider>
+      <InstallerDirectoryContent />
+    </ShoppingCartProvider>
   );
 };
 

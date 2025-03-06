@@ -18,6 +18,7 @@ import WrapAddOns from './WrapAddOns';
 import BottomCTA from './BottomCTA';
 import UploadArtwork from './UploadArtwork';
 import InstallerDirectory from './InstallerDirectory';
+import { ShoppingCartProvider } from './shopping-cart/ShoppingCart';
 
 const PrintShipSection: React.FC = () => {
   // State for selected options
@@ -64,65 +65,67 @@ const PrintShipSection: React.FC = () => {
   }, [selectedVehicle, selectedMaterial, selectedDesign, selectedShipping, coverage, selectedAddOns]);
 
   return (
-    <section className="py-16 bg-white" id="print-ship">
-      <div className="container mx-auto px-4">
-        <PrintShipHeader />
+    <ShoppingCartProvider>
+      <section className="py-16 bg-white" id="print-ship">
+        <div className="container mx-auto px-4">
+          <PrintShipHeader />
 
-        {/* Installation Notice */}
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-center">
-          <p className="text-amber-800 font-medium">
-            <span className="underline font-bold">Important:</span> Pricing below is for wrap materials and shipping only. Professional installation is not included.
-            <a href="#installer-network" className="text-wrap-red hover:underline ml-1">
-              Find a certified installer in your area below.
-            </a>
-          </p>
-        </div>
+          {/* Installation Notice */}
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-center">
+            <p className="text-amber-800 font-medium">
+              <span className="underline font-bold">Important:</span> Pricing below is for wrap materials and shipping only. Professional installation is not included.
+              <a href="#installer-network" className="text-wrap-red hover:underline ml-1">
+                Find a certified installer in your area below.
+              </a>
+            </p>
+          </div>
 
-        {/* Upload Artwork Link */}
-        <UploadArtwork />
+          {/* Upload Artwork Link */}
+          <UploadArtwork />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left column - Pricing Calculator */}
-          <PriceCalculator 
-            selectedVehicle={selectedVehicle}
-            setSelectedVehicle={setSelectedVehicle}
-            selectedMaterial={selectedMaterial}
-            setSelectedMaterial={setSelectedMaterial}
-            selectedDesign={selectedDesign}
-            setSelectedDesign={setSelectedDesign}
-            selectedShipping={selectedShipping}
-            setSelectedShipping={setSelectedShipping}
-            coverage={coverage}
-            setCoverage={setCoverage}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Left column - Pricing Calculator */}
+            <PriceCalculator 
+              selectedVehicle={selectedVehicle}
+              setSelectedVehicle={setSelectedVehicle}
+              selectedMaterial={selectedMaterial}
+              setSelectedMaterial={setSelectedMaterial}
+              selectedDesign={selectedDesign}
+              setSelectedDesign={setSelectedDesign}
+              selectedShipping={selectedShipping}
+              setSelectedShipping={setSelectedShipping}
+              coverage={coverage}
+              setCoverage={setCoverage}
+            />
+            
+            {/* Right column - Price Summary and CTA */}
+            <PriceSummary price={price} selectedAddOns={selectedAddOns} />
+          </div>
+          
+          {/* Add-ons Section */}
+          <WrapAddOns 
+            selectedAddOns={selectedAddOns}
+            setSelectedAddOns={setSelectedAddOns}
           />
           
-          {/* Right column - Price Summary and CTA */}
-          <PriceSummary price={price} selectedAddOns={selectedAddOns} />
-        </div>
-        
-        {/* Add-ons Section */}
-        <WrapAddOns 
-          selectedAddOns={selectedAddOns}
-          setSelectedAddOns={setSelectedAddOns}
-        />
-        
-        {/* Local Installers Directory */}
-        <div id="installer-network" className="mt-16 border-t border-gray-200 pt-12">
-          <h2 className="text-3xl font-serif font-semibold text-wrap-blue text-center mb-4">
-            Professional Installation Network
-          </h2>
-          <p className="text-center text-wrap-grey mb-10 max-w-3xl mx-auto">
-            Wrap shops across the USA charge different installation rates based on vehicle type, complexity, and local market conditions. 
-            Connect with one of our trusted installation partners in major cities nationwide.
-          </p>
+          {/* Local Installers Directory */}
+          <div id="installer-network" className="mt-16 border-t border-gray-200 pt-12">
+            <h2 className="text-3xl font-serif font-semibold text-wrap-blue text-center mb-4">
+              Professional Installation Network
+            </h2>
+            <p className="text-center text-wrap-grey mb-10 max-w-3xl mx-auto">
+              Wrap shops across the USA charge different installation rates based on vehicle type, complexity, and local market conditions. 
+              Connect with one of our trusted installation partners in major cities nationwide.
+            </p>
+            
+            <InstallerDirectory />
+          </div>
           
-          <InstallerDirectory />
+          {/* Bottom CTA */}
+          <BottomCTA />
         </div>
-        
-        {/* Bottom CTA */}
-        <BottomCTA />
-      </div>
-    </section>
+      </section>
+    </ShoppingCartProvider>
   );
 };
 
