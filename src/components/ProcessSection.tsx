@@ -17,22 +17,22 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ townName = 'Chicago' })
     {
       icon: <FileText className="h-10 w-10 text-wrap-red" />,
       title: "1. Talk About Your Needs",
-      description: `We start by asking what you want. Our ${townName} experts will help you pick materials and designs that work for you.`
+      description: `We start by asking what you want. Our ${townName} experts will help you pick the right materials and designs for you.`
     },
     {
       icon: <PenTool className="h-10 w-10 text-wrap-red" />,
       title: "2. Design Your Wrap",
-      description: `Our design team makes custom graphics for your brand. We'll show you what your car will look like when it's done.`
+      description: `Our design team makes custom graphics for your brand. We'll show you what your car will look like before we start.`
     },
     {
       icon: <CheckCircle className="h-10 w-10 text-wrap-red" />,
       title: "3. Get Your OK",
-      description: `Once you like the design, we lock in all details before starting, so your ${townName} car wrap will be just what you want.`
+      description: `Once you like the design, we confirm all details before starting, so your ${townName} car wrap will look just right.`
     },
     {
       icon: <Truck className="h-10 w-10 text-wrap-red" />,
       title: "4. Make Your Wrap",
-      description: `Using top materials, we print and get your car wrap ready with careful attention to detail for a perfect fit.`
+      description: `Using top materials, we print your car wrap with care to make sure it fits perfectly.`
     },
     {
       icon: <Wrench className="h-10 w-10 text-wrap-red" />,
@@ -42,7 +42,7 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ townName = 'Chicago' })
     {
       icon: <Award className="h-10 w-10 text-wrap-red" />,
       title: "6. Final Check",
-      description: `Before giving back your car, we do a thorough check to make sure your ${townName} car wrap is perfect and meets our high standards.`
+      description: `Before giving back your car, we check everything to make sure your ${townName} car wrap is perfect and meets our high standards.`
     }
   ];
 
