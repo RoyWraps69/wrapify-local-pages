@@ -191,7 +191,7 @@ const TownPage: React.FC = () => {
         <GalleryShowcase townName={name} itemLimit={6} />
         <TestimonialSection townName={name} />
         <FAQSection townName={name} faqs={locationFaqs} />
-        <MapSection townName={name} mapEmbedUrl={mapUrl} />
+        <MapSection townName={name} mapUrl={mapUrl} />
         <CTASection townName={name} />
       </main>
       <Footer />
