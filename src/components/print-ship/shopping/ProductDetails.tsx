@@ -92,7 +92,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBackToShop }
           
           <p className="text-wrap-grey mb-6">{product.description}</p>
           
-          {product.features && (
+          {product.features && product.features.length > 0 && (
             <div className="mb-6">
               <h3 className="font-medium text-wrap-blue mb-2">Features:</h3>
               <ul className="list-disc pl-5 space-y-1">

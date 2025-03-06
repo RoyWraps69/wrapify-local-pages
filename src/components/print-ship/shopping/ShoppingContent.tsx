@@ -9,6 +9,7 @@ import CategorySectionRenderer from './CategorySectionRenderer';
 import ShopFooter from './ShopFooter';
 import { shopItems } from '@/components/print-ship/data/installers';
 import ProductDetails from './ProductDetails';
+import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
 
 interface ShoppingContentProps {
   activeCategory: string;
@@ -22,6 +23,7 @@ const ShoppingContent: React.FC<ShoppingContentProps> = ({
   const params = useParams();
   const navigate = useNavigate();
   const productId = params.productId;
+  const { addItem } = useShoppingCart();
   
   const selectedProduct = productId 
     ? shopItems.find(item => item.id === productId) 
@@ -30,6 +32,12 @@ const ShoppingContent: React.FC<ShoppingContentProps> = ({
   const handleBackToShop = () => {
     navigate('/shopping');
   };
+  
+  // Filter items by category
+  const merchandiseItems = shopItems.filter(item => item.category === 'merchandise');
+  const wrapMaterialItems = shopItems.filter(item => item.category === 'wrap_material');
+  const protectionItems = shopItems.filter(item => item.category === 'protection');
+  const designItems = shopItems.filter(item => item.category === 'design');
   
   return (
     <div className="py-6 md:py-12">
@@ -50,16 +58,47 @@ const ShoppingContent: React.FC<ShoppingContentProps> = ({
           />
         ) : (
           <>
-            <ShopHeader />
+            <ShopHeader setActiveCategory={setActiveCategory} />
             
             <CategoryNavigation 
               activeCategory={activeCategory} 
               setActiveCategory={setActiveCategory} 
             />
             
-            <CategorySectionRenderer activeCategory={activeCategory} />
+            {/* Render each category section */}
+            <CategorySectionRenderer 
+              activeCategory={activeCategory}
+              categoryKey="merchandise"
+              items={merchandiseItems}
+              title="Wrapping The World Merchandise"
+              description="Show your support with our official brand merchandise."
+            />
             
-            <ShopFooter />
+            <CategorySectionRenderer 
+              activeCategory={activeCategory}
+              categoryKey="wrap_material"
+              items={wrapMaterialItems}
+              title="Premium Wrap Materials"
+              description="High-quality vinyl wrap materials for professional results."
+            />
+            
+            <CategorySectionRenderer 
+              activeCategory={activeCategory}
+              categoryKey="protection"
+              items={protectionItems}
+              title="Protection Products"
+              description="Keep your wraps looking fresh with these protection solutions."
+            />
+            
+            <CategorySectionRenderer 
+              activeCategory={activeCategory}
+              categoryKey="design"
+              items={designItems}
+              title="Design Services"
+              description="Professional design services for your vehicle wrap project."
+            />
+            
+            <ShopFooter setActiveCategory={setActiveCategory} />
           </>
         )}
       </div>

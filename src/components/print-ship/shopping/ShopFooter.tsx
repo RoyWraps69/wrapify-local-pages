@@ -1,35 +1,43 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 interface ShopFooterProps {
   setActiveCategory: (category: string) => void;
 }
 
-const ShopFooter = ({ setActiveCategory }: ShopFooterProps) => (
-  <section className="py-12 bg-wrap-blue text-white">
-    <div className="container mx-auto px-4 text-center">
-      <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4">Ready to Transform Your Vehicle?</h2>
-      <p className="text-white/90 max-w-2xl mx-auto mb-8">
-        Browse our premium materials and professional services to get started with your vehicle transformation project today.
-      </p>
+const ShopFooter: React.FC<ShopFooterProps> = ({ setActiveCategory }) => {
+  return (
+    <div className="mt-16 bg-gray-50 rounded-lg p-8">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-serif font-semibold text-wrap-blue mb-2">
+          Can't Find What You're Looking For?
+        </h2>
+        <p className="text-wrap-grey mb-4">
+          We offer a wide range of additional products and customization options.
+        </p>
+      </div>
+      
       <div className="flex flex-wrap justify-center gap-4">
         <Button 
-          className="bg-wrap-red hover:bg-wrap-red/90 text-white"
-          onClick={() => setActiveCategory('merchandise')}
+          variant="outline"
+          className="border-wrap-blue text-wrap-blue"
+          onClick={() => window.location.href = '/contact'}
         >
-          Shop Merchandise
+          Contact Us
         </Button>
+        
         <Button 
-          variant="outline" 
-          className="border-white text-white hover:bg-white/10"
-          onClick={() => setActiveCategory('all')}
+          variant="default"
+          className="bg-wrap-red hover:bg-wrap-red/90"
+          onClick={() => window.location.href = '/print-ship'}
         >
-          Continue Shopping
+          Explore Print & Ship Services <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </div>
-  </section>
-);
+  );
+};
 
 export default ShopFooter;

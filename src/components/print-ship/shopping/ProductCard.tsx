@@ -5,13 +5,17 @@ import { Button } from '@/components/ui/button';
 import { ShopItem } from '@/components/print-ship/types/installer';
 import { Link } from 'react-router-dom';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
+import { useToast } from '@/components/ui/use-toast';
 
 interface ProductCardProps {
   item: ShopItem;
+  onAddToCart?: (item: ShopItem) => void; // Make this prop optional
 }
 
-const ProductCard = ({ item }: ProductCardProps) => {
+const ProductCard = ({ item, onAddToCart }: ProductCardProps) => {
   const { addItem } = useShoppingCart();
+  const { toast } = useToast();
+  
   let icon;
   let gradientClass = "bg-gradient-to-r from-blue-500 to-purple-500";
   
@@ -38,7 +42,16 @@ const ProductCard = ({ item }: ProductCardProps) => {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    addItem(item);
+    
+    if (onAddToCart) {
+      onAddToCart(item);
+    } else {
+      addItem(item);
+      toast({
+        title: "Added to cart!",
+        description: `${item.name} has been added to your cart.`,
+      });
+    }
   };
   
   return (

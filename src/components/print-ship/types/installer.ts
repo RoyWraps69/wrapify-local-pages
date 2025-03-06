@@ -1,4 +1,3 @@
-
 export interface Installer {
   id: number;
   name: string;
@@ -20,12 +19,14 @@ export interface ShopItem {
   name: string;
   description: string;
   price: number;
-  category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping' | 'merchandise';
-  term?: '1_month' | '3_months' | '6_months' | '12_months'; // For subscription-based items
+  category: 'wrap_material' | 'design' | 'protection' | 'merchandise' | 'premium_listing';
+  image?: string;
+  color?: string;
+  term?: '1_month' | '3_months' | '6_months' | '12_months';
   featured?: boolean;
   bestValue?: boolean;
-  image?: string;
-  color?: string; // Added for color selection
+  features?: string[];
+  originalPrice?: number;
 }
 
 export interface CartItem extends ShopItem {

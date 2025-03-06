@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import PrintShip from "./pages/PrintShip";
 import WrapInsurance from "./pages/WrapInsurance";
 import Shopping from "./pages/Shopping";
+import ShoppingProduct from "./pages/ShoppingProduct";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MemberDashboard from "./pages/MemberDashboard";
@@ -80,7 +82,7 @@ const App = () => {
               <Route path="/services/:serviceType" element={<ServicePage />} />
               <Route path="/about" element={<About />} />
               <Route path="/shopping" element={<Shopping />} />
-              <Route path="/shopping/:productId" element={<ShoppingPage />} />
+              <Route path="/shopping/:productId" element={<ShoppingProduct />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/testimonials" element={<Testimonials />} />

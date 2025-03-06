@@ -1,47 +1,44 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import MiniCart from '@/components/print-ship/shopping-cart/MiniCart';
 
 interface ShopHeaderProps {
   setActiveCategory: (category: string) => void;
 }
 
-const ShopHeader = ({ setActiveCategory }: ShopHeaderProps) => (
-  <section className="py-12 bg-gradient-to-br from-wrap-blue to-wrap-blue/90 text-white">
-    <div className="container mx-auto px-4">
-      <div className="flex items-center justify-between flex-wrap">
-        <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold mb-4">
-            Premium Wrap Materials & Services
-          </h1>
-          <p className="text-white/90 text-lg mb-6 max-w-xl">
-            Everything you need for professional vehicle transformations. From high-quality wrap materials to expert design services and installer support.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Button 
-              onClick={() => setActiveCategory('wrap_material')} 
-              variant="secondary"
-            >
-              Explore Materials
-            </Button>
-            <Button 
-              onClick={() => setActiveCategory('merchandise')} 
-              variant="default"
-              className="bg-wrap-red hover:bg-wrap-red/90"
-            >
-              View Merchandise
-            </Button>
-          </div>
+const ShopHeader: React.FC<ShopHeaderProps> = ({ setActiveCategory }) => {
+  return (
+    <div className="mb-8">
+      <p className="text-lg text-wrap-grey mb-6">
+        Browse our selection of professional-grade vehicle wrap materials, merchandise, and design services. 
+        Everything you need for your next wrap project, delivered directly to your door.
+      </p>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="bg-gradient-to-r from-amber-400 to-amber-600 rounded-lg p-6 text-white">
+          <h3 className="text-xl font-bold mb-2">Need Premium Installation?</h3>
+          <p className="mb-4">Find certified installers in your area through our nationwide network.</p>
+          <Button 
+            variant="secondary" 
+            onClick={() => window.location.href = '/print-ship#installer-directory'}
+          >
+            Find Installers
+          </Button>
         </div>
-        <div className="w-full lg:w-1/3">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 shadow-xl">
-            <MiniCart />
-          </div>
+        
+        <div className="bg-gradient-to-r from-wrap-blue to-blue-600 rounded-lg p-6 text-white">
+          <h3 className="text-xl font-bold mb-2">Bulk Ordering Available</h3>
+          <p className="mb-4">Special pricing for wrap shops and fleet managers. Contact us for details.</p>
+          <Button 
+            variant="secondary" 
+            onClick={() => window.location.href = '/contact'}
+          >
+            Request Quote
+          </Button>
         </div>
       </div>
     </div>
-  </section>
-);
+  );
+};
 
 export default ShopHeader;

@@ -3,6 +3,7 @@ import React from 'react';
 import { ShopItem } from '@/components/print-ship/types/installer';
 import CategorySection from './CategorySection';
 import ProductCard from './ProductCard';
+import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
 
 interface CategorySectionRendererProps {
   activeCategory: string;
@@ -10,7 +11,6 @@ interface CategorySectionRendererProps {
   items: ShopItem[];
   title: string;
   description: string;
-  onAddToCart: (item: ShopItem) => void;
 }
 
 const CategorySectionRenderer = ({
@@ -18,9 +18,10 @@ const CategorySectionRenderer = ({
   categoryKey,
   items,
   title,
-  description,
-  onAddToCart
+  description
 }: CategorySectionRendererProps) => {
+  const { addItem } = useShoppingCart();
+  
   if (activeCategory !== 'all' && activeCategory !== categoryKey) {
     return null;
   }
@@ -36,7 +37,7 @@ const CategorySectionRenderer = ({
     <CategorySection title={title} description={description}>
       <div className={gridClasses[categoryKey]}>
         {items.map(item => (
-          <ProductCard key={item.id} item={item} onAddToCart={onAddToCart} />
+          <ProductCard key={item.id} item={item} />
         ))}
       </div>
     </CategorySection>
