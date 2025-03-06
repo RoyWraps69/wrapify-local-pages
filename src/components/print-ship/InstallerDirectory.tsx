@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -18,16 +19,15 @@ interface Installer {
   isOurShop?: boolean;
 }
 
-// Updated installers data with Wrapping The World in Chicago
-// and chicagofleetwraps.com as the website
+// Updated installers data with correct information for Wrapping The World Chicago
 const installers: Installer[] = [
   {
     id: 1,
     name: "Wrapping The World Chicago",
     city: "Chicago",
     state: "IL",
-    address: "4215 W Belmont Ave, Chicago, IL 60641",
-    phone: "(312) 555-1234",
+    address: "4711 N. Lamon Ave, Chicago, IL 60630",
+    phone: "(312) 597-1286",
     email: "info@wrappingtheworld.com",
     website: "chicagofleetwraps.com",
     specialties: ["Commercial Fleet", "Color Change", "PPF", "Ceramic Coating"],

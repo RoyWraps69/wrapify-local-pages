@@ -41,14 +41,14 @@ const MapSection: React.FC<MapSectionProps> = ({ townName, mapUrl }) => {
             Wrapping The World - {townName} Location
           </p>
           <p className="text-wrap-grey">
-            123 Wrap Avenue, {townName}, IL 60007
+            4711 N. Lamon Ave, Chicago, IL 60630
           </p>
           <p className="mt-2">
             <a 
-              href={`tel:+1234567890`} 
+              href="tel:+13125971286" 
               className="text-wrap-red hover:underline"
             >
-              (123) 456-7890
+              (312) 597-1286
             </a>
           </p>
         </div>
