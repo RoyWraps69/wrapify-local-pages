@@ -136,7 +136,7 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
 
         <div className="text-center mt-12">
           <a 
-            href="https://www.google.com/maps/place/Chicago,+IL"
+            href="https://www.google.com/search?q=chicago+fleet+wraps+reviews"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center text-wrap-blue hover:text-wrap-red transition-colors"
