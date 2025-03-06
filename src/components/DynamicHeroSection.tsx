@@ -67,9 +67,6 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
         />
       ))}
       
-      {/* Semi-transparent overlay for text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className={cn(
@@ -82,45 +79,45 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
               Top Car Wraps & Protection in {townName}
             </h1>
-            <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
               Wrapping The World offers premier car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
             <div className="mb-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
+              <div className="bg-black/30 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:bg-black/40 hover:shadow-lg">
                 <h3 className="text-white font-medium mb-2">Car Wrapping</h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Business Fleet Graphics</span>
+                    <span className="text-white text-sm">Business Fleet Graphics</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Color Change Wraps</span>
+                    <span className="text-white text-sm">Color Change Wraps</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Custom Graphics & Designs</span>
+                    <span className="text-white text-sm">Custom Graphics & Designs</span>
                   </li>
                 </ul>
                 <Link to="/services" className="text-white hover:text-wrap-red text-xs inline-flex items-center mt-2 group">
                   Learn more <ArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" size={12} />
                 </Link>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg">
+              <div className="bg-black/30 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:bg-black/40 hover:shadow-lg">
                 <h3 className="text-white font-medium mb-2">Car Protection</h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Ceramic Coatings</span>
+                    <span className="text-white text-sm">Ceramic Coatings</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Paint Protection Film</span>
+                    <span className="text-white text-sm">Paint Protection Film</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Winter & Sun Protection</span>
+                    <span className="text-white text-sm">Winter & Sun Protection</span>
                   </li>
                 </ul>
                 <Link to="/services" className="text-white hover:text-wrap-red text-xs inline-flex items-center mt-2 group">
@@ -146,10 +143,10 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
                 <span>Call For {townName} Service</span>
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap items-center justify-center text-wrap-light/70">
+            <div className="mt-8 flex flex-wrap items-center justify-center text-white/70">
               <span className="text-sm">Serving {townName} and nearby areas</span>
               <span className="mx-3 hidden sm:inline">•</span>
-              <span className="text-sm">Quality <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
+              <span className="text-sm">Quality <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white underline">Avery Dennison</a> Materials</span>
               <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">5+ Years Durability</span>
             </div>
