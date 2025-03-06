@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @tailwind base;
@@ -141,16 +140,16 @@
     @apply bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-soft border border-gray-100;
   }
 
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md rounded-xl shadow-soft border border-white/50;
+  }
+
   .section-title {
     @apply text-3xl md:text-4xl font-serif font-semibold mb-4 text-wrap-blue;
   }
 
   .section-subtitle {
     @apply text-lg text-wrap-grey max-w-2xl mx-auto mb-12;
-  }
-
-  .glass-card {
-    @apply bg-white/70 backdrop-blur-md rounded-xl shadow-soft border border-white/50;
   }
 }
 

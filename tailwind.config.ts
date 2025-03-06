@@ -1,4 +1,3 @@
-
 import { type Config } from "tailwindcss";
 
 export default {
@@ -52,12 +51,14 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors for the wrap website
         "wrap-blue": "#1D3557",
         "wrap-red": "#E63946",
         "wrap-light": "#F1FAEE",
         "wrap-grey": "#457B9D",
         "wrap-dark": "#2B2D42",
+      },
+      boxShadow: {
+        soft: '0 4px 12px -2px rgba(0, 0, 0, 0.08)',
       },
       borderRadius: {
         lg: "var(--radius)",
