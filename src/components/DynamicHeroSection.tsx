@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Check, ChevronDown } from 'lucide-react';
@@ -18,6 +19,9 @@ const heroBackgrounds = [
   'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Colorful sports car
   'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'  // Car detail close-up
 ];
+
+// Fleet wrap background to use during transitions
+const fleetWrapBackground = 'https://images.unsplash.com/photo-1621447578051-310ce127825a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80';
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
   townName = 'Chicago',
@@ -52,7 +56,12 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   
   return (
     <section 
-      className="hero-section relative bg-black bg-cover bg-center min-h-[90vh] overflow-hidden"
+      className="hero-section relative bg-cover bg-center min-h-[90vh] overflow-hidden"
+      style={{ 
+        backgroundImage: `url(${fleetWrapBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
     >
       {/* Dynamic background with transition effect */}
       {heroBackgrounds.map((bg, index) => (
