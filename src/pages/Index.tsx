@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import HeroSection from '@/components/HeroSection';
+import DynamicHeroSection from '@/components/DynamicHeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import TestimonialSection from '@/components/TestimonialSection';
 import SEOSchema from '@/components/SEOSchema';
@@ -46,7 +46,7 @@ const Index = () => {
       />
       <Navbar />
       <main>
-        <HeroSection townName="Chicago" />
+        <DynamicHeroSection townName="Chicago" />
         <ServicesSection townName="Chicago" />
         
         <section className="py-16 bg-white">
