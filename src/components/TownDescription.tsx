@@ -84,11 +84,11 @@ const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData })
           
           <p className="mb-6">
             <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> businesses are discovering the incredible <strong>return on investment</strong> that professional 
-            <strong>vehicle wraps</strong> provide. With thousands of impressions generated daily as your vehicles travel 
+            <strong> vehicle wraps</strong> provide. With thousands of impressions generated daily as your vehicles travel 
             throughout <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> and the greater <a href="https://www.chicago.gov" target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">Chicago</a> area, <strong>fleet branding</strong> transforms ordinary 
             company vehicles into powerful <strong>mobile billboards</strong> at a fraction of the cost of traditional 
             advertising. From construction companies and service providers to retail delivery fleets, our custom 
-            <strong>vehicle branding solutions</strong> help <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> businesses stand out in a competitive marketplace.
+            <strong> vehicle branding solutions</strong> help <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> businesses stand out in a competitive marketplace.
           </p>
           
           <p className="mb-6">
