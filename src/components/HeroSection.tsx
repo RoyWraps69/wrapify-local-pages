@@ -45,7 +45,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <a 
-                href="tel:+13125555555" 
+                href="tel:+13125971286" 
                 className="btn-secondary flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />

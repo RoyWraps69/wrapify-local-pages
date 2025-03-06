@@ -50,7 +50,7 @@ const Contact = () => {
                   <Phone className="text-wrap-blue w-6 h-6" />
                   <div>
                     <h3 className="font-medium">Phone</h3>
-                    <p className="text-wrap-grey">(312) 555-5555</p>
+                    <p className="text-wrap-grey">312-597-1286</p>
                     <p className="text-wrap-grey text-sm">Call for immediate vehicle wrap inquiries</p>
                   </div>
                 </div>
@@ -59,7 +59,7 @@ const Contact = () => {
                   <Mail className="text-wrap-blue w-6 h-6" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-wrap-grey">info@chicagofleetwraps.com</p>
+                    <p className="text-wrap-grey">roy@chicagofleetwraps.com</p>
                     <p className="text-wrap-grey text-sm">For quotes and project inquiries</p>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ const Contact = () => {
                   <MapPin className="text-wrap-blue w-6 h-6" />
                   <div>
                     <h3 className="font-medium">Location</h3>
-                    <p className="text-wrap-grey">123 Wrap Street, Chicago, IL 60601</p>
+                    <p className="text-wrap-grey">4711 N. Lamon Ave, Chicago, IL 60630</p>
                     <p className="text-wrap-grey text-sm">Serving all of Chicago and surrounding areas</p>
                   </div>
                 </div>

@@ -29,7 +29,7 @@ const CTASection: React.FC<CTASectionProps> = ({ townName = 'Chicago' }) => {
             commercial fleet wraps, color change wraps, ceramic coatings, or paint protection film solution for your business fleet or personal vehicle.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-            <a href="tel:+13125555555" className="btn-secondary flex items-center justify-center gap-2">
+            <a href="tel:+13125971286" className="btn-secondary flex items-center justify-center gap-2">
               <Phone size={18} />
               <span>Call For <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> Service</span>
             </a>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -23,10 +22,10 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
     "logo": "https://chicagofleetwraps.com/logo.png",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Wrap Street",
+      "streetAddress": "4711 N. Lamon Ave",
       "addressLocality": "Chicago",
       "addressRegion": "IL",
-      "postalCode": "60601",
+      "postalCode": "60630",
       "addressCountry": "US"
     },
     "description": `Professional vehicle wrapping and ceramic coating services in ${townName} and surrounding areas. Specializing in commercial fleet wraps, color change wraps, custom vehicle graphics, and business vehicle branding with premium 3M and Avery Dennison materials for maximum visibility and protection.`,
@@ -36,8 +35,8 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "longitude": -87.6298
     },
     "url": "https://chicagofleetwraps.com",
-    "telephone": "+13125555555",
-    "email": "info@chicagofleetwraps.com",
+    "telephone": "+13125971286",
+    "email": "roy@chicagofleetwraps.com",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
