@@ -13,9 +13,12 @@ export interface TownData {
   keywords: string[];
   governmentUrl: string;
   businessStats: string;
-	latitude: number;
-	longitude: number;
+  latitude: number;
+  longitude: number;
 }
+
+// Export the Town interface that's being imported elsewhere
+export interface Town extends TownData {}
 
 // Example town data (Chicago)
 const chicago = {
@@ -34,8 +37,8 @@ const chicago = {
   ],
   governmentUrl: "https://www.chicago.gov/",
   businessStats: "Major transportation hub with a diverse economy.",
-	latitude: 41.8781,
-	longitude: -87.6298
+  latitude: 41.8781,
+  longitude: -87.6298
 };
 
 // Example town data (Evanston)
@@ -55,8 +58,8 @@ const evanston = {
   ],
   governmentUrl: "https://www.cityofevanston.org/",
   businessStats: "Home to Northwestern University and a thriving local economy.",
-	latitude: 42.0451,
-	longitude: -87.6878
+  latitude: 42.0451,
+  longitude: -87.6878
 };
 
 // Example town data (Oak Park)
@@ -76,8 +79,8 @@ const oakPark = {
   ],
   governmentUrl: "https://www.oak-park.us/",
   businessStats: "Known for its historic architecture and strong community.",
-	latitude: 41.8858,
-	longitude: -87.7909
+  latitude: 41.8858,
+  longitude: -87.7909
 };
 
 // Example town data (Naperville)
@@ -97,8 +100,8 @@ const naperville = {
   ],
   governmentUrl: "https://www.naperville.il.us/",
   businessStats: "Large suburban city with a strong economy and top-rated schools.",
-	latitude: 41.7577,
-	longitude: -88.1561
+  latitude: 41.7577,
+  longitude: -88.1561
 };
 
 // Example town data (Schaumburg)
@@ -118,8 +121,8 @@ const schaumburg = {
   ],
   governmentUrl: "https://www.schaumburg.com/",
   businessStats: "Major commercial and retail center with a diverse economy.",
-	latitude: 42.0354,
-	longitude: -88.0830
+  latitude: 42.0354,
+  longitude: -88.0830
 };
 
 // Example town data (Arlington Heights)
@@ -139,8 +142,8 @@ const arlingtonHeights = {
   ],
   governmentUrl: "https://www.vah.com/",
   businessStats: "Family-friendly suburb with a strong community and excellent schools.",
-	latitude: 42.0922,
-	longitude: -87.9809
+  latitude: 42.0922,
+  longitude: -87.9809
 };
 
 // Example town data (Skokie)
@@ -160,8 +163,8 @@ const skokie = {
   ],
   governmentUrl: "https://www.skokie.org/",
   businessStats: "Diverse suburb with a strong local economy and convenient location.",
-	latitude: 42.0338,
-	longitude: -87.7311
+  latitude: 42.0338,
+  longitude: -87.7311
 };
 
 // Example town data (Des Plaines)
@@ -181,8 +184,8 @@ const desPlaines = {
   ],
   governmentUrl: "https://www.desplaines.org/",
   businessStats: "Transportation hub with a diverse economy and family-friendly community.",
-	latitude: 42.0205,
-	longitude: -87.8842
+  latitude: 42.0205,
+  longitude: -87.8842
 };
 
 // Add missing towns from Michigan
@@ -355,4 +358,32 @@ export const getTownData = (townSlug: string): TownData | null => {
   };
 
   return towns[townSlug] || null;
+};
+
+// Add the missing getTownByName function
+export const getTownByName = (townName: string): TownData | null => {
+  const towns = getAllTowns();
+  const town = towns.find(t => t.name === townName);
+  return town || null;
+};
+
+// Add the missing getAllTowns function
+export const getAllTowns = (): TownData[] => {
+  return [
+    chicago,
+    evanston,
+    oakPark,
+    naperville,
+    schaumburg,
+    arlingtonHeights,
+    skokie,
+    desPlaines,
+    grandRapids,
+    detroit,
+    annArbor,
+    indianapolis,
+    fortWayne,
+    milwaukee,
+    madison
+  ].sort((a, b) => a.name.localeCompare(b.name));
 };
