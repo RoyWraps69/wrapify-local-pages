@@ -31,15 +31,15 @@ const CTASection: React.FC<CTASectionProps> = ({ townName = 'Chicago' }) => {
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <a href="tel:+13125971286" className="btn-secondary flex items-center justify-center gap-2">
               <Phone size={18} />
-              <span>Call For <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> Service</span>
+              <span>Call For {townName} Service</span>
             </a>
             <Link to="/contact" className="btn-primary flex items-center justify-center gap-2">
               <Mail size={18} />
-              <span>Get a Free <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-wrap-light underline">{townName}</a> Quote</span>
+              <span>Get a Free {townName} Quote</span>
             </Link>
           </div>
           <p className="text-wrap-light/70 text-sm">
-            Serving <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">{townName}</a> and surrounding areas with premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> and <a href="https://graphics.averydennison.com/en/home/graphics-products/digital-printing-films.html" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> vehicle wrap, ceramic coating, and paint protection film services. 
+            Serving <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">{townName}</a> and surrounding areas with premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> and <a href="https://avery-dennison.com/graphics" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> vehicle wrap, ceramic coating, and paint protection film services. 
             We offer mobile service throughout the greater Chicago area.
           </p>
         </div>

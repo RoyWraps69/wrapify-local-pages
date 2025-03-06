@@ -42,7 +42,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 to="/contact" 
                 className="btn-primary flex items-center justify-center gap-2 group"
               >
-                <span>Get a Free <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-wrap-light underline">{townName}</a> Quote</span>
+                <span>Get a Free Quote for {townName}</span>
                 <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <a 
@@ -50,13 +50,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 className="btn-secondary flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                <span>Call For <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> Service</span>
+                <span>Call For {townName} Service</span>
               </a>
             </div>
             <div className="mt-8 flex flex-wrap items-center text-wrap-light/70">
               <span className="text-sm">Serving <a href={townUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">{townName}</a> and surrounding areas</span>
               <span className="mx-3 hidden sm:inline">•</span>
-              <span className="text-sm">Premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com/en/home/graphics-products/digital-printing-films.html" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
+              <span className="text-sm">Premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://avery-dennison.com/graphics" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
               <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">5+ Years Durability</span>
             </div>
