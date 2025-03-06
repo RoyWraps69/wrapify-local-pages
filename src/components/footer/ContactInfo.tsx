@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ContactInfo = () => {
   return (
@@ -27,9 +28,9 @@ const ContactInfo = () => {
         </li>
       </ul>
       <div className="mt-6">
-        <a href="/contact" className="btn-secondary">
+        <Link to="/contact" className="btn-secondary">
           Request a Quote
-        </a>
+        </Link>
       </div>
     </div>
   );

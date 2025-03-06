@@ -40,7 +40,7 @@ const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData })
           
           <p className="mb-6">
             Welcome to Wrapping The World, your best choice for <Link to="/services/commercial-fleet-wraps" className="text-wrap-blue hover:text-wrap-red font-semibold">car wraps</Link>, 
-            <Link to="/services/ceramic-coatings" className="text-wrap-blue hover:text-wrap-red font-semibold"> ceramic coatings</Link>, and <Link to="/services/paint-protection" className="text-wrap-blue hover:text-wrap-red font-semibold">paint protection</Link> in <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a>. 
+            <Link to="/services/ceramic-coatings" className="text-wrap-blue hover:text-wrap-red font-semibold"> ceramic coatings</Link>, and <Link to="/services/paint-protection-film" className="text-wrap-blue hover:text-wrap-red font-semibold">paint protection</Link> in <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a>. 
             We're just {distance} miles from <a href="https://www.chicago.gov" target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">Chicago</a>. <a href={governmentUrl} target="_blank" rel="noopener noreferrer" className="text-wrap-blue hover:text-wrap-red underline">{townName}</a> has {population.toLocaleString()} people 
             and about {businessCount?.toLocaleString() || 'many'} businesses that can use our 
             car wrap services. We help both business owners and car lovers in {townName} and nearby areas.
@@ -49,7 +49,7 @@ const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData })
           <p className="mb-6">
             {description} Wrapping The World offers total <strong>car makeover solutions</strong> including 
             <Link to="/services/commercial-fleet-wraps" className="text-wrap-blue hover:text-wrap-red font-semibold"> business fleet branding</Link>, <Link to="/services/color-change-wraps" className="text-wrap-blue hover:text-wrap-red font-semibold"> color change wraps</Link>, <Link to="/services/ceramic-coatings" className="text-wrap-blue hover:text-wrap-red font-semibold"> water-repelling ceramic coatings</Link>,
-            and <Link to="/services/paint-protection" className="text-wrap-blue hover:text-wrap-red font-semibold"> self-healing paint protection</Link> to shield your car from {townName}'s changing 
+            and <Link to="/services/paint-protection-film" className="text-wrap-blue hover:text-wrap-red font-semibold"> self-healing paint protection</Link> to shield your car from {townName}'s changing 
             weather and daily driving risks. Whether you want to make your business more visible with
             eye-catching <strong>car ads</strong> or protect your own car with the newest 
             <strong> paint protection tech</strong>, our skilled team can deliver 
@@ -80,12 +80,11 @@ const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData })
               </li>
               <li className="flex items-center gap-2 text-wrap-grey">
                 <span className="text-wrap-red">✓</span>
-
                 <Link to="/services/ceramic-coatings" className="text-wrap-blue hover:text-wrap-red">Top Ceramic Coating</Link>
               </li>
               <li className="flex items-center gap-2 text-wrap-grey">
                 <span className="text-wrap-red">✓</span> 
-                <Link to="/services/paint-protection" className="text-wrap-blue hover:text-wrap-red">Paint Protection Film (PPF)</Link>
+                <Link to="/services/paint-protection-film" className="text-wrap-blue hover:text-wrap-red">Paint Protection Film (PPF)</Link>
               </li>
               <li className="flex items-center gap-2 text-wrap-grey">
                 <span className="text-wrap-red">✓</span> 

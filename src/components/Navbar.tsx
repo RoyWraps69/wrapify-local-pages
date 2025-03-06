@@ -68,12 +68,12 @@ const Navbar = () => {
             <Phone size={18} />
             <span className="font-medium">312-597-1286</span>
           </a>
-          <a 
-            href="/contact" 
+          <Link 
+            to="/contact" 
             className="btn-primary whitespace-nowrap"
           >
             Get a Free Quote
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -151,13 +151,13 @@ const Navbar = () => {
               <Phone size={18} />
               <span className="font-medium">312-597-1286</span>
             </a>
-            <a 
-              href="/contact" 
+            <Link 
+              to="/contact" 
               className="btn-primary text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Get a Free Quote
-            </a>
+            </Link>
           </div>
         </div>
       </div>

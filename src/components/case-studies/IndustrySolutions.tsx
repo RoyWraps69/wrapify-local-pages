@@ -14,7 +14,7 @@ const IndustrySolutions: React.FC = () => {
         </p>
         
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <Link to="/industries/home-services" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
+          <Link to="/industries/construction" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
             <h3 className="font-medium text-wrap-blue mb-2">Home Services</h3>
             <p className="text-xs text-wrap-grey mb-2">HVAC, Plumbing, Electrical</p>
           </Link>
@@ -30,11 +30,11 @@ const IndustrySolutions: React.FC = () => {
             <h3 className="font-medium text-wrap-blue mb-2">Real Estate</h3>
             <p className="text-xs text-wrap-grey mb-2">Agents, Brokers, Property Management</p>
           </Link>
-          <Link to="/industries/retail" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
+          <Link to="/services/commercial-fleet-wraps" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
             <h3 className="font-medium text-wrap-blue mb-2">Retail</h3>
             <p className="text-xs text-wrap-grey mb-2">Delivery, Mobile Stores, Promotions</p>
           </Link>
-          <Link to="/industries/automotive" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
+          <Link to="/services/vehicle-graphics" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
             <h3 className="font-medium text-wrap-blue mb-2">Automotive</h3>
             <p className="text-xs text-wrap-grey mb-2">Dealerships, Auto Services, Rentals</p>
           </Link>
