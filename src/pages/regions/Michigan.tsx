@@ -1,10 +1,6 @@
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/footer/Footer';
-import RegionalPageContent from '@/components/regions/RegionalPageContent';
-import SEOSchema from '@/components/SEOSchema';
-import { Helmet } from 'react-helmet-async';
+import RegionalPageTemplate from '@/components/regions/RegionalPageTemplate';
 
 const MichiganRegion = () => {
   const cities = [
@@ -23,35 +19,19 @@ const MichiganRegion = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Michigan Vehicle Wrapping Services | Fleet Wraps & Ceramic Coatings</title>
-        <meta name="description" content="Professional vehicle wrapping, ceramic coating, and paint protection services throughout Michigan. Premium fleet branding and protection for businesses in Detroit, Grand Rapids, Ann Arbor and beyond." />
-        <link rel="canonical" href="https://wrappingtheworld.com/regions/michigan" />
-        <meta name="geo.region" content="US-MI" />
-        <meta name="geo.placename" content="Michigan" />
-        <meta name="geo.position" content="44.3148;-85.6024" />
-        <meta name="ICBM" content="44.3148, -85.6024" />
-      </Helmet>
-
-      <SEOSchema 
-        townName="Michigan"
-        pageTitle="Michigan Vehicle Wrapping Services | Fleet Wraps & Ceramic Coatings"
-        pageDescription="Professional vehicle wrapping, ceramic coating, and paint protection services throughout Michigan. Premium fleet branding and protection for businesses in Detroit, Grand Rapids, Ann Arbor and beyond."
-        pageUrl="https://wrappingtheworld.com/regions/michigan"
-      />
-
-      <Navbar />
-      <RegionalPageContent
-        regionName="Michigan"
-        regionDescription="Wrapping The World extends our professional vehicle wrapping and protection services throughout Michigan. From our Chicago base, we serve Michigan businesses with premium commercial fleet wraps, ceramic coatings, and paint protection solutions. <strong>Our Michigan service area</strong> includes Detroit, Grand Rapids, Ann Arbor, Lansing, and other major cities across the state, providing exceptional vehicle transformation and protection services."
-        regionFocus="Our Michigan-focused vehicle services address the unique needs of businesses across the state. We specialize in creating weather-resistant commercial fleet wraps designed to withstand Michigan's harsh winters, premium ceramic coatings that protect against road salt and environmental damage, and custom branding solutions that help Michigan businesses stand out in competitive markets."
-        regionImage="https://images.unsplash.com/photo-1534270804882-7b71aaece2e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-        citiesServed={cities}
-        adjacentRegions={adjacentRegions}
-      />
-      <Footer />
-    </>
+    <RegionalPageTemplate
+      regionName="Michigan"
+      regionDescription="Wrapping The World extends our professional vehicle wrapping and protection services throughout Michigan. From our Chicago base, we serve Michigan businesses with premium commercial fleet wraps, ceramic coatings, and paint protection solutions. <strong>Our Michigan service area</strong> includes Detroit, Grand Rapids, Ann Arbor, Lansing, and other major cities across the state, providing exceptional vehicle transformation and protection services."
+      regionFocus="Our Michigan-focused vehicle services address the unique needs of businesses across the state. We specialize in creating weather-resistant commercial fleet wraps designed to withstand Michigan's harsh winters, premium ceramic coatings that protect against road salt and environmental damage, and custom branding solutions that help Michigan businesses stand out in competitive markets."
+      regionImage="https://images.unsplash.com/photo-1534270804882-7b71aaece2e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      citiesServed={cities}
+      adjacentRegions={adjacentRegions}
+      metaDescription="Professional vehicle wrapping, ceramic coating, and paint protection services throughout Michigan. Premium fleet branding and protection for businesses in Detroit, Grand Rapids, Ann Arbor and beyond."
+      geoRegion="US-MI"
+      geoPlacename="Michigan"
+      geoPosition="44.3148;-85.6024"
+      canonicalUrl="https://wrappingtheworld.com/regions/michigan"
+    />
   );
 };
 

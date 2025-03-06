@@ -1,10 +1,6 @@
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/footer/Footer';
-import RegionalPageContent from '@/components/regions/RegionalPageContent';
-import SEOSchema from '@/components/SEOSchema';
-import { Helmet } from 'react-helmet-async';
+import RegionalPageTemplate from '@/components/regions/RegionalPageTemplate';
 
 const WisconsinRegion = () => {
   const cities = [
@@ -23,35 +19,19 @@ const WisconsinRegion = () => {
   ];
 
   return (
-    <>
-      <Helmet>
-        <title>Wisconsin Vehicle Wrapping Services | Fleet Wraps & Ceramic Coatings</title>
-        <meta name="description" content="Professional vehicle wrapping, ceramic coating, and paint protection services throughout Wisconsin. Premium fleet branding and protection for businesses in Milwaukee, Madison, Green Bay and beyond." />
-        <link rel="canonical" href="https://wrappingtheworld.com/regions/wisconsin" />
-        <meta name="geo.region" content="US-WI" />
-        <meta name="geo.placename" content="Wisconsin" />
-        <meta name="geo.position" content="44.2563;-89.6385" />
-        <meta name="ICBM" content="44.2563, -89.6385" />
-      </Helmet>
-
-      <SEOSchema 
-        townName="Wisconsin"
-        pageTitle="Wisconsin Vehicle Wrapping Services | Fleet Wraps & Ceramic Coatings"
-        pageDescription="Professional vehicle wrapping, ceramic coating, and paint protection services throughout Wisconsin. Premium fleet branding and protection for businesses in Milwaukee, Madison, Green Bay and beyond."
-        pageUrl="https://wrappingtheworld.com/regions/wisconsin"
-      />
-
-      <Navbar />
-      <RegionalPageContent
-        regionName="Wisconsin"
-        regionDescription="Wrapping The World extends our premium vehicle wrapping and protection services to businesses and individuals throughout Wisconsin. From our Chicago headquarters, we provide convenient access to professional vehicle transformation services for clients across the state. <strong>Our Wisconsin service area</strong> includes Milwaukee, Madison, Green Bay, Kenosha, Racine, and surrounding communities, delivering Chicago-quality vehicle wraps and protection with Wisconsin convenience."
-        regionFocus="Our Wisconsin-focused vehicle services address the unique challenges faced by businesses operating in the state's diverse climate conditions. We specialize in creating durable commercial fleet wraps designed to withstand Wisconsin's harsh winters, premium ceramic coatings that protect against road salt and environmental damage, and custom branding solutions that help Wisconsin businesses maximize their mobile advertising effectiveness throughout the year."
-        regionImage="https://images.unsplash.com/photo-1596720685811-58ec259bfd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-        citiesServed={cities}
-        adjacentRegions={adjacentRegions}
-      />
-      <Footer />
-    </>
+    <RegionalPageTemplate
+      regionName="Wisconsin"
+      regionDescription="Wrapping The World extends our premium vehicle wrapping and protection services to businesses and individuals throughout Wisconsin. From our Chicago headquarters, we provide convenient access to professional vehicle transformation services for clients across the state. <strong>Our Wisconsin service area</strong> includes Milwaukee, Madison, Green Bay, Kenosha, Racine, and surrounding communities, delivering Chicago-quality vehicle wraps and protection with Wisconsin convenience."
+      regionFocus="Our Wisconsin-focused vehicle services address the unique challenges faced by businesses operating in the state's diverse climate conditions. We specialize in creating durable commercial fleet wraps designed to withstand Wisconsin's harsh winters, premium ceramic coatings that protect against road salt and environmental damage, and custom branding solutions that help Wisconsin businesses maximize their mobile advertising effectiveness throughout the year."
+      regionImage="https://images.unsplash.com/photo-1596720685811-58ec259bfd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+      citiesServed={cities}
+      adjacentRegions={adjacentRegions}
+      metaDescription="Professional vehicle wrapping, ceramic coating, and paint protection services throughout Wisconsin. Premium fleet branding and protection for businesses in Milwaukee, Madison, Green Bay and beyond."
+      geoRegion="US-WI"
+      geoPlacename="Wisconsin"
+      geoPosition="44.2563;-89.6385"
+      canonicalUrl="https://wrappingtheworld.com/regions/wisconsin"
+    />
   );
 };
 
