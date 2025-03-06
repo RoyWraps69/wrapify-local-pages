@@ -26,16 +26,22 @@ const Index = () => {
         
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="section-title text-center mb-12">Serving Chicago and Surrounding Areas</h2>
+            <h2 className="text-4xl font-serif font-semibold text-wrap-blue mb-4">Serving Chicago and Surrounding Areas</h2>
+            <p className="text-wrap-grey text-lg mb-12 max-w-2xl mx-auto">Professional vehicle wrapping services available throughout the Chicago metropolitan area.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {towns.map((town) => (
                 <Link 
                   key={town.id}
                   to={`/locations/${town.id}`}
-                  className="feature-card hover:bg-wrap-blue hover:text-white group transition-all duration-300"
+                  className="p-6 rounded-lg bg-white shadow-soft hover:bg-wrap-blue hover:text-white group transition-all duration-300"
                 >
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-white">{town.name}</h3>
-                  <p className="text-wrap-grey group-hover:text-white/80">Professional vehicle wraps in {town.name}</p>
+                  <p className="text-wrap-grey group-hover:text-white/80">
+                    Professional vehicle wraps in {town.name}
+                  </p>
+                  <div className="mt-4 text-sm text-wrap-grey/60 group-hover:text-white/60">
+                    {town.distance} miles from Chicago
+                  </div>
                 </Link>
               ))}
             </div>
