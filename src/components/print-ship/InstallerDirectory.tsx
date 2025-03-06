@@ -5,7 +5,7 @@ import DirectoryContent from './installer-directory/DirectoryContent';
 
 const InstallerDirectory: React.FC = () => {
   return (
-    <div className="py-8">
+    <div className="py-8 w-full max-w-full overflow-hidden">
       <ShoppingCartProvider>
         <DirectoryContent />
       </ShoppingCartProvider>

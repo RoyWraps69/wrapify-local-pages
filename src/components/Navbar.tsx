@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Menu, X, Phone, ShoppingBag } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,13 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when navigating
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <header 
@@ -52,8 +60,8 @@ const Navbar = () => {
           <Link to="/wrap-insurance" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Insurance
           </Link>
-          <Link to="/about" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
-            About
+          <Link to="/shopping" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
+            Shopping
           </Link>
           <Link to="/contact" className="text-wrap-dark font-medium hover:text-wrap-red transition-colors">
             Contact
@@ -68,6 +76,12 @@ const Navbar = () => {
             <Phone size={18} />
             <span className="font-medium">312-597-1286</span>
           </a>
+          <Link 
+            to="/shopping" 
+            className="flex items-center space-x-1 text-wrap-blue hover:text-wrap-red mr-2 transition-colors"
+          >
+            <ShoppingBag size={18} />
+          </Link>
           <Link 
             to="/contact" 
             className="btn-primary whitespace-nowrap"
@@ -129,11 +143,11 @@ const Navbar = () => {
             Insurance
           </Link>
           <Link 
-            to="/about" 
+            to="/shopping" 
             className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            About Us
+            Shopping
           </Link>
           <Link 
             to="/contact" 
@@ -151,6 +165,13 @@ const Navbar = () => {
               <Phone size={18} />
               <span className="font-medium">312-597-1286</span>
             </a>
+            <Link 
+              to="/shopping"
+              className="flex items-center space-x-2 text-wrap-blue mb-2"
+            >
+              <ShoppingBag size={18} />
+              <span className="font-medium">View Cart</span>
+            </Link>
             <Link 
               to="/contact" 
               className="btn-primary text-center"

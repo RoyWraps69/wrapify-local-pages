@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { SEOWrapper } from "./components/SEOSchema";
 import Index from "./pages/Index";
 import TownPage from "./pages/TownPage";
@@ -17,6 +17,8 @@ import Testimonials from "./pages/Testimonials";
 import NotFound from "./pages/NotFound";
 import PrintShip from "./pages/PrintShip";
 import WrapInsurance from "./pages/WrapInsurance";
+import Shopping from "./pages/Shopping";
+import useScrollToTop from "./hooks/useScrollToTop";
 
 // Resource Pages
 import VinylWrapCareGuide from "./pages/resources/VinylWrapCareGuide";
@@ -47,6 +49,12 @@ const queryClient = new QueryClient({
   },
 });
 
+// ScrollToTop component that uses the hook
+const ScrollToTop = () => {
+  useScrollToTop();
+  return null;
+};
+
 const App = () => {
   console.log("App component rendering");
   return (
@@ -56,12 +64,14 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/services" element={<Services />} />
               <Route path="/services/:serviceType" element={<ServicePage />} />
               <Route path="/about" element={<About />} />
+              <Route path="/shopping" element={<Shopping />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/testimonials" element={<Testimonials />} />
