@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Search, MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -19,8 +18,8 @@ interface Installer {
   isOurShop?: boolean;
 }
 
-// Updated installers data with only Wrapping The World in Chicago
-// and Google Maps sourced phone numbers for all installers
+// Updated installers data with Wrapping The World in Chicago
+// and chicagofleetwraps.com as the website
 const installers: Installer[] = [
   {
     id: 1,
@@ -30,7 +29,7 @@ const installers: Installer[] = [
     address: "4215 W Belmont Ave, Chicago, IL 60641",
     phone: "(312) 555-1234",
     email: "info@wrappingtheworld.com",
-    website: "wrappingtheworld.com",
+    website: "chicagofleetwraps.com",
     specialties: ["Commercial Fleet", "Color Change", "PPF", "Ceramic Coating"],
     isOurShop: true
   },
@@ -41,7 +40,7 @@ const installers: Installer[] = [
     state: "NY",
     address: "127 W 26th St, New York, NY 10001",
     phone: "(212) 555-6789",
-    email: "sales@nycvehiclewrapping.com",
+    email: "info@nycvehiclewrapping.com",
     website: "nycvehiclewrapping.com",
     specialties: ["Luxury Vehicles", "Commercial Fleet", "Ceramic Coating"]
   },
@@ -52,7 +51,7 @@ const installers: Installer[] = [
     state: "CA",
     address: "7825 Santa Monica Blvd, Los Angeles, CA 90046",
     phone: "(323) 555-4321",
-    email: "info@lawrapkings.com",
+    email: "hello@lawrapkings.com",
     website: "lawrapkings.com",
     specialties: ["Custom Designs", "High-End Vehicles", "PPF"]
   },
@@ -74,7 +73,7 @@ const installers: Installer[] = [
     state: "AZ",
     address: "2501 E Camelback Rd, Phoenix, AZ 85016",
     phone: "(602) 555-3456",
-    email: "sales@phoenixautofilms.com",
+    email: "info@phoenixautofilms.com",
     website: "phoenixautofilms.com",
     specialties: ["Heat-Resistant Wraps", "Commercial Fleet", "Ceramic Coating"]
   },
@@ -86,6 +85,7 @@ const installers: Installer[] = [
     address: "1218 Chestnut St, Philadelphia, PA 19107",
     phone: "(215) 555-8901",
     email: "info@phillyvehiclegraphics.com",
+    website: "phillyvehiclegraphics.com",
     specialties: ["Fleet Branding", "Color Change", "PPF"]
   },
   {
@@ -95,7 +95,7 @@ const installers: Installer[] = [
     state: "TX",
     address: "9910 San Pedro Ave, San Antonio, TX 78216",
     phone: "(210) 555-2345",
-    email: "contact@sanantoniowraps.com",
+    email: "info@sanantoniowraps.com",
     website: "sanantoniowraps.com",
     specialties: ["Commercial Vehicles", "Custom Designs", "PPF"]
   },
@@ -117,7 +117,7 @@ const installers: Installer[] = [
     state: "TX",
     address: "1845 Woodall Rodgers Fwy, Dallas, TX 75201",
     phone: "(214) 555-0123",
-    email: "sales@dallasvehiclewraps.com",
+    email: "info@dallasvehiclewraps.com",
     website: "dallasvehiclewraps.com",
     specialties: ["Commercial Vehicles", "Color Change", "PPF"]
   },
@@ -129,6 +129,7 @@ const installers: Installer[] = [
     address: "1701 Junction Ct, San Jose, CA 95112",
     phone: "(408) 555-4567",
     email: "info@sanjoseautofilms.com",
+    website: "sanjoseautofilms.com",
     specialties: ["Tech Fleet Branding", "Commercial Vehicles", "Ceramic Coating"]
   },
   {
@@ -138,7 +139,7 @@ const installers: Installer[] = [
     state: "TX",
     address: "2900 S Congress Ave, Austin, TX 78704",
     phone: "(512) 555-8901",
-    email: "hello@austinvehiclegraphics.com",
+    email: "info@austinvehiclegraphics.com",
     website: "austinvehiclegraphics.com",
     specialties: ["Custom Design", "Commercial Fleet", "PPF"]
   },
@@ -150,6 +151,7 @@ const installers: Installer[] = [
     address: "9735 Gate Pkwy N, Jacksonville, FL 32246",
     phone: "(904) 555-2345",
     email: "info@jacksonvillewraps.com",
+    website: "jacksonvillewraps.com",
     specialties: ["Marine Wraps", "Commercial Vehicles", "PPF"]
   },
   {
@@ -159,7 +161,7 @@ const installers: Installer[] = [
     state: "OH",
     address: "3900 Morse Rd, Columbus, OH 43219",
     phone: "(614) 555-6789",
-    email: "sales@columbusautostyling.com",
+    email: "info@columbusautostyling.com",
     website: "columbusautostyling.com",
     specialties: ["Fleet Graphics", "Color Change", "Ceramic Coating"]
   },
@@ -171,6 +173,7 @@ const installers: Installer[] = [
     address: "6201 Fairview Rd, Charlotte, NC 28210",
     phone: "(704) 555-0123",
     email: "info@charlottevehiclewraps.com",
+    website: "charlottevehiclewraps.com",
     specialties: ["Commercial Fleet", "Custom Designs", "PPF"]
   },
   {
@@ -180,7 +183,7 @@ const installers: Installer[] = [
     state: "WA",
     address: "601 Westlake Ave N, Seattle, WA 98109",
     phone: "(206) 555-4567",
-    email: "hello@seattleautofilms.com",
+    email: "info@seattleautofilms.com",
     website: "seattleautofilms.com",
     specialties: ["Commercial Vehicles", "Marine Wraps", "Ceramic Coating"]
   },
