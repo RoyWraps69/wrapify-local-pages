@@ -26,18 +26,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               Professional Vehicle Wraps, Ceramic Coatings & Paint Protection in {townName}
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
-              Transform Your Vehicles with Premium Wraps & Protection in {townName}
+              Premium Vehicle Wraps & Protection Services in {townName}
             </h1>
             <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl">
-              Chicago Fleet Wraps delivers exceptional vehicle wrapping services, ceramic coating protection, and paint protection film for businesses and individuals in {townName}. 
-              From commercial fleet branding to hydrophobic ceramic coatings, we transform vehicles into mobile billboards while providing lasting protection.
+              Chicago Fleet Wraps delivers exceptional vehicle wrapping and protection services in {townName}. From commercial fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect vehicles with premium materials and expert installation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/contact" 
                 className="btn-primary flex items-center justify-center gap-2 group"
               >
-                <span>Get a Free Quote</span>
+                <span>Get a Free {townName} Quote</span>
                 <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <a 
@@ -45,7 +44,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 className="btn-secondary flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                <span>Call Us Now</span>
+                <span>Call For {townName} Service</span>
               </a>
             </div>
             <div className="mt-8 flex flex-wrap items-center text-wrap-light/70">

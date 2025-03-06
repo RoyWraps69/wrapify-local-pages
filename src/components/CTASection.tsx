@@ -16,24 +16,26 @@ const CTASection: React.FC<CTASectionProps> = ({ townName = 'Chicago' }) => {
             Professional Vehicle Wraps & Protection in {townName}
           </span>
           <h2 className="text-4xl md:text-5xl font-serif font-semibold mb-6 text-white">
-            Ready to Transform & Protect Your Vehicle?
+            Ready to Transform & Protect Your Vehicle in {townName}?
           </h2>
           <p className="text-wrap-light/90 text-lg mb-8 max-w-3xl mx-auto">
             Get in touch with Chicago Fleet Wraps today for a free consultation and quote. 
-            Our team of vehicle wrap and protection experts in {townName} is ready to help you create the perfect solution for your commercial fleet or personal vehicle.
+            Our team of vehicle wrap and protection experts serving {townName} is ready to help you create the perfect 
+            commercial fleet wraps, color change wraps, ceramic coatings, or paint protection film solution for your business fleet or personal vehicle.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
             <a href="tel:+13125555555" className="btn-secondary flex items-center justify-center gap-2">
               <Phone size={18} />
-              <span>Call Now</span>
+              <span>Call For {townName} Service</span>
             </a>
             <Link to="/contact" className="btn-primary flex items-center justify-center gap-2">
               <Mail size={18} />
-              <span>Get a Free Quote</span>
+              <span>Get a Free {townName} Quote</span>
             </Link>
           </div>
           <p className="text-wrap-light/70 text-sm">
-            Serving {townName} and surrounding areas with premium vehicle wrap, ceramic coating, and paint protection film services.
+            Serving {townName} and surrounding areas with premium vehicle wrap, ceramic coating, and paint protection film services. 
+            We offer mobile service throughout the greater Chicago area.
           </p>
         </div>
       </div>

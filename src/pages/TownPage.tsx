@@ -14,6 +14,7 @@ import MapSection from '@/components/MapSection';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SEOSchema from '@/components/SEOSchema';
+import TownDescription from '@/components/TownDescription';
 import { getTownData } from '@/utils/townData';
 
 const TownPage: React.FC = () => {
@@ -124,6 +125,7 @@ const TownPage: React.FC = () => {
       <Navbar />
       <main>
         <HeroSection townName={name} />
+        <TownDescription townName={name} townData={townData} />
         <ServicesSection townName={name} />
         <BenefitsSection townName={name} />
         <ProcessSection townName={name} />
