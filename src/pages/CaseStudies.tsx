@@ -2,12 +2,22 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOSchema from '@/components/SEOSchema';
+import SEO from '@/components/SEOSchema';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 
-const caseStudies = [
+interface CaseStudy {
+  id: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  logo: string;
+  industry: string;
+  results: string[];
+}
+
+const caseStudies: CaseStudy[] = [
   {
     id: 'local-plumbing-fleet',
     title: 'How City Plumbing Increased Service Calls by 43% with Fleet Wraps',
@@ -91,7 +101,7 @@ const caseStudies = [
 const CaseStudies = () => {
   return (
     <>
-      <SEOSchema 
+      <SEO 
         townName="Chicago"
         pageTitle="Vehicle Wrap & Protection Case Studies | Wrapping The World"
         pageDescription="See real results from our vehicle wrap and protection projects. Browse our case studies featuring commercial fleet branding, color change wraps, ceramic coatings, and paint protection film installations."
