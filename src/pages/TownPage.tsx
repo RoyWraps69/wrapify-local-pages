@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -19,10 +20,16 @@ import { getTownData } from '@/utils/townData';
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
   const navigate = useNavigate();
+  
+  console.log("TownPage rendering with townSlug:", townSlug);
+  
   const townData = getTownData(townSlug || '');
   
   useEffect(() => {
+    console.log("TownPage useEffect running, townData:", townData);
+    
     if (!townData && townSlug) {
+      console.log(`Town not found for slug: ${townSlug}, redirecting to 404`);
       navigate('/not-found', { replace: true });
     }
     
@@ -30,6 +37,7 @@ const TownPage: React.FC = () => {
   }, [townSlug, townData, navigate]);
   
   if (!townData) {
+    console.log("No town data found, returning null");
     return null; // Will be redirected by the useEffect
   }
   
