@@ -5,6 +5,7 @@ import { shopItems } from './data/installers';
 import { useShoppingCart } from './shopping-cart/ShoppingCart';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
+import VehicleCustomizer from './3d-customizer/VehicleCustomizer';
 
 const ColorPicker = () => {
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -47,6 +48,9 @@ const ColorPicker = () => {
           </div>
         ))}
       </div>
+      
+      {/* 3D Vehicle Customizer */}
+      {selectedColor && <VehicleCustomizer selectedColor={selectedColor} />}
       
       {selectedItem && (
         <div className="bg-white p-4 rounded-md border border-gray-200">
