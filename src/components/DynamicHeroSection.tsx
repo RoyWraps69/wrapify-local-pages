@@ -14,14 +14,15 @@ const heroBackgrounds = [
   'https://images.unsplash.com/photo-1621447578051-310ce127825a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Colorful car wrap
   'https://images.unsplash.com/photo-1569171210192-83541e3777ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Vehicle detail
   'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80', // Detailed car shot
-  'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80' // Modern car
+  'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80', // Modern car
+  'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80' // Fleet vehicles
 ];
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
   townName = 'Chicago',
   backgroundImage
 }) => {
-  const [activeBackground, setActiveBackground] = useState(0);
+  const [activeBackground, setActiveBackground] = useState(4); // Start with fleet image
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -64,7 +65,10 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             backgroundImage: `url(${backgroundImage || bg})`,
             backgroundAttachment: 'fixed'
           }}
-        />
+        >
+          {/* Semi-transparent overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
       ))}
       
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
