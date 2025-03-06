@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -28,7 +29,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "postalCode": "60601",
       "addressCountry": "US"
     },
-    "description": `Professional vehicle wrapping services in ${townName} and surrounding areas. Specializing in commercial fleet wraps, color change wraps, custom vehicle graphics, and business vehicle branding with premium 3M and Avery Dennison materials.`,
+    "description": `Professional vehicle wrapping and ceramic coating services in ${townName} and surrounding areas. Specializing in commercial fleet wraps, color change wraps, custom vehicle graphics, and business vehicle branding with premium 3M and Avery Dennison materials for maximum visibility and protection.`,
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 41.8781,
@@ -90,6 +91,16 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "@type": "OfferCatalog",
           "name": "Custom Vehicle Graphics",
           "description": "Partial wraps and custom vinyl graphics for vehicles"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Ceramic Coating Protection",
+          "description": "Premium nano-ceramic protection for vehicle paint"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Paint Protection Film",
+          "description": "Self-healing clear bra and paint protection solutions"
         }
       ]
     }
@@ -98,8 +109,8 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": `Professional Vehicle Wrapping Services in ${townName}`,
-    "serviceType": "Vehicle Wraps",
+    "name": `Professional Vehicle Wrapping & Protection Services in ${townName}`,
+    "serviceType": "Vehicle Wraps and Ceramic Coatings",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Chicago Fleet Wraps"
@@ -108,7 +119,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "@type": "City",
       "name": townName
     },
-    "description": `Premium quality vehicle wrapping services for businesses and individuals in ${townName}. Commercial fleet wraps, color change wraps, and custom graphics using 3M and Avery Dennison materials.`,
+    "description": `Premium quality vehicle wrapping and ceramic coating services for businesses and individuals in ${townName}. Commercial fleet wraps, color change wraps, ceramic coatings, paint protection film, and custom graphics using 3M and Avery Dennison materials.`,
     "offers": [
       {
         "@type": "Offer",
@@ -116,7 +127,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "@type": "Service",
           "name": "Commercial Fleet Wrapping"
         },
-        "description": `Professional fleet vehicle branding for ${townName} businesses`,
+        "description": `Professional fleet vehicle branding for ${townName} businesses - transform vehicles into mobile billboards`,
         "areaServed": townName
       },
       {
@@ -125,7 +136,25 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "@type": "Service",
           "name": "Color Change Wraps"
         },
-        "description": `Complete vehicle color transformation services in ${townName}`,
+        "description": `Complete vehicle color transformation services in ${townName} with premium vinyl materials`,
+        "areaServed": townName
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ceramic Coating Protection"
+        },
+        "description": `Long-lasting hydrophobic nano-ceramic protection for vehicles in ${townName}`,
+        "areaServed": townName
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Paint Protection Film"
+        },
+        "description": `Self-healing clear bra and stone chip protection for ${townName} vehicles`,
         "areaServed": townName
       },
       {
@@ -134,7 +163,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "@type": "Service",
           "name": "Partial Vehicle Wraps"
         },
-        "description": `Partial wraps and custom graphics for vehicles in ${townName}`,
+        "description": `Cost-effective partial wraps and custom graphics for vehicles in ${townName}`,
         "areaServed": townName
       }
     ]
@@ -149,7 +178,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         "name": `Where can I get a professional car wrap in ${townName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Chicago Fleet Wraps provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, and custom vehicle graphics.`
+          "text": `Chicago Fleet Wraps provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, ceramic coatings, paint protection film, and custom vehicle graphics.`
         }
       },
       {
@@ -183,6 +212,22 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "@type": "Answer",
           "text": `Many types of businesses in ${townName} benefit from professional fleet wraps, including: service businesses (plumbing, electrical, HVAC), delivery services, construction companies, real estate agencies, food and catering businesses, retail stores with delivery vehicles, and any business with vehicles that travel throughout ${townName}. Fleet wraps transform ordinary vehicles into powerful mobile advertising that generates thousands of impressions daily.`
         }
+      },
+      {
+        "@type": "Question",
+        "name": `What is ceramic coating and how does it protect my vehicle in ${townName}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Ceramic coating is a liquid polymer applied to your vehicle's exterior that creates a permanent bond with the factory paint, providing superior protection. In ${townName}'s varied climate, ceramic coating offers exceptional protection against UV damage, oxidation, road salt, chemical stains, and environmental contaminants. It creates a hydrophobic surface that repels water, making your vehicle easier to clean while enhancing gloss and preserving color depth for years.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What's the difference between ceramic coating and paint protection film (PPF) for my ${townName} vehicle?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `While both protect your vehicle, they serve different purposes for ${townName} drivers. Ceramic coating provides excellent chemical resistance, enhanced gloss, and makes cleaning easier, but offers minimal physical protection. Paint Protection Film (PPF or clear bra) is a thicker, self-healing film that provides superior protection against rock chips, scratches, and physical damage. Many ${townName} clients choose to combine both: PPF on high-impact areas and ceramic coating over the entire vehicle for comprehensive protection.`
+        }
       }
     ]
   };
@@ -206,6 +251,9 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       <meta property="twitter:title" content={pageTitle} />
       <meta property="twitter:description" content={pageDescription} />
       <meta property="twitter:image" content="https://chicagofleetwraps.com/twitter-image.jpg" />
+      
+      {/* Additional meta keywords */}
+      <meta name="keywords" content="vehicle wraps, fleet wraps, car wraps, ceramic coating, paint protection film, commercial vehicle branding, vehicle graphics, color change wraps, partial wraps, fleet branding, mobile advertising, Chicago vehicle wraps, fleet branding solutions, custom graphics, hydrophobic paint protection, self-healing PPF, clear bra, stone chip protection, vehicle advertising ROI, mobile billboard" />
       
       {/* Structured data */}
       <script type="application/ld+json">

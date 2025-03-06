@@ -23,14 +23,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="max-w-3xl mt-16 md:mt-0">
           <div className="animate-fade-up">
             <span className="inline-block px-4 py-1 bg-wrap-red/20 text-wrap-light rounded-full text-sm font-medium mb-6">
-              Professional Vehicle Wraps & Ceramic Coatings in {townName}
+              Professional Vehicle Wraps, Ceramic Coatings & Paint Protection in {townName}
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
-              Transform Your Vehicle with Premium Wraps in {townName}
+              Transform Your Vehicles with Premium Wraps & Protection in {townName}
             </h1>
             <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl">
-              Chicago Fleet Wraps delivers exceptional vehicle wrapping services and ceramic coating protection for businesses and individuals in {townName}. 
-              From commercial fleet branding to protective ceramic coatings, we bring your vision to life with industry-leading materials.
+              Chicago Fleet Wraps delivers exceptional vehicle wrapping services, ceramic coating protection, and paint protection film for businesses and individuals in {townName}. 
+              From commercial fleet branding to hydrophobic ceramic coatings, we transform vehicles into mobile billboards while providing lasting protection.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
@@ -51,7 +51,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="mt-8 flex flex-wrap items-center text-wrap-light/70">
               <span className="text-sm">Serving {townName} and surrounding areas</span>
               <span className="mx-3 hidden sm:inline">•</span>
-              <span className="text-sm">Premium 3M & Avery Dennison Vinyl</span>
+              <span className="text-sm">Premium 3M & Avery Dennison Materials</span>
               <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">5+ Years Durability</span>
             </div>

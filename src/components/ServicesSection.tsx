@@ -19,38 +19,38 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ townName = 'Chicago' 
     {
       icon: <TruckIcon className="h-12 w-12 text-wrap-red" />,
       title: "Commercial Fleet Wraps",
-      description: `Transform your business vehicles into mobile billboards with our premium fleet wrapping services in ${townName}. Increase brand visibility and leave a lasting impression.`,
+      description: `Transform your business vehicles into mobile billboards with our premium fleet wrapping services in ${townName}. Increase brand visibility and generate thousands of impressions daily with eye-catching vehicle advertising.`,
       link: "/services/commercial-fleet-wraps",
     },
     {
       icon: <Car className="h-12 w-12 text-wrap-red" />,
       title: "Color Change Wraps",
-      description: `Change the look of your vehicle without affecting its resale value. Our color change wraps in ${townName} offer protection while giving your car a stunning new appearance.`,
+      description: `Change the look of your vehicle without affecting its resale value. Our premium color change wraps in ${townName} offer protection while giving your car a stunning new appearance with durable, removable vinyl films.`,
       link: "/services/color-change-wraps",
     },
     {
       icon: <Droplets className="h-12 w-12 text-wrap-red" />,
       title: "Ceramic Coatings",
-      description: `Protect your vehicle's finish with our advanced ceramic coating services in ${townName}. Our nano-ceramic technology provides superior protection against UV rays, bird droppings, road salt, and environmental contaminants.`,
+      description: `Protect your vehicle's finish with our advanced nano-ceramic coating services in ${townName}. Our hydrophobic technology provides superior protection against UV rays, bird droppings, road salt, and environmental contaminants for years.`,
       link: "/services/ceramic-coatings",
+    },
+    {
+      icon: <Shield className="h-12 w-12 text-wrap-red" />,
+      title: "Paint Protection Film",
+      description: `Shield your vehicle from road debris, stone chips, and scratches with our self-healing paint protection film. Our clear bra installations in ${townName} provide invisible defense for high-impact areas of your vehicle.`,
+      link: "/services/paint-protection-film",
     },
     {
       icon: <Palette className="h-12 w-12 text-wrap-red" />,
       title: "Custom Vehicle Graphics",
-      description: `Stand out with custom-designed graphics tailored to your specifications. Our ${townName} design team creates eye-catching visuals that capture attention.`,
+      description: `Stand out with custom-designed vehicle graphics tailored to your specifications. Our ${townName} design team creates eye-catching visuals that capture attention and enhance your mobile advertising strategy.`,
       link: "/services/vehicle-graphics",
     },
     {
       icon: <Building2 className="h-12 w-12 text-wrap-red" />,
       title: "Partial Vehicle Wraps",
-      description: `Make an impact with partial wraps that highlight your key messaging. An affordable alternative for ${townName} businesses looking to enhance their vehicle's appearance.`,
+      description: `Make an impact with cost-effective partial wraps that highlight your key messaging. An affordable alternative for ${townName} businesses looking to enhance their vehicle advertising without a full wrap investment.`,
       link: "/services/partial-wraps",
-    },
-    {
-      icon: <Shield className="h-12 w-12 text-wrap-red" />,
-      title: "Paint Protection Film",
-      description: `Protect your vehicle's original paint from chips, scratches and road debris. Our premium paint protection films offer ${townName} drivers invisible defense for their investment.`,
-      link: "/services/paint-protection-film",
     }
   ];
 
@@ -65,7 +65,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ townName = 'Chicago' 
             Premium Vehicle Wrapping & Protection Services in {townName}
           </h2>
           <p className="section-subtitle">
-            From commercial fleet wraps to ceramic coatings and custom color changes, we offer a comprehensive range of vehicle enhancement and protection solutions to meet your needs.
+            From commercial fleet wraps to ceramic coatings, paint protection film and custom color changes, we offer a comprehensive range of vehicle enhancement and protection solutions to meet your needs.
           </p>
         </div>
 
