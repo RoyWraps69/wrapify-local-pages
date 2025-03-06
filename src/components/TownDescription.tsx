@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { towns } from '@/utils/townData';
+import { getAllTowns, Town } from '@/utils/townData';
 import { MapPin, Car, Shield, TrendingUp, ArrowRight } from 'lucide-react';
 
 interface TownDescriptionProps {
@@ -15,6 +15,7 @@ const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData })
   
   // Function to create a city link
   const CityLink = ({ name }: { name: string }) => {
+    const towns = getAllTowns();
     const townData = towns.find(t => t.name === name);
     const url = townData?.governmentUrl || `https://www.google.com/search?q=${name}+${state}+government+website`;
     return (
