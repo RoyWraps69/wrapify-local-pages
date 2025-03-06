@@ -52,6 +52,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   return (
     <section 
       className="hero-section relative bg-cover bg-center min-h-[90vh] overflow-hidden"
+      style={{ background: 'transparent' }} // Ensure no default background
     >
       {/* Dynamic background with transition effect */}
       {heroBackgrounds.map((bg, index) => (

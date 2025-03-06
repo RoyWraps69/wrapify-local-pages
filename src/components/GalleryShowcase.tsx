@@ -171,13 +171,13 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
                   target.src = "/placeholder.svg"; // Fallback image if original fails to load
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-wrap-blue/90 to-transparent opacity-90"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-90"></div>
               <div className="absolute bottom-0 left-0 p-6 text-white">
                 <span className="inline-block px-3 py-1 bg-wrap-red text-white rounded-full text-xs font-medium mb-2">
                   {item.category}
                 </span>
                 <h3 className="text-lg font-medium mb-2">{item.title}</h3>
-                <p className="text-wrap-light/80 text-sm mb-3">
+                <p className="text-white/80 text-sm mb-3">
                   Project done in {townName} area
                 </p>
                 {item.serviceLink && (
