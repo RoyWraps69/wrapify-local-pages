@@ -26,7 +26,7 @@ const ServicePage: React.FC = () => {
     },
     'ceramic-coatings': {
       title: 'Ceramic Coatings',
-      description: 'Protect your vehicle's paint with our long-lasting ceramic coatings. These coatings repel water, resist scratches, and make cleaning easier while keeping your car looking shiny.',
+      description: "Protect your vehicle's paint with our long-lasting ceramic coatings. These coatings repel water, resist scratches, and make cleaning easier while keeping your car looking shiny.",
       hero: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
     },
     'paint-protection': {
@@ -48,7 +48,7 @@ const ServicePage: React.FC = () => {
 
   const service = serviceInfo[serviceType || ''] || {
     title: 'Service Not Found',
-    description: 'The service you're looking for isn't available. Please check our main services page.',
+    description: "The service you're looking for isn't available. Please check our main services page.",
     hero: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
   };
 
