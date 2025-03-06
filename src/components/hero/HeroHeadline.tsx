@@ -22,12 +22,12 @@ const HeroHeadline: React.FC<HeroHeadlineProps> = ({ townName }) => {
           WRAPPING THE WORLD
         </span>
         <br />
-        <span className="text-white">in {townName}, IL</span>
+        <span className="text-white">in {townName || "Chicago"}, IL</span>
       </h1>
       
       {/* SEO-optimized subheading with town name */}
       <h2 className="text-xl md:text-2xl text-white/90 mb-2 font-light">
-        <span className="italic">Chicago's Premier Vehicle Wrap Service Now in {townName}</span>
+        <span className="italic">Chicago's Premier Vehicle Wrap Service Now in {townName || "Chicago"}</span>
       </h2>
       
       {/* Nationwide service indicator */}
