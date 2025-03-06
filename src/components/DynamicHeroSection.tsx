@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Check, ChevronDown } from 'lucide-react';
@@ -15,7 +14,9 @@ const heroBackgrounds = [
   'https://images.unsplash.com/photo-1569171210192-83541e3777ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Vehicle detail
   'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80', // Detailed car shot
   'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80', // Modern car
-  'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80' // Fleet vehicles
+  'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Fleet vehicles
+  'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Colorful sports car
+  'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'  // Car detail close-up
 ];
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
@@ -51,8 +52,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   
   return (
     <section 
-      className="hero-section relative bg-cover bg-center min-h-[90vh] overflow-hidden"
-      style={{ background: 'transparent' }} // Ensure no default background
+      className="hero-section relative bg-black bg-cover bg-center min-h-[90vh] overflow-hidden"
     >
       {/* Dynamic background with transition effect */}
       {heroBackgrounds.map((bg, index) => (
