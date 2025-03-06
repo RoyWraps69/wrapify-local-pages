@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import HeroSection from '@/components/HeroSection';
@@ -8,7 +9,6 @@ import GalleryShowcase from '@/components/GalleryShowcase';
 import TestimonialSection from '@/components/TestimonialSection';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import MapSection from '@/components/MapSection';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SEOSchema from '@/components/SEOSchema';
@@ -44,14 +44,14 @@ const TownPage: React.FC = () => {
       "description": `Professional vehicle wrapping and ceramic coating services in ${townData?.name}. We specialize in commercial fleet wraps, custom vehicle graphics, ceramic coatings, and paint protection film.`,
       "provider": {
         "@type": "LocalBusiness",
-        "name": "Chicago Fleet Wraps",
+        "name": "Wrapping The World",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Chicago",
           "addressRegion": "IL"
         },
         "telephone": "312-597-1286",
-        "url": "https://chicagofleetwraps.com"
+        "url": "https://wrappingtheworld.com"
       },
       "areaServed": {
         "@type": "City",
@@ -72,17 +72,17 @@ const TownPage: React.FC = () => {
   
   const { name, mapUrl } = townData;
   
-  const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name} | Chicago Fleet Wraps`;
-  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from Chicago's top-rated vehicle enhancement company.`;
-  const pageUrl = `https://chicagofleetwraps.com/locations/${townSlug}`;
-  const canonicalUrl = `https://chicagofleetwraps.com/locations/${townSlug}`;
+  const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name} | Wrapping The World`;
+  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from the world's top-rated vehicle enhancement company.`;
+  const pageUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
+  const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
 
   const locationFaqs = [
     {
       question: `Where can I get professional vehicle wraps in ${name}?`,
       answer: (
         <p>
-          Chicago Fleet Wraps provides premium vehicle wrapping services in {name} and surrounding areas. 
+          Wrapping The World provides premium vehicle wrapping services in {name} and surrounding areas. 
           Our team serves all {name} businesses and residents with high-quality commercial fleet wraps, 
           color change wraps, ceramic coatings, and custom vehicle graphics. Contact us today for 
           a free consultation about your {name} vehicle wrapping project.

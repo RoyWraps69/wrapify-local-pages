@@ -1,5 +1,5 @@
 
-# Chicago Fleet Wraps - Complete Robots.txt file for optimal crawling
+# Wrapping The World - Complete Robots.txt file for optimal crawling
 
 User-agent: *
 Allow: /
@@ -36,4 +36,4 @@ Allow: /
 Allow: /locations/*
 
 # Sitemap location
-Sitemap: https://chicagofleetwraps.com/sitemap.xml
+Sitemap: https://wrappingtheworld.com/sitemap.xml

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
@@ -8,21 +9,21 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Company Info */}
         <div>
-          <h3 className="text-2xl font-serif font-bold mb-6">Chicago Fleet Wraps</h3>
+          <h3 className="text-2xl font-serif font-bold mb-6">Wrapping The World</h3>
           <p className="mb-6 text-wrap-light/80">
             Professional vehicle wrapping services in Chicago and the surrounding areas. Transforming vehicles with premium vinyl wraps since 2010.
           </p>
           <div className="flex space-x-4">
-            <a href="https://facebook.com" className="text-wrap-light hover:text-wrap-red transition-colors">
+            <a href="https://facebook.com/wrappingtheworld" className="text-wrap-light hover:text-wrap-red transition-colors">
               <Facebook size={20} />
             </a>
-            <a href="https://instagram.com" className="text-wrap-light hover:text-wrap-red transition-colors">
+            <a href="https://instagram.com/wrappingtheworld" className="text-wrap-light hover:text-wrap-red transition-colors">
               <Instagram size={20} />
             </a>
-            <a href="https://twitter.com" className="text-wrap-light hover:text-wrap-red transition-colors">
+            <a href="https://twitter.com/wrappingworld" className="text-wrap-light hover:text-wrap-red transition-colors">
               <Twitter size={20} />
             </a>
-            <a href="https://linkedin.com" className="text-wrap-light hover:text-wrap-red transition-colors">
+            <a href="https://linkedin.com/company/wrapping-the-world" className="text-wrap-light hover:text-wrap-red transition-colors">
               <Linkedin size={20} />
             </a>
           </div>
@@ -115,8 +116,8 @@ const Footer = () => {
             </li>
             <li className="flex items-center space-x-3">
               <Mail size={20} className="text-wrap-red flex-shrink-0" />
-              <a href="mailto:roy@chicagofleetwraps.com" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
-                roy@chicagofleetwraps.com
+              <a href="mailto:info@wrappingtheworld.com" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
+                info@wrappingtheworld.com
               </a>
             </li>
           </ul>
@@ -129,7 +130,7 @@ const Footer = () => {
         
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-wrap-light/70 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Chicago Fleet Wraps. All rights reserved.
+            &copy; {new Date().getFullYear()} Wrapping The World. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm text-wrap-light/70">
             <a href="/privacy-policy" className="hover:text-wrap-red transition-colors">

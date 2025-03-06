@@ -11,9 +11,9 @@ const About = () => {
     <>
       <SEOSchema 
         townName="Chicago"
-        pageTitle="About Chicago Fleet Wraps | Expert Vehicle Wrapping & Protection Services"
-        pageDescription="Learn about Chicago Fleet Wraps, the premier provider of professional vehicle wrapping, ceramic coatings, paint protection film, fleet graphics, and commercial vehicle branding in Chicago and surrounding areas."
-        pageUrl="https://chicagofleetwraps.com/about"
+        pageTitle="About Wrapping The World | Expert Vehicle Wrapping & Protection Services"
+        pageDescription="Learn about Wrapping The World, the premier provider of professional vehicle wrapping, ceramic coatings, paint protection film, fleet graphics, and commercial vehicle branding in Chicago and surrounding areas."
+        pageUrl="https://wrappingtheworld.com/about"
       />
       <Navbar />
       <main className="pt-24">
@@ -23,7 +23,7 @@ const About = () => {
           </h1>
           <div className="max-w-3xl">
             <p className="text-wrap-grey text-lg mb-6">
-              <strong>Chicago Fleet Wraps</strong> is the premier destination for professional vehicle wrapping and protection services across the Chicago metropolitan area. 
+              <strong>Wrapping The World</strong> is the premier destination for professional vehicle wrapping and protection services across the Chicago metropolitan area. 
               With over a decade of industry-leading experience and a steadfast commitment to excellence, we specialize in transforming commercial fleets and personal vehicles 
               with high-quality vinyl wraps and ceramic coatings that make a lasting impression, maximize your brand visibility, and protect your investment.
             </p>

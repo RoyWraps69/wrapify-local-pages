@@ -24,9 +24,9 @@ const Contact = () => {
     <>
       <SEOSchema 
         townName="Chicago"
-        pageTitle="Contact Chicago Fleet Wraps | Request Vehicle Wrap Quote"
-        pageDescription="Request a free quote for professional vehicle wrapping services in Chicago. Contact our team of expert installers for fleet graphics, commercial wraps, and custom vehicle branding solutions."
-        pageUrl="https://chicagofleetwraps.com/contact"
+        pageTitle="Contact Wrapping The World | Request Vehicle Wrap Quote"
+        pageDescription="Request a free quote for professional vehicle wrapping services. Contact our team of expert installers for fleet graphics, commercial wraps, and custom vehicle branding solutions."
+        pageUrl="https://wrappingtheworld.com/contact"
       />
       <Navbar />
       <main className="pt-24 pb-16">
@@ -34,10 +34,10 @@ const Contact = () => {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h1 className="text-4xl md:text-5xl font-serif font-bold text-wrap-blue mb-6">
-                Contact Chicago's Vehicle Wrap Experts
+                Contact Our Vehicle Wrap Experts
               </h1>
               <p className="text-wrap-grey text-lg mb-6">
-                Ready to transform your vehicles with professional-grade vinyl wraps? Get in touch with Chicago Fleet Wraps for a free, no-obligation quote on 
+                Ready to transform your vehicles with professional-grade vinyl wraps? Get in touch with Wrapping The World for a free, no-obligation quote on 
                 commercial fleet wrapping, business vehicle branding, or custom color change wraps for your vehicles.
               </p>
               <p className="text-wrap-grey text-lg mb-8">
@@ -59,7 +59,7 @@ const Contact = () => {
                   <Mail className="text-wrap-blue w-6 h-6" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-wrap-grey">roy@chicagofleetwraps.com</p>
+                    <p className="text-wrap-grey">info@wrappingtheworld.com</p>
                     <p className="text-wrap-grey text-sm">For quotes and project inquiries</p>
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -19,9 +20,9 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
   const businessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Chicago Fleet Wraps",
-    "image": "https://chicagofleetwraps.com/logo.png",
-    "logo": "https://chicagofleetwraps.com/logo.png",
+    "name": "Wrapping The World",
+    "image": "https://wrappingtheworld.com/logo.png",
+    "logo": "https://wrappingtheworld.com/logo.png",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "4711 N. Lamon Ave",
@@ -36,9 +37,9 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "latitude": 41.8781,
       "longitude": -87.6298
     },
-    "url": "https://chicagofleetwraps.com",
+    "url": "https://wrappingtheworld.com",
     "telephone": "+13125971286",
-    "email": "roy@chicagofleetwraps.com",
+    "email": "info@wrappingtheworld.com",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -69,10 +70,10 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       }
     ],
     "sameAs": [
-      "https://www.facebook.com/chicagofleetwraps",
-      "https://www.instagram.com/chicagofleetwraps",
-      "https://twitter.com/chifleetwraps",
-      "https://www.linkedin.com/company/chicago-fleet-wraps"
+      "https://www.facebook.com/wrappingtheworld",
+      "https://www.instagram.com/wrappingtheworld",
+      "https://twitter.com/wrappingworld",
+      "https://www.linkedin.com/company/wrapping-the-world"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -120,7 +121,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "name": "Michael Johnson"
         },
         "datePublished": "2023-05-15",
-        "reviewBody": `Chicago Fleet Wraps did an amazing job wrapping our entire delivery fleet. The attention to detail was impressive and the wraps have held up perfectly even with daily use throughout ${townName} and Chicago.`,
+        "reviewBody": `Wrapping The World did an amazing job wrapping our entire delivery fleet. The attention to detail was impressive and the wraps have held up perfectly even with daily use throughout ${townName} and Chicago.`,
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",
@@ -135,7 +136,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
           "name": "Sarah Williams"
         },
         "datePublished": "2023-08-22",
-        "reviewBody": `I had my personal car wrapped with a color change and ceramic coated by Chicago Fleet Wraps. The transformation is incredible and the protection has been excellent through Chicago's weather.`,
+        "reviewBody": `I had my personal car wrapped with a color change and ceramic coated by Wrapping The World. The transformation is incredible and the protection has been excellent through Chicago's weather.`,
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",
@@ -153,7 +154,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
     "serviceType": "Vehicle Wraps and Ceramic Coatings",
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Chicago Fleet Wraps"
+      "name": "Wrapping The World"
     },
     "areaServed": {
       "@type": "City",
@@ -218,7 +219,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         "name": `Where can I get a professional car wrap in ${townName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Chicago Fleet Wraps provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, ceramic coatings, paint protection film, and custom vehicle graphics.`
+          "text": `Wrapping The World provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, ceramic coatings, paint protection film, and custom vehicle graphics.`
         }
       },
       {
@@ -234,7 +235,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         "name": `How long does a professional vehicle wrap last in ${townName}'s climate?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `A professional vehicle wrap installed by Chicago Fleet Wraps typically lasts 5-7 years in ${townName}'s climate. We use premium 3M and Avery Dennison vinyl materials specifically designed to withstand local weather conditions, including hot summers and cold winters. With proper maintenance and care, commercial fleet wraps and color change wraps can maintain their appearance and effectiveness throughout this period.`
+          "text": `A professional vehicle wrap installed by Wrapping The World typically lasts 5-7 years in ${townName}'s climate. We use premium 3M and Avery Dennison vinyl materials specifically designed to withstand local weather conditions, including hot summers and cold winters. With proper maintenance and care, commercial fleet wraps and color change wraps can maintain their appearance and effectiveness throughout this period.`
         }
       },
       {
@@ -242,7 +243,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         "name": `Will a vehicle wrap damage my car's paint?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `No, a professionally installed vehicle wrap from Chicago Fleet Wraps will not damage your car's paint. In fact, wraps provide protection for your vehicle's original paint from UV rays, minor scratches, and small debris. When removed correctly by our ${townName} experts, your original paint will remain in the same condition as when it was wrapped, often in better condition than exposed painted surfaces.`
+          "text": `No, a professionally installed vehicle wrap from Wrapping The World will not damage your car's paint. In fact, wraps provide protection for your vehicle's original paint from UV rays, minor scratches, and small debris. When removed correctly by our ${townName} experts, your original paint will remain in the same condition as when it was wrapped, often in better condition than exposed painted surfaces.`
         }
       },
       {
@@ -275,9 +276,9 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": `Chicago Fleet Wraps - ${townName} Vehicle Wrapping Services`,
+    "name": `Wrapping The World - ${townName} Vehicle Wrapping Services`,
     "description": `Professional vehicle wrapping and ceramic coating services in ${townName}, Illinois. We specialize in commercial fleet wraps, color change wraps, ceramic coatings, paint protection film, and custom graphics using premium 3M and Avery Dennison materials.`,
-    "image": "https://chicagofleetwraps.com/logo.png",
+    "image": "https://wrappingtheworld.com/logo.png",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": townName,
@@ -288,7 +289,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       "@type": "City",
       "name": townName
     },
-    "url": `https://chicagofleetwraps.com/locations/${townName.toLowerCase().replace(/\s+/g, '-')}`,
+    "url": `https://wrappingtheworld.com/locations/${townName.toLowerCase().replace(/\s+/g, '-')}`,
     "telephone": "+13125971286",
     "priceRange": "$$",
     "serviceArea": {
@@ -309,7 +310,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       <link rel="canonical" href={pageUrl} />
       
       <meta name="keywords" content={townKeywords} />
-      <meta name="author" content="Chicago Fleet Wraps" />
+      <meta name="author" content="Wrapping The World" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="content-language" content="en-us" />
       
@@ -317,15 +318,15 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       <meta property="og:url" content={pageUrl} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
-      <meta property="og:image" content="https://chicagofleetwraps.com/og-image.jpg" />
-      <meta property="og:site_name" content="Chicago Fleet Wraps" />
+      <meta property="og:image" content="https://wrappingtheworld.com/og-image.jpg" />
+      <meta property="og:site_name" content="Wrapping The World" />
       <meta property="og:locale" content="en_US" />
       
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={pageUrl} />
       <meta property="twitter:title" content={pageTitle} />
       <meta property="twitter:description" content={pageDescription} />
-      <meta property="twitter:image" content="https://chicagofleetwraps.com/twitter-image.jpg" />
+      <meta property="twitter:image" content="https://wrappingtheworld.com/twitter-image.jpg" />
       
       <script type="application/ld+json">
         {JSON.stringify(businessSchema)}

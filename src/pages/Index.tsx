@@ -29,7 +29,7 @@ const Index = () => {
     <>
       <Helmet>
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <link rel="canonical" href="https://chicagofleetwraps.com" />
+        <link rel="canonical" href="https://wrappingtheworld.com" />
         <meta name="keywords" content={`vehicle wraps Chicago, car wraps Chicago, fleet wraps Chicago, ceramic coating Chicago, paint protection film Chicago, commercial vehicle wraps, mobile advertising, business vehicle branding, ${topTownNames} vehicle wraps`} />
         <meta name="geo.region" content="US-IL" />
         <meta name="geo.placename" content="Chicago" />
@@ -40,9 +40,9 @@ const Index = () => {
       
       <SEOSchema 
         townName="Chicago"
-        pageTitle="Chicago Fleet Wraps | Professional Vehicle Wrapping & Ceramic Coating Services"
-        pageDescription={`Transform your vehicles with premium wraps and protection from Chicago Fleet Wraps. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago and surrounding areas including ${topTownNames}.`}
-        pageUrl="https://chicagofleetwraps.com"
+        pageTitle="Wrapping The World | Professional Vehicle Wrapping & Ceramic Coating Services"
+        pageDescription={`Transform your vehicles with premium wraps and protection from Wrapping The World. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago and surrounding areas including ${topTownNames}.`}
+        pageUrl="https://wrappingtheworld.com"
       />
       <Navbar />
       <main>

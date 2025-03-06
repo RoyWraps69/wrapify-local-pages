@@ -14,9 +14,9 @@ const Services = () => {
     <>
       <SEOSchema 
         townName="Chicago"
-        pageTitle="Professional Vehicle Wrapping, Ceramic Coating & Paint Protection | Chicago Fleet Wraps"
+        pageTitle="Professional Vehicle Wrapping, Ceramic Coating & Paint Protection | Wrapping The World"
         pageDescription="Discover our premium vehicle wrapping and protection services including commercial fleet branding, ceramic coatings, paint protection film, color change wraps, and custom vehicle graphics for businesses throughout Chicago."
-        pageUrl="https://chicagofleetwraps.com/services"
+        pageUrl="https://wrappingtheworld.com/services"
       />
       <Navbar />
       <main className="pt-24">
@@ -25,7 +25,7 @@ const Services = () => {
             Professional Vehicle Wrapping, Ceramic Coating & Paint Protection Services in Chicago
           </h1>
           <p className="text-wrap-grey text-lg mb-6 max-w-3xl">
-            At Chicago Fleet Wraps, we deliver industry-leading vehicle transformation and protection solutions designed to enhance and shield your vehicles. 
+            At Wrapping The World, we deliver industry-leading vehicle transformation and protection solutions designed to enhance and shield your vehicles. 
             Our comprehensive range of services includes commercial fleet branding, nano-ceramic paint protection, self-healing paint protection film, custom vehicle graphics, and premium color change wraps for businesses and individuals throughout Chicago and the surrounding suburbs.
           </p>
           <p className="text-wrap-grey text-lg mb-6 max-w-3xl">
