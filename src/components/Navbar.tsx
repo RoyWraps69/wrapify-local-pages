@@ -55,8 +55,15 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="font-serif font-bold text-2xl text-wrap-blue">Wrapping The World</span>
+        <Link to="/" className="flex items-center">
+          <img 
+            src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
+            alt="Wrapping The World Logo" 
+            className={cn(
+              "transition-all duration-300",
+              isScrolled ? "h-10" : "h-12"
+            )}
+          />
         </Link>
 
         {/* Desktop Navigation */}
