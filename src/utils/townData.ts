@@ -161,3 +161,12 @@ export const getAllTownIds = (): string[] => {
 export const getTownsWithin = (distance: number): Town[] => {
   return towns.filter(town => town.distance <= distance);
 };
+
+// Add the missing functions
+export const getAllTowns = (): Town[] => {
+  return towns;
+};
+
+export const getTownData = (townSlug: string): Town | undefined => {
+  return towns.find(town => town.id === townSlug);
+};

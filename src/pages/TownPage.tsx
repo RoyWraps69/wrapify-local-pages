@@ -34,15 +34,7 @@ const TownPage: React.FC = () => {
     );
   }
   
-  const { 
-    name, 
-    description, 
-    heroTitle, 
-    heroSubtitle,
-    serviceIntro,
-    benefits,
-    testimonials
-  } = townData;
+  const { name } = townData;
   
   const pageTitle = `Professional Vehicle Wraps in ${name} | Chicago Fleet Wraps`;
   const pageDescription = `Premium quality vehicle wraps and fleet graphics in ${name}. Transform your business vehicles with custom wraps from Chicago's top-rated wrap company.`;
@@ -58,12 +50,12 @@ const TownPage: React.FC = () => {
       />
       <Navbar />
       <main>
-        <HeroSection title={heroTitle} subtitle={heroSubtitle} townName={name} />
-        <ServicesSection intro={serviceIntro} townName={name} />
-        <BenefitsSection benefits={benefits} townName={name} />
+        <HeroSection townName={name} />
+        <ServicesSection townName={name} />
+        <BenefitsSection townName={name} />
         <ProcessSection townName={name} />
         <GalleryShowcase townName={name} />
-        <TestimonialSection testimonials={testimonials} townName={name} />
+        <TestimonialSection townName={name} />
         <FAQSection townName={name} />
         <MapSection townName={name} />
         <CTASection townName={name} />

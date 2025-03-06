@@ -21,12 +21,8 @@ const Index = () => {
       />
       <Navbar />
       <main>
-        <HeroSection 
-          title="Professional Vehicle Wraps in Chicago" 
-          subtitle="Transform your fleet with high-quality custom wraps" 
-          townName="Chicago"
-        />
-        <ServicesSection intro="Our premium vehicle wrapping services" townName="Chicago" />
+        <HeroSection townName="Chicago" />
+        <ServicesSection townName="Chicago" />
         
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -34,8 +30,8 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {towns.map((town) => (
                 <Link 
-                  key={town.slug}
-                  to={`/locations/${town.slug}`}
+                  key={town.id}
+                  to={`/locations/${town.id}`}
                   className="feature-card hover:bg-wrap-blue hover:text-white group transition-all duration-300"
                 >
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-white">{town.name}</h3>
