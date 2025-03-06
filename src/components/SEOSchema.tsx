@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 interface SEOSchemaProps {
   townName: string;
@@ -156,6 +156,15 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         {JSON.stringify(faqSchema)}
       </script>
     </Helmet>
+  );
+};
+
+// Create a wrapper component that includes the HelmetProvider
+export const SEOWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
+  return (
+    <HelmetProvider>
+      {children}
+    </HelmetProvider>
   );
 };
 
