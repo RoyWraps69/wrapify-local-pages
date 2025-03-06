@@ -13,6 +13,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import SEOSchema from '@/components/SEOSchema';
 import TownDescription from '@/components/TownDescription';
+import MapSection from '@/components/MapSection';
 import { getTownData } from '@/utils/townData';
 import { Helmet } from 'react-helmet-async';
 
