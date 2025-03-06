@@ -61,11 +61,14 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             activeBackground === index ? "opacity-100" : "opacity-0"
           )}
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.75), rgba(29, 53, 87, 0.6)), url(${backgroundImage || bg})`,
+            backgroundImage: `url(${backgroundImage || bg})`,
             backgroundAttachment: 'fixed'
           }}
         />
       ))}
+      
+      {/* Semi-transparent overlay for text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
