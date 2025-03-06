@@ -6,9 +6,9 @@ import Footer from '@/components/footer/Footer';
 import SEOSchema from '@/components/SEOSchema';
 import { getTownData } from '@/utils/townData';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
-import TownStructuredData from '@/components/town/TownStructuredData';
-import TownPageContent from '@/components/town/TownPageContent';
-import { createTownFAQs } from '@/components/town/TownFAQData';
+import TownStructuredData from '@/components/town/seo/TownStructuredData';
+import TownPageContent from '@/components/town/layout/TownPageContent';
+import { createTownFAQs } from '@/components/town/data/TownFAQData';
 
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();

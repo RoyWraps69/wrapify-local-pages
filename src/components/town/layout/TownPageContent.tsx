@@ -8,7 +8,7 @@ import GalleryShowcase from '@/components/GalleryShowcase';
 import TestimonialSection from '@/components/TestimonialSection';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
-import TownDescription from '@/components/TownDescription';
+import TownDescription from '@/components/town/sections/TownDescription';
 import MapSection from '@/components/MapSection';
 
 interface TownPageContentProps {
