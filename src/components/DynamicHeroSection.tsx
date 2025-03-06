@@ -82,12 +82,12 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             "transition-all duration-1000 transform",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
-            {/* Big WRAPPING THE WORLD logo */}
+            {/* Big WRAPPING THE WORLD logo - Updated to be 1.5x larger */}
             <div className="flex justify-center mb-6">
               <img 
                 src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
                 alt="WRAPPING THE WORLD" 
-                className="w-64 h-auto max-w-full animate-fade-in-down drop-shadow-lg"
+                className="w-96 h-auto max-w-full animate-fade-in-down drop-shadow-lg"
               />
             </div>
             
