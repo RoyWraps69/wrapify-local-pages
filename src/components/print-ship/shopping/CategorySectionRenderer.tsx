@@ -7,7 +7,7 @@ import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingC
 
 interface CategorySectionRendererProps {
   activeCategory: string;
-  categoryKey: 'merchandise' | 'wrap_material' | 'protection' | 'design';
+  categoryKey: 'merchandise' | 'wrap_material' | 'protection' | 'design' | 'shipping' | 'premium_listing';
   items: ShopItem[];
   title: string;
   description: string;
@@ -30,7 +30,9 @@ const CategorySectionRenderer = ({
     merchandise: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8",
     wrap_material: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
     protection: "grid grid-cols-1 md:grid-cols-3 gap-8",
-    design: "grid grid-cols-1 md:grid-cols-2 gap-8"
+    design: "grid grid-cols-1 md:grid-cols-2 gap-8",
+    shipping: "grid grid-cols-1 md:grid-cols-3 gap-8",
+    premium_listing: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
   };
 
   return (

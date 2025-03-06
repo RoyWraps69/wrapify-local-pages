@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { InstallerInfo } from '../types/installer';
+import { Installer } from '../types/installer';
 import InstallerCard from './InstallerCard';
 import PremiumListingPromo from './PremiumListingPromo';
 import { useShoppingCart } from '../shopping-cart/ShoppingCart';
 
 interface DirectorySearchResultsProps {
-  results: InstallerInfo[];
+  results: Installer[];
   isLoading: boolean;
   searchPerformed: boolean;
 }
@@ -65,7 +65,7 @@ const DirectorySearchResults: React.FC<DirectorySearchResultsProps> = ({
         <div className="lg:col-span-2">
           <div className="space-y-6">
             {results.map(installer => (
-              <InstallerCard key={installer.id} installer={installer} />
+              <InstallerCard key={installer.id} installer={installer} onSelect={() => {}} />
             ))}
           </div>
         </div>

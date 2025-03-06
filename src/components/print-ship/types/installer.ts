@@ -1,3 +1,4 @@
+
 export interface Installer {
   id: number;
   name: string;
@@ -19,7 +20,7 @@ export interface ShopItem {
   name: string;
   description: string;
   price: number;
-  category: 'wrap_material' | 'design' | 'protection' | 'merchandise' | 'premium_listing';
+  category: 'wrap_material' | 'design' | 'protection' | 'merchandise' | 'premium_listing' | 'shipping';
   image?: string;
   color?: string;
   term?: '1_month' | '3_months' | '6_months' | '12_months';

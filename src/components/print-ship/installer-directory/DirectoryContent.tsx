@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Installer, ShopItem } from '../types/installer';
 import { installers } from '../data/installers';
@@ -17,24 +18,30 @@ const DirectoryContent: React.FC = () => {
   const [filteredInstallers, setFilteredInstallers] = useState<Installer[]>(installers);
   const [selectedInstaller, setSelectedInstaller] = useState<Installer | null>(null);
   const [showSubmissionForm, setShowSubmissionForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [searchPerformed, setSearchPerformed] = useState(false);
   const { toast } = useToast();
   const { addItem } = useShoppingCart();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchQuery.trim() === "") {
-      setFilteredInstallers(installers);
-      return;
-    }
+    setIsLoading(true);
+    setSearchPerformed(true);
     
-    const query = searchQuery.toLowerCase();
-    const results = installers.filter(
-      installer => 
-        installer.city.toLowerCase().includes(query) || 
-        installer.state.toLowerCase().includes(query)
-    );
-    
-    setFilteredInstallers(results);
+    setTimeout(() => {
+      if (searchQuery.trim() === "") {
+        setFilteredInstallers(installers);
+      } else {
+        const query = searchQuery.toLowerCase();
+        const results = installers.filter(
+          installer => 
+            installer.city.toLowerCase().includes(query) || 
+            installer.state.toLowerCase().includes(query)
+        );
+        setFilteredInstallers(results);
+      }
+      setIsLoading(false);
+    }, 500); // Simulate loading for half a second
   };
 
   const handleSelectInstaller = (installer: Installer) => {
@@ -56,28 +63,35 @@ const DirectoryContent: React.FC = () => {
         setShowSubmissionForm={setShowSubmissionForm} 
       />
       
-      {showSubmissionForm && (
+      {showSubmissionForm ? (
         <div className="max-w-3xl mx-auto mb-10">
           <InstallerSubmissionForm />
         </div>
-      )}
-
-      <MiniCart />
-
-      {!selectedInstaller ? (
-        <DirectorySearchResults
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          handleSearch={handleSearch}
-          filteredInstallers={filteredInstallers}
-          handleSelectInstaller={handleSelectInstaller}
-          handleAddToCart={handleAddToCart}
-        />
       ) : (
-        <ContactForm 
-          selectedInstaller={selectedInstaller}
-          onBack={() => setSelectedInstaller(null)}
-        />
+        <>
+          <MiniCart />
+          
+          {!selectedInstaller ? (
+            <>
+              <SearchForm 
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                handleSearch={handleSearch}
+              />
+              
+              <DirectorySearchResults
+                results={filteredInstallers}
+                isLoading={isLoading}
+                searchPerformed={searchPerformed}
+              />
+            </>
+          ) : (
+            <ContactForm 
+              selectedInstaller={selectedInstaller}
+              onBack={() => setSelectedInstaller(null)}
+            />
+          )}
+        </>
       )}
     </>
   );
