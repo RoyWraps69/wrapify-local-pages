@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   vehicleSizes, 
@@ -82,13 +81,13 @@ const PrintShipContent: React.FC = () => {
       const customMaterial: ShopItem = {
         ...material,
         price: price.subtotal, // Use the calculated price
-        description: `${selectedMaterial.name} for ${selectedVehicle.name} (${Math.round(coverage * 100)}% coverage)`
+        description: `${selectedMaterial.name} for ${selectedVehicle.category} (${Math.round(coverage * 100)}% coverage)`
       };
       addItem(customMaterial);
     }
 
     // Add design service if selected
-    if (selectedDesign.price > 0) {
+    if (selectedDesign.priceAdjustment > 0) {
       const design = shopItems.find(item => 
         item.category === 'design' && 
         item.name.toLowerCase().includes(selectedDesign.name.toLowerCase())

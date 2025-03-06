@@ -2,7 +2,7 @@
 import React, { useState, useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment, ContactShadows } from '@react-three/drei';
-import { Mesh } from 'three';
+import { Mesh, MeshStandardMaterial } from 'three';
 import { Button } from '@/components/ui/button';
 import { RotateCcw, ZoomIn, ZoomOut } from 'lucide-react';
 
@@ -34,10 +34,16 @@ function Vehicle3DModel({ position = [0, 0, 0], scale = 1, color, modelPath }: V
       if (mesh.material) {
         if (Array.isArray(mesh.material)) {
           mesh.material.forEach(mat => {
-            mat.color.set(color);
+            // Cast to MeshStandardMaterial to access color property
+            if ((mat as MeshStandardMaterial).color) {
+              (mat as MeshStandardMaterial).color.set(color);
+            }
           });
         } else {
-          mesh.material.color.set(color);
+          // Cast to MeshStandardMaterial to access color property
+          if ((mesh.material as MeshStandardMaterial).color) {
+            (mesh.material as MeshStandardMaterial).color.set(color);
+          }
         }
       }
     }
