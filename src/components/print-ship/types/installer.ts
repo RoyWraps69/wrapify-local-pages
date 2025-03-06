@@ -20,7 +20,7 @@ export interface ShopItem {
   name: string;
   description: string;
   price: number;
-  category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping';
+  category: 'premium_listing' | 'wrap_material' | 'design' | 'protection' | 'shipping' | 'merchandise';
   term?: '1_month' | '3_months' | '6_months' | '12_months'; // For subscription-based items
   featured?: boolean;
   bestValue?: boolean;
@@ -29,4 +29,14 @@ export interface ShopItem {
 
 export interface CartItem extends ShopItem {
   quantity: number;
+}
+
+export interface MembershipUser {
+  id: string;
+  email: string;
+  fullName: string;
+  company?: string;
+  isPremium: boolean;
+  premiumUntil?: string;
+  joinDate: string;
 }

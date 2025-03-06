@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, ShoppingBag } from 'lucide-react';
+import { Menu, X, Phone, ShoppingBag, User } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,9 +19,23 @@ const Navbar = () => {
       }
     };
 
+    // Check if user is logged in
+    const checkAuth = () => {
+      const isAuthenticated = localStorage.getItem('isAuthenticated');
+      setIsLoggedIn(!!isAuthenticated);
+    };
+
     window.addEventListener('scroll', handleScroll);
+    checkAuth();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Check login status when location changes
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    setIsLoggedIn(!!isAuthenticated);
+  }, [location]);
 
   // Close mobile menu when navigating
   useEffect(() => {
@@ -82,6 +97,25 @@ const Navbar = () => {
           >
             <ShoppingBag size={18} />
           </Link>
+          
+          {isLoggedIn ? (
+            <Link 
+              to="/member-dashboard" 
+              className="flex items-center space-x-1 text-wrap-blue hover:text-wrap-red mr-2 transition-colors"
+            >
+              <User size={18} />
+              <span className="font-medium">My Account</span>
+            </Link>
+          ) : (
+            <Link 
+              to="/login" 
+              className="flex items-center space-x-1 text-wrap-blue hover:text-wrap-red mr-2 transition-colors"
+            >
+              <User size={18} />
+              <span className="font-medium">Login</span>
+            </Link>
+          )}
+          
           <Link 
             to="/contact" 
             className="btn-primary whitespace-nowrap"
@@ -156,6 +190,33 @@ const Navbar = () => {
           >
             Contact
           </Link>
+          
+          {isLoggedIn ? (
+            <Link 
+              to="/member-dashboard" 
+              className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              My Account
+            </Link>
+          ) : (
+            <>
+              <Link 
+                to="/login" 
+                className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Login
+              </Link>
+              <Link 
+                to="/register" 
+                className="text-wrap-blue font-medium text-xl py-2 border-b border-gray-100"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Register
+              </Link>
+            </>
+          )}
           
           <div className="pt-4 flex flex-col space-y-4">
             <a 

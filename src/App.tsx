@@ -18,6 +18,9 @@ import NotFound from "./pages/NotFound";
 import PrintShip from "./pages/PrintShip";
 import WrapInsurance from "./pages/WrapInsurance";
 import Shopping from "./pages/Shopping";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import MemberDashboard from "./pages/MemberDashboard";
 import useScrollToTop from "./hooks/useScrollToTop";
 
 // Resource Pages
@@ -77,6 +80,11 @@ const App = () => {
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/print-ship" element={<PrintShip />} />
               <Route path="/wrap-insurance" element={<WrapInsurance />} />
+              
+              {/* Membership Pages */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/member-dashboard" element={<MemberDashboard />} />
               
               {/* Town Pages */}
               <Route path="/locations/:townSlug" element={<TownPage />} />

@@ -1,4 +1,3 @@
-
 import { Installer } from '../types/installer';
 
 export const installers: Installer[] = [
@@ -12,7 +11,10 @@ export const installers: Installer[] = [
     email: "info@wrappingtheworld.com",
     website: "wrappingtheworld.com",
     specialties: ["Commercial Fleet", "Color Change", "PPF", "Ceramic Coating"],
-    isOurShop: true
+    isOurShop: true,
+    isPremium: true,
+    featured: true,
+    premiumUntil: "2024-12-31"
   },
   {
     id: 2,
@@ -25,7 +27,6 @@ export const installers: Installer[] = [
     website: "nycvehiclewrapping.com",
     specialties: ["Luxury Vehicles", "Commercial Fleet", "Ceramic Coating"],
     isPremium: true,
-    featured: true,
     premiumUntil: "2023-12-31"
   },
   {
@@ -178,7 +179,6 @@ export const installers: Installer[] = [
 ];
 
 export const shopItems = [
-  // Premium Listing Items
   {
     id: 'premium_1_month',
     name: 'Premium Listing - 1 Month',
@@ -214,7 +214,6 @@ export const shopItems = [
     featured: true,
   },
   
-  // Wrap Material Items
   {
     id: 'wrap_standard',
     name: 'Standard Wrap Material',
@@ -230,7 +229,6 @@ export const shopItems = [
     category: 'wrap_material',
   },
   
-  // Protection Items
   {
     id: 'ceramic_coating',
     name: 'Ceramic Coating Protection',
@@ -253,7 +251,6 @@ export const shopItems = [
     category: 'protection',
   },
   
-  // Design Services
   {
     id: 'design_basic',
     name: 'Basic Design Service',
@@ -269,7 +266,6 @@ export const shopItems = [
     category: 'design',
   },
   
-  // Shipping Options
   {
     id: 'shipping_standard',
     name: 'Standard Shipping',
@@ -290,5 +286,86 @@ export const shopItems = [
     description: 'Next business day delivery',
     price: 49.99,
     category: 'shipping',
+  },
+  
+  {
+    id: 'tshirt_black_s',
+    name: 'Wrapping The World T-Shirt - Black Small',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Black, Size S',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png',
+  },
+  {
+    id: 'tshirt_black_m',
+    name: 'Wrapping The World T-Shirt - Black Medium',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Black, Size M',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png',
+  },
+  {
+    id: 'tshirt_black_l',
+    name: 'Wrapping The World T-Shirt - Black Large',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Black, Size L',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png',
+  },
+  {
+    id: 'tshirt_black_xl',
+    name: 'Wrapping The World T-Shirt - Black XL',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Black, Size XL',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png',
+  },
+  {
+    id: 'tshirt_black_xxl',
+    name: 'Wrapping The World T-Shirt - Black XXL',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Black, Size XXL',
+    price: 27.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png',
+  },
+  {
+    id: 'tshirt_grey_s',
+    name: 'Wrapping The World T-Shirt - Heather Grey Small',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Heather Grey, Size S',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png',
+  },
+  {
+    id: 'tshirt_grey_m',
+    name: 'Wrapping The World T-Shirt - Heather Grey Medium',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Heather Grey, Size M',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png',
+  },
+  {
+    id: 'tshirt_grey_l',
+    name: 'Wrapping The World T-Shirt - Heather Grey Large',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Heather Grey, Size L',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png',
+  },
+  {
+    id: 'tshirt_grey_xl',
+    name: 'Wrapping The World T-Shirt - Heather Grey XL',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Heather Grey, Size XL',
+    price: 24.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png',
+  },
+  {
+    id: 'tshirt_grey_xxl',
+    name: 'Wrapping The World T-Shirt - Heather Grey XXL',
+    description: 'Premium cotton t-shirt with Wrapping The World logo, Heather Grey, Size XXL',
+    price: 27.99,
+    category: 'merchandise',
+    image: '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png',
   },
 ];
