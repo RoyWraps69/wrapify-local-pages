@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   vehicleSizes, 
@@ -16,6 +17,7 @@ import PriceSummary from './PriceSummary';
 import WrapAddOns from './WrapAddOns';
 import BottomCTA from './BottomCTA';
 import UploadArtwork from './UploadArtwork';
+import InstallerDirectory from './InstallerDirectory';
 
 const PrintShipSection: React.FC = () => {
   // State for selected options
@@ -101,6 +103,19 @@ const PrintShipSection: React.FC = () => {
           selectedAddOns={selectedAddOns}
           setSelectedAddOns={setSelectedAddOns}
         />
+        
+        {/* Local Installers Directory - New Addition */}
+        <div className="mt-16 border-t border-gray-200 pt-12">
+          <h2 className="text-3xl font-serif font-semibold text-wrap-blue text-center mb-4">
+            Professional Installation Network
+          </h2>
+          <p className="text-center text-wrap-grey mb-10 max-w-3xl mx-auto">
+            Wrap shops across the USA charge different installation rates based on vehicle type, complexity, and local market conditions. 
+            Connect with one of our trusted installation partners in major cities nationwide.
+          </p>
+          
+          <InstallerDirectory />
+        </div>
         
         {/* Bottom CTA */}
         <BottomCTA />
