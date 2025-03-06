@@ -1,8 +1,39 @@
 
+# Chicago Fleet Wraps - Complete Robots.txt file for optimal crawling
+
 User-agent: *
 Allow: /
 
+# Disallow specific pages
 Disallow: /not-found
 Disallow: /admin/
 
+# Allow all important sections
+Allow: /services/
+Allow: /gallery
+Allow: /about
+Allow: /contact
+Allow: /locations/
+
+# Crawl-delay for non-Google bots
+User-agent: *
+Crawl-delay: 1
+
+# Specific instructions for Google
+User-agent: Googlebot
+Allow: /
+
+# Specific instructions for Google Images
+User-agent: Googlebot-Image
+Allow: /gallery
+Allow: /services/
+
+# Specific instructions for Bing
+User-agent: Bingbot
+Allow: /
+
+# Allow all Town pages for full local SEO crawling
+Allow: /locations/*
+
+# Sitemap location
 Sitemap: https://chicagofleetwraps.com/sitemap.xml
