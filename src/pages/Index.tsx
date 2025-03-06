@@ -1,15 +1,17 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
+import TestimonialSection from '@/components/TestimonialSection';
 import SEOSchema from '@/components/SEOSchema';
 import { getAllTowns } from '@/utils/townData';
 
 const Index = () => {
   console.log("Index component rendering");
+  const [showTowns, setShowTowns] = useState(false);
   
   useEffect(() => {
     console.log("Index component mounted");
@@ -30,28 +32,39 @@ const Index = () => {
       <main>
         <HeroSection townName="Chicago" />
         <ServicesSection townName="Chicago" />
+        <TestimonialSection townName="Chicago" />
         
         <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-serif font-semibold text-wrap-blue mb-4">Serving Chicago and Surrounding Areas</h2>
-            <p className="text-wrap-grey text-lg mb-12 max-w-2xl mx-auto">Professional vehicle wrapping services available throughout the Chicago metropolitan area.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {towns.map((town) => (
-                <Link 
-                  key={town.id}
-                  to={`/locations/${town.id}`}
-                  className="p-6 rounded-lg bg-white shadow-soft hover:bg-wrap-blue hover:text-white group transition-all duration-300"
-                >
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-white">{town.name}</h3>
-                  <p className="text-wrap-grey group-hover:text-white/80">
-                    Professional vehicle wraps in {town.name}
-                  </p>
-                  <div className="mt-4 text-sm text-wrap-grey/60 group-hover:text-white/60">
-                    {town.distance} miles from Chicago
-                  </div>
-                </Link>
-              ))}
-            </div>
+            <p className="text-wrap-grey text-lg mb-6 max-w-2xl mx-auto">Professional vehicle wrapping services available throughout the Chicago metropolitan area.</p>
+            
+            <button 
+              onClick={() => setShowTowns(!showTowns)}
+              className="inline-flex items-center text-wrap-blue hover:text-wrap-red mb-8 transition-colors text-sm font-medium"
+            >
+              <span>{showTowns ? 'Hide' : 'View'} Service Locations</span>
+              <svg className={`ml-1 w-4 h-4 transition-transform ${showTowns ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            {showTowns && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-left">
+                {towns.map((town) => (
+                  <Link 
+                    key={town.id}
+                    to={`/locations/${town.id}`}
+                    className="p-3 text-sm rounded-md bg-white shadow-md hover:bg-wrap-blue hover:text-white group transition-all duration-300"
+                  >
+                    <p className="font-medium">{town.name}</p>
+                    <p className="text-xs text-wrap-grey/80 group-hover:text-white/80">
+                      {town.distance} miles from Chicago
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>

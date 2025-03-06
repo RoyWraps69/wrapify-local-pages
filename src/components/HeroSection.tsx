@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`
       }}
     >
-      <div className="container mx-auto px-4 h-full flex items-center">
+      <div className="container mx-auto px-4 h-full flex items-center relative z-10">
         <div className="max-w-3xl mt-16 md:mt-0">
           <div className="animate-fade-up">
             <span className="inline-block px-4 py-1 bg-wrap-red/20 text-wrap-light rounded-full text-sm font-medium mb-6">
@@ -59,8 +59,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         </div>
       </div>
 
-      {/* Hero image overlay/design element */}
-      <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-2/5 h-80 bg-wrap-red/10 backdrop-blur-md rounded-l-3xl"></div>
+      {/* Updated design element positioning */}
+      <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-2/5 h-80 bg-wrap-red/10 backdrop-blur-md rounded-l-3xl z-0"></div>
     </section>
   );
 };

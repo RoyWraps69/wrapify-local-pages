@@ -36,6 +36,48 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
     rating: 5,
     text: "We wrapped our entire fleet of 12 vehicles and the consistency across all vehicles was impressive. The team was professional, efficient, and delivered on time as promised. Our brand visibility has increased significantly.",
     service: "Commercial Fleet Wraps"
+  },
+  {
+    name: "Jennifer Reynolds",
+    location: "Restaurant Owner",
+    rating: 5,
+    text: "My food truck's wrap has become a conversation starter wherever we park. The vibrant design captures our brand essence perfectly and has significantly boosted our visibility at events.",
+    service: "Food Truck Wrapping"
+  },
+  {
+    name: "Robert Chen",
+    location: "Tech Company CEO",
+    rating: 5,
+    text: "As we expanded our delivery service, having consistently branded vehicles was essential. The team provided excellent service and our wrapped vans are now recognizable throughout the city.",
+    service: "Fleet Branding"
+  },
+  {
+    name: "Alicia Gomez",
+    location: "Real Estate Agent",
+    rating: 5,
+    text: "My wrapped car has become my best marketing investment. The professional finish and attention to detail have made my vehicle stand out, and I've received numerous client inquiries directly because of it.",
+    service: "Personal Vehicle Wrap"
+  },
+  {
+    name: "Thomas Washington",
+    location: "Construction Company Owner",
+    rating: 5,
+    text: "Our fleet of work trucks looks incredibly professional after being wrapped. The durability has been excellent even with our heavy-duty use, and the branding has helped establish our presence in competitive markets.",
+    service: "Commercial Vehicle Wraps"
+  },
+  {
+    name: "Emily Zhang",
+    location: "Event Planning Director",
+    rating: 5,
+    text: "We wrapped our company vehicles for a major promotional campaign and the results exceeded our expectations. The wraps were eye-catching and perfectly aligned with our branding guidelines.",
+    service: "Promotional Wraps"
+  },
+  {
+    name: "Kevin Patel",
+    location: "Delivery Service Owner",
+    rating: 5,
+    text: "After wrapping our delivery vehicles, we saw an immediate increase in brand recognition. The team was professional from design to installation, and the quality is outstanding.",
+    service: "Delivery Fleet Wrapping"
   }
 ];
 
