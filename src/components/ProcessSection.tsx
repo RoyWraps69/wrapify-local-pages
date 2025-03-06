@@ -16,33 +16,33 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ townName = 'Chicago' })
   const steps: ProcessStep[] = [
     {
       icon: <FileText className="h-10 w-10 text-wrap-red" />,
-      title: "1. Consultation",
-      description: `We start with a detailed discussion about your goals, ideas, and requirements. Our ${townName} experts will guide you through material options and design possibilities.`
+      title: "1. Talk About Your Needs",
+      description: `We start by asking what you want. Our ${townName} experts will help you pick materials and designs that work for you.`
     },
     {
       icon: <PenTool className="h-10 w-10 text-wrap-red" />,
-      title: "2. Design",
-      description: `Our design team creates custom graphics that align with your brand and vision. We'll provide mockups so you can visualize how your vehicle will look in ${townName}.`
+      title: "2. Design Your Wrap",
+      description: `Our design team makes custom graphics for your brand. We'll show you what your car will look like when it's done.`
     },
     {
       icon: <CheckCircle className="h-10 w-10 text-wrap-red" />,
-      title: "3. Approval",
-      description: `Once you're satisfied with the design, we finalize all details before proceeding to production, ensuring your ${townName} vehicle wrap will meet your expectations.`
+      title: "3. Get Your OK",
+      description: `Once you like the design, we lock in all details before starting, so your ${townName} car wrap will be just what you want.`
     },
     {
       icon: <Truck className="h-10 w-10 text-wrap-red" />,
-      title: "4. Production",
-      description: `Using premium materials, we print and prepare your vehicle wrap with meticulous attention to detail for a perfect application in our ${townName} facility.`
+      title: "4. Make Your Wrap",
+      description: `Using top materials, we print and get your car wrap ready with careful attention to detail for a perfect fit.`
     },
     {
       icon: <Wrench className="h-10 w-10 text-wrap-red" />,
-      title: "5. Installation",
-      description: `Our certified installers in ${townName} carefully apply your wrap, ensuring perfect alignment, smooth finish, and attention to every detail.`
+      title: "5. Put It On Your Car",
+      description: `Our skilled installers in ${townName} carefully put on your wrap, making sure it lines up perfectly and looks smooth.`
     },
     {
       icon: <Award className="h-10 w-10 text-wrap-red" />,
-      title: "6. Final Inspection",
-      description: `Before delivery, we conduct a thorough quality check to ensure your ${townName} vehicle wrap is flawless and meets our premium standards.`
+      title: "6. Final Check",
+      description: `Before giving back your car, we do a thorough check to make sure your ${townName} car wrap is perfect and meets our high standards.`
     }
   ];
 
@@ -51,13 +51,13 @@ const ProcessSection: React.FC<ProcessSectionProps> = ({ townName = 'Chicago' })
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-white/10 text-white rounded-full text-sm font-medium mb-4">
-            Our Approach
+            How We Work
           </span>
           <h2 className="text-4xl font-serif font-semibold mb-4 text-white">
-            The Chicago Fleet Wraps Process
+            Our Car Wrap Process
           </h2>
           <p className="text-wrap-light/80 max-w-2xl mx-auto text-lg">
-            Our proven process ensures exceptional results for every vehicle wrap project in {townName}.
+            Our proven steps make sure every car wrap in {townName} turns out great.
           </p>
         </div>
 

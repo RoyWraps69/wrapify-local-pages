@@ -29,22 +29,22 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className="animate-fade-up">
             <span className="inline-block px-4 py-1 bg-wrap-red/20 text-wrap-light rounded-full text-sm font-medium mb-6">
-              Professional Vehicle Wraps, Ceramic Coatings & Paint Protection in {townName}
+              Car Wraps, Ceramic Coatings & Paint Protection in {townName}
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
-              Premium Vehicle Wraps & Protection Services in {townName}
+              Top Car Wraps & Protection in {townName}
             </h1>
             <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto">
-              Chicago Fleet Wraps delivers exceptional vehicle wrapping and protection services in {townName}. From commercial fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect vehicles with premium materials and expert installation.
+              Chicago Fleet Wraps offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
             <div className="mb-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
               <div className="bg-white/10 p-4 rounded-lg">
-                <h3 className="text-white font-medium mb-2">Vehicle Wrapping</h3>
+                <h3 className="text-white font-medium mb-2">Car Wrapping</h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Commercial Fleet Graphics</span>
+                    <span className="text-wrap-light text-sm">Business Fleet Graphics</span>
                   </li>
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
@@ -60,7 +60,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </Link>
               </div>
               <div className="bg-white/10 p-4 rounded-lg">
-                <h3 className="text-white font-medium mb-2">Vehicle Protection</h3>
+                <h3 className="text-white font-medium mb-2">Car Protection</h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
@@ -72,7 +72,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   </li>
                   <li className="flex items-start">
                     <Check className="text-wrap-red mr-2 flex-shrink-0 mt-1" size={14} />
-                    <span className="text-wrap-light text-sm">Winter & UV Protection</span>
+                    <span className="text-wrap-light text-sm">Winter & Sun Protection</span>
                   </li>
                 </ul>
                 <Link to="/services" className="text-white hover:text-wrap-red text-xs inline-flex items-center mt-2">
@@ -98,9 +98,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </a>
             </div>
             <div className="mt-8 flex flex-wrap items-center justify-center text-wrap-light/70">
-              <span className="text-sm">Serving {townName} and surrounding areas</span>
+              <span className="text-sm">Serving {townName} and nearby areas</span>
               <span className="mx-3 hidden sm:inline">•</span>
-              <span className="text-sm">Premium <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
+              <span className="text-sm">Quality <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">3M</a> & <a href="https://graphics.averydennison.com" target="_blank" rel="noopener noreferrer" className="text-wrap-light hover:text-white underline">Avery Dennison</a> Materials</span>
               <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">5+ Years Durability</span>
             </div>

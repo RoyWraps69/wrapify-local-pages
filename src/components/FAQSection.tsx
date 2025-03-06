@@ -27,80 +27,80 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       question: `Where can I get a car wrap in ${townName}?`,
       answer: (
         <p>
-          Chicago Fleet Wraps provides premium vehicle wrapping services in {townName} and surrounding areas. 
-          Our shop is conveniently located for all {townName} residents and businesses. 
-          We offer comprehensive services including commercial fleet wraps, color change wraps, and custom vehicle graphics.
+          Chicago Fleet Wraps provides top car wrapping services in {townName} and nearby areas. 
+          Our shop is easy to get to for all {townName} residents and businesses. 
+          We offer full services including business fleet wraps, color change wraps, and custom car graphics.
         </p>
       )
     },
     {
-      question: `How much does it cost to wrap a vehicle in ${townName}?`,
+      question: `How much does it cost to wrap a car in ${townName}?`,
       answer: (
         <div>
           <p className="mb-3">
-            The cost of wrapping a vehicle in {townName} varies depending on several factors:
+            The cost of wrapping a car in {townName} depends on several things:
           </p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Vehicle size and type (car, van, truck, etc.)</li>
-            <li>Complexity of the vehicle's surface area</li>
-            <li>Type of wrap (commercial graphics, color change, custom design)</li>
+            <li>Car size and type (car, van, truck, etc.)</li>
+            <li>How complex the car's surface is</li>
+            <li>Type of wrap (business graphics, color change, custom design)</li>
             <li>Quality of vinyl used</li>
-            <li>Design complexity</li>
+            <li>How complex the design is</li>
           </ul>
           <p className="mt-3">
-            Contact us for a free, personalized quote specific to your vehicle and requirements in {townName}.
+            Contact us for a free quote for your specific car and needs in {townName}.
           </p>
         </div>
       )
     },
     {
-      question: `How long does a vehicle wrap last in ${townName}'s climate?`,
+      question: `How long does a car wrap last in ${townName}'s weather?`,
       answer: (
         <p>
-          A professional vehicle wrap installed by Chicago Fleet Wraps typically lasts 5-7 years in {townName}'s climate. 
-          We use premium vinyl materials specifically designed to withstand local weather conditions, including hot summers and cold winters. 
-          Proper maintenance can extend the life of your wrap even further.
+          A professional car wrap installed by Chicago Fleet Wraps usually lasts 5-7 years in {townName}'s weather. 
+          We use high-quality vinyl materials made to handle local weather, including hot summers and cold winters. 
+          Good care can make your wrap last even longer.
         </p>
       )
     },
     {
-      question: `Will a vehicle wrap damage my car's paint?`,
+      question: `Will a car wrap damage my car's paint?`,
       answer: (
         <p>
-          No, a professionally installed vehicle wrap from Chicago Fleet Wraps will not damage your car's paint. 
-          In fact, wraps can actually protect your vehicle's original paint from UV rays, minor scratches, and small debris. 
-          When removed correctly by our {townName} experts, your original paint will remain in the same condition as when it was wrapped.
+          No, a professionally installed car wrap from Chicago Fleet Wraps will not damage your car's paint. 
+          In fact, wraps can actually protect your car's original paint from sun rays, small scratches, and road debris. 
+          When removed correctly by our {townName} experts, your original paint will stay in the same condition as when it was wrapped.
         </p>
       )
     },
     {
-      question: `How do I maintain my vehicle wrap in ${townName}?`,
+      question: `How do I take care of my car wrap in ${townName}?`,
       answer: (
         <div>
           <p className="mb-3">
-            Maintaining your vehicle wrap in {townName} is simple:
+            Taking care of your car wrap in {townName} is easy:
           </p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Hand wash with mild soap and water</li>
             <li>Avoid high-pressure car washes</li>
-            <li>Clean spills and stains promptly</li>
-            <li>Park in shaded areas when possible to reduce UV exposure</li>
-            <li>For winter months, remove ice and snow carefully to avoid scratching the wrap</li>
+            <li>Clean spills and stains quickly</li>
+            <li>Park in shade when possible to reduce sun damage</li>
+            <li>For winter, remove ice and snow carefully to avoid scratching the wrap</li>
           </ul>
           <p className="mt-3">
-            We provide all {townName} clients with detailed care instructions to maximize the lifespan of their wrap.
+            We give all {townName} clients detailed care tips to help your wrap last as long as possible.
           </p>
         </div>
       )
     },
     {
-      question: `Do you offer warranties on vehicle wraps in ${townName}?`,
+      question: `Do you offer warranties on car wraps in ${townName}?`,
       answer: (
         <p>
-          Yes, Chicago Fleet Wraps offers warranties on all our vehicle wraps for {townName} clients. 
-          Our warranties typically cover manufacturer defects, premature fading, cracking, and peeling. 
-          The specific warranty terms depend on the type of vinyl used and its manufacturer. 
-          We use only premium materials that come with strong manufacturer backing.
+          Yes, Chicago Fleet Wraps offers warranties on all our car wraps for {townName} clients. 
+          Our warranties typically cover factory defects, early fading, cracking, and peeling. 
+          The specific warranty terms depend on the type of vinyl used and its maker. 
+          We only use top materials that come with strong maker backing.
         </p>
       )
     },
@@ -114,13 +114,13 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
-            Frequently Asked Questions
+            Common Questions
           </span>
           <h2 className="section-title">
-            Common Questions About Vehicle Wraps in {townName}
+            Questions About Car Wraps in {townName}
           </h2>
           <p className="section-subtitle">
-            Find answers to the most common questions about our vehicle wrapping services in {townName}.
+            Find answers to the most common questions about our car wrapping services in {townName}.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
 
         <div className="text-center mt-12">
           <p className="text-wrap-grey mb-6">
-            Have more questions about vehicle wraps in {townName}? We're here to help!
+            Have more questions about car wraps in {townName}? We're here to help!
           </p>
           <a href="/contact" className="btn-primary">
             Contact Us Today

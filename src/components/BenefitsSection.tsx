@@ -16,33 +16,33 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ townName = 'Chicago' 
   const benefits: Benefit[] = [
     {
       icon: <ShieldCheck className="h-10 w-10 text-wrap-red" />,
-      title: "Protect Your Original Paint",
-      description: `A quality vehicle wrap acts as a protective layer for your car's paint, shielding it from minor scratches, stone chips, and UV damage in ${townName}'s varied weather conditions.`
+      title: "Protect Your Paint",
+      description: `A good car wrap acts as a shield for your car's paint. It protects from small scratches, stone chips, and sun damage in ${townName}'s changing weather.`
     },
     {
       icon: <Truck className="h-10 w-10 text-wrap-red" />,
-      title: "Mobile Advertising",
-      description: `Turn your company vehicles into moving billboards that generate thousands of impressions daily as you drive through ${townName} and surrounding areas.`
+      title: "Moving Ads",
+      description: `Turn your work cars into moving billboards that thousands of people see every day as you drive around ${townName} and nearby areas.`
     },
     {
       icon: <Palette className="h-10 w-10 text-wrap-red" />,
-      title: "Endless Design Options",
-      description: `From subtle color changes to eye-catching graphics, vehicle wraps offer unlimited customization possibilities to make your vehicle stand out in ${townName}.`
+      title: "Many Design Choices",
+      description: `From simple color changes to eye-catching graphics, car wraps give you lots of ways to make your car stand out in ${townName}.`
     },
     {
       icon: <DollarSign className="h-10 w-10 text-wrap-red" />,
       title: "Cost-Effective Branding",
-      description: `Vehicle wraps provide one of the lowest cost-per-impression advertising methods available to ${townName} businesses, with long-lasting impact.`
+      description: `Car wraps give you one of the cheapest ways to advertise in ${townName}, and they last a long time.`
     },
     {
       icon: <Lightbulb className="h-10 w-10 text-wrap-red" />,
-      title: "Maintain Resale Value",
-      description: `Preserve your vehicle's original paint and potentially increase its resale value. Wraps can be removed without damage, returning your vehicle to its original condition.`
+      title: "Keep Car Value",
+      description: `Save your car's original paint and maybe even increase its value. Wraps can be taken off without damage, returning your car to how it was.`
     },
     {
       icon: <Clock className="h-10 w-10 text-wrap-red" />,
-      title: "Quick Turnaround",
-      description: `Our efficient process means minimal downtime for your vehicle. Most wraps in ${townName} can be completed within 3-5 business days.`
+      title: "Fast Turnaround",
+      description: `Our quick process means little downtime for your car. Most wraps in ${townName} can be done in 3-5 work days.`
     }
   ];
 
@@ -51,13 +51,13 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ townName = 'Chicago' 
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
-            Why Choose Vehicle Wraps
+            Why Choose Car Wraps
           </span>
           <h2 className="section-title">
-            Benefits of Vehicle Wraps in {townName}
+            Benefits of Car Wraps in {townName}
           </h2>
           <p className="section-subtitle">
-            Discover the advantages of choosing professional vehicle wraps for your personal or business vehicles.
+            Find out why car wraps are great for your personal or business cars.
           </p>
         </div>
 

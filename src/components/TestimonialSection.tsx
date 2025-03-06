@@ -20,63 +20,63 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
     name: "Michael Johnson",
     location: "Business Owner",
     rating: 5,
-    text: "Chicago Fleet Wraps transformed our delivery vans with stunning graphics that perfectly represent our brand. The durability and quality of their work is exceptional. Our vehicles are now mobile billboards that generate new business wherever they go.",
+    text: "Chicago Fleet Wraps made our delivery vans look amazing with graphics that show our brand perfectly. The quality of their work is great. Our vans are now moving billboards that bring in new business wherever they go.",
     service: "Fleet Wrapping"
   },
   {
     name: "Sarah Williams",
-    location: "Car Enthusiast",
+    location: "Car Lover",
     rating: 5,
-    text: "I wanted something unique for my sports car and the team delivered beyond my expectations. The color change wrap not only looks fantastic but the attention to detail around complex curves and edges is remarkable. Highly recommend!",
+    text: "I wanted something special for my sports car and the team went beyond what I hoped for. The color change wrap not only looks amazing but the details around curves and edges are perfect. Highly recommend!",
     service: "Color Change Wrap"
   },
   {
     name: "David Martinez",
     location: "Marketing Director",
     rating: 5,
-    text: "We wrapped our entire fleet of 12 vehicles and the consistency across all vehicles was impressive. The team was professional, efficient, and delivered on time as promised. Our brand visibility has increased significantly.",
+    text: "We wrapped our entire fleet of 12 vehicles and all of them matched perfectly. The team was professional, quick, and finished on time as promised. Our brand is now much more visible.",
     service: "Commercial Fleet Wraps"
   },
   {
     name: "Jennifer Reynolds",
     location: "Restaurant Owner",
     rating: 5,
-    text: "My food truck's wrap has become a conversation starter wherever we park. The vibrant design captures our brand essence perfectly and has significantly boosted our visibility at events.",
+    text: "My food truck's wrap makes people talk wherever we park. The bright design shows our brand perfectly and has really helped people notice us at events.",
     service: "Food Truck Wrapping"
   },
   {
     name: "Robert Chen",
     location: "Tech Company CEO",
     rating: 5,
-    text: "As we expanded our delivery service, having consistently branded vehicles was essential. The team provided excellent service and our wrapped vans are now recognizable throughout the city.",
+    text: "As we grew our delivery service, having branded vehicles was very important. The team gave us excellent service and our wrapped vans are now easy to spot all over the city.",
     service: "Fleet Branding"
   },
   {
     name: "Alicia Gomez",
     location: "Real Estate Agent",
     rating: 5,
-    text: "My wrapped car has become my best marketing investment. The professional finish and attention to detail have made my vehicle stand out, and I've received numerous client inquiries directly because of it.",
+    text: "My wrapped car has been my best marketing spend. The professional finish and attention to detail made my car stand out, and I've gotten many client calls directly because of it.",
     service: "Personal Vehicle Wrap"
   },
   {
     name: "Thomas Washington",
     location: "Construction Company Owner",
     rating: 5,
-    text: "Our fleet of work trucks looks incredibly professional after being wrapped. The durability has been excellent even with our heavy-duty use, and the branding has helped establish our presence in competitive markets.",
+    text: "Our work trucks look really professional after being wrapped. The wraps have lasted well even with our heavy use, and the branding has helped make us known in busy markets.",
     service: "Commercial Vehicle Wraps"
   },
   {
     name: "Emily Zhang",
     location: "Event Planning Director",
     rating: 5,
-    text: "We wrapped our company vehicles for a major promotional campaign and the results exceeded our expectations. The wraps were eye-catching and perfectly aligned with our branding guidelines.",
+    text: "We wrapped our company cars for a big promotional campaign and the results were better than we hoped for. The wraps were eye-catching and perfectly matched our branding.",
     service: "Promotional Wraps"
   },
   {
     name: "Kevin Patel",
     location: "Delivery Service Owner",
     rating: 5,
-    text: "After wrapping our delivery vehicles, we saw an immediate increase in brand recognition. The team was professional from design to installation, and the quality is outstanding.",
+    text: "After wrapping our delivery vehicles, we saw people recognize our brand right away. The team was professional from design to installation, and the quality is outstanding.",
     service: "Delivery Fleet Wrapping"
   }
 ];
@@ -101,13 +101,13 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
-            Customer Experiences
+            What Customers Say
           </span>
           <h2 className="section-title">
             What Our {townName} Clients Say
           </h2>
           <p className="section-subtitle">
-            Discover why vehicle owners in {townName} trust Chicago Fleet Wraps for all their vehicle wrapping needs.
+            See why car owners in {townName} trust Chicago Fleet Wraps for all their car wrapping needs.
           </p>
         </div>
 
