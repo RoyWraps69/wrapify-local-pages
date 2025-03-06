@@ -51,6 +51,11 @@
     <lastmod>2024-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/detroit-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Detroit</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Detroit, MI</image:caption>
+    </image:image>
   </url>
   
   <url>
@@ -67,12 +72,38 @@
     <priority>0.8</priority>
   </url>
   
+  <url>
+    <loc>https://wrappingtheworld.com/locations/lansing</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/kalamazoo</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/battle-creek</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
   <!-- Indiana Locations -->
   <url>
     <loc>https://wrappingtheworld.com/locations/indianapolis</loc>
     <lastmod>2024-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/indianapolis-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Indianapolis</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Indianapolis, IN</image:caption>
+    </image:image>
   </url>
   
   <url>
@@ -84,6 +115,49 @@
   
   <url>
     <loc>https://wrappingtheworld.com/locations/south-bend</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/gary</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/hammond</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/merrillville</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Add Wisconsin Locations for completeness -->
+  <url>
+    <loc>https://wrappingtheworld.com/locations/milwaukee</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/madison</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/green-bay</loc>
     <lastmod>2024-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
