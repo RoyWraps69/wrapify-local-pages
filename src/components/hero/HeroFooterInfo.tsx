@@ -1,15 +1,14 @@
-
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
-
 interface HeroFooterInfoProps {
   townName: string;
   scrollToServices: () => void;
 }
-
-const HeroFooterInfo: React.FC<HeroFooterInfoProps> = ({ townName, scrollToServices }) => {
-  return (
-    <>
+const HeroFooterInfo: React.FC<HeroFooterInfoProps> = ({
+  townName,
+  scrollToServices
+}) => {
+  return <>
       <div className="mt-8 flex flex-wrap items-center justify-center text-white/70">
         <span className="text-sm">Serving {townName} and nearby areas</span>
         <span className="mx-3 hidden sm:inline">•</span>
@@ -19,16 +18,9 @@ const HeroFooterInfo: React.FC<HeroFooterInfoProps> = ({ townName, scrollToServi
       </div>
       
       {/* Enhanced scroll indicator */}
-      <div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform" 
-        onClick={scrollToServices}
-      >
-        <div className="p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 animate-bounce shadow-lg">
-          <ChevronDown className="text-white" size={24} />
-        </div>
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform" onClick={scrollToServices}>
+        
       </div>
-    </>
-  );
+    </>;
 };
-
 export default HeroFooterInfo;
