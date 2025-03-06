@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TruckIcon, Car, Palette, Building2, Shield } from 'lucide-react';
+import { TruckIcon, Car, Palette, Building2, Shield, Droplets } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Service {
@@ -27,6 +27,12 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ townName = 'Chicago' 
       title: "Color Change Wraps",
       description: `Change the look of your vehicle without affecting its resale value. Our color change wraps in ${townName} offer protection while giving your car a stunning new appearance.`,
       link: "/services/color-change-wraps",
+    },
+    {
+      icon: <Droplets className="h-12 w-12 text-wrap-red" />,
+      title: "Ceramic Coatings",
+      description: `Protect your vehicle's finish with our advanced ceramic coating services in ${townName}. Our nano-ceramic technology provides superior protection against UV rays, bird droppings, road salt, and environmental contaminants.`,
+      link: "/services/ceramic-coatings",
     },
     {
       icon: <Palette className="h-12 w-12 text-wrap-red" />,
@@ -56,10 +62,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ townName = 'Chicago' 
             Our Expertise
           </span>
           <h2 className="section-title">
-            Premium Vehicle Wrapping Services in {townName}
+            Premium Vehicle Wrapping & Protection Services in {townName}
           </h2>
           <p className="section-subtitle">
-            From commercial fleet wraps to custom color changes, we offer a comprehensive range of vehicle wrapping solutions to meet your needs.
+            From commercial fleet wraps to ceramic coatings and custom color changes, we offer a comprehensive range of vehicle enhancement and protection solutions to meet your needs.
           </p>
         </div>
 

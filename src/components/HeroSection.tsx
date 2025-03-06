@@ -14,23 +14,23 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <section 
-      className="hero-section"
+      className="hero-section relative bg-cover bg-center min-h-[600px]"
       style={{
         backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`
       }}
     >
-      <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+      <div className="container mx-auto px-4 h-full flex items-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0">
           <div className="animate-fade-up">
             <span className="inline-block px-4 py-1 bg-wrap-red/20 text-wrap-light rounded-full text-sm font-medium mb-6">
-              Professional Vehicle Wraps in {townName}
+              Professional Vehicle Wraps & Ceramic Coatings in {townName}
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
               Transform Your Vehicle with Premium Wraps in {townName}
             </h1>
             <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl">
-              Chicago Fleet Wraps delivers exceptional vehicle wrapping services for businesses and individuals in {townName}. 
-              From commercial fleet branding to custom color changes, we bring your vision to life.
+              Chicago Fleet Wraps delivers exceptional vehicle wrapping services and ceramic coating protection for businesses and individuals in {townName}. 
+              From commercial fleet branding to protective ceramic coatings, we bring your vision to life with industry-leading materials.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
@@ -48,18 +48,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <span>Call Us Now</span>
               </a>
             </div>
-            <div className="mt-8 flex items-center text-wrap-light/70">
+            <div className="mt-8 flex flex-wrap items-center text-wrap-light/70">
               <span className="text-sm">Serving {townName} and surrounding areas</span>
-              <span className="mx-3">•</span>
+              <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">Premium 3M & Avery Dennison Vinyl</span>
-              <span className="mx-3">•</span>
+              <span className="mx-3 hidden sm:inline">•</span>
               <span className="text-sm">5+ Years Durability</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Updated design element positioning */}
+      {/* Design element */}
       <div className="hidden lg:block absolute right-0 top-1/2 transform -translate-y-1/2 w-2/5 h-80 bg-wrap-red/10 backdrop-blur-md rounded-l-3xl z-0"></div>
     </section>
   );
