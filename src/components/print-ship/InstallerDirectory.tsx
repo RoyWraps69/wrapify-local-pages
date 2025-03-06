@@ -29,7 +29,7 @@ const installers: Installer[] = [
     address: "4711 N. Lamon Ave, Chicago, IL 60630",
     phone: "(312) 597-1286",
     email: "info@wrappingtheworld.com",
-    website: "chicagofleetwraps.com",
+    website: "wrappingtheworld.com",
     specialties: ["Commercial Fleet", "Color Change", "PPF", "Ceramic Coating"],
     isOurShop: true
   },

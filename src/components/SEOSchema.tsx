@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
@@ -219,7 +218,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         "name": `Where can I get a professional car wrap in ${townName}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Wrapping The World provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, ceramic coatings, paint protection film, and custom vehicle graphics.`
+          "text": `Wrapping The World provides premium vehicle wrapping services in ${townName} and surrounding areas. Our shop is conveniently located for all ${townName} residents and businesses, offering complete fleet branding, color change wraps, ceramic coatings, paint protection film, and custom graphics using premium 3M and Avery Dennison materials.`
         }
       },
       {
