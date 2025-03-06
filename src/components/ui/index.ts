@@ -38,7 +38,9 @@ export * from './sheet';
 export * from './sidebar';
 export * from './skeleton';
 export * from './slider';
-export * from './sonner';
+// Importing sonner with a specific import to avoid name collision
+import { Toaster as SonnerToaster } from './sonner';
+export { SonnerToaster };
 export * from './switch';
 export * from './table';
 export * from './tabs';
