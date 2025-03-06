@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { 
   vehicleSizes, 
@@ -66,6 +65,14 @@ const PrintShipSection: React.FC = () => {
     <section className="py-16 bg-white" id="print-ship">
       <div className="container mx-auto px-4">
         <PrintShipHeader />
+
+        {/* Installation Notice */}
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-center">
+          <p className="text-amber-800 font-medium">
+            <span className="underline">Important:</span> Pricing below is for wrap materials and shipping only. Professional installation is not included.
+            We can connect you with local installers in your area upon request.
+          </p>
+        </div>
 
         {/* Upload Artwork Link - New Addition */}
         <UploadArtwork />

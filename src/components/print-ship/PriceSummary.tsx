@@ -20,7 +20,12 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
   return (
     <div>
       <div className="bg-wrap-blue text-white p-6 rounded-lg shadow-lg mb-8">
-        <h3 className="text-2xl font-semibold mb-6">Your Custom Quote</h3>
+        <h3 className="text-2xl font-semibold mb-4">Your Custom Quote</h3>
+        
+        <p className="text-white/90 text-sm mb-4 bg-wrap-blue-dark p-2 rounded">
+          <InfoIcon className="inline-block w-4 h-4 mr-1" /> 
+          This quote is for wrap materials, design and shipping only. Installation services are not included.
+        </p>
         
         <div className="space-y-4 mb-6">
           <div className="flex justify-between border-b border-white/20 pb-2">

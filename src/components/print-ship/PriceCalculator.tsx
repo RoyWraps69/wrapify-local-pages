@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Calculator } from 'lucide-react';
+import { Calculator, Info } from 'lucide-react';
 import { 
   vehicleSizes, 
   wrapMaterials, 
@@ -11,6 +10,7 @@ import {
   DesignOption,
   ShippingOption
 } from '@/utils/vehiclePricingData';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface PriceCalculatorProps {
   selectedVehicle: VehicleSize;
@@ -39,9 +39,20 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
 }) => {
   return (
     <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-md">
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2 mb-3">
         <Calculator className="text-wrap-red w-6 h-6" />
         <h3 className="text-2xl font-semibold text-wrap-blue">Wrap Pricing Calculator</h3>
+      </div>
+      
+      {/* Installation notice */}
+      <div className="mb-6 bg-gray-100 border-l-4 border-wrap-blue p-3 text-sm">
+        <div className="flex items-start">
+          <Info className="w-4 h-4 text-wrap-blue mt-0.5 mr-2 flex-shrink-0" />
+          <p className="text-wrap-grey">
+            <span className="font-medium">Note:</span> Pricing includes materials, design, and shipping only. 
+            Professional installation is available separately and varies by location.
+          </p>
+        </div>
       </div>
       
       <div className="space-y-6">
@@ -144,6 +155,12 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
             ))}
           </select>
         </div>
+      </div>
+
+      <div className="mt-6 pt-4 border-t border-gray-200">
+        <p className="text-sm text-wrap-grey">
+          <strong>Looking for installation?</strong> We can connect you with our network of certified installers nationwide for professional application. Installation costs vary by location and vehicle type.
+        </p>
       </div>
     </div>
   );
