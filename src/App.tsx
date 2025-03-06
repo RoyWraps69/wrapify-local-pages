@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { SEOWrapper } from "./components/SEOSchema";
 import Index from "./pages/Index";
 import TownPage from "./pages/TownPage";
@@ -14,7 +14,15 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 1,
+      staleTime: 1000 * 60 * 5, // 5 minutes
+    },
+  },
+});
 
 const App = () => {
   console.log("App component rendering");
@@ -32,10 +40,15 @@ const App = () => {
               <Route path="/services/:serviceType" element={<ServicePage />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              
+              {/* Town Pages - Ensure these routes work correctly */}
               <Route path="/locations/:townSlug" element={<TownPage />} />
+              
+              {/* Explicit 404 route */}
               <Route path="/not-found" element={<NotFound />} />
+              
               {/* Catch-all route for 404 */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<Navigate to="/not-found" replace />} />
             </Routes>
           </BrowserRouter>
         </SEOWrapper>

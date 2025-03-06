@@ -1,0 +1,9 @@
+
+User-agent: *
+Allow: /
+
+# Allow all bots full access
+Disallow: /not-found
+
+# Sitemap location
+Sitemap: https://chicagofleetwraps.com/sitemap.xml

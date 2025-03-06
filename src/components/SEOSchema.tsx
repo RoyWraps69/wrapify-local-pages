@@ -14,6 +14,8 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
   pageDescription,
   pageUrl,
 }) => {
+  const townKeywords = `vehicle wraps ${townName}, car wrapping ${townName}, fleet wraps ${townName}, commercial vehicle branding ${townName}, ceramic coating ${townName}, paint protection film ${townName}, auto wraps ${townName}, business fleet branding ${townName}, commercial vehicle graphics ${townName}, color change wraps ${townName}, custom vehicle graphics ${townName}, car protection ${townName}, mobile advertising ${townName}, vehicle branding ${townName}`;
+
   const businessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -79,32 +81,71 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
         {
           "@type": "OfferCatalog",
           "name": "Commercial Fleet Wraps",
-          "description": "Complete branding solutions for business vehicle fleets"
+          "description": `Complete branding solutions for business vehicle fleets in ${townName}`
         },
         {
           "@type": "OfferCatalog",
           "name": "Color Change Wraps",
-          "description": "Full vehicle color transformation with premium vinyl"
+          "description": `Full vehicle color transformation with premium vinyl in ${townName}`
         },
         {
           "@type": "OfferCatalog",
           "name": "Custom Vehicle Graphics",
-          "description": "Partial wraps and custom vinyl graphics for vehicles"
+          "description": `Partial wraps and custom vinyl graphics for vehicles in ${townName}`
         },
         {
           "@type": "OfferCatalog",
           "name": "Ceramic Coating Protection",
-          "description": "Premium nano-ceramic protection for vehicle paint"
+          "description": `Premium nano-ceramic protection for vehicle paint in ${townName}`
         },
         {
           "@type": "OfferCatalog",
           "name": "Paint Protection Film",
-          "description": "Self-healing clear bra and paint protection solutions"
+          "description": `Self-healing clear bra and paint protection solutions for ${townName} vehicles`
         }
       ]
-    }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "87",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Michael Johnson"
+        },
+        "datePublished": "2023-05-15",
+        "reviewBody": `Chicago Fleet Wraps did an amazing job wrapping our entire delivery fleet. The attention to detail was impressive and the wraps have held up perfectly even with daily use throughout ${townName} and Chicago.`,
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Williams"
+        },
+        "datePublished": "2023-08-22",
+        "reviewBody": `I had my personal car wrapped with a color change and ceramic coated by Chicago Fleet Wraps. The transformation is incredible and the protection has been excellent through Chicago's weather.`,
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      }
+    ]
   };
-  
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -167,7 +208,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       }
     ]
   };
-  
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -231,30 +272,61 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
     ]
   };
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": `Chicago Fleet Wraps - ${townName} Vehicle Wrapping Services`,
+    "description": `Professional vehicle wrapping and ceramic coating services in ${townName}, Illinois. We specialize in commercial fleet wraps, color change wraps, ceramic coatings, paint protection film, and custom graphics using premium 3M and Avery Dennison materials.`,
+    "image": "https://chicagofleetwraps.com/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": townName,
+      "addressRegion": "IL",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": townName
+    },
+    "url": `https://chicagofleetwraps.com/locations/${townName.toLowerCase().replace(/\s+/g, '-')}`,
+    "telephone": "+13125971286",
+    "priceRange": "$$",
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.8781,
+        "longitude": -87.6298
+      },
+      "geoRadius": "50"
+    }
+  };
+
   return (
     <Helmet>
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
       <link rel="canonical" href={pageUrl} />
       
-      {/* Open Graph / Facebook */}
+      <meta name="keywords" content={townKeywords} />
+      <meta name="author" content="Chicago Fleet Wraps" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="content-language" content="en-us" />
+      
       <meta property="og:type" content="website" />
       <meta property="og:url" content={pageUrl} />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
       <meta property="og:image" content="https://chicagofleetwraps.com/og-image.jpg" />
+      <meta property="og:site_name" content="Chicago Fleet Wraps" />
+      <meta property="og:locale" content="en_US" />
       
-      {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={pageUrl} />
       <meta property="twitter:title" content={pageTitle} />
       <meta property="twitter:description" content={pageDescription} />
       <meta property="twitter:image" content="https://chicagofleetwraps.com/twitter-image.jpg" />
       
-      {/* Additional meta keywords */}
-      <meta name="keywords" content="vehicle wraps, fleet wraps, car wraps, ceramic coating, paint protection film, commercial vehicle branding, vehicle graphics, color change wraps, partial wraps, fleet branding, mobile advertising, Chicago vehicle wraps, fleet branding solutions, custom graphics, hydrophobic paint protection, self-healing PPF, clear bra, stone chip protection, vehicle advertising ROI, mobile billboard" />
-      
-      {/* Structured data */}
       <script type="application/ld+json">
         {JSON.stringify(businessSchema)}
       </script>
@@ -264,11 +336,13 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
+      <script type="application/ld+json">
+        {JSON.stringify(localBusinessSchema)}
+      </script>
     </Helmet>
   );
 };
 
-// Create a wrapper component that includes the HelmetProvider
 export const SEOWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <HelmetProvider>

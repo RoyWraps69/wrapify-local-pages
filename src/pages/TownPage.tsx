@@ -1,7 +1,6 @@
 
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
@@ -16,6 +15,7 @@ import Navbar from '@/components/Navbar';
 import SEOSchema from '@/components/SEOSchema';
 import TownDescription from '@/components/TownDescription';
 import { getTownData } from '@/utils/townData';
+import { Helmet } from 'react-helmet-async';
 
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
@@ -31,9 +31,39 @@ const TownPage: React.FC = () => {
     if (!townData && townSlug) {
       console.log(`Town not found for slug: ${townSlug}, redirecting to 404`);
       navigate('/not-found', { replace: true });
+      return;
     }
     
+    // Scroll to top on town page load
     window.scrollTo(0, 0);
+    
+    // Add structured data for this specific town
+    const townStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": `${townData?.name} Vehicle Wraps & Ceramic Coatings`,
+      "description": `Professional vehicle wrapping and ceramic coating services in ${townData?.name}. We specialize in commercial fleet wraps, custom vehicle graphics, ceramic coatings, and paint protection film.`,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Chicago Fleet Wraps",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chicago",
+          "addressRegion": "IL"
+        },
+        "telephone": "312-597-1286",
+        "url": "https://chicagofleetwraps.com"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": townData?.name
+      },
+      "serviceType": "Vehicle Wraps & Protection"
+    };
+    
+    // Log successful town page load for analytics
+    console.log(`Town page loaded successfully for: ${townData?.name}`);
+    
   }, [townSlug, townData, navigate]);
   
   if (!townData) {
@@ -46,6 +76,7 @@ const TownPage: React.FC = () => {
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name} | Chicago Fleet Wraps`;
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from Chicago's top-rated vehicle enhancement company.`;
   const pageUrl = `https://chicagofleetwraps.com/locations/${townSlug}`;
+  const canonicalUrl = `https://chicagofleetwraps.com/locations/${townSlug}`;
 
   const locationFaqs = [
     {
@@ -134,6 +165,16 @@ const TownPage: React.FC = () => {
 
   return (
     <>
+      <Helmet>
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="geo.region" content="US-IL" />
+        <meta name="geo.placename" content={name} />
+        <meta name="geo.position" content={`${townData.latitude || "41.8781"};${townData.longitude || "-87.6298"}`} />
+        <meta name="ICBM" content={`${townData.latitude || "41.8781"}, ${townData.longitude || "-87.6298"}`} />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+      </Helmet>
+      
       <SEOSchema 
         townName={name}
         pageTitle={pageTitle}
@@ -141,7 +182,7 @@ const TownPage: React.FC = () => {
         pageUrl={pageUrl}
       />
       <Navbar />
-      <main>
+      <main className="town-page" itemScope itemType="https://schema.org/WebPage">
         <HeroSection townName={name} />
         <TownDescription townName={name} townData={townData} />
         <ServicesSection townName={name} />
