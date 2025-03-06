@@ -9,6 +9,7 @@ import TestimonialSection from '@/components/TestimonialSection';
 import SEOSchema from '@/components/SEOSchema';
 import FAQSection from '@/components/FAQSection';
 import { getAllTowns } from '@/utils/townData';
+import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
   console.log("Index component rendering");
@@ -21,12 +22,26 @@ const Index = () => {
   const towns = getAllTowns();
   console.log("Towns data:", towns);
   
+  // Create list of town names for SEO
+  const topTownNames = towns.slice(0, 15).map(town => town.name).join(", ");
+  
   return (
     <>
+      <Helmet>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://chicagofleetwraps.com" />
+        <meta name="keywords" content={`vehicle wraps Chicago, car wraps Chicago, fleet wraps Chicago, ceramic coating Chicago, paint protection film Chicago, commercial vehicle wraps, mobile advertising, business vehicle branding, ${topTownNames} vehicle wraps`} />
+        <meta name="geo.region" content="US-IL" />
+        <meta name="geo.placename" content="Chicago" />
+        <meta name="geo.position" content="41.8781;-87.6298" />
+        <meta name="ICBM" content="41.8781, -87.6298" />
+        <meta name="revisit-after" content="3 days" />
+      </Helmet>
+      
       <SEOSchema 
         townName="Chicago"
         pageTitle="Chicago Fleet Wraps | Professional Vehicle Wrapping & Ceramic Coating Services"
-        pageDescription="Transform your vehicles with premium wraps and protection from Chicago Fleet Wraps. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago."
+        pageDescription={`Transform your vehicles with premium wraps and protection from Chicago Fleet Wraps. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago and surrounding areas including ${topTownNames}.`}
         pageUrl="https://chicagofleetwraps.com"
       />
       <Navbar />
@@ -44,7 +59,7 @@ const Index = () => {
                 Chicago's Premier Vehicle Transformation Specialists
               </h2>
               <p className="text-wrap-grey text-lg max-w-3xl mx-auto">
-                Discover why businesses across Chicago trust us with their vehicle branding and protection needs.
+                Discover why businesses across Chicago and surrounding suburbs trust us with their vehicle branding and protection needs.
               </p>
             </div>
             
@@ -127,7 +142,7 @@ const Index = () => {
         <TestimonialSection townName="Chicago" />
         <FAQSection townName="Chicago" />
         
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50" id="service-areas">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-serif font-semibold text-wrap-blue mb-4">Serving Chicago and Surrounding Areas</h2>
             <p className="text-wrap-grey text-lg mb-6 max-w-2xl mx-auto">Professional vehicle wrapping, ceramic coating, and paint protection services available throughout the Chicago metropolitan area.</p>
@@ -135,6 +150,8 @@ const Index = () => {
             <button 
               onClick={() => setShowTowns(!showTowns)}
               className="inline-flex items-center text-wrap-blue hover:text-wrap-red mb-8 transition-colors text-sm font-medium"
+              aria-expanded={showTowns}
+              aria-controls="town-list"
             >
               <span>{showTowns ? 'Hide' : 'View'} Service Locations</span>
               <svg className={`ml-1 w-4 h-4 transition-transform ${showTowns ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +159,8 @@ const Index = () => {
               </svg>
             </button>
             
-            {showTowns && (
+            <div id="town-list" className={showTowns ? 'block' : 'hidden'}>
+              <p className="text-wrap-grey mb-4">Click on any location to view specific vehicle wrapping and ceramic coating services for that area:</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 text-left">
                 {towns.map((town) => (
                   <Link 
@@ -157,7 +175,7 @@ const Index = () => {
                   </Link>
                 ))}
               </div>
-            )}
+            </div>
           </div>
         </section>
       </main>

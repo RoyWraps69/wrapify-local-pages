@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import HeroSection from '@/components/HeroSection';
@@ -169,8 +168,8 @@ const TownPage: React.FC = () => {
         <link rel="canonical" href={canonicalUrl} />
         <meta name="geo.region" content="US-IL" />
         <meta name="geo.placename" content={name} />
-        <meta name="geo.position" content={`${townData.latitude || "41.8781"};${townData.longitude || "-87.6298"}`} />
-        <meta name="ICBM" content={`${townData.latitude || "41.8781"}, ${townData.longitude || "-87.6298"}`} />
+        <meta name="geo.position" content={`${townData.latitude};${townData.longitude}`} />
+        <meta name="ICBM" content={`${townData.latitude}, ${townData.longitude}`} />
         <meta name="robots" content="index, follow" />
         <meta name="revisit-after" content="7 days" />
       </Helmet>
