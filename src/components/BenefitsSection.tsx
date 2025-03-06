@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShieldCheck, Truck, Lightbulb, Palette, DollarSign, Clock } from 'lucide-react';
+import { ShieldCheck, Truck, Palette } from 'lucide-react';
 
 interface Benefit {
   icon: React.ReactNode;
@@ -17,51 +17,28 @@ const BenefitsSection: React.FC<BenefitsSectionProps> = ({ townName = 'Chicago' 
     {
       icon: <ShieldCheck className="h-10 w-10 text-wrap-red" />,
       title: "Protect Your Paint",
-      description: `A good car wrap acts as a shield for your car's paint. It protects from small scratches, stone chips, and sun damage in ${townName}'s changing weather.`
+      description: `A good car wrap protects your car's paint from scratches, chips, and sun damage.`
     },
     {
       icon: <Truck className="h-10 w-10 text-wrap-red" />,
-      title: "Moving Ads",
-      description: `Turn your work cars into moving billboards that thousands of people see every day as you drive around ${townName} and nearby areas.`
+      title: "Mobile Advertising",
+      description: `Turn your vehicles into moving billboards that get seen throughout ${townName}.`
     },
     {
       icon: <Palette className="h-10 w-10 text-wrap-red" />,
-      title: "Many Design Choices",
-      description: `From simple color changes to eye-catching graphics, car wraps give you lots of ways to make your car stand out in ${townName}.`
-    },
-    {
-      icon: <DollarSign className="h-10 w-10 text-wrap-red" />,
-      title: "Cost-Effective Branding",
-      description: `Car wraps give you one of the cheapest ways to advertise in ${townName}, and they last a long time.`
-    },
-    {
-      icon: <Lightbulb className="h-10 w-10 text-wrap-red" />,
-      title: "Keep Car Value",
-      description: `Save your car's original paint and maybe even increase its value. Wraps can be taken off without damage, returning your car to how it was.`
-    },
-    {
-      icon: <Clock className="h-10 w-10 text-wrap-red" />,
-      title: "Fast Turnaround",
-      description: `Our quick process means little downtime for your car. Most wraps in ${townName} can be done in 3-5 work days.`
+      title: "Custom Designs",
+      description: `From simple color changes to eye-catching graphics, make your vehicle stand out.`
     }
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-16">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
-            Why Choose Car Wraps
-          </span>
-          <h2 className="section-title">
-            Benefits of Car Wraps in {townName}
-          </h2>
-          <p className="section-subtitle">
-            Find out why car wraps are great for your personal or business cars.
-          </p>
-        </div>
+        <h2 className="text-3xl font-serif font-semibold text-wrap-blue mb-12 text-center">
+          Benefits of Car Wraps
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
             <div 
               key={index}
