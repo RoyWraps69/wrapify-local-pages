@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Layers, Shield, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface AddOnOption {
   id: string;
@@ -35,8 +36,8 @@ const WrapAddOns: React.FC<WrapAddOnsProps> = ({ selectedAddOns, setSelectedAddO
     {
       id: 'insurance',
       title: 'Wrap Insurance',
-      description: 'Protect your investment with our wrap insurance that covers damage repair or removal. Available in Silver, Gold, or Platinum tiers.',
-      price: 49.99,
+      description: 'Protect your investment with our wrap insurance that covers damage repair and guaranteed wrap removal. Plans start at $14.99/month per vehicle.',
+      price: 29.99,
       icon: <Shield className="w-5 h-5 text-wrap-red" />
     }
   ];
@@ -69,7 +70,11 @@ const WrapAddOns: React.FC<WrapAddOnsProps> = ({ selectedAddOns, setSelectedAddO
             </div>
             <p className="text-wrap-grey text-sm mb-4">{option.description}</p>
             <div className="flex justify-between items-center">
-              <span className="font-medium text-wrap-blue">${option.price.toFixed(2)}</span>
+              {option.id === 'insurance' ? (
+                <span className="font-medium text-wrap-blue">From ${option.price}/mo</span>
+              ) : (
+                <span className="font-medium text-wrap-blue">${option.price.toFixed(2)}</span>
+              )}
               {selectedAddOns.includes(option.id) && (
                 <span className="flex items-center text-wrap-red text-sm">
                   <Check size={16} className="mr-1" />
@@ -79,7 +84,7 @@ const WrapAddOns: React.FC<WrapAddOnsProps> = ({ selectedAddOns, setSelectedAddO
             </div>
             {option.id === 'insurance' && (
               <div className="mt-2">
-                <a href="/wrap-insurance" className="text-wrap-blue text-xs hover:text-wrap-red">View insurance options →</a>
+                <Link to="/wrap-insurance" className="text-wrap-blue text-xs hover:text-wrap-red">View insurance options →</Link>
               </div>
             )}
           </div>

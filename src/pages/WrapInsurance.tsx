@@ -14,6 +14,7 @@ interface InsurancePlan {
   price: string;
   color: string;
   timeframe: string;
+  removalGuarantee: string;
   features: string[];
 }
 
@@ -27,13 +28,14 @@ const WrapInsurance = () => {
       icon: <Shield className="w-8 h-8 mb-2" />,
       price: '$14.99',
       color: 'bg-gray-200 text-gray-700',
-      timeframe: '10 Days',
+      timeframe: '7-10 Days',
+      removalGuarantee: 'Up to $1,500 removal cost covered',
       features: [
         'Basic wrap damage coverage',
         'Up to $500 in damage repair',
         'Standard removal guarantee',
         'Email support',
-        '10-day response time'
+        '7-10 day response time'
       ]
     },
     {
@@ -43,6 +45,7 @@ const WrapInsurance = () => {
       price: '$29.99',
       color: 'bg-yellow-400 text-yellow-800',
       timeframe: '72 Hours',
+      removalGuarantee: 'Up to $750 removal cost covered',
       features: [
         'Enhanced wrap damage coverage',
         'Up to $1,000 in damage repair',
@@ -59,6 +62,7 @@ const WrapInsurance = () => {
       price: '$49.99',
       color: 'bg-gray-800 text-white',
       timeframe: '24 Hours',
+      removalGuarantee: 'Free wrap removal included',
       features: [
         'Comprehensive wrap damage coverage',
         'Unlimited damage repair',
@@ -99,6 +103,9 @@ const WrapInsurance = () => {
             <p className="text-wrap-grey text-lg max-w-3xl mx-auto">
               Our insurance plans safeguard your vehicle wrap against damage while providing guaranteed removal services and priority support when you need it most.
             </p>
+            <p className="text-wrap-red font-medium mt-4">
+              All plans are billed monthly, per vehicle wrapped
+            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
@@ -116,13 +123,19 @@ const WrapInsurance = () => {
                   </div>
                   <h3 className="text-xl font-bold mb-1">{plan.name} Plan</h3>
                   <div className="text-3xl font-bold mb-1">{plan.price}</div>
-                  <p className="opacity-75 text-sm">per month</p>
+                  <p className="opacity-75 text-sm">per month, per vehicle</p>
                 </div>
                 
                 <div className="p-6">
-                  <div className="flex items-center justify-center gap-2 mb-4 border-b pb-4 font-medium">
-                    <span className="text-wrap-blue">Response Time:</span>
-                    <span className="text-wrap-red">{plan.timeframe}</span>
+                  <div className="flex flex-col items-center justify-center gap-2 mb-4 border-b pb-4">
+                    <div className="flex items-center justify-center gap-2 font-medium">
+                      <span className="text-wrap-blue">Response Time:</span>
+                      <span className="text-wrap-red">{plan.timeframe}</span>
+                    </div>
+                    <div className="text-center mt-2">
+                      <span className="text-wrap-blue font-medium">Removal Guarantee:</span>
+                      <p className="text-sm text-wrap-red">{plan.removalGuarantee}</p>
+                    </div>
                   </div>
                   
                   <ul className="space-y-3 mb-6">
@@ -155,6 +168,11 @@ const WrapInsurance = () => {
               <div>
                 <h3 className="font-medium text-wrap-blue text-lg mb-2">What does wrap insurance cover?</h3>
                 <p className="text-wrap-grey">Our wrap insurance covers damage to your vehicle wrap including tears, scratches, fading, and peeling. It also guarantees professional removal without damage to your vehicle's paint.</p>
+              </div>
+              
+              <div>
+                <h3 className="font-medium text-wrap-blue text-lg mb-2">How do the removal guarantees differ?</h3>
+                <p className="text-wrap-grey">Silver Plan covers up to $1,500 in removal costs, Gold Plan covers up to $750 in removal costs, and Platinum Plan includes completely free wrap removal. All guarantees ensure that removal is done professionally without damage to your vehicle's paint.</p>
               </div>
               
               <div>
