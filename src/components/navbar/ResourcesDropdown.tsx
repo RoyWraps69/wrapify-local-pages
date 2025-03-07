@@ -49,6 +49,13 @@ const ResourcesDropdown: React.FC = () => {
               Design Templates
             </Link>
             <Link
+              to="/wrap-insurance"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Wrap Insurance
+            </Link>
+            <Link
               to="/warranty-information"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
               role="menuitem"

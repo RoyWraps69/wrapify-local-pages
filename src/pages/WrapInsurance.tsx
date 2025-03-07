@@ -76,11 +76,136 @@ const WrapInsurance = () => {
     }
   ];
 
+  // FAQs for schema markup
+  const faqs = [
+    {
+      question: "What does wrap insurance cover?",
+      answer: "Our wrap insurance covers damage to your vehicle wrap including tears, scratches, fading, and peeling. It also guarantees professional removal without damage to your vehicle's paint."
+    },
+    {
+      question: "How do the removal guarantees differ?",
+      answer: "Silver Plan covers up to $1,500 in removal costs, Gold Plan covers up to $750 in removal costs, and Platinum Plan includes completely free wrap removal. All guarantees ensure that removal is done professionally without damage to your vehicle's paint."
+    },
+    {
+      question: "How do I file a claim?",
+      answer: "To file a claim, simply contact our customer service team through your preferred method (based on your plan), and provide photos of the damage along with your insurance details. Our team will respond within your plan's timeframe."
+    },
+    {
+      question: "Can I upgrade my plan later?",
+      answer: "Yes, you can upgrade your plan at any time. The new coverage will start immediately, and your billing will be adjusted accordingly."
+    },
+    {
+      question: "Is there a deductible for claims?",
+      answer: "Silver and Gold plans have a $50 deductible per claim. The Platinum plan has no deductible for any claims."
+    }
+  ];
+
+  // Generate insurance schema
+  const insuranceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Vehicle Wrap Insurance Plans",
+    "description": "Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Wrapping The World",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4711 N. Lamon Ave",
+        "addressLocality": "Chicago",
+        "addressRegion": "IL",
+        "postalCode": "60630",
+        "addressCountry": "US"
+      },
+      "telephone": "+13125971286",
+      "image": "https://wrappingtheworld.com/og-image.jpg",
+      "priceRange": "$$"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Silver Plan",
+        "description": "Basic wrap damage coverage with up to $500 in damage repair",
+        "price": "14.99",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "14.99",
+          "priceCurrency": "USD",
+          "unitText": "Monthly"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Gold Plan",
+        "description": "Enhanced wrap damage coverage with up to $1,000 in damage repair",
+        "price": "29.99",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "29.99",
+          "priceCurrency": "USD",
+          "unitText": "Monthly"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Platinum Plan",
+        "description": "Comprehensive wrap damage coverage with unlimited damage repair",
+        "price": "49.99",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "49.99",
+          "priceCurrency": "USD",
+          "unitText": "Monthly"
+        }
+      }
+    ]
+  };
+
+  // Generate FAQ schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <>
       <Helmet>
         <title>Wrap Insurance Plans | Wrapping The World</title>
         <meta name="description" content="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service." />
+        <link rel="canonical" href="https://wrappingtheworld.com/wrap-insurance" />
+        
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://wrappingtheworld.com/wrap-insurance" />
+        <meta property="og:title" content="Vehicle Wrap Insurance Plans | Wrapping The World" />
+        <meta property="og:description" content="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service." />
+        <meta property="og:image" content="https://wrappingtheworld.com/images/wrap-insurance-plans.jpg" />
+        
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://wrappingtheworld.com/wrap-insurance" />
+        <meta name="twitter:title" content="Vehicle Wrap Insurance Plans | Wrapping The World" />
+        <meta name="twitter:description" content="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service." />
+        <meta name="twitter:image" content="https://wrappingtheworld.com/images/wrap-insurance-plans.jpg" />
+        
+        <meta name="keywords" content="vehicle wrap insurance, wrap protection plan, wrap damage coverage, wrap removal guarantee, car wrap insurance, vehicle wrap protection, auto wrap warranty, vehicle graphics insurance, wrap maintenance plan, Chicago wrap insurance" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify(insuranceSchema)}
+        </script>
+        
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
       </Helmet>
       
       <SEOSchema 

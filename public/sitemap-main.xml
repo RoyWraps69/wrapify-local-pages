@@ -72,7 +72,12 @@
     <loc>https://wrappingtheworld.com/wrap-insurance</loc>
     <lastmod>2024-09-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/wrap-insurance-plans.jpg</image:loc>
+      <image:title>Vehicle Wrap Insurance Plans</image:title>
+      <image:caption>Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans</image:caption>
+    </image:image>
   </url>
   
   <!-- Resource Pages -->
