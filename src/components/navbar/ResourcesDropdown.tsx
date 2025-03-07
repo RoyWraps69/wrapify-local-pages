@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { FileText, Users, ChevronRight } from "lucide-react";
+import { FileText, Users, ChevronRight, GraduationCap } from "lucide-react";
 
 const ResourcesDropdown = () => {
   return (
@@ -26,8 +26,15 @@ const ResourcesDropdown = () => {
                   Browse our collection of guides, FAQs, and resources to help you make informed decisions about your vehicle wrap.
                 </div>
                 <Link
+                  to="/training-classes"
+                  className="flex h-9 w-full items-center justify-between rounded-md bg-wrap-red px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-wrap-red/90 focus:outline-none mb-2"
+                >
+                  <span>Vinyl Wrap Training Classes</span>
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Link>
+                <Link
                   to="/resources/vinyl-wrap-care-guide"
-                  className="flex h-9 w-full items-center justify-between rounded-md bg-wrap-red px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-wrap-red/90 focus:outline-none"
+                  className="flex h-9 w-full items-center justify-between rounded-md bg-wrap-blue px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-wrap-blue/90 focus:outline-none"
                 >
                   <span>Vinyl Wrap Care Guide</span>
                   <ChevronRight className="ml-2 h-4 w-4" />
@@ -40,6 +47,10 @@ const ResourcesDropdown = () => {
                     <span>Resource Guides</span>
                   </div>
                   <div className="grid grid-flow-row gap-1">
+                    <Link to="/training-classes" className="text-sm text-wrap-grey hover:text-wrap-red flex items-center">
+                      <GraduationCap className="mr-1 h-3 w-3" />
+                      Training Classes
+                    </Link>
                     <Link to="/vinyl-wrap-care-guide" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Vinyl Wrap Care Guide
                     </Link>

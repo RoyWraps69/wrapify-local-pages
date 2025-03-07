@@ -1,4 +1,3 @@
-
 import { FAQ } from '@/components/insurance/InsuranceFAQSection';
 
 interface SchemaGeneratorProps {
@@ -361,6 +360,71 @@ export const generateWarrantySchemas = () => {
       pageUrl: "https://wrappingtheworld.com/warranty-information",
       imageUrl: "https://wrappingtheworld.com/images/warranty-info.jpg",
       datePublished: "2023-01-15T08:00:00+08:00",
+      dateModified: new Date().toISOString()
+    })
+  };
+};
+
+/**
+ * Generates CourseSchema for training classes
+ */
+export const generateCourseSchema = ({
+  courseName = "Professional Vinyl Wrap Installation Training",
+  courseDescription = "Master the art of vinyl wrap installation with our professional training classes taught by industry experts with 30+ years of experience.",
+  providerName = "Wrapping The World",
+  courseURL = "https://wrappingtheworld.com/training-classes",
+  courseOffers = [
+    {
+      name: "1-Day Intensive Training",
+      price: "750.00",
+      description: "Basic introduction to vinyl wrap installation techniques"
+    },
+    {
+      name: "3-Day Comprehensive Training",
+      price: "1200.00",
+      description: "Intermediate vinyl wrap installation techniques for more complex applications"
+    },
+    {
+      name: "5-Day Master Class",
+      price: "1800.00",
+      description: "Advanced vinyl wrap installation techniques for professional installers"
+    }
+  ]
+}) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": courseName,
+    "description": courseDescription,
+    "provider": {
+      "@type": "Organization",
+      "name": providerName,
+      "sameAs": "https://wrappingtheworld.com"
+    },
+    "url": courseURL,
+    "offers": courseOffers.map(offer => ({
+      "@type": "Offer",
+      "price": offer.price,
+      "priceCurrency": "USD",
+      "name": offer.name,
+      "description": offer.description
+    }))
+  };
+};
+
+/**
+ * Generates all schemas needed for training classes page
+ */
+export const generateTrainingClassesSchemas = () => {
+  return {
+    courseSchema: generateCourseSchema({}),
+    orgSchema: generateOrganizationSchema(),
+    webPageSchema: generateWebPageSchema({
+      pageTitle: "Professional Vinyl Wrap Installation Training | 30 Years Experience",
+      pageDescription: "Master the art of vinyl wrap installation with our professional training classes. Choose from 1, 3, or 5-day intensive courses taught by industry experts with 30+ years of experience.",
+      pageUrl: "https://wrappingtheworld.com/training-classes",
+      imageUrl: "https://wrappingtheworld.com/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png",
+      datePublished: "2023-05-15T08:00:00+08:00",
       dateModified: new Date().toISOString()
     })
   };
