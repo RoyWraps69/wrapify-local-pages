@@ -9,6 +9,11 @@ import SEOSchema from '@/components/SEOSchema';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 
 const PrintShip = () => {
+  // Hero background with ensured path
+  const heroBackgroundImage = '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png'; // Tesla Cybertruck camo
+  
+  console.log("PrintShip - Hero background image:", heroBackgroundImage);
+  
   return (
     <>
       <Helmet>
@@ -36,12 +41,12 @@ const PrintShip = () => {
           <section 
             className="min-h-screen w-full relative overflow-hidden flex items-center"
             style={{
-              backgroundImage: `url('/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png')`,
+              backgroundImage: `url('${heroBackgroundImage}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
           >
-            <div className="absolute inset-0 bg-black opacity-20"></div>
+            <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="container mx-auto px-4 text-center relative z-10">
               <m.h1 
                 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-white"
@@ -53,7 +58,7 @@ const PrintShip = () => {
                 <span className="text-wrap-red">Delivered Nationwide</span>
               </m.h1>
               <m.p 
-                className="text-xl text-white/90 mb-8 max-w-3xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg"
+                className="text-xl text-white/90 mb-8 max-w-3xl mx-auto backdrop-blur-sm bg-black/30 p-4 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}

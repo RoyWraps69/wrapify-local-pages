@@ -49,6 +49,9 @@ const MainContent: React.FC<MainContentProps> = ({
   setSelectedAddOns,
   handleAddToCart
 }) => {
+  // Ensure installer section has a background image
+  const installerSectionBackground = '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png'; // White Chevy truck
+  
   return (
     <>
       <PrintShipHeader />
@@ -77,8 +80,15 @@ const MainContent: React.FC<MainContentProps> = ({
         setSelectedAddOns={setSelectedAddOns}
       />
       
-      {/* Local Installers Directory */}
-      <div className="mt-12 bg-gradient-to-b from-gray-50 to-white rounded-xl shadow-sm border border-gray-100 p-6">
+      {/* Local Installers Directory with background image */}
+      <div 
+        className="mt-12 bg-gradient-to-b from-gray-50 to-white rounded-xl shadow-sm border border-gray-100 p-6 relative overflow-hidden"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('${installerSectionBackground}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
         <h2 className="text-2xl font-serif font-semibold text-wrap-blue text-center mb-3">
           Professional Installation Network
         </h2>

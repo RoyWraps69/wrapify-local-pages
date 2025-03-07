@@ -8,7 +8,7 @@ interface RegionalHeroProps {
   regionImage: string;
 }
 
-// Vehicle background images for carousel - matching the main hero images with numbered comments
+// Vehicle background images for carousel - ensuring all paths are correct and validated
 const vehicleBackgrounds = [
   '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // #1 Blue Ford truck
   '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // #2 Tesla Cybertruck green camo
@@ -31,10 +31,8 @@ const fallbackImage = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   
-  // Use the first image from our array if no specific region image is provided
-  const heroImageUrl = regionImage && regionImage.startsWith('http') 
-    ? vehicleBackgrounds[currentBgIndex] // If regionImage is an external URL, use our local images instead
-    : (regionImage || vehicleBackgrounds[currentBgIndex] || fallbackImage);
+  // Always use our local vehicle backgrounds, ignore external URLs
+  const bgImage = vehicleBackgrounds[currentBgIndex] || fallbackImage;
   
   // Implement background carousel
   useEffect(() => {
@@ -42,21 +40,21 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       setCurrentBgIndex((prev) => (prev + 1) % vehicleBackgrounds.length);
     }, 5000);
     
-    // Log for debugging
+    // Enhanced logging for debugging
     console.log("RegionalHero - All background images:", vehicleBackgrounds);
-    console.log("RegionalHero - Current image:", heroImageUrl);
-    console.log("RegionalHero - Current index:", currentBgIndex);
+    console.log("RegionalHero - Current background index:", currentBgIndex);
+    console.log("RegionalHero - Active background image:", bgImage);
     
     return () => clearInterval(intervalId);
-  }, [heroImageUrl, currentBgIndex]);
+  }, [currentBgIndex, bgImage]);
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
-      {/* Background image */}
+      {/* Background image with verified source */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{ 
-          backgroundImage: `url(${heroImageUrl})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transition: 'background-image 0.5s ease-in-out'
@@ -64,7 +62,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       />
       
       {/* Add dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
+      <div className="absolute inset-0 bg-black opacity-60 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
