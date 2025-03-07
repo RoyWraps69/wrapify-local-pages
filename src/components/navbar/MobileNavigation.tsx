@@ -102,6 +102,12 @@ const MobileNavigation: React.FC = () => {
             <Link to="/locations/chicago" className="text-sm text-wrap-grey hover:text-wrap-red">
               Chicago, IL
             </Link>
+            <Link to="/locations/oak-park" className="text-sm text-wrap-grey hover:text-wrap-red">
+              Oak Park, IL
+            </Link>
+            <Link to="/locations/skokie" className="text-sm text-wrap-grey hover:text-wrap-red">
+              Skokie, IL
+            </Link>
             <Link to="/locations/detroit" className="text-sm text-wrap-grey hover:text-wrap-red">
               Detroit, MI
             </Link>
