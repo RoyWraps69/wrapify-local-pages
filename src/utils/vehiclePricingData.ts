@@ -48,7 +48,7 @@ export const vehicleSizes: VehicleSize[] = [
     category: "Box Truck",
     description: "Commercial box trucks",
     squareFeet: 780,
-    basePrice: 7830, // Increased by 35% from 5800
+    basePrice: 6264, // Reduced by 20% from 7830
     examples: "Isuzu NPR, Freightliner M2, Ford F-650 Box"
   }
 ];

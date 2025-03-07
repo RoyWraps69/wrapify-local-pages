@@ -52,20 +52,9 @@ const PriceBreakdown: React.FC<PriceBreakdownProps> = ({
       >
         <span className="flex items-center">
           <Wrench className="w-4 h-4 mr-2 text-white/70" />
-          Professional Installation
+          Printing & Installation
         </span>
         <span>Included</span>
-      </motion.div>
-      
-      <motion.div 
-        className="flex justify-between border-b border-white/20 pb-3"
-        whileHover={{ x: 5 }}
-      >
-        <span className="flex items-center">
-          <Truck className="w-4 h-4 mr-2 text-white/70" />
-          Shipping
-        </span>
-        <span>{formatCurrency(price.shippingFee)}</span>
       </motion.div>
       
       {(selectedAddOns?.length > 0 && price.addOnsFee) && (

@@ -1,16 +1,15 @@
 
 import React from 'react';
-import { Info } from 'lucide-react';
 
 const InstallationNotice: React.FC = () => {
   return (
-    <div className="mt-6 pt-4 border-t border-gray-200">
-      <div className="bg-gray-50 p-3 rounded-lg flex items-start">
-        <Info className="text-wrap-blue w-5 h-5 mt-0.5 mr-2 flex-shrink-0" />
-        <p className="text-sm text-wrap-blue">
-          <strong>Expert Installation Included:</strong> All of our wrap packages include professional installation by our approved technicians. Our team ensures a perfect finish with our industry-leading installation techniques.
-        </p>
-      </div>
+    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 text-center">
+      <p className="text-green-800 font-medium">
+        <span className="underline font-bold">Good news:</span> All pricing includes professional printing and installation!
+        <span className="text-wrap-blue ml-1">
+          No separate installation fees required.
+        </span>
+      </p>
     </div>
   );
 };
