@@ -1,113 +1,75 @@
 
 import React from 'react';
-import { MapPin, Users, Briefcase, ExternalLink } from 'lucide-react';
-import { TownData } from '@/utils/townTypes';
+import { Link } from 'react-router-dom';
+import { MapPin, Store, Clock, Phone } from 'lucide-react';
 
 interface TownDescriptionProps {
   townName: string;
-  townData: TownData;
+  townData: any;
 }
 
 const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData }) => {
-  const {
-    state,
-    description,
-    population,
-    businessCount,
-    governmentUrl,
-    businessStats
-  } = townData;
-
+  const { description, population, businessCount, state } = townData;
+  
+  // Format state name fully
+  const stateFullName = 
+    state === 'IL' ? 'Illinois' : 
+    state === 'MI' ? 'Michigan' : 
+    state === 'IN' ? 'Indiana' : 
+    state === 'WI' ? 'Wisconsin' : state;
+  
   return (
-    <section className="py-12">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <h1 className="text-3xl font-serif font-semibold text-wrap-blue mb-3">
-              Vehicle Wrap Services in {townName}, {state}
-            </h1>
-            
-            <div className="flex items-center text-wrap-grey mb-6">
-              <MapPin className="text-wrap-red mr-1" size={18} />
-              <span>{townName}, {state}</span>
-            </div>
-            
-            <div className="prose text-wrap-grey max-w-none mb-6" dangerouslySetInnerHTML={{ __html: description }} />
-            
-            <div className="bg-gray-50 p-5 rounded-lg mb-6">
-              <h2 className="text-xl font-serif font-semibold text-wrap-blue mb-4">
-                Why Vehicle Wraps Work in {townName}
-              </h2>
-              <p className="text-wrap-grey mb-4">
-                In a vibrant community like {townName}, vehicle wraps offer an unmatched opportunity to reach local customers. 
-                Your wrapped vehicles become moving billboards, generating thousands of impressions daily as they travel through town.
-              </p>
-              <p className="text-wrap-grey">
-                Whether you're a local business looking to increase visibility or a national brand targeting the {townName} market, 
-                our custom vehicle wraps deliver eye-catching designs that drive results. We understand the local market and create 
-                wraps that resonate with {townName} residents and visitors alike.
-              </p>
-            </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center mb-6">
+            <MapPin className="text-wrap-red mr-2" size={24} />
+            <h2 className="text-3xl font-serif font-semibold text-wrap-blue">
+              Vehicle Wrapping Services in {townName}, {stateFullName}
+            </h2>
           </div>
-          
-          <div>
-            <div className="bg-white shadow-md rounded-lg p-6 mb-6">
-              <h2 className="text-xl font-serif font-semibold text-wrap-blue mb-4">
-                {townName} at a Glance
-              </h2>
-              
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Users className="text-wrap-red mt-1 mr-3 flex-shrink-0" size={20} />
-                  <div>
-                    <h3 className="font-medium text-wrap-blue">Population</h3>
-                    <p className="text-wrap-grey">{population.toLocaleString()} residents</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <Briefcase className="text-wrap-red mt-1 mr-3 flex-shrink-0" size={20} />
-                  <div>
-                    <h3 className="font-medium text-wrap-blue">Business Community</h3>
-                    <p className="text-wrap-grey">
-                      {businessCount.toLocaleString()} local businesses
-                      {businessStats && <span className="block mt-1 text-sm">{businessStats}</span>}
-                    </p>
-                  </div>
-                </div>
-                
-                {governmentUrl && (
-                  <div className="flex items-start">
-                    <ExternalLink className="text-wrap-red mt-1 mr-3 flex-shrink-0" size={20} />
-                    <div>
-                      <h3 className="font-medium text-wrap-blue">Official Resources</h3>
-                      <a 
-                        href={governmentUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-wrap-red hover:underline"
-                      >
-                        {townName} Official Website
-                      </a>
-                    </div>
-                  </div>
-                )}
+
+          <div className="bg-gray-50 p-6 rounded-lg mb-8 border border-gray-100">
+            <div className="flex flex-wrap gap-6 text-wrap-grey mb-4">
+              <div className="flex items-center">
+                <Store className="text-wrap-blue mr-2" size={18} />
+                <span>Population: {population.toLocaleString()}</span>
+              </div>
+              <div className="flex items-center">
+                <Store className="text-wrap-blue mr-2" size={18} />
+                <span>Local Businesses: ~{businessCount.toLocaleString()}</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="text-wrap-blue mr-2" size={18} />
+                <span>{townData.distance} miles from Chicago</span>
+              </div>
+              <div className="flex items-center">
+                <Phone className="text-wrap-blue mr-2" size={18} />
+                <span>312-597-1286</span>
               </div>
             </div>
+          </div>
+
+          <div className="prose prose-lg max-w-none">
+            <p className="text-wrap-grey mb-6">
+              <strong className="text-wrap-blue">WRAPPING THE WORLD</strong> provides premium vehicle wrapping and protection services to businesses and individuals throughout {townName}, {stateFullName}. {description}
+            </p>
             
-            <div className="bg-wrap-blue text-white rounded-lg p-6">
-              <h2 className="text-xl font-serif font-semibold mb-4">
-                Ready to Wrap in {townName}?
-              </h2>
-              <p className="mb-4 text-white/90">
-                We offer professional vehicle wrap design and installation services throughout {townName} and surrounding areas.
-              </p>
-              <a 
-                href="/contact" 
-                className="block w-full bg-white text-wrap-blue text-center py-3 rounded-md font-medium hover:bg-gray-100 transition-colors"
+            <p className="text-wrap-grey mb-6">
+              With a population of {population.toLocaleString()} and approximately {businessCount.toLocaleString()} local businesses, {townName} is a thriving community with growing demand for professional vehicle branding and protection services.
+            </p>
+            
+            <p className="text-wrap-grey mb-6">
+              Our services in {townName} include commercial fleet wraps, color change wraps, ceramic coatings, paint protection film, and custom vehicle graphics. We understand the specific needs of {townName} businesses and provide tailored solutions that help you stand out in your local market.
+            </p>
+            
+            <div className="mt-8">
+              <Link 
+                to="/contact" 
+                className="bg-wrap-red hover:bg-wrap-red/90 text-white px-6 py-3 rounded-md transition-colors inline-block"
               >
-                Get a Free Quote
-              </a>
+                Get a Free Quote for Your {townName} Vehicle
+              </Link>
             </div>
           </div>
         </div>

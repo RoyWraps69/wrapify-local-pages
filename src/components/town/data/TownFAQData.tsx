@@ -8,88 +8,44 @@ interface CreateTownFAQsProps {
 export const createTownFAQs = ({ townName }: CreateTownFAQsProps) => {
   return [
     {
-      question: `Where can I get professional vehicle wraps in ${townName}?`,
+      question: `How much do vehicle wraps cost in ${townName}?`,
       answer: (
         <p>
-          Wrapping The World provides premium vehicle wrapping services in {townName} and surrounding areas. 
-          Our team serves all {townName} businesses and residents with high-quality commercial fleet wraps, 
-          color change wraps, ceramic coatings, and custom vehicle graphics. Contact us today for 
-          a free consultation about your {townName} vehicle wrapping project.
+          Vehicle wrap pricing in {townName} varies based on several factors: vehicle size, wrap complexity, design requirements, and material quality. For commercial fleet wraps, pricing typically ranges from $2,500-$5,000 per vehicle. Custom color change wraps range from $3,000-$6,000 depending on vehicle size. Partial wraps start around $1,200. We provide free, detailed quotes specific to your {townName} project requirements.
         </p>
       )
     },
     {
-      question: `How much does ceramic coating cost in ${townName}?`,
-      answer: (
-        <div>
-          <p className="mb-3">
-            The cost of ceramic coating for vehicles in {townName} depends on several factors:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Vehicle size and type</li>
-            <li>Current condition of the paint</li>
-            <li>Level of preparation required</li>
-            <li>Grade of ceramic coating selected</li>
-            <li>Additional services (paint correction, etc.)</li>
-          </ul>
-          <p className="mt-3">
-            Our ceramic coating packages for {townName} clients typically range from $699 for basic 
-            protection to $1,899+ for our premium ceramic coating with multi-year protection. 
-            Contact us for a personalized quote for your specific vehicle.
-          </p>
-        </div>
-      )
-    },
-    {
-      question: `What businesses in ${townName} benefit most from fleet wraps?`,
-      answer: (
-        <div>
-          <p className="mb-3">
-            Many types of businesses in {townName} see significant benefits from professional fleet wraps:
-          </p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Service businesses (plumbing, electrical, HVAC, landscaping)</li>
-            <li>Construction and contracting companies</li>
-            <li>Food trucks and catering businesses</li>
-            <li>Delivery services and couriers</li>
-            <li>Real estate agencies</li>
-            <li>Local retailers with delivery vehicles</li>
-            <li>Home service providers</li>
-          </ul>
-          <p className="mt-3">
-            Any {townName} business with vehicles that travel throughout the area can transform them into 
-            powerful mobile billboards, generating thousands of local impressions daily.
-          </p>
-        </div>
-      )
-    },
-    {
-      question: `What's the difference between ceramic coating and paint protection film for my ${townName} vehicle?`,
+      question: `How long do vehicle wraps last in ${townName}?`,
       answer: (
         <p>
-          For {townName} vehicle owners, both ceramic coating and paint protection film (PPF) offer distinct benefits. 
-          Ceramic coating provides chemical resistance, hydrophobic properties (making cleaning easier), and enhanced gloss, 
-          but minimal physical protection. Paint Protection Film offers superior physical protection against rock chips 
-          and scratches with self-healing technology. Many {townName} clients choose to combine both: PPF on high-impact areas 
-          (front bumper, hood) and ceramic coating over the entire vehicle for complete protection against Chicago's harsh weather 
-          and road conditions.
+          Professionally installed vehicle wraps from Wrapping The World typically last 5-7 years in {townName}. Our premium 3M and Avery Dennison vinyl materials are specifically engineered to withstand local weather conditions. With proper maintenance and care, your {townName} vehicle wrap will maintain its vibrant appearance and promotional effectiveness throughout this period, making it an excellent long-term investment for your business.
         </p>
       )
     },
     {
-      question: `How long do vehicle wraps last in the ${townName} climate?`,
+      question: `Do you offer mobile installation services in ${townName}?`,
       answer: (
         <p>
-          In {townName}'s climate, professionally installed vehicle wraps typically last 5-7 years. Our premium 
-          3M and Avery Dennison vinyl materials are specifically engineered to withstand the Midwest's extreme 
-          temperature variations, from hot summers to frigid winters. To maximize longevity, we recommend 
-          regular gentle washing and keeping wrapped vehicles garaged when possible. Our {townName} clients 
-          enjoy excellent durability, with proper maintenance ensuring your wrap maintains its vibrant 
-          appearance for years.
+          Yes, we offer mobile installation services throughout {townName} for certain projects. Our mobile team can come to your location for consultations, measurements, and in some cases, complete installations. This service is particularly valuable for businesses with multiple vehicles or fleets that cannot afford downtime. Contact us to discuss your specific needs in {townName} and determine if mobile service is appropriate for your project.
         </p>
       )
     },
+    {
+      question: `How do I maintain my vehicle wrap in ${townName}?`,
+      answer: (
+        <p>
+          To maintain your vehicle wrap in {townName}, we recommend hand washing with mild soap and water, avoiding high-pressure car washes and harsh chemicals. In winter months, regularly rinse off road salt. For optimal protection, park in covered areas when possible to minimize UV exposure. We provide all {townName} clients with detailed care instructions specific to local conditions to maximize the lifespan of your investment.
+        </p>
+      )
+    },
+    {
+      question: `What businesses in ${townName} benefit most from vehicle wraps?`,
+      answer: (
+        <p>
+          In {townName}, businesses that benefit most from vehicle wraps include service-based companies (HVAC, plumbing, landscaping), delivery services, construction companies, real estate agencies, food trucks, and retail businesses with delivery vehicles. Any business with vehicles that travel throughout {townName} can leverage the high visibility and local recognition that professionally wrapped vehicles provide. Our team can help you assess how vehicle wraps can specifically benefit your {townName} business.
+        </p>
+      )
+    }
   ];
 };
-
-export default createTownFAQs;

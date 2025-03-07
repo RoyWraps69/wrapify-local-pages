@@ -67,13 +67,20 @@ const TownPage: React.FC = () => {
     return null; // Will be redirected by the useEffect
   }
   
-  const { name } = townData;
+  const { name, state } = townData;
+  
+  // Format state name fully
+  const stateFullName = 
+    state === 'IL' ? 'Illinois' : 
+    state === 'MI' ? 'Michigan' : 
+    state === 'IN' ? 'Indiana' : 
+    state === 'WI' ? 'Wisconsin' : state;
   
   // Set up town background image - use fallback image that we know works
-  const townBackgroundImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
+  const townBackgroundImage = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
   
-  const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name} | Wrapping The World`;
-  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from the world's top-rated vehicle enhancement company.`;
+  const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name}, ${stateFullName} | Wrapping The World`;
+  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps and protection from the Midwest's top-rated vehicle enhancement company.`;
   const pageUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
   const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
 
