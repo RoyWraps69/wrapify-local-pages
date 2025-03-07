@@ -19,6 +19,24 @@ const PrintShipSEO: React.FC = () => {
   const productSchema = generatePrintShipProductSchema();
   const faqSchema = generatePrintShipFAQSchema();
 
+  // Installer directory schema
+  const installerDirectorySchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Vehicle Wrap Installer Directory",
+    "serviceType": "Professional Installation Referral",
+    "description": "Find certified vehicle wrap installers across the United States through our professional network.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Wrapping The World",
+      "url": "https://wrappingtheworld.com"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    }
+  };
+
   // Breadcrumb schema for Print & Ship page
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -46,7 +64,7 @@ const PrintShipSEO: React.FC = () => {
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Enhanced meta tags */}
-      <meta name="keywords" content="vehicle wrap printing, nationwide vehicle wraps, print and ship car wraps, DIY vehicle wraps, fleet wrap printing, commercial truck wraps, car wrap materials, premium vehicle wraps, 3M vehicle wraps, Avery Dennison wraps, vehicle graphics shipping, wrap installation support, custom vehicle graphics, professional vehicle wraps, business vehicle branding, auto wraps" />
+      <meta name="keywords" content="vehicle wrap printing, nationwide vehicle wraps, print and ship car wraps, DIY vehicle wraps, fleet wrap printing, commercial truck wraps, car wrap materials, premium vehicle wraps, 3M vehicle wraps, Avery Dennison wraps, vehicle graphics shipping, wrap installation support, custom vehicle graphics, professional vehicle wraps, business vehicle branding, auto wraps, wrap installer directory, vehicle wrap installers" />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
       <meta property="og:type" content="website" />
@@ -78,6 +96,10 @@ const PrintShipSEO: React.FC = () => {
       
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
+      </script>
+      
+      <script type="application/ld+json">
+        {JSON.stringify(installerDirectorySchema)}
       </script>
       
       <script type="application/ld+json">
