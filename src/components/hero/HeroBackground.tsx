@@ -30,24 +30,27 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
       />
       
       {/* Dynamic background with transition effect */}
-      {backgrounds.map((bg, index) => (
-        <div
-          key={index}
-          className={cn(
-            "absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out",
-            activeBackground === index ? "opacity-100" : "opacity-0"
-          )}
-          style={{
-            backgroundImage: `url(${backgroundImage || bg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
-          }}
-        >
-          {/* Overlay with subtle gradient for text readability - 20% opacity as requested */}
-          <div className="absolute inset-0 bg-black opacity-20"></div>
-        </div>
-      ))}
+      {backgrounds.map((bg, index) => {
+        const bgUrl = backgroundImage || bg;
+        return (
+          <div
+            key={index}
+            className={cn(
+              "absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out",
+              activeBackground === index ? "opacity-100" : "opacity-0"
+            )}
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${bgUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
+            }}
+          >
+            {/* Overlay with stronger gradient for text readability */}
+            <div className="absolute inset-0 bg-black opacity-30"></div>
+          </div>
+        );
+      })}
       
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
