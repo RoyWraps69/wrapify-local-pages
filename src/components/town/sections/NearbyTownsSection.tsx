@@ -80,7 +80,7 @@ const NearbyTownsSection: React.FC<NearbyTownsSectionProps> = ({
                   </div>
                   <div className="flex items-center">
                     <Navigation className="mr-1 h-3 w-3" />
-                    <span>{town.distance} miles from Chicago</span>
+                    <span>{town.distance} miles from {townName}</span>
                   </div>
                 </div>
                 
