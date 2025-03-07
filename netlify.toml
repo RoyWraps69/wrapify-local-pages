@@ -1,14 +1,14 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install --force && NODE_ENV=production npm run build"
+  command = "npm ci && npm run build"
   publish = "dist"
   functions = "netlify/functions"
   
 # Specify Node.js version
 [build.environment]
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
   VITE_APP_ENV = "production"
   
 # Handle SPA routing by redirecting all paths to index.html
@@ -55,35 +55,33 @@
     X-Content-Type-Options = "nosniff"
     # Enable compression
     Content-Encoding = "br"
-    # Preload key assets
-    Link = "</assets/js/vendor-react-*.js>; rel=preload; as=script, </assets/js/vendor-ui-*.js>; rel=preload; as=script"
     
 # Environment variables for production
 [context.production.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install --force && NODE_ENV=production npm run build"
+  command = "npm ci && npm run build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install --force && NODE_ENV=production npm run build"
+  command = "npm ci && npm run build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Enable bundler
 [build.processing]
@@ -98,8 +96,3 @@
   compress = true
 [build.processing.html]
   pretty_urls = true
-
-# Set up deploy notifications
-[build.notify]
-  success = "Deploy successful! Site is live."
-  error = "Deploy failed. Check build logs."
