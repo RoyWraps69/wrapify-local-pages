@@ -62,6 +62,6 @@ export default defineConfig(({ mode }) => ({
   },
   // Optimize dependencies that may slow down dev server
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
+    include: ['react', 'react-dom', 'react-router-dom', 'lovable-tagger'],
   },
 }));
