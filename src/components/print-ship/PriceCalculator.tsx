@@ -15,6 +15,8 @@ import CoverageSlider from './calculator/CoverageSlider';
 import DesignSelector from './calculator/DesignSelector';
 import ShippingSelector from './calculator/ShippingSelector';
 import InstallationNotice from './calculator/InstallationNotice';
+import { Button } from '@/components/ui/button';
+import { RefreshCcw } from 'lucide-react';
 
 interface PriceCalculatorProps {
   selectedVehicle: VehicleSize;
@@ -58,7 +60,21 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
       className="bg-white p-6 rounded-lg border border-gray-200 shadow-lg"
       variants={itemVariants}
     >
-      <CalculatorHeader />
+      <div className="flex justify-between items-center mb-6">
+        <CalculatorHeader />
+        
+        {resetAllSelections && (
+          <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={resetAllSelections}
+            className="text-wrap-blue hover:text-wrap-red text-xs flex items-center gap-1"
+          >
+            <RefreshCcw className="h-3 w-3" />
+            Clear All Selections
+          </Button>
+        )}
+      </div>
       
       <div className="space-y-6">
         {/* Vehicle Size Selection */}
@@ -89,7 +105,6 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
         <ShippingSelector 
           selectedShipping={selectedShipping} 
           setSelectedShipping={setSelectedShipping} 
-          onReset={resetAllSelections}
         />
       </div>
 
