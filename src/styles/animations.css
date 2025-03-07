@@ -1,211 +1,141 @@
 
-/* Animations for UI elements */
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Essential animations */
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease forwards;
 }
 
-@keyframes slideInUp {
+@keyframes fadeInDown {
   from {
-    transform: translateY(20px);
     opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-5px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.7; }
-  100% { opacity: 1; }
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes scale {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-@keyframes glow {
-  0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
-}
-
-@keyframes light-streak {
-  0% { 
-    transform: translateX(-100%) skewX(-30deg);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.8;
-  }
-  100% { 
-    transform: translateX(100%) skewX(-30deg);
-    opacity: 0;
-  }
-}
-
-/* Animation utility classes */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.animate-slide-in-up {
-  animation: slideInUp 0.7s ease-out;
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
 }
 
 .animate-pulse {
   animation: pulse 2s infinite;
 }
 
-.animate-spin {
-  animation: spin 2s linear infinite;
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.animate-bounce {
-  animation: bounce 1s ease infinite;
+.animate-float-subtle {
+  animation: float 3s ease-in-out infinite;
 }
 
-.animate-scale {
-  animation: scale 2s ease-in-out infinite;
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
+/* Animated gradient borders */
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 4px;
+  background: linear-gradient(60deg, #E63946, #457B9D, #1D3557, #E63946) border-box;
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
 }
 
-.animate-shake {
-  animation: shake 0.5s ease-in-out;
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-border > div {
+  border-radius: 0.3rem;
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+/* New enhanced animations */
+@keyframes light-streak {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  10%, 30% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+    opacity: 0;
+  }
 }
 
 .animate-light-streak {
-  animation: light-streak 3s ease-in-out infinite;
+  animation: light-streak 2s ease-out infinite;
 }
 
-/* Animation delays */
-.delay-100 {
-  animation-delay: 100ms;
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.delay-200 {
-  animation-delay: 200ms;
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-.delay-300 {
-  animation-delay: 300ms;
+/* Scale animation */
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.delay-500 {
-  animation-delay: 500ms;
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
 }
 
-.delay-700 {
-  animation-delay: 700ms;
+/* Slide-in animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.delay-1000 {
-  animation-delay: 1000ms;
-}
-
-/* Animation durations */
-.duration-300 {
-  animation-duration: 300ms;
-}
-
-.duration-500 {
-  animation-duration: 500ms;
-}
-
-.duration-700 {
-  animation-duration: 700ms;
-}
-
-.duration-1000 {
-  animation-duration: 1000ms;
-}
-
-.duration-2000 {
-  animation-duration: 2000ms;
-}
-
-.duration-3000 {
-  animation-duration: 3000ms;
-}
-
-/* Animation directions */
-.direction-alternate {
-  animation-direction: alternate;
-}
-
-.direction-reverse {
-  animation-direction: reverse;
-}
-
-/* Animation fill modes */
-.fill-forwards {
-  animation-fill-mode: forwards;
-}
-
-.fill-backwards {
-  animation-fill-mode: backwards;
-}
-
-.fill-both {
-  animation-fill-mode: both;
-}
-
-/* Animation timing functions */
-.ease-in {
-  animation-timing-function: ease-in;
-}
-
-.ease-out {
-  animation-timing-function: ease-out;
-}
-
-.ease-in-out {
-  animation-timing-function: ease-in-out;
-}
-
-.linear {
-  animation-timing-function: linear;
-}
-
-/* Animation play states */
-.paused {
-  animation-play-state: paused;
-}
-
-.running {
-  animation-play-state: running;
+.animate-slide-in-right {
+  animation: slideInRight 0.4s ease-out forwards;
 }

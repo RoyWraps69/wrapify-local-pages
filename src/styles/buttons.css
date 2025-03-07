@@ -1,50 +1,53 @@
 
-/* Button styles */
+@layer base {
+  /* Improved button accessibility */
+  button:focus-visible {
+    @apply outline-2 outline-offset-2 outline-wrap-blue rounded;
+  }
+}
+
+/* Custom button styles */
 .btn-primary {
-  @apply relative overflow-hidden bg-wrap-red text-white font-medium px-4 sm:px-6 py-2 sm:py-3 rounded-md 
-  transition-all duration-300 transform hover:scale-105 hover:shadow-lg 
-  focus:outline-none focus:ring-2 focus:ring-wrap-red focus:ring-opacity-50;
-  box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: all 0.6s;
-}
-
-.btn-primary:hover::before {
-  left: 100%;
+  @apply inline-flex items-center px-6 py-3 rounded-md bg-wrap-red text-white hover:bg-opacity-90 transition-all;
 }
 
 .btn-secondary {
-  @apply relative overflow-hidden bg-transparent border-2 border-wrap-light text-wrap-light font-medium 
-  px-4 sm:px-6 py-2 sm:py-3 rounded-md transition-all duration-300 
-  hover:bg-wrap-light/10 focus:outline-none focus:ring-2 focus:ring-wrap-light focus:ring-opacity-50;
+  @apply inline-flex items-center px-6 py-3 rounded-md bg-white/10 text-white hover:bg-white/20 transition-all;
 }
 
-.btn-secondary::after {
+/* 3D button effect */
+.btn-3d {
+  position: relative;
+  background: #e63946;
+  color: white;
+  transform-style: preserve-3d;
+  transition: all 0.15s ease;
+}
+
+.btn-3d::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 0;
-  background: linear-gradient(to top, rgba(255,255,255,0.1), transparent);
-  transition: height 0.3s ease;
-  z-index: -1;
-}
-
-.btn-secondary:hover::after {
   height: 100%;
+  top: 0.5em;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #b02a35;
+  transform: translateZ(-1em) scale(0.98);
+  filter: blur(1em);
+  opacity: 0.5;
+  transition: all 0.15s ease;
 }
 
-/* Improved button accessibility */
-button:focus-visible {
-  @apply outline-2 outline-offset-2 outline-wrap-blue rounded;
+.btn-3d:hover {
+  transform: translateY(-0.5em);
+}
+
+.btn-3d:hover::before {
+  opacity: 0.8;
+}
+
+.btn-3d:active {
+  transform: translateY(-0.2em);
 }

@@ -1,46 +1,12 @@
 
-/* Effect styles */
-.light-streak {
-  position: relative;
-  overflow: hidden;
-}
-
-.light-streak::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(25deg);
-  transition: all 0.8s;
-}
-
-.light-streak:hover::after {
-  left: 200%;
-}
-
-.cyber-glow {
-  box-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+/* Dynamic interactive elements */
+.interactive-element {
   transition: all 0.3s ease;
 }
 
-.cyber-glow:hover {
-  box-shadow: 0 0 20px rgba(255, 42, 109, 0.7);
-}
-
-.neon-glow {
-  transition: all 0.3s ease;
-}
-
-.neon-glow:hover {
-  filter: drop-shadow(0 0 5px rgba(230, 57, 70, 0.7));
+.interactive-element:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* High-contrast text effects */
@@ -49,22 +15,16 @@
   letter-spacing: 0.5px;
 }
 
-/* Interactive hover effects */
-.tilt-card {
-  transition: transform 0.5s ease;
-}
-
-.tilt-card:hover {
-  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
-}
-
-/* Floating animation */
-.floating {
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+/* Geometric patterns */
+.geo-pattern {
+  background-image: 
+    linear-gradient(30deg, #ff00cc 12%, transparent 12.5%, transparent 87%, #ff00cc 87.5%, #ff00cc),
+    linear-gradient(150deg, #ff00cc 12%, transparent 12.5%, transparent 87%, #ff00cc 87.5%, #ff00cc),
+    linear-gradient(30deg, #ff00cc 12%, transparent 12.5%, transparent 87%, #ff00cc 87.5%, #ff00cc),
+    linear-gradient(150deg, #ff00cc 12%, transparent 12.5%, transparent 87%, #ff00cc 87.5%, #ff00cc),
+    linear-gradient(60deg, #3399ff 25%, transparent 25.5%, transparent 75%, #3399ff 75%, #3399ff),
+    linear-gradient(60deg, #3399ff 25%, transparent 25.5%, transparent 75%, #3399ff 75%, #3399ff);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  background-color: #000;
 }
