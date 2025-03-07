@@ -86,21 +86,19 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
     <>
       {/* Main background image */}
       <div
-        className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+        className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
           imagesLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
           backgroundImage: `url(${heroBackground})`,
-          backgroundSize: 'contain', // Changed from 'cover' to 'contain'
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat', // Added to prevent tiling
-          backgroundColor: '#000', // Added black background
           transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
         }}
       />
       
-      {/* Darker overlay for better visibility */}
-      <div className="absolute inset-0 bg-black opacity-70 z-1"></div> {/* Increased opacity from 50% to 70% */}
+      {/* Lighter overlay for better visibility */}
+      <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
     </>
   );
 };

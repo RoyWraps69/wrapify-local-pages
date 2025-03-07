@@ -62,7 +62,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   };
   
   return (
-    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-black"> {/* Changed from bg-wrap-blue to bg-black */}
+    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-wrap-blue">
       {/* Loading spinner */}
       {!imagesLoaded && <HeroLoader />}
       
