@@ -8,6 +8,8 @@ interface SEOWrapperProps {
 
 /**
  * Wrapper component to provide Helmet context for all pages
+ * This allows us to manage SEO across the site in a consistent way
+ * while enabling page-specific optimizations
  */
 const SEOWrapper: React.FC<SEOWrapperProps> = ({ children }) => {
   return (

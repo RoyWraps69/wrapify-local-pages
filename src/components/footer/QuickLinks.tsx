@@ -33,8 +33,8 @@ const QuickLinks = () => {
           </Link>
         </li>
         <li>
-          <Link to="/about" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
-            About Us
+          <Link to="/resources/vinyl-wrap-care-guide" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
+            Resources
           </Link>
         </li>
         <li>

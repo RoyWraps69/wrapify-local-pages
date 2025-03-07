@@ -83,6 +83,28 @@ const ResourcesDropdown: React.FC = () => {
             >
               Blog
             </Link>
+            <div className="border-t border-gray-100 my-1"></div>
+            <Link
+              to="/about"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              About Us
+            </Link>
+            <Link
+              to="/about/our-team"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Our Team
+            </Link>
+            <Link
+              to="/about/careers"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Careers
+            </Link>
           </div>
         </div>
       )}

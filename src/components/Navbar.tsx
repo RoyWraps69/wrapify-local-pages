@@ -79,12 +79,6 @@ const Navbar: React.FC = () => {
             <LocationsDropdown />
             <ResourcesDropdown />
             <Link
-              to="/about"
-              className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
-            >
-              About
-            </Link>
-            <Link
               to="/contact"
               className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
             >
@@ -149,10 +143,10 @@ const Navbar: React.FC = () => {
                 Locations
               </Link>
               <Link
-                to="/about"
+                to="/resources"
                 className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
               >
-                About
+                Resources
               </Link>
               <Link
                 to="/contact"
