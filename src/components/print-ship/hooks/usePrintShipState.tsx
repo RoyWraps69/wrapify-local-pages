@@ -35,6 +35,16 @@ export const usePrintShipState = () => {
   
   const { addItem } = useShoppingCart();
 
+  // Reset all selections to defaults
+  const resetAllSelections = () => {
+    setSelectedVehicle(vehicleSizes[1]); // Mid-Size
+    setSelectedMaterial(wrapMaterials[0]); // Standard Vinyl
+    setSelectedDesign(designOptions[0]); // Basic Design
+    setSelectedShipping(shippingOptions[0]); // Standard Shipping
+    setCoverage(1); // 100% coverage
+    setSelectedAddOns([]); // No add-ons
+  };
+
   // Calculate price when options change
   useEffect(() => {
     const basePrice = calculateWrapPrice(
@@ -130,6 +140,7 @@ export const usePrintShipState = () => {
     selectedAddOns,
     setSelectedAddOns,
     price,
-    handleAddToCart
+    handleAddToCart,
+    resetAllSelections
   };
 };

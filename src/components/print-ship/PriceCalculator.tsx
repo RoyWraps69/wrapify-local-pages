@@ -27,6 +27,7 @@ interface PriceCalculatorProps {
   setSelectedShipping: (shipping: ShippingOption) => void;
   coverage: number;
   setCoverage: (coverage: number) => void;
+  resetAllSelections?: () => void;
 }
 
 const PriceCalculator: React.FC<PriceCalculatorProps> = ({
@@ -39,7 +40,8 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
   selectedShipping,
   setSelectedShipping,
   coverage,
-  setCoverage
+  setCoverage,
+  resetAllSelections
 }) => {
   // Animation variants for staggered children
   const itemVariants = {
@@ -87,6 +89,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
         <ShippingSelector 
           selectedShipping={selectedShipping} 
           setSelectedShipping={setSelectedShipping} 
+          onReset={resetAllSelections}
         />
       </div>
 

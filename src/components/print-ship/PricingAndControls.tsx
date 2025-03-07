@@ -28,6 +28,7 @@ interface PricingAndControlsProps {
   };
   selectedAddOns: string[];
   handleAddToCart: () => void;
+  resetAllSelections: () => void;
 }
 
 const PricingAndControls: React.FC<PricingAndControlsProps> = ({
@@ -43,7 +44,8 @@ const PricingAndControls: React.FC<PricingAndControlsProps> = ({
   setCoverage,
   price,
   selectedAddOns,
-  handleAddToCart
+  handleAddToCart,
+  resetAllSelections
 }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -59,6 +61,7 @@ const PricingAndControls: React.FC<PricingAndControlsProps> = ({
         setSelectedShipping={setSelectedShipping}
         coverage={coverage}
         setCoverage={setCoverage}
+        resetAllSelections={resetAllSelections}
       />
       
       {/* Right column - Price Summary and CTA */}

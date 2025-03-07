@@ -20,7 +20,8 @@ const PrintShipContent: React.FC = () => {
     selectedAddOns,
     setSelectedAddOns,
     price,
-    handleAddToCart
+    handleAddToCart,
+    resetAllSelections
   } = usePrintShipState();
 
   return (
@@ -39,6 +40,7 @@ const PrintShipContent: React.FC = () => {
       setSelectedAddOns={setSelectedAddOns}
       price={price}
       handleAddToCart={handleAddToCart}
+      resetAllSelections={resetAllSelections}
     />
   );
 };

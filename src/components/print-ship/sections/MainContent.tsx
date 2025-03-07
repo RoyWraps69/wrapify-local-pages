@@ -31,6 +31,7 @@ interface MainContentProps {
   selectedAddOns: string[];
   setSelectedAddOns: (addOns: string[]) => void;
   handleAddToCart: () => void;
+  resetAllSelections: () => void;
 }
 
 const MainContent: React.FC<MainContentProps> = ({
@@ -47,7 +48,8 @@ const MainContent: React.FC<MainContentProps> = ({
   price,
   selectedAddOns,
   setSelectedAddOns,
-  handleAddToCart
+  handleAddToCart,
+  resetAllSelections
 }) => {
   // Ensure installer section has a background image
   const installerSectionBackground = '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png'; // White Chevy truck
@@ -80,6 +82,7 @@ const MainContent: React.FC<MainContentProps> = ({
         price={price}
         selectedAddOns={selectedAddOns}
         handleAddToCart={handleAddToCart}
+        resetAllSelections={resetAllSelections}
       />
       
       {/* Add-ons Section */}
