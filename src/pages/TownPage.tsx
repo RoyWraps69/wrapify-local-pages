@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import SEOSchema from '@/components/SEOSchema';
-import { getTownData, getNearbyTowns } from '@/utils/townFunctions';
+import { getTownData, getNearbyTowns, normalizeSlug } from '@/utils/townData';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import TownStructuredData from '@/components/town/seo/TownStructuredData';
 import TownPageContent from '@/components/town/layout/TownPageContent';
@@ -35,7 +35,7 @@ const TownPage: React.FC = () => {
     
     try {
       // Normalize the slug for better matching
-      const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+      const normalizedSlug = normalizeSlug(townSlug);
       
       const fetchedTownData = getTownData(normalizedSlug);
       console.log(`Attempting to find town with slug: "${normalizedSlug}"`);

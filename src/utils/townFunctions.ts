@@ -4,11 +4,7 @@ import { illinoisTowns } from './towns/illinois';
 import { michiganTowns } from './towns/michigan';
 import { indianaTowns } from './towns/indiana';
 import { wisconsinTowns } from './towns/wisconsin';
-
-// Normalize a string to create a consistent slug
-export const normalizeSlug = (str: string): string => {
-  return str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-};
+import { normalizeSlug } from './towns/slugUtils';
 
 // Combine all towns data for easy access
 export const getAllTowns = (): TownData[] => {
