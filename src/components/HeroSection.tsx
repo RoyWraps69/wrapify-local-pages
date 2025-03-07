@@ -18,12 +18,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const townUrl = townData?.governmentUrl || `https://www.google.com/search?q=${townName}+government+website`;
   
   return (
-    <section className="hero-section relative min-h-screen w-full">
+    <section className="hero-section relative min-h-screen w-full overflow-hidden">
       {/* Background image with overlay */}
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`,
+          backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.5)), url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
@@ -38,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <img 
                 src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
                 alt="WRAPPING THE WORLD" 
-                className="w-52 h-auto"
+                className="w-52 h-auto object-contain"
               />
             </div>
             

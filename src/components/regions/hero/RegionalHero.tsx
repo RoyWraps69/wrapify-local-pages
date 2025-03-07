@@ -18,9 +18,9 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
     >
       {/* Background image with overlay */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 overflow-hidden"
         style={{ 
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(${heroImage})`,
+          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${heroImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed'
@@ -52,7 +52,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
           <img 
             src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
             alt="WRAPPING THE WORLD" 
-            className="w-48 h-auto mt-6 md:mt-0 drop-shadow-lg"
+            className="w-48 h-auto mt-6 md:mt-0 drop-shadow-lg object-contain"
           />
         </div>
       </div>

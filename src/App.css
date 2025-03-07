@@ -141,7 +141,8 @@
 }
 
 .hero-section {
-  @apply relative min-h-[600px] bg-wrap-blue bg-cover bg-center flex items-center py-20 px-4;
+  @apply relative min-h-[600px] flex items-center py-20 px-4;
+  background: transparent;
 }
 
 .btn-primary {
