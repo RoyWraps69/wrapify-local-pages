@@ -5,6 +5,8 @@ import HeroHeadline from './HeroHeadline';
 import HeroServiceFeatures from './HeroServiceFeatures';
 import HeroCTAButtons from './HeroCTAButtons';
 import HeroFooterInfo from './HeroFooterInfo';
+import { Link } from 'react-router-dom';
+import { Mail, ArrowRight } from 'lucide-react';
 
 interface HeroContentContainerProps {
   isVisible: boolean;
@@ -42,6 +44,17 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
           <HeroServiceFeatures />
           
           <HeroCTAButtons townName={townName} />
+          
+          <div className="mt-8">
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-wrap-blue text-white rounded-md shadow-lg hover:bg-wrap-blue/90 transition-all animate-float-subtle"
+            >
+              <Mail className="w-5 h-5" />
+              <span>Contact Our {townName} Design Team</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
           
           <HeroFooterInfo townName={townName} scrollToServices={scrollToServices} />
         </div>

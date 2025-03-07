@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Camera, ExternalLink, MapPin } from 'lucide-react';
+import { Phone, Camera, ExternalLink, MapPin, Mail, MessageSquare } from 'lucide-react';
 
 interface RegionalHeroProps {
   regionName: string;
@@ -118,7 +118,8 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="bg-wrap-red hover:bg-wrap-red/90 text-white px-6 py-3 rounded-md transition-colors">
+              <Link to="/contact" className="bg-wrap-red hover:bg-wrap-red/90 text-white px-6 py-3 rounded-md transition-colors flex items-center gap-2">
+                <Mail size={18} />
                 Request a Free Quote
               </Link>
               <a 
@@ -130,6 +131,13 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
                 <Phone size={18} />
                 <span>312-597-1286</span>
               </a>
+              <Link 
+                to="/contact?subject=Quick%20Message" 
+                className="bg-wrap-blue hover:bg-wrap-blue/90 text-white px-6 py-3 rounded-md transition-colors flex items-center gap-2"
+              >
+                <MessageSquare size={18} />
+                Quick Message
+              </Link>
             </div>
             
             <div className="mt-6 flex items-center gap-3">

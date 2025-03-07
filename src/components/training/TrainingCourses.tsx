@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const TrainingCourses: React.FC = () => {
@@ -64,6 +64,24 @@ const TrainingCourses: React.FC = () => {
           <p className="text-wrap-grey text-lg max-w-3xl mx-auto">
             We offer flexible training options to match your schedule, budget, and career goals
           </p>
+          
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:+13125971286"
+              className="btn-contact-alt"
+            >
+              <Phone className="h-4 w-4" />
+              Call to Discuss Options
+            </a>
+            
+            <Link
+              to="/contact"
+              className="btn-contact"
+            >
+              <Mail className="h-4 w-4" />
+              Email Training Department
+            </Link>
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -133,12 +151,22 @@ const TrainingCourses: React.FC = () => {
           <p className="text-wrap-grey mb-4">
             Can't find a suitable option? Contact us for custom training solutions.
           </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center text-wrap-blue hover:text-wrap-red transition-colors"
-          >
-            Request Custom Training <ArrowRight className="ml-1 h-4 w-4" />
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <Link
+              to="/contact"
+              className="btn-contact-outline"
+            >
+              <Mail className="h-4 w-4" />
+              Request Custom Training
+            </Link>
+            <a
+              href="tel:+13125971286"
+              className="btn-contact"
+            >
+              <Phone className="h-4 w-4" />
+              Call Training Department
+            </a>
+          </div>
         </div>
       </div>
     </section>

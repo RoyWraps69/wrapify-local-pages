@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ShopFooterProps {
   setActiveCategory: (category: string) => void;
@@ -25,8 +26,17 @@ const ShopFooter: React.FC<ShopFooterProps> = ({ setActiveCategory }) => {
           className="border-wrap-blue text-wrap-blue"
           onClick={() => window.location.href = '/contact'}
         >
+          <Mail className="mr-2 h-4 w-4" />
           Contact Us
         </Button>
+        
+        <a
+          href="tel:+13125971286"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-wrap-blue text-white hover:bg-wrap-blue/90 transition-colors"
+        >
+          <Phone className="h-4 w-4" />
+          Call Now
+        </a>
         
         <Button 
           variant="default"
