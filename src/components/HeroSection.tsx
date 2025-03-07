@@ -18,15 +18,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const townUrl = townData?.governmentUrl || `https://www.google.com/search?q=${townName}+government+website`;
   
   return (
-    <section 
-      className="hero-section relative min-h-screen w-full"
-      style={{
-        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+    <section className="hero-section relative min-h-screen w-full">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+      
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className="animate-fade-up">
