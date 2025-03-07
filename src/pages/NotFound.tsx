@@ -1,7 +1,9 @@
 
 import { useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Home, Search } from "lucide-react";
+import { ArrowLeft, Home, Search, MapPin } from "lucide-react";
+import { getAllTowns } from "@/utils/townData";
+import { toast } from "sonner";
 
 const NotFound = () => {
   const location = useLocation();
@@ -16,12 +18,36 @@ const NotFound = () => {
       "404 Error: User attempted to access non-existent route:",
       location.pathname
     );
-  }, [location.pathname]);
+    
+    // Show error toast
+    toast.error("Page not found", {
+      description: `The page ${location.pathname} doesn't exist or has been moved.`,
+      duration: 5000,
+    });
+    
+    // If this is a location path, try to suggest similar towns
+    if (isLocationPath && townSlug) {
+      const allTowns = getAllTowns();
+      const townNames = allTowns.map(t => t.name);
+      console.log("Available towns:", townNames.slice(0, 10));
+    }
+  }, [location.pathname, isLocationPath, townSlug]);
 
   // Handle back button for locations
   const handleBackToLocations = () => {
     navigate('/locations');
   };
+  
+  // Get similar town suggestions if in locations path
+  const getSimilarTownSuggestions = () => {
+    if (!isLocationPath || !townSlug) return [];
+    
+    const allTowns = getAllTowns();
+    // Get up to 3 towns to suggest
+    return allTowns.slice(0, 3);
+  };
+  
+  const similarTowns = getSimilarTownSuggestions();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -29,7 +55,7 @@ const NotFound = () => {
         <h1 className="text-5xl font-bold text-wrap-blue mb-4">404</h1>
         <p className="text-xl text-gray-600 mb-6">
           {isLocationPath 
-            ? `We couldn't find information for ${townSlug}` 
+            ? `We couldn't find information for "${townSlug}"` 
             : "Sorry, the page you're looking for cannot be found"}
         </p>
         <p className="text-wrap-grey mb-8">
@@ -37,6 +63,27 @@ const NotFound = () => {
             ? `The location "${townSlug}" may not be in our service area yet.` 
             : `The page you were trying to reach (${location.pathname}) doesn't exist or has been moved.`}
         </p>
+        
+        {isLocationPath && similarTowns.length > 0 && (
+          <div className="mb-8">
+            <h3 className="text-lg font-medium text-wrap-blue mb-3 flex items-center justify-center">
+              <MapPin size={18} className="mr-2 text-wrap-red" />
+              Available Locations Nearby
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
+              {similarTowns.map((town) => (
+                <Link 
+                  key={town.id} 
+                  to={`/locations/${town.id}`}
+                  className="inline-block px-3 py-1 bg-gray-100 hover:bg-gray-200 text-wrap-blue rounded-full text-sm transition-colors"
+                >
+                  {town.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+        
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link 
             to="/" 

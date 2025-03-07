@@ -11,6 +11,7 @@ import TownPageContent from '@/components/town/layout/TownPageContent';
 import { createTownFAQs } from '@/components/town/data/TownFAQData';
 import { Helmet } from 'react-helmet-async';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
+import { toast } from 'sonner';
 
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
@@ -32,13 +33,28 @@ const TownPage: React.FC = () => {
       return;
     }
     
-    const fetchedTownData = getTownData(townSlug);
-    console.log("TownPage useEffect running, fetchedTownData:", fetchedTownData);
+    // Normalize the slug for better matching
+    const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-');
+    
+    const fetchedTownData = getTownData(normalizedSlug);
+    console.log(`Attempting to find town with slug: "${normalizedSlug}"`);
     
     if (!fetchedTownData) {
-      console.log(`Town not found for slug: ${townSlug}, setting error state`);
+      console.log(`Town not found for slug: ${normalizedSlug}, setting error state`);
+      
+      // Log all available towns for debugging
+      const allTowns = getAllTowns();
+      console.log("Available towns:", allTowns.map(t => t.id).slice(0, 10));
+      
       setError(true);
       setLoading(false);
+      
+      // Show a toast notification to inform the user
+      toast.error(`Town information for "${townSlug}" not found`, {
+        description: "Please check our locations page for available towns.",
+        duration: 5000,
+      });
+      
       return;
     }
 
@@ -48,12 +64,6 @@ const TownPage: React.FC = () => {
     
     console.log(`Town page loaded successfully for: ${fetchedTownData?.name} with id: ${fetchedTownData?.id}`);
   }, [townSlug, navigate]);
-  
-  // Log all available towns for debugging
-  useEffect(() => {
-    const allTowns = getAllTowns();
-    console.log("All available towns:", allTowns.map(t => ({id: t.id, name: t.name})));
-  }, []);
   
   if (loading) {
     return (
@@ -74,7 +84,7 @@ const TownPage: React.FC = () => {
           <div className="text-center max-w-md p-8">
             <h1 className="text-3xl font-bold text-wrap-blue mb-4">Town Not Found</h1>
             <p className="text-wrap-grey mb-6">
-              We couldn't find information for {townSlug}. This location may not be in our service area yet.
+              We couldn&apos;t find information for &quot;{townSlug}&quot;. This location may not be in our service area yet.
             </p>
             <div className="flex justify-center">
               <button 

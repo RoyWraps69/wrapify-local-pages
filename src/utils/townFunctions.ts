@@ -31,7 +31,7 @@ export const getTownData = (townSlug: string): TownData | null => {
   console.log(`getTownData: Looking for town with slug "${townSlug}" among ${allTowns.length} towns`);
   
   // Normalize the slug for comparison
-  const normalizedSlug = townSlug.toLowerCase().trim();
+  const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-');
   
   // First try exact match
   let town = allTowns.find(t => t.id === normalizedSlug);
@@ -44,8 +44,16 @@ export const getTownData = (townSlug: string): TownData | null => {
     // Try case-insensitive match as fallback
     town = allTowns.find(t => t.id.toLowerCase() === normalizedSlug);
     
+    // Try matching by name (converted to slug format)
+    if (!town) {
+      town = allTowns.find(t => {
+        const nameAsSlug = t.name.toLowerCase().trim().replace(/\s+/g, '-');
+        return nameAsSlug === normalizedSlug;
+      });
+    }
+    
     if (town) {
-      console.log(`Found town with case-insensitive matching: ${town.name} (${town.id})`);
+      console.log(`Found town with alternative matching: ${town.name} (${town.id})`);
     }
   } else {
     console.log(`Found town: ${town.name} (${town.id})`);
