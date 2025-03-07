@@ -51,6 +51,8 @@ export default defineConfig(({ mode }) => ({
     cssCodeSplit: true,
     cssMinify: true,
     emptyOutDir: true,
+    // Ensure compatibility with Netlify
+    target: 'es2015',
   },
   // Base path for production (important for Netlify)
   base: '/',

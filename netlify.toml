@@ -8,6 +8,8 @@
 # Specify Node.js version
 [build.environment]
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
+  VITE_APP_ENV = "production"
   
 # Handle SPA routing by redirecting all paths to index.html
 [[redirects]]
@@ -61,6 +63,7 @@
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
@@ -70,6 +73,7 @@
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Branch deploy settings
 [context.branch-deploy]
@@ -79,6 +83,7 @@
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Enable bundler
 [build.processing]
