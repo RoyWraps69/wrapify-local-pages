@@ -57,7 +57,7 @@ const ServicePage: React.FC = () => {
     'ceramic-coatings': {
       title: 'Ceramic Coatings',
       description: "Protect your vehicle's paint with our long-lasting ceramic coatings. These hydrophobic coatings repel water, resist scratches, and make cleaning easier while keeping your car looking shiny.",
-      longDescription: 'Our advanced ceramic coatings create a permanent bond with your vehicle's paint, forming a protective layer that shields against environmental contaminants, UV damage, and minor scratches. The hydrophobic properties cause water to bead and roll off the surface, taking dirt and grime with it for easier cleaning. Unlike traditional waxes that need frequent reapplication, our ceramic coatings provide years of protection with proper maintenance. We offer various coating packages to suit different needs and budgets, from entry-level protection to our premium multi-layer systems for maximum durability and shine.',
+      longDescription: "Our advanced ceramic coatings create a permanent bond with your vehicle's paint, forming a protective layer that shields against environmental contaminants, UV damage, and minor scratches. The hydrophobic properties cause water to bead and roll off the surface, taking dirt and grime with it for easier cleaning. Unlike traditional waxes that need frequent reapplication, our ceramic coatings provide years of protection with proper maintenance. We offer various coating packages to suit different needs and budgets, from entry-level protection to our premium multi-layer systems for maximum durability and shine.",
       hero: '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png', // Blue Lexus
       benefits: [
         {
@@ -70,7 +70,7 @@ const ServicePage: React.FC = () => {
         },
         {
           title: 'Enhanced Gloss',
-          description: 'Delivers a deep, wet-look shine that enhances your vehicle\'s appearance.'
+          description: "Delivers a deep, wet-look shine that enhances your vehicle's appearance."
         },
         {
           title: 'Chemical Resistance',
@@ -86,7 +86,7 @@ const ServicePage: React.FC = () => {
       benefits: [
         {
           title: 'Invisible Protection',
-          description: 'Clear film preserves your vehicle\'s appearance while providing serious protection.'
+          description: "Clear film preserves your vehicle's appearance while providing serious protection."
         },
         {
           title: 'Self-Healing Technology',
@@ -94,7 +94,7 @@ const ServicePage: React.FC = () => {
         },
         {
           title: 'Preserves Resale Value',
-          description: 'Keeps your paint in pristine condition, maximizing your vehicle\'s value.'
+          description: "Keeps your paint in pristine condition, maximizing your vehicle's value."
         },
         {
           title: 'UV Resistance',
@@ -105,12 +105,12 @@ const ServicePage: React.FC = () => {
     'color-change-wraps': {
       title: 'Color Change Wraps',
       description: 'Change the look of your car without painting it! Our color change wraps come in many colors and finishes to transform your vehicle completely.',
-      longDescription: 'Color change wraps offer a flexible, reversible way to transform your vehicle's appearance without the permanence or expense of a paint job. We offer a vast selection of colors, textures, and finishes – from glossy and matte solids to metallic, satin, chrome, and even color-shifting options. Each wrap is precisely cut and installed to provide a smooth, seamless look that mimics a factory paint job. The vinyl material also serves as a protective layer for your original paint, preserving its condition and your vehicle's resale value. Whether you want a subtle change or a dramatic transformation, our color change wraps deliver professional results.',
+      longDescription: "Color change wraps offer a flexible, reversible way to transform your vehicle's appearance without the permanence or expense of a paint job. We offer a vast selection of colors, textures, and finishes – from glossy and matte solids to metallic, satin, chrome, and even color-shifting options. Each wrap is precisely cut and installed to provide a smooth, seamless look that mimics a factory paint job. The vinyl material also serves as a protective layer for your original paint, preserving its condition and your vehicle's resale value. Whether you want a subtle change or a dramatic transformation, our color change wraps deliver professional results.",
       hero: '/lovable-uploads/39af2f7f-a89b-42b4-833b-75a980a647ba.png', // Red convertible
       benefits: [
         {
           title: 'Reversible Customization',
-          description: 'Change your vehicle\'s appearance without affecting the original paint.'
+          description: "Change your vehicle's appearance without affecting the original paint."
         },
         {
           title: 'Endless Options',
@@ -153,7 +153,7 @@ const ServicePage: React.FC = () => {
     'partial-wraps': {
       title: 'Partial Vehicle Wraps',
       description: 'Make an impact without wrapping your entire vehicle. Our partial wraps focus on key areas for maximum visibility while working with your budget.',
-      longDescription: 'Partial vehicle wraps offer an excellent middle ground between full wraps and simple decals. By strategically covering portions of your vehicle – typically 25% to 75% of the surface area – we create high-impact designs that maximize visibility while keeping costs manageable. We carefully design partial wraps to work harmoniously with your vehicle's factory paint color, creating a cohesive look that appears intentional rather than incomplete. This approach is particularly popular with small businesses looking to establish a professional presence without the investment of a full fleet wrap program.',
+      longDescription: "Partial vehicle wraps offer an excellent middle ground between full wraps and simple decals. By strategically covering portions of your vehicle – typically 25% to 75% of the surface area – we create high-impact designs that maximize visibility while keeping costs manageable. We carefully design partial wraps to work harmoniously with your vehicle's factory paint color, creating a cohesive look that appears intentional rather than incomplete. This approach is particularly popular with small businesses looking to establish a professional presence without the investment of a full fleet wrap program.",
       hero: '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
       benefits: [
         {
@@ -166,7 +166,7 @@ const ServicePage: React.FC = () => {
         },
         {
           title: 'Works With Factory Paint',
-          description: 'Integrates with your vehicle\'s original color for a cohesive design.'
+          description: "Integrates with your vehicle's original color for a cohesive design."
         },
         {
           title: 'Quicker Installation',
@@ -233,7 +233,13 @@ const ServicePage: React.FC = () => {
           regionImage={service.hero}
         />
         
-        <ServicesBreadcrumb serviceName={service.title} />
+        <ServicesBreadcrumb 
+          currentPage={service.title} 
+          parentPage={{
+            name: "Services",
+            path: "/services"
+          }}
+        />
         
         <section className="py-16 bg-gradient-to-b from-wrap-blue/5 to-transparent">
           <div className="container mx-auto px-4">
