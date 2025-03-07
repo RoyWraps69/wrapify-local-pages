@@ -1,11 +1,12 @@
+
 import React from 'react';
 import TownOverview from './TownOverview';
 
 interface TownDescriptionProps {
   townName: string;
-  description: any;
-  population: any;
-  businessCount: any;
+  description: string;
+  population: number;
+  businessCount: number;
   townData: any;
 }
 

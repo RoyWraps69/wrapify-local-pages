@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
@@ -61,7 +60,13 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
     <div className="town-page py-8" itemScope itemType="https://schema.org/WebPage">
       <div className="container mx-auto px-4 space-y-16">
         <div className="animate-on-scroll fade-up">
-          <TownDescription townName={name} townData={townData} />
+          <TownDescription 
+            townName={townData.name}
+            description={townData.description || ''}
+            population={townData.population || 0}
+            businessCount={townData.businessCount || 0}
+            townData={townData}
+          />
         </div>
         
         <div className="animate-on-scroll fade-up">

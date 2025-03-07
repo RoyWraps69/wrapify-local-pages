@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Users, Building2, Car } from 'lucide-react';
 
 export interface TownStatsProps {
   townData: any;
