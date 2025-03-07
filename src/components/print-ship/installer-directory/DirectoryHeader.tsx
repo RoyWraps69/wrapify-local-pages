@@ -13,8 +13,8 @@ const DirectoryHeader: React.FC<DirectoryHeaderProps> = ({
   setShowSubmissionForm 
 }) => {
   return (
-    <div className="mb-6 text-center relative">
-      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-wrap-blue text-white p-3 rounded-full shadow-lg">
+    <div className="mb-8 text-center relative">
+      <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-wrap-blue to-blue-600 text-white p-3 rounded-full shadow-lg animate-bounce-slow">
         <Map className="h-6 w-6" />
       </div>
       
@@ -31,7 +31,7 @@ const DirectoryHeader: React.FC<DirectoryHeaderProps> = ({
       <Button 
         variant="outline" 
         onClick={() => setShowSubmissionForm(!showSubmissionForm)}
-        className="mx-auto text-xs group transition-all duration-300 hover:border-wrap-red/70"
+        className="mx-auto text-xs group transition-all duration-300 hover:border-wrap-red/70 hover:bg-gradient-to-r hover:from-wrap-red/10 hover:to-wrap-blue/10"
         size="sm"
       >
         <UserPlus className="mr-1 h-3 w-3 group-hover:text-wrap-red transition-colors" />

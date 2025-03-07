@@ -7,7 +7,6 @@ import WrapAddOns from '../WrapAddOns';
 import BottomCTA from '../BottomCTA';
 import UploadArtwork from '../UploadArtwork';
 import InstallerDirectory from '../InstallerDirectory';
-import ColorPicker from '../ColorPicker';
 
 interface MainContentProps {
   selectedVehicle: any;
@@ -55,8 +54,7 @@ const MainContent: React.FC<MainContentProps> = ({
       <PrintShipHeader />
       <InstallationNotice />
       <UploadArtwork />
-      <ColorPicker />
-
+      
       <PricingAndControls 
         selectedVehicle={selectedVehicle}
         setSelectedVehicle={setSelectedVehicle}

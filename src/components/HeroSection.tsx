@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   townName = 'Chicago',
-  backgroundImage = '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png' // Default to the blue Lexus
+  backgroundImage = '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png' // Blue Lexus
 }) => {
   // Get the town's government website URL
   const townData = getTownByName(townName);
@@ -19,9 +19,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   
   return (
     <section 
-      className="hero-section relative bg-cover bg-center min-h-screen w-full"
+      className="hero-section relative min-h-screen w-full"
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.2), rgba(29, 53, 87, 0.2)), url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.7)), url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
       }}
     >

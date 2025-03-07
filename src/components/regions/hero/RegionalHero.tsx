@@ -14,10 +14,15 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   return (
     <section 
-      className="bg-wrap-blue text-white py-20 min-h-[90vh] flex items-center bg-fixed bg-center bg-cover bg-blend-overlay relative" 
-      style={{ backgroundImage: `url(${heroImage})` }}
+      className="text-white py-20 min-h-[90vh] flex items-center relative" 
+      style={{ 
+        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.7)), url(${heroImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
     >
-      <div className="absolute inset-0 bg-black opacity-20"></div>
+      <div className="absolute inset-0 bg-black opacity-30"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
           <div className="md:max-w-2xl backdrop-blur-sm bg-black/20 p-6 rounded-lg">
