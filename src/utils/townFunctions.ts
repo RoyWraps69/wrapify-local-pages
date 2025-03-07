@@ -6,7 +6,7 @@ import { indianaTowns } from './towns/indiana';
 import { wisconsinTowns } from './towns/wisconsin';
 
 // Normalize a string to create a consistent slug
-const normalizeSlug = (str: string): string => {
+export const normalizeSlug = (str: string): string => {
   return str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 };
 
@@ -42,7 +42,7 @@ export const getTownData = (townSlug: string): TownData | null => {
   let town = null;
   
   // 1. Try exact match on id
-  town = allTowns.find(t => normalizeSlug(t.id) === normalizedSlug);
+  town = allTowns.find(t => t.id === normalizedSlug);
   if (town) {
     console.log(`Found town by exact id match: ${town.name} (${town.id})`);
     return town;

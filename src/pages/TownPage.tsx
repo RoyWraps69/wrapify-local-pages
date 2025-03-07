@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import SEOSchema from '@/components/SEOSchema';
-import { getTownData, getAllTowns } from '@/utils/townData';
+import { getTownData, getNearbyTowns } from '@/utils/townFunctions';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import TownStructuredData from '@/components/town/seo/TownStructuredData';
 import TownPageContent from '@/components/town/layout/TownPageContent';
@@ -33,37 +33,42 @@ const TownPage: React.FC = () => {
       return;
     }
     
-    // Normalize the slug for better matching
-    const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-    
-    const fetchedTownData = getTownData(normalizedSlug);
-    console.log(`Attempting to find town with slug: "${normalizedSlug}"`);
-    
-    if (!fetchedTownData) {
-      console.log(`Town not found for slug: ${normalizedSlug}, setting error state`);
+    try {
+      // Normalize the slug for better matching
+      const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
       
-      // Log all available towns for debugging
-      const allTowns = getAllTowns();
-      console.log("Available towns:", allTowns.map(t => t.id).slice(0, 10), "...");
-      console.log("Failed lookup for:", normalizedSlug);
+      const fetchedTownData = getTownData(normalizedSlug);
+      console.log(`Attempting to find town with slug: "${normalizedSlug}"`);
       
+      if (!fetchedTownData) {
+        console.log(`Town not found for slug: ${normalizedSlug}, setting error state`);
+        
+        setError(true);
+        setLoading(false);
+        
+        // Show a toast notification to inform the user
+        toast.error(`Town information for "${townSlug}" not found`, {
+          description: "Please check our locations page for available towns.",
+          duration: 5000,
+        });
+        
+        return;
+      }
+
+      setTownData(fetchedTownData);
+      setLoading(false);
+      window.scrollTo(0, 0);
+      
+      console.log(`Town page loaded successfully for: ${fetchedTownData?.name} with id: ${fetchedTownData?.id}`);
+    } catch (err) {
+      console.error("Error loading town data:", err);
       setError(true);
       setLoading(false);
       
-      // Show a toast notification to inform the user
-      toast.error(`Town information for "${townSlug}" not found`, {
-        description: "Please check our locations page for available towns.",
-        duration: 5000,
+      toast.error("Error loading town information", {
+        description: "Please try again later or contact support if the problem persists.",
       });
-      
-      return;
     }
-
-    setTownData(fetchedTownData);
-    setLoading(false);
-    window.scrollTo(0, 0);
-    
-    console.log(`Town page loaded successfully for: ${fetchedTownData?.name} with id: ${fetchedTownData?.id}`);
   }, [townSlug, navigate]);
   
   if (loading) {

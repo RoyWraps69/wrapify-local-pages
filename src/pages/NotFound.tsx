@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Home, Search, MapPin } from "lucide-react";
-import { getAllTowns, getTownData } from "@/utils/townData";
+import { getAllTowns, getTownData } from "@/utils/townFunctions";
 import { toast } from "sonner";
 
 const NotFound = () => {

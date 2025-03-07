@@ -9,6 +9,10 @@ interface TownDescriptionProps {
 }
 
 const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData }) => {
+  if (!townData) {
+    return <div>Loading town information...</div>;
+  }
+  
   const { description, population, businessCount, state, distance } = townData;
   
   // Format state name fully
