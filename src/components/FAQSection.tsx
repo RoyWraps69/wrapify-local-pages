@@ -21,10 +21,10 @@ const FAQSection: React.FC<FAQSectionProps> = ({
   townName = 'Chicago',
   faqs
 }) => {
-  // Default FAQs with town name integration - Optimized for search intent and with schema markup
+  // Default FAQs with town name integration - Optimized for voice search and natural language
   const defaultFaqs: FAQItem[] = [
     {
-      question: `Where can I get professional vehicle wraps in ${townName}?`,
+      question: `Where can I find professional vehicle wraps in ${townName}?`,
       answer: (
         <p>
           Chicago Fleet Wraps provides top-quality vehicle wrapping services in {townName} and surrounding areas. 
@@ -57,7 +57,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       )
     },
     {
-      question: `How long does a vehicle wrap last in ${townName}'s climate?`,
+      question: `How long do vehicle wraps last in ${townName}'s climate?`,
       answer: (
         <p>
           A professionally installed vehicle wrap from Chicago Fleet Wraps typically lasts 5-7 years in {townName}'s climate. 
@@ -81,7 +81,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       )
     },
     {
-      question: `What types of businesses in ${townName} benefit most from vehicle wraps?`,
+      question: `Which businesses in ${townName} benefit most from vehicle wraps?`,
       answer: (
         <div>
           <p className="mb-3">
@@ -105,15 +105,27 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       )
     },
     {
-      question: `Do you offer ceramic coating services in ${townName}?`,
+      question: `Where can I get ceramic coating services near ${townName}?`,
       answer: (
         <p>
-          Yes, Chicago Fleet Wraps offers premium ceramic coating services for vehicles in {townName}. Our nano-ceramic 
+          Chicago Fleet Wraps offers premium ceramic coating services for vehicles in and near {townName}. Our nano-ceramic 
           coatings provide superior protection against environmental contaminants, UV damage, bird droppings, tree sap, 
           and road salt common in {townName} during winter months. The hydrophobic properties make your vehicle easier to 
           clean while maintaining a deep, glossy finish. Our ceramic coating packages for {townName} clients are designed 
           to provide long-lasting protection with various warranty options. We also offer combination packages with paint 
           protection film for comprehensive vehicle protection.
+        </p>
+      )
+    },
+    {
+      question: `What is the best vehicle wrap shop near ${townName}?`,
+      answer: (
+        <p>
+          Look for a reputable vehicle wrap provider in {townName} that uses premium materials like 3M and Avery Dennison, 
+          employs certified installers, offers a comprehensive warranty, and has excellent reviews and portfolio examples. 
+          Chicago Fleet Wraps meets all these criteria with our experienced design team, state-of-the-art printing facilities, 
+          and professional installation techniques specifically tailored for {townName} businesses and individuals. We invite 
+          you to visit our facility near {townName} to see our work in person and discuss your vehicle wrap project.
         </p>
       )
     },
@@ -127,13 +139,13 @@ const FAQSection: React.FC<FAQSectionProps> = ({
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
-            Frequently Asked Questions
+            Vehicle Wrap Questions & Answers
           </span>
           <h2 className="text-3xl md:text-4xl font-serif font-semibold text-wrap-blue mb-4">
-            Vehicle Wrap & Protection FAQs for {townName}
+            Common Questions About Vehicle Wraps in {townName}
           </h2>
           <p className="text-lg text-wrap-grey max-w-3xl mx-auto">
-            Find answers to the most common questions about our vehicle wrapping and protection services in {townName}.
+            Find answers to frequently asked questions about our vehicle wrapping and protection services near {townName}.
           </p>
         </div>
 
@@ -154,10 +166,10 @@ const FAQSection: React.FC<FAQSectionProps> = ({
 
         <div className="text-center mt-12">
           <p className="text-wrap-grey mb-6">
-            Have more questions about vehicle wraps or protection services in {townName}? We're here to help!
+            Looking for vehicle wraps or protection services near {townName}? We're here to help!
           </p>
           <a href="/contact" className="btn-primary">
-            Contact Us For {townName} Services
+            Contact Our {townName} Vehicle Wrap Experts
           </a>
         </div>
       </div>

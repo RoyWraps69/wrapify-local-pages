@@ -6,7 +6,7 @@ import HeroServiceFeatures from './HeroServiceFeatures';
 import HeroCTAButtons from './HeroCTAButtons';
 import HeroFooterInfo from './HeroFooterInfo';
 import { Link } from 'react-router-dom';
-import { Mail, ArrowRight } from 'lucide-react';
+import { Mail, ArrowRight, MapPin } from 'lucide-react';
 
 interface HeroContentContainerProps {
   isVisible: boolean;
@@ -30,7 +30,7 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
           <div className="flex justify-center mb-6">
             <img 
               src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
-              alt="WRAPPING THE WORLD" 
+              alt="WRAPPING THE WORLD - Vehicle Wrap Services Near You" 
               className="w-56 h-auto max-w-full animate-fade-in-down drop-shadow-lg object-contain"
             />
           </div>
@@ -38,7 +38,7 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
           <HeroHeadline townName={townName} />
           
           <p className="text-lg text-white mb-6 max-w-2xl mx-auto">
-            <span className="font-bold">WRAPPING THE WORLD</span> offers premier car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
+            <span className="font-bold">WRAPPING THE WORLD</span> offers premier vehicle wrapping and protection services near {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
           </p>
           
           <HeroServiceFeatures />
@@ -51,7 +51,18 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
               className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-wrap-blue text-white rounded-md shadow-lg hover:bg-wrap-blue/90 transition-all animate-float-subtle"
             >
               <Mail className="w-5 h-5" />
-              <span>Contact Our {townName} Design Team</span>
+              <span>Find Vehicle Wrap Experts Near {townName}</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="mt-4">
+            <Link 
+              to="/locations" 
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-wrap-red/90 text-white rounded-md shadow-lg hover:bg-wrap-red transition-all animate-float-subtle mt-3"
+            >
+              <MapPin className="w-5 h-5" />
+              <span>Looking for "Vehicle Wraps Near Me"?</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
