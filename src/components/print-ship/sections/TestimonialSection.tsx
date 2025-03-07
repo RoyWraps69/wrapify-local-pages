@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { renderStars } from '../../testimonials/TestimonialUtils';
 
 const TestimonialSection: React.FC = () => {
   return (
@@ -12,11 +13,7 @@ const TestimonialSection: React.FC = () => {
             <div className="bg-gradient-to-br from-wrap-blue to-wrap-blue-dark p-8 text-white flex items-center">
               <div>
                 <div className="flex mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-300 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                  ))}
+                  {renderStars(5)}
                 </div>
                 <blockquote className="text-xl italic font-medium mb-4">
                   "The quality of the wrap was incredible! Materials arrived on time and well-packaged. 
