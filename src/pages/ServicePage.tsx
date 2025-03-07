@@ -60,7 +60,7 @@ const ServicePage: React.FC = () => {
         </section>
         
         <ProcessSection />
-        <RelatedServices />
+        <RelatedServices currentService={serviceType} />
         <ServiceFAQs service={service} />
         <CTASection />
       </main>

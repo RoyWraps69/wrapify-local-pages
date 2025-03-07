@@ -8,8 +8,18 @@ const ServicesLinks = () => {
       <h3 className="font-serif font-semibold text-lg text-white mb-4">Our Services</h3>
       <ul className="space-y-2">
         <li>
+          <Link to="/services/vehicle-wraps" className="text-white/80 hover:text-wrap-red transition-colors">
+            Vehicle Wraps
+          </Link>
+        </li>
+        <li>
           <Link to="/services/commercial-fleet-wraps" className="text-white/80 hover:text-wrap-red transition-colors">
             Commercial Fleet Wraps
+          </Link>
+        </li>
+        <li>
+          <Link to="/services/fleet-graphics" className="text-white/80 hover:text-wrap-red transition-colors">
+            Fleet Graphics
           </Link>
         </li>
         <li>
@@ -23,7 +33,7 @@ const ServicesLinks = () => {
           </Link>
         </li>
         <li>
-          <Link to="/services/paint-protection" className="text-white/80 hover:text-wrap-red transition-colors">
+          <Link to="/services/paint-protection-film" className="text-white/80 hover:text-wrap-red transition-colors">
             Paint Protection Film
           </Link>
         </li>

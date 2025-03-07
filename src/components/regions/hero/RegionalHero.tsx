@@ -39,7 +39,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
               in {regionName}
             </h1>
             <p className="text-xl max-w-2xl mb-8">
-              Premium commercial fleet wraps, ceramic coatings, and paint protection services throughout {regionName}. Your local source for exceptional vehicle transformation.
+              Premium commercial fleet wraps, ceramic coatings, and paint protection services throughout the Midwest. Your local source for exceptional vehicle transformation.
             </p>
             
             <div className="flex flex-wrap gap-4">

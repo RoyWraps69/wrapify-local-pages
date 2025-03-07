@@ -13,6 +13,30 @@ export interface ServiceInfo {
 }
 
 const serviceData: Record<string, ServiceInfo> = {
+  'vehicle-wraps': {
+    title: 'Vehicle Wraps',
+    description: 'Transform your vehicle with our premium quality wraps. Our vehicle wraps offer customization, protection, and branding opportunities for personal and business vehicles.',
+    longDescription: "Our vehicle wraps provide a complete transformation for your car, truck, van, or specialty vehicle. Using premium materials from 3M and Avery Dennison, we create wraps that not only look stunning but also protect your vehicle's original paint. Our design team will work with you to create a wrap that perfectly matches your vision, whether you're looking for a personal style statement or powerful business branding. Our installation technicians are highly trained and certified, ensuring a flawless finish with no bubbles, wrinkles, or lifting edges. With proper care, your vehicle wrap will maintain its vibrant appearance for years to come.",
+    hero: '/lovable-uploads/712c766b-dd74-41af-942c-ef67e92c62c8.png',
+    benefits: [
+      {
+        title: 'Customizable Designs',
+        description: 'Express yourself with unlimited color and design options not available in factory paint.'
+      },
+      {
+        title: 'Paint Protection',
+        description: 'Shield your vehicle's original paint from minor scratches, stone chips, and UV damage.'
+      },
+      {
+        title: 'Reversible Enhancement',
+        description: 'Change your vehicle's look without permanently altering it - remove or replace as desired.'
+      },
+      {
+        title: 'Cost-Effective Alternative',
+        description: 'Achieve a complete transformation for a fraction of the cost of a quality paint job.'
+      }
+    ]
+  },
   'commercial-fleet-wraps': {
     title: 'Commercial Fleet Wraps',
     description: 'Transform your company vehicles into moving billboards with our high-quality commercial fleet wraps. We help businesses of all sizes stand out and get noticed.',
@@ -106,6 +130,30 @@ const serviceData: Record<string, ServiceInfo> = {
       {
         title: 'Cost-Effective Alternative',
         description: 'Significantly less expensive than a quality paint job with similar visual impact.'
+      }
+    ]
+  },
+  'fleet-graphics': {
+    title: 'Fleet Graphics',
+    description: 'Elevate your business fleet with consistent, professional vehicle graphics. Our fleet branding solutions help you create a strong, unified brand presence on the road.',
+    longDescription: "Fleet graphics are a strategic investment in your business visibility and brand recognition. Our fleet graphics solutions can be tailored to any size business, from small operations with a few vehicles to large corporations with extensive fleets. We develop consistent branding that creates immediate recognition while our scalable production processes ensure that each vehicle in your fleet receives the same high-quality graphics and precise installation. With vehicle tracking and management systems, we can coordinate installations to minimize downtime for your fleet. From simple decals and lettering to partial or full wraps, our fleet graphics programs can be customized to meet your objectives and budget.",
+    hero: '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png', // Fleet of Rivian trucks
+    benefits: [
+      {
+        title: 'Brand Consistency',
+        description: 'Maintain a unified brand appearance across your entire fleet of vehicles.'
+      },
+      {
+        title: 'Scalable Solutions',
+        description: 'Easily add new vehicles to your fleet with consistent graphics as your business grows.'
+      },
+      {
+        title: 'Flexible Design Options',
+        description: 'Choose from full wraps, partial wraps, or decals based on your budget and goals.'
+      },
+      {
+        title: 'Fleet Management',
+        description: 'We coordinate installations and maintenance to minimize vehicle downtime.'
       }
     ]
   },

@@ -42,6 +42,13 @@ const ServicesDropdown: React.FC = () => {
               Fleet Graphics
             </Link>
             <Link
+              to="/services/commercial-fleet-wraps"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Commercial Fleet Wraps
+            </Link>
+            <Link
               to="/services/color-change-wraps"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
               role="menuitem"
@@ -56,11 +63,25 @@ const ServicesDropdown: React.FC = () => {
               Paint Protection Film
             </Link>
             <Link
-              to="/services/ceramic-coating"
+              to="/services/ceramic-coatings"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
               role="menuitem"
             >
               Ceramic Coating
+            </Link>
+            <Link
+              to="/services/vehicle-graphics"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Vehicle Graphics
+            </Link>
+            <Link
+              to="/services/partial-wraps"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Partial Wraps
             </Link>
             <Link
               to="/services"
