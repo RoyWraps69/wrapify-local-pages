@@ -44,8 +44,8 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
             transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
           }}
         >
-          {/* Overlay with subtle gradient for text readability - reduced opacity to 20% */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/20 to-transparent"></div>
+          {/* Overlay with subtle gradient for text readability - 20% opacity as requested */}
+          <div className="absolute inset-0 bg-black opacity-20"></div>
         </div>
       ))}
       

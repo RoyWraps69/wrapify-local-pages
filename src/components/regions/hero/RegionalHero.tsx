@@ -14,10 +14,11 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   return (
     <section 
-      className="bg-wrap-blue text-white py-20 min-h-[90vh] flex items-center bg-fixed bg-center bg-cover bg-blend-overlay bg-black/20" 
+      className="bg-wrap-blue text-white py-20 min-h-[90vh] flex items-center bg-fixed bg-center bg-cover bg-blend-overlay relative" 
       style={{ backgroundImage: `url(${heroImage})` }}
     >
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 bg-black opacity-20"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
           <div className="md:max-w-2xl backdrop-blur-sm bg-black/20 p-6 rounded-lg">
             <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">

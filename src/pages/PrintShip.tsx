@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -32,17 +31,16 @@ const PrintShip = () => {
       <Navbar />
       <LazyMotion features={domAnimation}>
         <main>
-          {/* Hero Section with Vehicle Photography Only - Full Screen */}
+          {/* Hero Section with Vehicle Photography - Full Screen */}
           <section 
-            className="min-h-screen relative overflow-hidden flex items-center"
+            className="min-h-screen w-full relative overflow-hidden flex items-center"
             style={{
               backgroundImage: `url('/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png')`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundAttachment: 'fixed'
+              backgroundPosition: 'center'
             }}
           >
-            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="absolute inset-0 bg-black opacity-20"></div>
             <div className="container mx-auto px-4 text-center relative z-10">
               <m.h1 
                 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-white"
