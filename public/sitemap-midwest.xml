@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -26,42 +25,6 @@
       <image:loc>https://wrappingtheworld.com/images/locations/evanston-vehicle-wraps.jpg</image:loc>
       <image:title>Vehicle Wrapping in Evanston</image:title>
       <image:caption>Professional vehicle wraps and ceramic coatings in Evanston, IL</image:caption>
-    </image:image>
-  </url>
-  
-  <url>
-    <loc>https://wrappingtheworld.com/locations/oak-park</loc>
-    <lastmod>2024-09-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://wrappingtheworld.com/images/locations/oak-park-vehicle-wraps.jpg</image:loc>
-      <image:title>Vehicle Wrapping in Oak Park</image:title>
-      <image:caption>Professional vehicle wraps and ceramic coatings in Oak Park, IL</image:caption>
-    </image:image>
-  </url>
-  
-  <url>
-    <loc>https://wrappingtheworld.com/locations/naperville</loc>
-    <lastmod>2024-09-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://wrappingtheworld.com/images/locations/naperville-vehicle-wraps.jpg</image:loc>
-      <image:title>Vehicle Wrapping in Naperville</image:title>
-      <image:caption>Professional vehicle wraps and ceramic coatings in Naperville, IL</image:caption>
-    </image:image>
-  </url>
-  
-  <url>
-    <loc>https://wrappingtheworld.com/locations/schaumburg</loc>
-    <lastmod>2024-09-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://wrappingtheworld.com/images/locations/schaumburg-vehicle-wraps.jpg</image:loc>
-      <image:title>Vehicle Wrapping in Schaumburg</image:title>
-      <image:caption>Professional vehicle wraps and ceramic coatings in Schaumburg, IL</image:caption>
     </image:image>
   </url>
   

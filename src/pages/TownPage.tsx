@@ -13,6 +13,7 @@ import { createTownFAQs } from '@/components/town/data/TownFAQData';
 import { Helmet } from 'react-helmet-async';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import { toast } from 'sonner';
+import InitImageObserver from '@/components/utils/ImageObserver';
 
 const townBackgroundImages = [
   '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',  // MH Equipment
@@ -153,6 +154,9 @@ const TownPage: React.FC = () => {
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <link rel="canonical" href={canonicalUrl} />
+        <meta name="robots" content="index, follow" />
+        <meta name="geo.region" content={`US-${state}`} />
+        <meta name="geo.placename" content={name} />
       </Helmet>
       
       <TownStructuredData 
@@ -171,6 +175,7 @@ const TownPage: React.FC = () => {
         pageUrl={pageUrl}
       />
       
+      <InitImageObserver />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         

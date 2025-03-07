@@ -7,6 +7,7 @@ import PrintShipFeatures from '@/components/print-ship/PrintShipFeatures';
 import PrintShipSEO from '@/components/print-ship/PrintShipSEO';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
+import InitImageObserver from '@/components/utils/ImageObserver';
 
 const PrintShip = () => {
   // Use the scroll animation hook for animated elements
@@ -33,6 +34,7 @@ const PrintShip = () => {
   return (
     <>
       <PrintShipSEO />
+      <InitImageObserver />
       <Navbar />
       <LazyMotion features={domAnimation}>
         <main>
