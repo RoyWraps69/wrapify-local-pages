@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -6,7 +5,6 @@ import Footer from '@/components/Footer';
 import DynamicHeroSection from '@/components/DynamicHeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import TestimonialSection from '@/components/TestimonialSection';
-import SEOSchema from '@/components/SEOSchema';
 import FAQSection from '@/components/FAQSection';
 import NationwideSection from '@/components/nationwide/NationwideSection';
 import PrintShipSection from '@/components/print-ship/PrintShipSection';
@@ -40,12 +38,6 @@ const Index = () => {
         <meta name="revisit-after" content="3 days" />
       </Helmet>
       
-      <SEOSchema 
-        townName="Chicago"
-        pageTitle="Wrapping The World | Professional Vehicle Wrapping & Ceramic Coating Services"
-        pageDescription={`Transform your vehicles with premium wraps and protection from Wrapping The World. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago and surrounding areas including ${topTownNames}.`}
-        pageUrl="https://wrappingtheworld.com"
-      />
       <Navbar />
       <main>
         <DynamicHeroSection townName="Chicago" />
@@ -143,10 +135,8 @@ const Index = () => {
         
         <TestimonialSection townName="Chicago" />
         
-        {/* Add the nationwide section */}
         <NationwideSection />
         
-        {/* Add the print & ship section */}
         <PrintShipSection />
         
         <FAQSection townName="Chicago" />
