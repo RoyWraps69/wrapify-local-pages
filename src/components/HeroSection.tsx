@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Check } from 'lucide-react';
 import { getTownByName } from '@/utils/townData';
@@ -9,24 +9,46 @@ interface HeroSectionProps {
   backgroundImage?: string;
 }
 
+// Vehicle background images for carousel
+const vehicleBackgrounds = [
+  '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
+  '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
+  '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png', // Blue Lexus
+  '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png'  // Fleet of Rivian trucks
+];
+
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   townName = 'Chicago',
-  backgroundImage = '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png' // Blue Lexus
+  backgroundImage
 }) => {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  
   // Get the town's government website URL
   const townData = getTownByName(townName);
   const townUrl = townData?.governmentUrl || `https://www.google.com/search?q=${townName}+government+website`;
+  
+  // Use provided backgroundImage or cycle through vehicle backgrounds
+  const currentBackground = backgroundImage || vehicleBackgrounds[currentBgIndex];
+  
+  // Background image carousel
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % vehicleBackgrounds.length);
+    }, 5000);
+    
+    return () => clearInterval(intervalId);
+  }, []);
   
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden">
       {/* Background image with overlay */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 w-full h-full"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.5)), url(${backgroundImage})`,
+          backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.5)), url(${currentBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          transition: 'background-image 0.5s ease-in-out'
         }}
       />
       
@@ -120,6 +142,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
         </div>
+      </div>
+      
+      {/* Background image indicators */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+        {vehicleBackgrounds.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full ${index === currentBgIndex ? 'bg-wrap-red' : 'bg-white/50'}`}
+            onClick={() => setCurrentBgIndex(index)}
+            aria-label={`Switch to background ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

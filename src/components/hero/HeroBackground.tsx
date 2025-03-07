@@ -21,7 +21,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
     <>
       {/* Base background during transitions */}
       <div
-        className="absolute inset-0 bg-cover bg-center w-full h-full overflow-hidden"
+        className="absolute inset-0 w-full h-full overflow-hidden"
         style={{ 
           backgroundImage: `url(${fleetWrapBackground})`,
           backgroundSize: 'cover',
@@ -36,11 +36,11 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
           <div
             key={index}
             className={cn(
-              "absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out overflow-hidden",
+              "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out overflow-hidden",
               activeBackground === index ? "opacity-100" : "opacity-0"
             )}
             style={{
-              backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${bgUrl})`,
+              backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${bgUrl})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect

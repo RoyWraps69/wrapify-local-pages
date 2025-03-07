@@ -32,7 +32,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   townName = 'Chicago',
   backgroundImage
 }) => {
-  const [activeBackground, setActiveBackground] = useState(4); // Start with fleet image
+  const [activeBackground, setActiveBackground] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
   
@@ -67,9 +67,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   };
   
   return (
-    <section 
-      className="hero-section relative min-h-screen w-full overflow-hidden"
-    >
+    <section className="hero-section relative min-h-screen w-full overflow-hidden">
       <HeroBackground 
         backgrounds={heroBackgrounds}
         activeBackground={activeBackground}
@@ -106,6 +104,18 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             <HeroFooterInfo townName={townName} scrollToServices={scrollToServices} />
           </div>
         </div>
+      </div>
+      
+      {/* Carousel indicators */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-20">
+        {heroBackgrounds.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full ${index === activeBackground ? 'bg-wrap-red' : 'bg-white/50'}`}
+            onClick={() => setActiveBackground(index)}
+            aria-label={`Switch to background ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

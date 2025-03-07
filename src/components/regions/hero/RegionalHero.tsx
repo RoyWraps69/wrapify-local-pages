@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 
@@ -8,22 +8,39 @@ interface RegionalHeroProps {
   regionImage: string;
 }
 
+// Vehicle background images for carousel
+const vehicleBackgrounds = [
+  '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
+  '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
+  '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png', // Fleet of Rivian trucks
+  '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png'  // Blue Lexus sports car
+];
+
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
-  // Use default impressive vehicle image if none provided
-  const heroImage = regionImage || '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png';
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  
+  // Use regionImage or fallback to carousel images
+  const heroImageUrl = regionImage || vehicleBackgrounds[currentBgIndex];
+  
+  // Implement background carousel
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % vehicleBackgrounds.length);
+    }, 5000);
+    
+    return () => clearInterval(intervalId);
+  }, []);
   
   return (
-    <section 
-      className="text-white py-20 min-h-[90vh] flex items-center relative" 
-    >
+    <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden">
       {/* Background image with overlay */}
       <div 
-        className="absolute inset-0 z-0 overflow-hidden"
+        className="absolute inset-0 z-0 w-full h-full"
         style={{ 
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${heroImage})`,
+          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${heroImageUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          transition: 'background-image 0.5s ease-in-out'
         }}
       />
       
@@ -55,6 +72,18 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
             className="w-48 h-auto mt-6 md:mt-0 drop-shadow-lg object-contain"
           />
         </div>
+      </div>
+      
+      {/* Background image indicators */}
+      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+        {vehicleBackgrounds.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full ${index === currentBgIndex ? 'bg-wrap-red' : 'bg-white/50'}`}
+            onClick={() => setCurrentBgIndex(index)}
+            aria-label={`Switch to background ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
