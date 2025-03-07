@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getNearbyTowns, Town } from '@/utils/townData';
+import { getNearbyTowns } from '@/utils/townFunctions';
+import { TownData } from '@/utils/townTypes';
 import { MapPin, ArrowRight } from 'lucide-react';
 
 interface NearbyTownsSectionProps {
