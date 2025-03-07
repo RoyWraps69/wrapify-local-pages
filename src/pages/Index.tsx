@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -8,10 +7,9 @@ import ServicesSection from '@/components/ServicesSection';
 import TestimonialSection from '@/components/TestimonialSection';
 import FAQSection from '@/components/FAQSection';
 import NationwideSection from '@/components/nationwide/NationwideSection';
-import PrintShipSection from '@/components/print-ship/PrintShipSection';
-import { getAllTowns } from '@/utils/townData';
 import PageSEO from '@/components/seo/PageSEO';
 import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
+import { getAllTowns } from '@/utils/townData';
 
 const Index = () => {
   console.log("Index component rendering");
