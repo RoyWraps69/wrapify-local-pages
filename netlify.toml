@@ -55,8 +55,7 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
-    # Enable compression
-    Content-Encoding = "br"
+    # Removing Content-Encoding as it causes issues
     
 # Environment variables for production
 [context.production.environment]
