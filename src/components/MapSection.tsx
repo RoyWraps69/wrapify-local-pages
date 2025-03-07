@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Facebook, Navigation, Star } from 'lucide-react';
+import { MapPin, Facebook, Navigation, Star, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface MapSectionProps {
