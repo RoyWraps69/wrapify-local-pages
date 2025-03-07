@@ -17,7 +17,7 @@ const heroBackgrounds = [
   '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
   '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Vans
   '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png', // White car
-  'https://images.unsplash.com/photo-1619115617863-b3fda0a16db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80' // Fallback image
+  // Removed the Unsplash URL that was causing errors
 ];
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
@@ -63,23 +63,27 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
         // Force a small delay to ensure the loading spinner appears
         await new Promise(resolve => setTimeout(resolve, 500));
         
+        let imageLoaded = false;
+        
         // Try to load at least one image
         for (let i = 0; i < heroBackgrounds.length; i++) {
           const success = await preloadImage(heroBackgrounds[i]);
           if (success) {
             setCurrentBgIndex(i);
-            setImagesLoaded(true);
+            imageLoaded = true;
             break;
           }
-          
-          // If we get to the last image and none worked, use fallback
-          if (i === heroBackgrounds.length - 1) {
-            setLoadingError(true);
-            // Use the last image as fallback (should be the unsplash one)
-            setCurrentBgIndex(heroBackgrounds.length - 1);
-            setImagesLoaded(true);
-          }
         }
+        
+        // If no images loaded, use the first one anyway and show error
+        if (!imageLoaded) {
+          setLoadingError(true);
+          setCurrentBgIndex(0);
+        }
+        
+        // Always set images as loaded to remove spinner
+        setImagesLoaded(true);
+        
       } catch (error) {
         console.error("Error loading images:", error);
         setLoadingError(true);
@@ -94,7 +98,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       if (imagesLoaded) {
         setCurrentBgIndex((prevIndex) => {
           // Try next image
-          const nextIndex = prevIndex === heroBackgrounds.length - 1 ? 0 : prevIndex + 1;
+          const nextIndex = (prevIndex + 1) % heroBackgrounds.length;
           
           // Preload the next image to check if it works
           preloadImage(heroBackgrounds[nextIndex])
@@ -142,7 +146,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       {/* Show error message if all images failed */}
       {loadingError && (
         <div className="absolute top-4 left-4 right-4 bg-wrap-red text-white px-4 py-2 rounded z-40 text-center">
-          Some images couldn't be loaded. Using fallback images instead.
+          Some images couldn't be loaded. Using available images instead.
         </div>
       )}
       
@@ -159,8 +163,8 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
         }}
       />
       
-      {/* Darker overlay for better text readability */}
-      <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
+      {/* Lighter overlay for better visibility - changed from opacity-80 to opacity-50 */}
+      <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
       
       {/* Thumbnail previews of other vehicle wraps */}
       {imagesLoaded && (
@@ -196,7 +200,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className={cn(
-            "transition-all duration-1000 transform backdrop-blur-sm bg-black/40 p-6 rounded-lg",
+            "transition-all duration-1000 transform backdrop-blur-sm bg-black/30 p-6 rounded-lg", // Changed from bg-black/40 to bg-black/30
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             {/* Big WRAPPING THE WORLD logo - with object-contain to maintain aspect ratio */}
