@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, Home, Search, MapPin } from "lucide-react";
-import { getAllTowns } from "@/utils/townData";
+import { getAllTowns, getTownData } from "@/utils/townData";
 import { toast } from "sonner";
 
 const NotFound = () => {
@@ -28,8 +28,8 @@ const NotFound = () => {
     // If this is a location path, try to suggest similar towns
     if (isLocationPath && townSlug) {
       const allTowns = getAllTowns();
-      const townNames = allTowns.map(t => t.name);
-      console.log("Available towns:", townNames.slice(0, 10));
+      console.log("Looking for town:", townSlug);
+      console.log("Available towns (sample):", allTowns.map(t => t.name).slice(0, 10), "...");
     }
   }, [location.pathname, isLocationPath, townSlug]);
 
@@ -43,8 +43,17 @@ const NotFound = () => {
     if (!isLocationPath || !townSlug) return [];
     
     const allTowns = getAllTowns();
-    // Get up to 3 towns to suggest
-    return allTowns.slice(0, 3);
+    const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    
+    // Try to find towns with similar names or locations
+    return allTowns
+      .filter(town => {
+        const townIdNormalized = town.id.toLowerCase();
+        return townIdNormalized.includes(normalizedSlug) || 
+               normalizedSlug.includes(townIdNormalized) ||
+               town.name.toLowerCase().includes(normalizedSlug.replace(/-/g, ' '));
+      })
+      .slice(0, 3);
   };
   
   const similarTowns = getSimilarTownSuggestions();
@@ -68,7 +77,7 @@ const NotFound = () => {
           <div className="mb-8">
             <h3 className="text-lg font-medium text-wrap-blue mb-3 flex items-center justify-center">
               <MapPin size={18} className="mr-2 text-wrap-red" />
-              Available Locations Nearby
+              Available Locations You Might Be Looking For
             </h3>
             <div className="flex flex-wrap justify-center gap-2 mb-4">
               {similarTowns.map((town) => (
@@ -77,7 +86,7 @@ const NotFound = () => {
                   to={`/locations/${town.id}`}
                   className="inline-block px-3 py-1 bg-gray-100 hover:bg-gray-200 text-wrap-blue rounded-full text-sm transition-colors"
                 >
-                  {town.name}
+                  {town.name}, {town.state}
                 </Link>
               ))}
             </div>

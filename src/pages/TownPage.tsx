@@ -34,7 +34,7 @@ const TownPage: React.FC = () => {
     }
     
     // Normalize the slug for better matching
-    const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-');
+    const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
     
     const fetchedTownData = getTownData(normalizedSlug);
     console.log(`Attempting to find town with slug: "${normalizedSlug}"`);
@@ -44,7 +44,8 @@ const TownPage: React.FC = () => {
       
       // Log all available towns for debugging
       const allTowns = getAllTowns();
-      console.log("Available towns:", allTowns.map(t => t.id).slice(0, 10));
+      console.log("Available towns:", allTowns.map(t => t.id).slice(0, 10), "...");
+      console.log("Failed lookup for:", normalizedSlug);
       
       setError(true);
       setLoading(false);
@@ -67,11 +68,15 @@ const TownPage: React.FC = () => {
   
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-t-wrap-red border-gray-200 rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-wrap-grey">Loading town information...</p>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center bg-gray-50">
+          <div className="text-center">
+            <div className="w-16 h-16 border-4 border-t-wrap-red border-gray-200 rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-wrap-grey">Loading information for {townSlug}...</p>
+          </div>
         </div>
+        <Footer />
       </div>
     );
   }

@@ -5,6 +5,11 @@ import { michiganTowns } from './towns/michigan';
 import { indianaTowns } from './towns/indiana';
 import { wisconsinTowns } from './towns/wisconsin';
 
+// Normalize a string to create a consistent slug
+const normalizeSlug = (str: string): string => {
+  return str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+};
+
 // Combine all towns data for easy access
 export const getAllTowns = (): TownData[] => {
   const allTowns = [
@@ -31,35 +36,44 @@ export const getTownData = (townSlug: string): TownData | null => {
   console.log(`getTownData: Looking for town with slug "${townSlug}" among ${allTowns.length} towns`);
   
   // Normalize the slug for comparison
-  const normalizedSlug = townSlug.toLowerCase().trim().replace(/\s+/g, '-');
+  const normalizedSlug = normalizeSlug(townSlug);
   
-  // First try exact match
-  let town = allTowns.find(t => t.id === normalizedSlug);
+  // Try multiple matching methods in order of specificity
+  let town = null;
   
-  // Log available town IDs if town not found
-  if (!town) {
-    console.error(`Town not found with slug "${townSlug}". Available town IDs:`, 
-      allTowns.map(t => t.id).slice(0, 20)); // Show first 20 for debugging
-    
-    // Try case-insensitive match as fallback
-    town = allTowns.find(t => t.id.toLowerCase() === normalizedSlug);
-    
-    // Try matching by name (converted to slug format)
-    if (!town) {
-      town = allTowns.find(t => {
-        const nameAsSlug = t.name.toLowerCase().trim().replace(/\s+/g, '-');
-        return nameAsSlug === normalizedSlug;
-      });
-    }
-    
-    if (town) {
-      console.log(`Found town with alternative matching: ${town.name} (${town.id})`);
-    }
-  } else {
-    console.log(`Found town: ${town.name} (${town.id})`);
+  // 1. Try exact match on id
+  town = allTowns.find(t => normalizeSlug(t.id) === normalizedSlug);
+  if (town) {
+    console.log(`Found town by exact id match: ${town.name} (${town.id})`);
+    return town;
   }
   
-  return town || null;
+  // 2. Try case-insensitive match on id with normalization
+  town = allTowns.find(t => normalizeSlug(t.id) === normalizedSlug);
+  if (town) {
+    console.log(`Found town by normalized id: ${town.name} (${town.id})`);
+    return town;
+  }
+  
+  // 3. Try matching by name (converted to slug format)
+  town = allTowns.find(t => normalizeSlug(t.name) === normalizedSlug);
+  if (town) {
+    console.log(`Found town by name match: ${town.name} (${town.id})`);
+    return town;
+  }
+  
+  // 4. Try partial matching (for potential typos or variations)
+  town = allTowns.find(t => normalizeSlug(t.id).includes(normalizedSlug) || normalizedSlug.includes(normalizeSlug(t.id)));
+  if (town) {
+    console.log(`Found town by partial match: ${town.name} (${town.id})`);
+    return town;
+  }
+  
+  // If we get here, all matching methods have failed
+  console.error(`Town not found with slug "${townSlug}". Available town IDs (sample):`, 
+    allTowns.map(t => t.id).slice(0, 5), "...");
+  
+  return null;
 };
 
 // Get town data by name
