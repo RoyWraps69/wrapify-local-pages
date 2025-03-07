@@ -40,6 +40,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
         // Ensure we have a valid image URL
         const bgUrl = bg || fleetWrapBackground;
         
+        // Add more detailed logging for each background image
+        console.log(`Background ${index + 1} URL:`, bgUrl);
+        
         return (
           <div
             key={index}

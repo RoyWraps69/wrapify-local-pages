@@ -60,12 +60,19 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     // Log background images for debugging
     console.log("DynamicHero - All backgrounds:", heroBackgrounds);
     console.log("DynamicHero - Fleet wrap background:", fleetWrapBackground);
+    console.log("DynamicHero - Initial background:", heroBackgrounds[activeBackground]);
     
     return () => {
       clearInterval(interval);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  
+  // Update logs when active background changes for debugging
+  useEffect(() => {
+    console.log("DynamicHero - Active background index changed to:", activeBackground);
+    console.log("DynamicHero - Current background image:", heroBackgrounds[activeBackground]);
+  }, [activeBackground]);
   
   // Handle scroll to services section
   const scrollToServices = () => {
