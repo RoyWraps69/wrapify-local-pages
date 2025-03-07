@@ -118,15 +118,21 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="w-full lg:w-2/3">
               <RegionalMainContent
-                title={regionName}
-                description={regionDescription}
-                content={regionFocus || content || ""}
+                regionName={regionName}
+                regionDescription={regionDescription}
+                regionFocus={regionFocus || content || ""}
+                citiesServed={citiesServed}
+                title={title}
+                description={description}
+                content={content}
               />
               
               {/* Display cities served section */}
               {citiesServed && citiesServed.length > 0 && (
                 <CitiesServedGrid 
-                  mainCity={regionalCity || regionName}
+                  regionName={regionName}
+                  citiesServed={citiesServed}
+                  mainCity={regionalCity}
                   cities={citiesServed.map(city => city.name)}
                 />
               )}
@@ -134,21 +140,27 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
             
             <div className="w-full lg:w-1/3 space-y-8">
               <ContactSidebar 
+                regionName={regionName}
                 location={regionalLocation || regionName}
               />
               
               <ServicesSidebar 
+                regionName={regionName}
                 services={services}
               />
               
               <NearbyRegionsSidebar 
+                adjacentRegions={adjacentRegions}
                 regions={nearbyCity || adjacentRegions?.map(region => region.name)}
               />
             </div>
           </div>
         </div>
         
-        <RegionalCTA region={regionName} />
+        <RegionalCTA 
+          regionName={regionName} 
+          region={regionName}
+        />
       </main>
       <Footer />
     </>
