@@ -13,6 +13,7 @@ export interface Installer {
   isPremium?: boolean;
   premiumUntil?: string; // Date the premium subscription expires
   featured?: boolean; // Whether this installer should be featured at the top
+  image?: string; // Added image property
 }
 
 export interface ShopItem {
@@ -22,6 +23,7 @@ export interface ShopItem {
   price: number;
   category: 'wrap_material' | 'design' | 'protection' | 'merchandise' | 'premium_listing' | 'shipping';
   image?: string;
+  images?: string[]; // Added array of images
   color?: string;
   term?: '1_month' | '3_months' | '6_months' | '12_months';
   featured?: boolean;

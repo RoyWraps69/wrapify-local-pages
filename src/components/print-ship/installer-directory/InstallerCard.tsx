@@ -21,8 +21,9 @@ const InstallerCard: React.FC<InstallerCardProps> = ({ installer, onSelect }) =>
   // Get a consistent image based on installer id
   const getInstallerImage = () => {
     if (installer.image) return installer.image;
-    const idSum = installer.id.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-    return shopImages[idSum % shopImages.length];
+    // Use a numeric calculation to get a consistent image
+    const idIndex = installer.id % shopImages.length;
+    return shopImages[idIndex];
   };
   
   return (
@@ -113,7 +114,7 @@ const InstallerCard: React.FC<InstallerCardProps> = ({ installer, onSelect }) =>
               {[0, 1, 2].map((index) => (
                 <div key={index} className="h-16 rounded-md overflow-hidden">
                   <img 
-                    src={shopImages[(index + Number(installer.id.replace(/\D/g, ''))) % shopImages.length]} 
+                    src={shopImages[(index + installer.id) % shopImages.length]} 
                     alt={`Portfolio ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
