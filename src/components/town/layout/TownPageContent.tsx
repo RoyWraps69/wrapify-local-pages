@@ -58,7 +58,7 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
   ];
   
   return (
-    <main className="town-page" itemScope itemType="https://schema.org/WebPage">
+    <div className="town-page" itemScope itemType="https://schema.org/WebPage">
       <div className="space-y-16">
         <div className="animate-on-scroll fade-up">
           <TownDescription townName={name} townData={townData} />
@@ -108,7 +108,7 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
           <CTASection townName={name} />
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

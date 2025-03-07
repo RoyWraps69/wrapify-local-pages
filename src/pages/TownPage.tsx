@@ -171,16 +171,20 @@ const TownPage: React.FC = () => {
         pageUrl={pageUrl}
       />
       
-      <Navbar />
-      
-      <RegionalHero regionName={name} regionImage={townBackgroundImage} />
-      
-      <TownPageContent 
-        townData={townData}
-        locationFaqs={locationFaqs}
-      />
-      
-      <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        
+        <main className="flex-grow">
+          <RegionalHero regionName={name} regionImage={townBackgroundImage} />
+          
+          <TownPageContent 
+            townData={townData}
+            locationFaqs={locationFaqs}
+          />
+        </main>
+        
+        <Footer />
+      </div>
     </>
   );
 };
