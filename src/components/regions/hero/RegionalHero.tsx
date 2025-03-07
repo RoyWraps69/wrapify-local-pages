@@ -14,7 +14,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   return (
     <section 
-      className="bg-wrap-blue text-white py-16 bg-center bg-cover bg-blend-overlay bg-black/40" 
+      className="bg-wrap-blue text-white py-20 min-h-[90vh] flex items-center bg-fixed bg-center bg-cover bg-blend-overlay bg-black/20" 
       style={{ backgroundImage: `url(${heroImage})` }}
     >
       <div className="container mx-auto px-4">

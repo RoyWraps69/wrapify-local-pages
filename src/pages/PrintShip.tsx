@@ -32,19 +32,20 @@ const PrintShip = () => {
       <Navbar />
       <LazyMotion features={domAnimation}>
         <main>
-          {/* Hero Section with Vehicle Photography Only */}
+          {/* Hero Section with Vehicle Photography Only - Full Screen */}
           <section 
-            className="py-20 relative overflow-hidden"
+            className="min-h-screen relative overflow-hidden flex items-center"
             style={{
               backgroundImage: `url('/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png')`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center'
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed'
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-black/20"></div>
             <div className="container mx-auto px-4 text-center relative z-10">
               <m.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6"
+                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-white"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -53,7 +54,7 @@ const PrintShip = () => {
                 <span className="text-wrap-red">Delivered Nationwide</span>
               </m.h1>
               <m.p 
-                className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
+                className="text-xl text-white/90 mb-8 max-w-3xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}

@@ -68,7 +68,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   
   return (
     <section 
-      className="hero-section relative bg-cover bg-center min-h-[90vh] overflow-hidden"
+      className="hero-section relative bg-cover bg-center min-h-screen w-full overflow-hidden"
     >
       <HeroBackground 
         backgrounds={heroBackgrounds}
@@ -95,7 +95,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             
             <HeroHeadline townName={townName} />
             
-            <p className="text-xl text-white mb-8 max-w-2xl mx-auto backdrop-blur-sm bg-black/10 p-4 rounded-lg">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg">
               <span className="font-bold">WRAPPING THE WORLD</span> offers premier car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             

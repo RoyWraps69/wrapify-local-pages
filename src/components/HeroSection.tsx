@@ -19,9 +19,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   
   return (
     <section 
-      className="hero-section relative bg-cover bg-center min-h-[700px]"
+      className="hero-section relative bg-cover bg-center min-h-screen w-full"
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.85), rgba(29, 53, 87, 0.6)), url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.2), rgba(29, 53, 87, 0.2)), url(${backgroundImage})`,
         backgroundAttachment: 'fixed'
       }}
     >
@@ -43,12 +43,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
               Top Car Wraps & Protection in {townName}
             </h1>
-            <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg">
               <span className="font-bold">WRAPPING THE WORLD</span> offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
             <div className="mb-8 grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
-              <div className="bg-white/10 p-4 rounded-lg">
+              <div className="bg-black/20 backdrop-blur-sm p-4 rounded-lg">
                 <h3 className="text-white font-medium mb-2">Car Wrapping</h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
@@ -68,7 +68,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   Learn more <ArrowRight className="ml-1" size={12} />
                 </Link>
               </div>
-              <div className="bg-white/10 p-4 rounded-lg">
+              <div className="bg-black/20 backdrop-blur-sm p-4 rounded-lg">
                 <h3 className="text-white font-medium mb-2">Car Protection</h3>
                 <ul className="space-y-1">
                   <li className="flex items-start">
