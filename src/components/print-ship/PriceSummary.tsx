@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { InfoIcon, ShoppingCart, CreditCard, Shield, Truck, CheckCircle, Phone, Palette, Plus, ArrowRight, Sparkles, Tools } from 'lucide-react';
@@ -233,7 +232,7 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
         
         <ul className="space-y-3">
           {[
-            "Complete professional installation by certified technicians",
+            "Complete professional installation by approved technicians",
             "Chicago-quality design and printing",
             "Factory-grade finish with our expert installation team",
             "Industry-leading warranty on materials and workmanship"

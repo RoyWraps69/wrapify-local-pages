@@ -54,7 +54,7 @@ const WrapInstallationProcess = () => {
         </ul>
         
         <h3>Step 5: Professional Installation</h3>
-        <p>Our certified installers apply your wrap with precision:</p>
+        <p>Our approved installers apply your wrap with precision:</p>
         <ul>
           <li>Climate-controlled installation environment (68-75°F) for optimal vinyl performance</li>
           <li>Strategic panel positioning to minimize seams and maximize visual impact</li>

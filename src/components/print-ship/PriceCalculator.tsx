@@ -67,7 +67,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
           <Info className="w-4 h-4 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
           <p className="text-green-700">
             <span className="font-medium">Complete Service:</span> All pricing includes premium materials, 
-            professional design, shipping, and professional installation by our certified technicians.
+            professional design, shipping, and professional installation by our approved technicians.
           </p>
         </div>
       </div>
@@ -259,7 +259,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
         <div className="bg-gray-50 p-3 rounded-lg flex items-start">
           <Info className="text-wrap-blue w-5 h-5 mt-0.5 mr-2 flex-shrink-0" />
           <p className="text-sm text-wrap-blue">
-            <strong>Expert Installation Included:</strong> All of our wrap packages include professional installation by our certified technicians. Our team ensures a perfect finish with our industry-leading installation techniques.
+            <strong>Expert Installation Included:</strong> All of our wrap packages include professional installation by our approved technicians. Our team ensures a perfect finish with our industry-leading installation techniques.
           </p>
         </div>
       </div>
