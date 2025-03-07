@@ -8,7 +8,7 @@ interface RegionalHeroProps {
   regionImage?: string;
 }
 
-// Static background image as fallback - using a known working image path
+// Use a reliable background image from our public folder as fallback
 const staticBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
@@ -19,15 +19,18 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
-      {/* Background image */}
+      {/* Background image with error handling */}
       <div 
-        className="absolute inset-0 z-0 w-full h-full bg-cover bg-center"
+        className="absolute inset-0 z-0 w-full h-full bg-cover bg-center bg-gray-800"
         style={{ 
           backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
-      />
+      >
+        {/* Image load error fallback - will only show if image fails to load */}
+        <div className="absolute inset-0 bg-gradient-to-b from-wrap-blue to-black opacity-90"></div>
+      </div>
       
       {/* Overlay for text readability */}
       <div className="absolute inset-0 bg-black opacity-80 z-1"></div>

@@ -122,7 +122,7 @@ const TownPage: React.FC = () => {
     state === 'WI' ? 'Wisconsin' : state;
   
   // Set up town background image - use fallback image that we know works
-  const townBackgroundImage = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
+  const townBackgroundImage = '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png';
   
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name}, ${stateFullName} | Wrapping The World`;
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps from the Midwest's top-rated vehicle enhancement company.`;
