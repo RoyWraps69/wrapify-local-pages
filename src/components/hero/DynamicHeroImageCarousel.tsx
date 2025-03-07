@@ -14,10 +14,17 @@ const heroBackgrounds = [
   '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png', // Blue Camaro
 ];
 
+/**
+ * @deprecated Use HeroBackground and HeroThumbnails instead
+ */
 const DynamicHeroImageCarousel: React.FC<DynamicHeroImageCarouselProps> = ({ 
   scrollPos,
   onImagesLoaded
 }) => {
+  // This component is now deprecated. The functionality has been split into 
+  // HeroBackground and HeroThumbnails components.
+  // This component remains only for backward compatibility.
+  
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [loadingError, setLoadingError] = useState(false);

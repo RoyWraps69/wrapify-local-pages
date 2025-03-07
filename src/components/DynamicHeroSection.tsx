@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import DynamicHeroImageCarousel from './hero/DynamicHeroImageCarousel';
+import HeroLoader from './hero/HeroLoader';
+import HeroBackground from './hero/HeroBackground';
+import HeroThumbnails from './hero/HeroThumbnails';
 import HeroContentContainer from './hero/HeroContentContainer';
 
 interface DynamicHeroSectionProps {
@@ -16,8 +18,9 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   const [scrollPos, setScrollPos] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [loadingError, setLoadingError] = useState(false);
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
   
-  // Show content with animation on load and handle image preloading
+  // Show content with animation on load
   useEffect(() => {
     setIsVisible(true);
     
@@ -46,14 +49,41 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     setImagesLoaded(loaded);
     setLoadingError(error);
   };
+
+  // Handler for thumbnail click
+  const handleThumbnailClick = (index: number) => {
+    setCurrentBgIndex(index);
+  };
   
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden bg-wrap-blue">
-      <DynamicHeroImageCarousel 
+      {/* Loading spinner */}
+      {!imagesLoaded && <HeroLoader />}
+      
+      {/* Error message */}
+      {loadingError && (
+        <div className="absolute top-4 left-4 right-4 bg-wrap-red text-white px-4 py-2 rounded z-40 text-center">
+          Some images couldn't be loaded. Using available images instead.
+        </div>
+      )}
+      
+      {/* Background Image with Parallax Effect */}
+      <HeroBackground 
         scrollPos={scrollPos} 
-        onImagesLoaded={handleImagesLoaded} 
+        imagesLoaded={imagesLoaded}
+        currentBgIndex={currentBgIndex}
+        onImagesLoaded={handleImagesLoaded}
       />
       
+      {/* Image selection thumbnails */}
+      {imagesLoaded && (
+        <HeroThumbnails 
+          currentBgIndex={currentBgIndex} 
+          onThumbnailClick={handleThumbnailClick} 
+        />
+      )}
+      
+      {/* Content Container */}
       <HeroContentContainer 
         isVisible={isVisible} 
         townName={townName} 
