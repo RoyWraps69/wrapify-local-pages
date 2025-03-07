@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 interface HeroBackgroundProps {
@@ -20,12 +20,21 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   // Make sure we're using a valid background
   const currentBackground = backgroundImage || backgrounds[activeBackground] || backgrounds[0];
   
+  // Log backgrounds to help debug
+  useEffect(() => {
+    console.log("All backgrounds:", backgrounds);
+    console.log("Active background index:", activeBackground);
+    console.log("Current background:", currentBackground);
+  }, [backgrounds, activeBackground, currentBackground]);
+
   return (
     <>
       {/* Dynamic background with transition effect */}
       {backgrounds.map((bg, index) => {
         // Ensure we have a valid image URL
         const bgUrl = bg || fleetWrapBackground;
+        console.log(`Background ${index + 1}:`, bgUrl);
+        
         return (
           <div
             key={index}
@@ -44,7 +53,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
       })}
       
       {/* Subtle dark overlay to improve text readability */}
-      <div className="absolute inset-0 bg-black opacity-30 z-1"></div>
+      <div className="absolute inset-0 bg-black opacity-40 z-1"></div>
       
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
