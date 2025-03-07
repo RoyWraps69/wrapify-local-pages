@@ -8,12 +8,14 @@ interface RegionalHeroProps {
   regionImage?: string;
 }
 
-// Static background image as fallback
+// Static background image as fallback - using a known working image path
 const staticBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   // Use the provided regionImage or fall back to our static image
   const bgImage = regionImage || staticBackground;
+  
+  console.log("RegionalHero rendering with image:", bgImage);
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">

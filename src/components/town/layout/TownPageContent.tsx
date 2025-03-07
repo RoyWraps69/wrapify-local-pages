@@ -23,7 +23,16 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
   townData,
   locationFaqs
 }) => {
-  if (!townData) return null;
+  if (!townData) {
+    console.error("TownPageContent: townData is null or undefined");
+    return (
+      <div className="py-10 text-center">
+        <p className="text-wrap-grey">Town information unavailable.</p>
+      </div>
+    );
+  }
+  
+  console.log("TownPageContent rendering with town:", townData.name);
   
   const { id, name, mapUrl } = townData;
   

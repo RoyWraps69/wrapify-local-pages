@@ -10,7 +10,7 @@ interface TownDescriptionProps {
 
 const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData }) => {
   if (!townData) {
-    return <div>Loading town information...</div>;
+    return <div className="py-8 text-center">Loading town information...</div>;
   }
   
   const { description, population, businessCount, state, distance } = townData;
