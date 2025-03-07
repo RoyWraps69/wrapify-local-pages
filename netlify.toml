@@ -7,8 +7,8 @@
   
 # Specify Node.js version
 [build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "9"
+  NODE_VERSION = "16"
+  NPM_VERSION = "8"
   VITE_APP_ENV = "production"
   
 # Handle SPA routing by redirecting all paths to index.html
