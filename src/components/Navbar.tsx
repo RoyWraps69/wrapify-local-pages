@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Printer } from 'lucide-react';
 import ServicesDropdown from '../components/navbar/ServicesDropdown';
 import ResourcesDropdown from '../components/navbar/ResourcesDropdown';
 import LocationsDropdown from '../components/navbar/LocationsDropdown';
@@ -69,6 +69,13 @@ const Navbar: React.FC = () => {
             >
               Gallery
             </Link>
+            <Link
+              to="/print-ship"
+              className="flex items-center px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
+            >
+              <Printer className="mr-1" size={16} />
+              Print & Ship
+            </Link>
             <LocationsDropdown />
             <ResourcesDropdown />
             <Link
@@ -127,6 +134,13 @@ const Navbar: React.FC = () => {
                 className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
               >
                 Gallery
+              </Link>
+              <Link
+                to="/print-ship"
+                className="flex items-center px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
+              >
+                <Printer className="mr-1" size={16} />
+                Print & Ship
               </Link>
               <Link
                 to="/locations"
