@@ -11,8 +11,8 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   backgroundImage,
   scrollPos
 }) => {
-  // Default reliable background image
-  const defaultBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png'; 
+  // Default reliable background image - new pink car image
+  const defaultBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png'; 
   
   // Use the provided backgroundImage or fall back to default
   const currentBackground = backgroundImage || defaultBackground;
@@ -36,7 +36,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
         style={{
-          backgroundImage: "url('/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png')",
+          backgroundImage: "url('/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png')",
           backgroundSize: "contain",
           backgroundPosition: "right bottom",
           mixBlendMode: "overlay"

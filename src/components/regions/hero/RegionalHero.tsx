@@ -9,7 +9,7 @@ interface RegionalHeroProps {
 }
 
 // Static background image
-const staticBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
+const staticBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   // Use the provided regionImage or fall back to our static image

@@ -13,8 +13,8 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
-// Use a single reliable static background instead of carousel
-const staticBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
+// Use the new pink car image as static background
+const staticBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
   townName = 'Chicago',
@@ -66,7 +66,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
         style={{
-          backgroundImage: "url('/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png')",
+          backgroundImage: "url('/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png')",
           backgroundSize: "contain",
           backgroundPosition: "right bottom",
           mixBlendMode: "overlay"
