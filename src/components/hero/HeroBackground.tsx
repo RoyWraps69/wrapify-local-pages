@@ -48,6 +48,16 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
         </div>
       ))}
       
+      {/* Vehicle silhouette overlay effect for added dimension */}
+      <div className="absolute inset-0 bg-center bg-no-repeat opacity-10"
+        style={{
+          backgroundImage: "url('/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png')",
+          backgroundSize: "contain",
+          backgroundPosition: "right bottom",
+          mixBlendMode: "overlay"
+        }}
+      />
+      
       {/* Animated particles effect */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute w-4 h-4 bg-wrap-red/30 rounded-full top-1/4 left-1/4 animate-ping"></div>

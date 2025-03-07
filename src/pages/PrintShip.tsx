@@ -32,9 +32,17 @@ const PrintShip = () => {
       <Navbar />
       <LazyMotion features={domAnimation}>
         <main>
-          {/* Hero Section */}
-          <section className="py-20 bg-gradient-to-br from-wrap-blue to-wrap-blue-dark text-white">
-            <div className="container mx-auto px-4 text-center">
+          {/* Hero Section with Vehicle Photography */}
+          <section 
+            className="py-20 bg-wrap-blue text-white relative overflow-hidden"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.7)), url('/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          >
+            <div className="absolute inset-0 bg-wrap-blue/40"></div>
+            <div className="container mx-auto px-4 text-center relative z-10">
               <m.h1 
                 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -52,6 +60,15 @@ const PrintShip = () => {
               >
                 Chicago-quality design and printing, shipped directly to your door or preferred installer anywhere in the United States.
               </m.p>
+              
+              {/* Vehicle Silhouette Overlay */}
+              <div className="absolute bottom-0 right-0 w-1/3 h-full opacity-20 pointer-events-none">
+                <img 
+                  src="/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png" 
+                  alt="Vehicle silhouette" 
+                  className="w-full h-full object-contain object-bottom"
+                />
+              </div>
             </div>
           </section>
           

@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   townName = 'Chicago',
-  backgroundImage = 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'
+  backgroundImage = '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png' // Default to the blue Lexus
 }) => {
   // Get the town's government website URL
   const townData = getTownByName(townName);

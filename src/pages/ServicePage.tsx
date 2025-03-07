@@ -22,34 +22,34 @@ const ServicePage: React.FC = () => {
     'commercial-fleet-wraps': {
       title: 'Commercial Fleet Wraps',
       description: 'Turn your company vehicles into moving billboards with our high-quality commercial fleet wraps. We help businesses of all sizes stand out and get noticed.',
-      hero: 'https://images.unsplash.com/photo-1625323509397-1d47b13d6cb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      hero: '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png' // Bratcher fleet vans
     },
     'ceramic-coatings': {
       title: 'Ceramic Coatings',
       description: "Protect your vehicle's paint with our long-lasting ceramic coatings. These coatings repel water, resist scratches, and make cleaning easier while keeping your car looking shiny.",
-      hero: 'https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      hero: '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png' // Blue Lexus
     },
     'paint-protection': {
       title: 'Paint Protection Film',
       description: 'Shield your car from rocks, bugs, and road debris with our strong paint protection film. This clear film helps prevent chips and scratches while being nearly invisible.',
-      hero: 'https://images.unsplash.com/photo-1597007066704-67bf2068d5b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      hero: '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png' // Blue Ford truck
     },
     'color-change-wraps': {
       title: 'Color Change Wraps',
       description: 'Change the look of your car without painting it! Our color change wraps come in many colors and finishes to transform your vehicle completely.',
-      hero: 'https://images.unsplash.com/photo-1626668893527-1e1be2a61cb7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      hero: '/lovable-uploads/39af2f7f-a89b-42b4-833b-75a980a647ba.png' // Red convertible
     },
     'vehicle-graphics': {
       title: 'Vehicle Graphics',
       description: 'Add custom graphics to your vehicle with our professional design and installation services. From small logos to partial wraps, we can make your vision come to life.',
-      hero: 'https://images.unsplash.com/photo-1600064719456-2a2a29fe461b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+      hero: '/lovable-uploads/712c766b-dd74-41af-942c-ef67e92c62c8.png' // Rivian with Blue Origin graphics
     }
   };
 
   const service = serviceInfo[serviceType || ''] || {
     title: 'Service Not Found',
     description: "The service you're looking for isn't available. Please check our main services page.",
-    hero: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+    hero: '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png' // Fleet of Rivian trucks as default
   };
 
   const pageTitle = `${service.title} | Wrapping The World`;

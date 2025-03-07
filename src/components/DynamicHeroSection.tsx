@@ -13,18 +13,20 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
+// Updated hero backgrounds with impressive vehicle photos
 const heroBackgrounds = [
-  'https://images.unsplash.com/photo-1621447578051-310ce127825a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Colorful car wrap
-  'https://images.unsplash.com/photo-1569171210192-83541e3777ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Vehicle detail
-  'https://images.unsplash.com/photo-1550355291-bbee04a92027?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80', // Detailed car shot
-  'https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80', // Modern car
-  'https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Fleet vehicles
-  'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', // Colorful sports car
-  'https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'  // Car detail close-up
+  '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
+  '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
+  '/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png', // Tesla Cybertruck black camo
+  '/lovable-uploads/712c766b-dd74-41af-942c-ef67e92c62c8.png', // Rivian truck
+  '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png', // Fleet of Rivian trucks
+  '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png', // Blue Lexus sports car
+  '/lovable-uploads/82b9909a-f0d1-4fd3-aa13-a2e8c40659af.png', // Fighting Illini bus
+  '/lovable-uploads/39af2f7f-a89b-42b4-833b-75a980a647ba.png'  // Red vintage car
 ];
 
-// Fleet wrap background to use during transitions
-const fleetWrapBackground = 'https://images.unsplash.com/photo-1621447578051-310ce127825a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80';
+// Fleet wrap background to use during transitions - Bratcher fleet vans
+const fleetWrapBackground = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png';
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
   townName = 'Chicago',
