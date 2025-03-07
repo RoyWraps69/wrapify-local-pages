@@ -21,6 +21,7 @@ import SEOWrapper from './components/SEOWrapper';
 import { Toaster } from 'sonner';
 
 function App() {
+  console.log('App component rendering');
   return (
     <SEOWrapper>
       <BrowserRouter>

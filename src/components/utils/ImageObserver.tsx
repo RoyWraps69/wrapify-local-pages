@@ -8,10 +8,20 @@ import { useEffect } from 'react';
  */
 const InitImageObserver = () => {
   useEffect(() => {
+    console.log('InitImageObserver mounted');
+    
     // Check if IntersectionObserver is available
     if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
       const lazyImages = document.querySelectorAll('img[data-src]');
+      console.log(`Found ${lazyImages.length} lazy images`);
+      
       const lazyBackgrounds = document.querySelectorAll('.lazy-background');
+      console.log(`Found ${lazyBackgrounds.length} lazy backgrounds`);
+      
+      if (lazyImages.length === 0 && lazyBackgrounds.length === 0) {
+        console.log('No lazy-loaded elements found');
+        return;
+      }
       
       // Observer callback for images
       const imageObserver = new IntersectionObserver((entries) => {
@@ -19,6 +29,7 @@ const InitImageObserver = () => {
           if (entry.isIntersecting) {
             const img = entry.target as HTMLImageElement;
             if (img.dataset.src) {
+              console.log(`Loading image: ${img.dataset.src}`);
               img.src = img.dataset.src;
               img.removeAttribute('data-src');
               imageObserver.unobserve(img);
@@ -33,6 +44,7 @@ const InitImageObserver = () => {
           if (entry.isIntersecting) {
             const element = entry.target as HTMLElement;
             if (element.dataset.background) {
+              console.log(`Loading background: ${element.dataset.background}`);
               element.style.backgroundImage = `url('${element.dataset.background}')`;
               element.classList.remove('lazy-background');
               bgObserver.unobserve(element);
@@ -60,7 +72,11 @@ const InitImageObserver = () => {
         lazyBackgrounds.forEach((bg) => {
           bgObserver.unobserve(bg);
         });
+        
+        console.log('ImageObserver cleanup completed');
       };
+    } else {
+      console.warn('IntersectionObserver not supported in this browser');
     }
     
     return undefined;
