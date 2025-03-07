@@ -5,7 +5,8 @@ import InsurancePageHeader from '@/components/insurance/InsurancePageHeader';
 import InsurancePlansSection from '@/components/insurance/InsurancePlansSection';
 import InsuranceFAQSection, { FAQ } from '@/components/insurance/InsuranceFAQSection';
 import InsuranceCTASection from '@/components/insurance/InsuranceCTASection';
-import { generateInsuranceSchema, generateFAQSchema } from '@/utils/insurance/insuranceSchemas';
+import PageSEO from '@/components/seo/PageSEO';
+import { generateInsuranceSchemas } from '@/utils/seo/schemaGenerator';
 
 const WrapInsurance = () => {
   const [selectedPlan, setSelectedPlan] = useState<string>('gold');
@@ -34,26 +35,42 @@ const WrapInsurance = () => {
     }
   ];
 
-  // Generate schema objects for SEO
-  const insuranceSchema = generateInsuranceSchema();
+  // Generate schema objects for SEO using our new utility
+  const { insuranceSchema, orgSchema, webPageSchema } = generateInsuranceSchemas();
   const faqSchema = generateFAQSchema(faqs);
+  
+  // Keywords for better SEO
+  const keywords = "vehicle wrap insurance, wrap protection plan, wrap damage coverage, wrap removal guarantee, car wrap insurance, vehicle wrap protection, auto wrap warranty, vehicle graphics insurance, wrap maintenance plan, Chicago wrap insurance";
 
   return (
-    <InsurancePageLayout
-      insuranceSchema={insuranceSchema}
-      faqSchema={faqSchema}
-    >
-      <InsurancePageHeader />
-      
-      <InsurancePlansSection 
-        selectedPlan={selectedPlan} 
-        setSelectedPlan={setSelectedPlan} 
+    <>
+      <PageSEO
+        title="Vehicle Wrap Insurance Plans | Wrapping The World"
+        description="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service."
+        canonicalUrl="/wrap-insurance"
+        ogImage="https://wrappingtheworld.com/images/wrap-insurance-plans.jpg"
+        keywords={keywords}
+        structuredData={[insuranceSchema, orgSchema, webPageSchema, faqSchema]}
+        location="Chicago"
+        publishedTime="2023-01-15T08:00:00+08:00"
+        modifiedTime={new Date().toISOString()}
       />
       
-      <InsuranceFAQSection faqs={faqs} />
-      
-      <InsuranceCTASection />
-    </InsurancePageLayout>
+      <main className="pt-24 pb-16">
+        <section className="container mx-auto px-4">
+          <InsurancePageHeader />
+          
+          <InsurancePlansSection 
+            selectedPlan={selectedPlan} 
+            setSelectedPlan={setSelectedPlan} 
+          />
+          
+          <InsuranceFAQSection faqs={faqs} />
+          
+          <InsuranceCTASection />
+        </section>
+      </main>
+    </>
   );
 };
 

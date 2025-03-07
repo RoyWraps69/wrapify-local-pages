@@ -12,8 +12,15 @@ import ServiceDescription from '@/components/services/ServiceDescription';
 import ServiceBenefits from '@/components/services/ServiceBenefits';
 import ServiceFAQs from '@/components/services/ServiceFAQs';
 import RelatedServices from '@/components/services/RelatedServices';
-import ServiceSEO from '@/components/services/ServiceSEO';
+import PageSEO from '@/components/seo/PageSEO';
 import { ArrowRight } from 'lucide-react';
+import { 
+  generateServiceSchema, 
+  generateWebPageSchema, 
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+  generateOrganizationSchema
+} from '@/utils/seo/schemaGenerator';
 
 const ServicePage: React.FC = () => {
   const { serviceType } = useParams<{ serviceType: string }>();
@@ -30,10 +37,64 @@ const ServicePage: React.FC = () => {
   
   // Check if we're on vehicle-wraps page to show additional content
   const isVehicleWraps = serviceType === 'vehicle-wraps';
+  
+  // Generate the service page title and description
+  const pageTitle = `${service.title} | Professional Vehicle Enhancement Services`;
+  const pageDescription = service.description;
+  const pageUrl = `/services/${serviceType}`;
+  const canonicalUrl = `https://wrappingtheworld.com/services/${serviceType}`;
+  
+  // Create structured data for the service page
+  const serviceSchema = generateServiceSchema({
+    pageTitle: service.title,
+    pageDescription: service.description,
+    pageUrl: canonicalUrl,
+    townName: "Chicago"
+  });
+  
+  const webPageSchema = generateWebPageSchema({
+    pageTitle: pageTitle,
+    pageDescription: pageDescription,
+    pageUrl: canonicalUrl,
+    imageUrl: heroImage,
+    datePublished: "2023-01-15T08:00:00+08:00",
+    dateModified: new Date().toISOString()
+  });
+  
+  const orgSchema = generateOrganizationSchema();
+  
+  // Create breadcrumb schema
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://wrappingtheworld.com" },
+    { name: "Services", url: "https://wrappingtheworld.com/services" },
+    { name: service.title, url: canonicalUrl }
+  ]);
+  
+  // Convert service FAQs to the format needed for schema
+  const serviceFAQs = service.faqs ? service.faqs.map(faq => ({
+    question: faq.question,
+    answer: faq.answer
+  })) : [];
+  
+  const faqSchema = generateFAQSchema(serviceFAQs);
+  
+  // Keywords for the service
+  const keywords = `${service.title.toLowerCase()}, ${service.title.toLowerCase()} Chicago, professional ${service.title.toLowerCase()}, ${service.title.toLowerCase()} cost, ${service.title.toLowerCase()} installation, premium ${service.title.toLowerCase()}, ${service.title.toLowerCase()} services, Chicago ${service.title.toLowerCase()}, best ${service.title.toLowerCase()} company, vehicle enhancements Midwest`;
 
   return (
     <>
-      <ServiceSEO service={service} serviceType={serviceType} />
+      <PageSEO
+        title={pageTitle}
+        description={pageDescription}
+        canonicalUrl={pageUrl}
+        ogImage={heroImage}
+        keywords={keywords}
+        structuredData={[serviceSchema, webPageSchema, orgSchema, breadcrumbSchema, faqSchema]}
+        location="Chicago"
+        publishedTime="2023-01-15T08:00:00+08:00"
+        modifiedTime={new Date().toISOString()}
+      />
+      
       <Navbar />
       <main className="service-page">
         <RegionalHero 

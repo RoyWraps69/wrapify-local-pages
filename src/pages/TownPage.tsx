@@ -3,17 +3,21 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
-import SEOSchema from '@/components/SEOSchema';
 import { getTownData } from '@/utils/townFunctions';
 import { normalizeSlug } from '@/utils/towns/slugUtils';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
-import TownStructuredData from '@/components/town/seo/TownStructuredData';
 import TownPageContent from '@/components/town/layout/TownPageContent';
 import { createTownFAQs } from '@/components/town/data/TownFAQData';
-import { Helmet } from 'react-helmet-async';
+import PageSEO from '@/components/seo/PageSEO';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import { toast } from 'sonner';
 import InitImageObserver from '@/components/utils/ImageObserver';
+import { 
+  generateLocalBusinessSchema, 
+  generateServiceSchema, 
+  generateWebPageSchema,
+  generateFAQSchema
+} from '@/utils/seo/schemaGenerator';
 
 const townBackgroundImages = [
   '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',  // MH Equipment
@@ -143,37 +147,51 @@ const TownPage: React.FC = () => {
   
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name}, ${stateFullName} | Wrapping The World`;
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps from the Midwest's top-rated vehicle enhancement company.`;
-  const pageUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
+  const pageUrl = `/locations/${townSlug}`;
   const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
-
+  
+  // Create location FAQs
   const locationFaqs = createTownFAQs({ townName: name });
+  
+  // Generate structured data for this town page
+  const localBusinessSchema = generateLocalBusinessSchema({ townName: name });
+  const serviceSchema = generateServiceSchema({ 
+    pageTitle: `Vehicle Wrapping Services in ${name}`, 
+    pageDescription: pageDescription, 
+    pageUrl: canonicalUrl, 
+    townName: name 
+  });
+  const webPageSchema = generateWebPageSchema({
+    pageTitle: pageTitle,
+    pageDescription: pageDescription,
+    pageUrl: canonicalUrl,
+    imageUrl: townBackgroundImage,
+    datePublished: "2023-01-15T08:00:00+08:00",
+    dateModified: new Date().toISOString()
+  });
+  const faqSchema = generateFAQSchema(locationFaqs);
+  
+  // Keywords for this town
+  const keywords = `vehicle wraps ${name}, commercial fleet wraps ${name}, ${stateFullName} vehicle branding, car wraps ${name}, ceramic coating ${name}, paint protection film ${stateFullName}, business vehicle graphics ${name}, ${name} wrap shop, mobile advertising ${name}, premium vehicle wraps ${stateFullName}`;
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta name="robots" content="index, follow" />
+      <PageSEO
+        title={pageTitle}
+        description={pageDescription}
+        canonicalUrl={pageUrl}
+        ogImage={townBackgroundImage}
+        keywords={keywords}
+        structuredData={[localBusinessSchema, serviceSchema, webPageSchema, faqSchema]}
+        location={name}
+        publishedTime="2023-01-15T08:00:00+08:00"
+        modifiedTime={new Date().toISOString()}
+      >
         <meta name="geo.region" content={`US-${state}`} />
         <meta name="geo.placename" content={name} />
-      </Helmet>
-      
-      <TownStructuredData 
-        townData={townData}
-        townSlug={townSlug || ''}
-        pageTitle={pageTitle}
-        pageDescription={pageDescription}
-        pageUrl={pageUrl}
-        canonicalUrl={canonicalUrl}
-      />
-      
-      <SEOSchema 
-        townName={name}
-        pageTitle={pageTitle}
-        pageDescription={pageDescription}
-        pageUrl={pageUrl}
-      />
+        <meta name="geo.position" content={`${townData.latitude || 41.8781};${townData.longitude || -87.6298}`} />
+        <meta name="ICBM" content={`${townData.latitude || 41.8781}, ${townData.longitude || -87.6298}`} />
+      </PageSEO>
       
       <InitImageObserver />
       <div className="flex flex-col min-h-screen">
