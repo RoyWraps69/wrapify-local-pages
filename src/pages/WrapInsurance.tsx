@@ -1,9 +1,7 @@
 
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Helmet } from 'react-helmet-async';
-import SEOSchema from '@/components/SEOSchema';
+import InsurancePageLayout from '@/components/insurance/InsurancePageLayout';
+import InsurancePageHeader from '@/components/insurance/InsurancePageHeader';
 import InsurancePlansSection from '@/components/insurance/InsurancePlansSection';
 import InsuranceFAQSection, { FAQ } from '@/components/insurance/InsuranceFAQSection';
 import InsuranceCTASection from '@/components/insurance/InsuranceCTASection';
@@ -41,72 +39,21 @@ const WrapInsurance = () => {
   const faqSchema = generateFAQSchema(faqs);
 
   return (
-    <>
-      <Helmet>
-        <title>Wrap Insurance Plans | Wrapping The World</title>
-        <meta name="description" content="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service." />
-        <link rel="canonical" href="https://wrappingtheworld.com/wrap-insurance" />
-        
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://wrappingtheworld.com/wrap-insurance" />
-        <meta property="og:title" content="Vehicle Wrap Insurance Plans | Wrapping The World" />
-        <meta property="og:description" content="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service." />
-        <meta property="og:image" content="https://wrappingtheworld.com/images/wrap-insurance-plans.jpg" />
-        
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://wrappingtheworld.com/wrap-insurance" />
-        <meta name="twitter:title" content="Vehicle Wrap Insurance Plans | Wrapping The World" />
-        <meta name="twitter:description" content="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service." />
-        <meta name="twitter:image" content="https://wrappingtheworld.com/images/wrap-insurance-plans.jpg" />
-        
-        <meta name="keywords" content="vehicle wrap insurance, wrap protection plan, wrap damage coverage, wrap removal guarantee, car wrap insurance, vehicle wrap protection, auto wrap warranty, vehicle graphics insurance, wrap maintenance plan, Chicago wrap insurance" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify(insuranceSchema)}
-        </script>
-        
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-      </Helmet>
+    <InsurancePageLayout
+      insuranceSchema={insuranceSchema}
+      faqSchema={faqSchema}
+    >
+      <InsurancePageHeader />
       
-      <SEOSchema 
-        townName="Chicago"
-        pageTitle="Vehicle Wrap Insurance Plans | Wrapping The World"
-        pageDescription="Protect your vehicle wrap investment with our Silver, Gold, and Platinum insurance plans. Coverage for damage, removal guarantees, and priority service."
-        pageUrl="https://wrappingtheworld.com/wrap-insurance"
+      <InsurancePlansSection 
+        selectedPlan={selectedPlan} 
+        setSelectedPlan={setSelectedPlan} 
       />
       
-      <Navbar />
-      <main className="pt-24 pb-16">
-        <section className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
-              Wrap Protection Plans
-            </span>
-            <h1 className="text-3xl md:text-5xl font-serif font-semibold text-wrap-blue mb-4">
-              Protect Your Vehicle Wrap Investment
-            </h1>
-            <p className="text-wrap-grey text-lg max-w-3xl mx-auto">
-              Our insurance plans safeguard your vehicle wrap against damage while providing guaranteed removal services and priority support when you need it most.
-            </p>
-            <p className="text-wrap-red font-medium mt-4">
-              All plans are billed monthly, per vehicle wrapped
-            </p>
-          </div>
-          
-          <InsurancePlansSection 
-            selectedPlan={selectedPlan} 
-            setSelectedPlan={setSelectedPlan} 
-          />
-          
-          <InsuranceFAQSection faqs={faqs} />
-          
-          <InsuranceCTASection />
-        </section>
-      </main>
-      <Footer />
-    </>
+      <InsuranceFAQSection faqs={faqs} />
+      
+      <InsuranceCTASection />
+    </InsurancePageLayout>
   );
 };
 
