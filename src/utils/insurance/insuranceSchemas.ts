@@ -1,20 +1,23 @@
 
 import { FAQ } from '@/components/insurance/InsuranceFAQSection';
 import { 
-  generateInsuranceSchemas as generateBaseInsuranceSchemas,
-  generateFAQSchema as generateBaseFAQSchema
+  generateInsuranceSchemas,
+  generateFAQSchema
 } from '../seo/schemaGenerator';
 
 /**
  * @deprecated Use the utilities in src/utils/seo/schemaGenerator.ts instead
  */
 export const generateLegacyInsuranceSchema = () => {
-  return generateBaseInsuranceSchemas();
+  return generateInsuranceSchemas();
 };
 
 /**
  * @deprecated Use the utilities in src/utils/seo/schemaGenerator.ts instead
  */
-export const generateLegacyFAQSchema = (faqs: FAQ[] = []) => {
-  return generateBaseFAQSchema(faqs);
+export const generateFAQSchema = (faqs: FAQ[]) => {
+  return generateFAQSchema(faqs.map(faq => ({
+    question: faq.question,
+    answer: faq.answer
+  })));
 };
