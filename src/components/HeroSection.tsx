@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Check } from 'lucide-react';
@@ -9,7 +8,7 @@ interface HeroSectionProps {
   backgroundImage?: string;
 }
 
-// Updated vehicle backgrounds with new uploaded images
+// Vehicle backgrounds with absolute paths
 const vehicleBackgrounds = [
   '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png', // Blue/red van with American flag 
   '/lovable-uploads/bd00fa2f-6aa7-4400-ac3f-100c2b957604.png', // Green/orange leprechaun car
@@ -33,6 +32,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   // Use provided backgroundImage or cycle through vehicle backgrounds
   const currentBackground = backgroundImage || vehicleBackgrounds[currentBgIndex];
   
+  // Preload all images on component mount
+  useEffect(() => {
+    vehicleBackgrounds.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+  
   // Background image carousel
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -40,15 +47,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     }, 5000);
     
     // Log for debugging
-    console.log("HeroSection - Using new vehicle wrap images");
-    console.log("HeroSection - Current background:", currentBackground);
+    console.log("HeroSection - Using background:", currentBackground);
     
     return () => clearInterval(intervalId);
   }, [currentBackground]);
   
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
-      {/* Background image */}
+      {/* Background image - using inline style with important to ensure it shows */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{

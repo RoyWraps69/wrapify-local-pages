@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { getTownByName } from '@/utils/townData';
@@ -13,7 +12,7 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
-// New hero backgrounds with the uploaded vehicle wrap images
+// Hero backgrounds with absolute paths
 const heroBackgrounds = [
   '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png', // Blue/red van with American flag 
   '/lovable-uploads/bd00fa2f-6aa7-4400-ac3f-100c2b957604.png', // Green/orange leprechaun car
@@ -35,6 +34,16 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
   
+  // Preload all images on component mount
+  useEffect(() => {
+    heroBackgrounds.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => console.log(`Image loaded: ${src}`);
+      img.onerror = () => console.error(`Failed to load image: ${src}`);
+    });
+  }, []);
+  
   useEffect(() => {
     // Show content with animation on load
     setIsVisible(true);
@@ -51,14 +60,14 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     
     window.addEventListener('scroll', handleScroll);
     
-    console.log("DynamicHero - Using new vehicle wrap images");
-    console.log("DynamicHero - Initial background:", heroBackgrounds[0]);
+    console.log("DynamicHero - Active background index:", activeBackground);
+    console.log("DynamicHero - Current background:", heroBackgrounds[activeBackground]);
     
     return () => {
       clearInterval(interval);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [activeBackground]);
   
   // Handle scroll to services section
   const scrollToServices = () => {

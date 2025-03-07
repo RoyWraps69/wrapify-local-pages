@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
 interface HeroBackgroundProps {
@@ -20,7 +20,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   // Default fallback image if everything else fails
   const fallbackImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png'; 
   
-  // Simplify to a direct usage of backgroundImage or fallback to a static image
+  // Directly use backgroundImage if provided, otherwise use the active background from the carousel
   const currentBackground = backgroundImage || 
     backgrounds[activeBackground] || 
     fleetWrapBackground ||
@@ -30,6 +30,14 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   useEffect(() => {
     console.log("HeroBackground - Using background:", currentBackground);
   }, [currentBackground]);
+
+  // Preload images to prevent blank backgrounds
+  useEffect(() => {
+    backgrounds.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [backgrounds]);
 
   return (
     <>

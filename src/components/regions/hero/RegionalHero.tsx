@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 
@@ -8,12 +7,20 @@ interface RegionalHeroProps {
   regionImage: string;
 }
 
-// Updated reliable background image - Blue/red van with American flag
+// Updated reliable background image
 const fallbackImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   // Use the provided regionImage or fall back to our reliable image
   const bgImage = regionImage || fallbackImage;
+  
+  // Preload the image
+  useEffect(() => {
+    const img = new Image();
+    img.src = bgImage;
+    img.onload = () => console.log(`RegionalHero - Image loaded successfully: ${bgImage}`);
+    img.onerror = () => console.error(`RegionalHero - Failed to load image: ${bgImage}`);
+  }, [bgImage]);
   
   console.log("RegionalHero - Using background image:", bgImage);
   
