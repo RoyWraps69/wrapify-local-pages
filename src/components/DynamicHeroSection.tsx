@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import HeroLoader from './hero/HeroLoader';
-import HeroBackground from './hero/HeroBackground';
+import HeroBackground, { heroBackgrounds } from './hero/HeroBackground';
 import HeroThumbnails from './hero/HeroThumbnails';
 import HeroContentContainer from './hero/HeroContentContainer';
 
@@ -52,7 +52,13 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
 
   // Handler for thumbnail click
   const handleThumbnailClick = (index: number) => {
-    setCurrentBgIndex(index);
+    // Ensure index is within bounds of heroBackgrounds array
+    if (index >= 0 && index < heroBackgrounds.length) {
+      setCurrentBgIndex(index);
+    } else {
+      // Set to first image if index is out of bounds
+      setCurrentBgIndex(0);
+    }
   };
   
   return (
