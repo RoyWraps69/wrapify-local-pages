@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useShoppingCart } from './ShoppingCart';
 import { useToast } from '@/components/ui/use-toast';
+import { useNavigate } from 'react-router-dom';
 
 const MiniCart: React.FC = () => {
   const { 
@@ -27,23 +28,12 @@ const MiniCart: React.FC = () => {
     clearCart
   } = useShoppingCart();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleCheckout = () => {
-    // Here we would normally redirect to checkout page
-    toast({
-      title: "Proceeding to checkout",
-      description: "Redirecting to secure payment page..."
-    });
-    
-    // For demo purposes, we'll just clear the cart after a delay
-    setTimeout(() => {
-      clearCart();
-      setIsCartOpen(false);
-      toast({
-        title: "Order placed!",
-        description: "Thank you for your purchase."
-      });
-    }, 2000);
+    // Redirect to checkout page
+    setIsCartOpen(false);
+    navigate('/checkout');
   };
 
   if (!isCartOpen) return null;

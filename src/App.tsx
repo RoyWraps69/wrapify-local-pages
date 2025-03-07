@@ -13,6 +13,8 @@ import Register from './pages/Register';
 import Gallery from './pages/Gallery';
 import WrapInsurance from './pages/WrapInsurance';
 import WarrantyInformation from './pages/WarrantyInformation';
+import Checkout from './pages/Checkout';
+import ThankYou from './pages/ThankYou';
 import SEOWrapper from './components/SEOWrapper';
 import { Toaster } from 'sonner';
 
@@ -30,6 +32,8 @@ function App() {
           <Route path="/shopping" element={<Shopping />} />
           <Route path="/shopping/:productId" element={<ShoppingProduct />} />
           <Route path="/print-ship" element={<PrintShip />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/gallery" element={<Gallery />} />
