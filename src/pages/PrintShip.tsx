@@ -17,16 +17,16 @@ const PrintShip = () => {
   // Use the scroll animation hook for animated elements
   useScrollAnimation();
   
-  // Updated hero background with commercial image
+  // Hero background images with updated approach
   const heroBackgroundImage = '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png'; // Tesla Cybertruck camo wrap
   const commercialOverlayImage = '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png'; // Commercial fleet image
+  const newHeroBackgroundImage = '/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png'; // Using this existing image for better visibility
   
   // Verify image loads on component mount
   React.useEffect(() => {
-    console.log("PrintShip - Hero background image:", heroBackgroundImage);
-    console.log("PrintShip - Commercial overlay image:", commercialOverlayImage);
+    console.log("PrintShip - Hero background images being loaded:");
     
-    const preloadImages = [heroBackgroundImage, commercialOverlayImage];
+    const preloadImages = [heroBackgroundImage, commercialOverlayImage, newHeroBackgroundImage];
     preloadImages.forEach(src => {
       const img = new Image();
       img.src = src;
@@ -47,20 +47,24 @@ const PrintShip = () => {
             <section 
               className="min-h-screen w-full relative overflow-hidden flex items-center"
             >
-              {/* Base background layer */}
+              {/* Primary background image - enhanced with proper image display */}
               <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url('${heroBackgroundImage}')` }}
+                className="absolute inset-0 bg-black"
+              >
+                <img 
+                  src={newHeroBackgroundImage} 
+                  alt="Vehicle wrap being professionally installed" 
+                  className="w-full h-full object-cover object-center opacity-80"
+                />
+              </div>
+              
+              {/* Additional overlay image with blend mode for interesting effect */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-purple-900/30 mix-blend-color-burn"
               ></div>
               
-              {/* Commercial overlay image - with blend mode for interesting effect */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center mix-blend-lighten opacity-50"
-                style={{ backgroundImage: `url('${commercialOverlayImage}')` }}
-              ></div>
-              
-              {/* Dark overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50 opacity-80"></div>
+              {/* Dark gradient overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
               
               {/* Cart Button positioned absolute in top-right corner */}
               <div className="absolute top-4 right-4 z-10">
