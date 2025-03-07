@@ -1,60 +1,49 @@
 
 import { useEffect } from 'react';
 
-interface ScrollAnimationOptions {
-  threshold?: number;
-  rootMargin?: string;
-  onlyOnce?: boolean;
-}
-
-const useScrollAnimation = (options: ScrollAnimationOptions = {}) => {
-  const { threshold = 0.1, rootMargin = '0px', onlyOnce = true } = options;
-
+const useScrollAnimation = () => {
   useEffect(() => {
-    const animateElements = () => {
+    const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
       
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animated');
-              if (onlyOnce) {
-                observer.unobserve(entry.target);
-              }
-            } else if (!onlyOnce) {
-              entry.target.classList.remove('animated');
-            }
-          });
-        },
-        {
-          threshold,
-          rootMargin,
-        }
-      );
-      
       elements.forEach((element) => {
-        observer.observe(element);
+        const rect = element.getBoundingClientRect();
+        const isVisible = 
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 && 
+          rect.bottom >= 0;
+        
+        if (isVisible) {
+          if (element.classList.contains('fade-up')) {
+            element.classList.add('animate-fade-in');
+            element.classList.remove('opacity-0');
+          }
+          
+          element.classList.remove('animate-on-scroll');
+        }
       });
-      
-      return () => {
-        elements.forEach((element) => {
-          observer.unobserve(element);
-        });
-      };
     };
     
-    // Initial animation setup
-    const cleanup = animateElements();
+    // Initialize elements
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach((element) => {
+      if (!element.classList.contains('opacity-0')) {
+        element.classList.add('opacity-0');
+      }
+    });
     
-    // Re-run animations when content changes
-    window.addEventListener('resize', animateElements);
+    // Run once on mount
+    setTimeout(() => {
+      animateOnScroll();
+    }, 100);
     
+    // Add scroll listener
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Clean up
     return () => {
-      cleanup();
-      window.removeEventListener('resize', animateElements);
+      window.removeEventListener('scroll', animateOnScroll);
     };
-  }, [threshold, rootMargin, onlyOnce]);
+  }, []);
 };
 
 export default useScrollAnimation;

@@ -25,7 +25,7 @@ const TownDescription: React.FC<TownDescriptionProps> = ({ townName, townData })
     state === 'WI' ? 'Wisconsin' : state;
   
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center mb-6">

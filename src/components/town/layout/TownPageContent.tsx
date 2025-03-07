@@ -58,8 +58,8 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
   ];
   
   return (
-    <div className="town-page" itemScope itemType="https://schema.org/WebPage">
-      <div className="space-y-16">
+    <div className="town-page py-8" itemScope itemType="https://schema.org/WebPage">
+      <div className="container mx-auto px-4 space-y-16">
         <div className="animate-on-scroll fade-up">
           <TownDescription townName={name} townData={townData} />
         </div>
