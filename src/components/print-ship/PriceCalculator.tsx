@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Calculator, Info, Check, HelpCircle, Palette } from 'lucide-react';
 import { 
@@ -60,13 +61,13 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
         <h3 className="text-2xl font-semibold text-wrap-blue">Build Your Wrap Package</h3>
       </div>
       
-      {/* Installation notice */}
-      <div className="mb-6 bg-blue-50 border-l-4 border-wrap-blue p-3 text-sm rounded-r">
+      {/* Installation included notice */}
+      <div className="mb-6 bg-green-50 border-l-4 border-green-500 p-3 text-sm rounded-r">
         <div className="flex items-start">
-          <Info className="w-4 h-4 text-wrap-blue mt-0.5 mr-2 flex-shrink-0" />
-          <p className="text-wrap-blue">
-            <span className="font-medium">Pro Tip:</span> Our pricing includes premium materials, design, and shipping. 
-            For professional installation, we can connect you with certified installers nationwide.
+          <Info className="w-4 h-4 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
+          <p className="text-green-700">
+            <span className="font-medium">Complete Service:</span> All pricing includes premium materials, 
+            professional design, shipping, and professional installation by our certified technicians.
           </p>
         </div>
       </div>
@@ -82,7 +83,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
                   <HelpCircle className="h-4 w-4 ml-2 text-gray-400 cursor-help" />
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="w-56 text-sm">Select your vehicle type to calculate the amount of material needed.</p>
+                  <p className="w-56 text-sm">Select your vehicle type to calculate the total cost including installation.</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -258,7 +259,7 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
         <div className="bg-gray-50 p-3 rounded-lg flex items-start">
           <Info className="text-wrap-blue w-5 h-5 mt-0.5 mr-2 flex-shrink-0" />
           <p className="text-sm text-wrap-blue">
-            <strong>Need professional installation?</strong> We can connect you with our nationwide network of certified installers. Installation costs vary based on vehicle size and complexity.
+            <strong>Expert Installation Included:</strong> All of our wrap packages include professional installation by our certified technicians. Our team ensures a perfect finish with our industry-leading installation techniques.
           </p>
         </div>
       </div>

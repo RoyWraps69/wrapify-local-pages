@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { InfoIcon, ShoppingCart, CreditCard, Shield, Truck, CheckCircle, Phone, Palette, Plus, ArrowRight, Sparkles } from 'lucide-react';
+import { InfoIcon, ShoppingCart, CreditCard, Shield, Truck, CheckCircle, Phone, Palette, Plus, ArrowRight, Sparkles, Tools } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
 import { useToast } from '@/components/ui/use-toast';
@@ -107,14 +107,14 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
           <div className="bg-white/20 p-2 rounded-full mr-3">
             <CreditCard className="w-5 h-5" />
           </div>
-          Your Custom Quote
+          Your Complete Quote
         </h3>
         
         <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg mb-4">
           <div className="flex items-start">
             <InfoIcon className="inline-block w-4 h-4 mr-2 mt-1 flex-shrink-0" /> 
             <p className="text-white/90 text-sm">
-              This quote includes wrap materials, design work and shipping. Installation services can be arranged separately through our nationwide network.
+              This all-inclusive quote covers materials, design, professional installation, and shipping to transform your vehicle with our premium wrap services.
             </p>
           </div>
         </div>
@@ -139,6 +139,16 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
               Design Fee
             </span>
             <span>{formatCurrency(price.designFee)}</span>
+          </motion.div>
+          <motion.div 
+            className="flex justify-between border-b border-white/20 pb-3"
+            whileHover={{ x: 5 }}
+          >
+            <span className="flex items-center">
+              <Tools className="w-4 h-4 mr-2 text-white/70" />
+              Professional Installation
+            </span>
+            <span>Included</span>
           </motion.div>
           <motion.div 
             className="flex justify-between border-b border-white/20 pb-3"
@@ -217,16 +227,16 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
           <Shield className="text-wrap-blue w-5 h-5 mt-1 flex-shrink-0" />
           <div>
             <h4 className="font-semibold text-wrap-blue">Premium Quality Guarantee</h4>
-            <p className="text-sm text-wrap-grey">Our premium materials and expert craftsmanship ensure exceptional results for your vehicle wrap project.</p>
+            <p className="text-sm text-wrap-grey">Our premium materials, expert craftmanship, and professional installation ensure exceptional results for your vehicle wrap project.</p>
           </div>
         </div>
         
         <ul className="space-y-3">
           {[
-            "Chicago-quality design and printing, nationwide delivery",
-            "Perfect for DIY installers or local wrap shops",
-            "Comprehensive installation instructions included",
-            "Installer referrals available in most major cities"
+            "Complete professional installation by certified technicians",
+            "Chicago-quality design and printing",
+            "Factory-grade finish with our expert installation team",
+            "Industry-leading warranty on materials and workmanship"
           ].map((benefit, index) => (
             <motion.li 
               key={index}
