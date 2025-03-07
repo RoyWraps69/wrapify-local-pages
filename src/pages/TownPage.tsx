@@ -150,7 +150,6 @@ const TownPage: React.FC = () => {
   const pageUrl = `/locations/${townSlug}`;
   const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
   
-  // Create a conversion function for FAQs
   const convertJSXFaqsToStringFaqs = (jsxFaqs: { question: string; answer: React.ReactNode }[]) => {
     return jsxFaqs.map(faq => ({
       question: faq.question,
@@ -162,13 +161,10 @@ const TownPage: React.FC = () => {
     }));
   };
   
-  // Create location FAQs
   const locationFaqs = createTownFAQs({ townName: name });
   
-  // When generating the schema, convert JSX FAQs to string FAQs
   const faqSchema = generateFAQSchema(convertJSXFaqsToStringFaqs(locationFaqs));
   
-  // Generate structured data for this town page
   const localBusinessSchema = generateLocalBusinessSchema({ townName: name });
   const serviceSchema = generateServiceSchema({ 
     pageTitle: `Vehicle Wrapping Services in ${name}`, 
@@ -185,7 +181,6 @@ const TownPage: React.FC = () => {
     dateModified: new Date().toISOString()
   });
   
-  // Keywords for this town
   const keywords = `vehicle wraps ${name}, commercial fleet wraps ${name}, ${stateFullName} vehicle branding, car wraps ${name}, ceramic coating ${name}, paint protection film ${stateFullName}, business vehicle graphics ${name}, ${name} wrap shop, mobile advertising ${name}, premium vehicle wraps ${stateFullName}`;
 
   return (
