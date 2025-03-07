@@ -24,6 +24,9 @@ const PrintShipContent: React.FC = () => {
     resetAllSelections
   } = usePrintShipState();
 
+  // Debug logs to see if the component is rendering
+  console.log('PrintShipContent rendering with material:', selectedMaterial);
+
   return (
     <MainContent
       selectedVehicle={selectedVehicle}
@@ -57,6 +60,8 @@ const PrintShipSection: React.FC = () => {
       }
     }
   };
+
+  console.log('PrintShipSection rendering');
 
   return (
     <ShoppingCartProvider>
