@@ -28,6 +28,7 @@ export default defineConfig(({ mode }) => ({
     assetsInlineLimit: 4096, // Inline assets smaller than 4kb
     // Configure asset handling
     rollupOptions: {
+      external: ['vite'],
       output: {
         manualChunks: {
           // Vendor chunks
@@ -59,9 +60,8 @@ export default defineConfig(({ mode }) => ({
     include: ['react', 'react-dom', 'react-router-dom'],
   },
   // Add any external modules that should be excluded from bundling
-  // This can help with Node.js modules that don't work well in browser environments
   ssr: {
     // List of dependencies that should not be bundled
-    external: []
+    external: ['vite']
   }
 }));
