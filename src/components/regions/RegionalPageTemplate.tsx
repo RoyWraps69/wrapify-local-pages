@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
@@ -6,6 +7,14 @@ import RegionalHero from '@/components/regions/hero/RegionalHero';
 import ServicesBreadcrumb from '@/components/ServicesBreadcrumb';
 import { ServiceInfo } from '@/data/serviceData';
 import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
+
+// Import the components that were missing
+import RegionalMainContent from '@/components/regions/content/RegionalMainContent';
+import CitiesServedGrid from '@/components/regions/cities/CitiesServedGrid';
+import ContactSidebar from '@/components/regions/sidebar/ContactSidebar';
+import ServicesSidebar from '@/components/regions/sidebar/ServicesSidebar';
+import NearbyRegionsSidebar from '@/components/regions/sidebar/NearbyRegionsSidebar';
+import RegionalCTA from '@/components/regions/cta/RegionalCTA';
 
 interface City {
   name: string;
