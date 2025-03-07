@@ -11,6 +11,7 @@ interface CategorySectionRendererProps {
   items: ShopItem[];
   title: string;
   description: string;
+  children?: React.ReactNode; // Add children as an optional prop
 }
 
 const CategorySectionRenderer = ({
@@ -18,7 +19,8 @@ const CategorySectionRenderer = ({
   categoryKey,
   items,
   title,
-  description
+  description,
+  children
 }: CategorySectionRendererProps) => {
   const { addItem } = useShoppingCart();
   
@@ -37,11 +39,16 @@ const CategorySectionRenderer = ({
 
   return (
     <CategorySection title={title} description={description}>
-      <div className={gridClasses[categoryKey]}>
-        {items.map(item => (
-          <ProductCard key={item.id} item={item} />
-        ))}
-      </div>
+      {/* If children are provided, render them instead of the default grid */}
+      {children ? (
+        children
+      ) : (
+        <div className={gridClasses[categoryKey]}>
+          {items.map(item => (
+            <ProductCard key={item.id} item={item} />
+          ))}
+        </div>
+      )}
     </CategorySection>
   );
 };

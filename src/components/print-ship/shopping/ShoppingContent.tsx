@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CartButton from '@/components/print-ship/shopping-cart/CartButton';
@@ -5,6 +6,7 @@ import MiniCart from '@/components/print-ship/shopping-cart/MiniCart';
 import ShopHeader from './ShopHeader';
 import CategoryNavigation from './CategoryNavigation';
 import CategorySectionRenderer from './CategorySectionRenderer';
+import ProductCard from './ProductCard';
 import ShopFooter from './ShopFooter';
 import { shopItems } from '@/components/print-ship/data/installers';
 import ProductDetails from './ProductDetails';
