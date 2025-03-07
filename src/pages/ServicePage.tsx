@@ -1,7 +1,6 @@
 
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
@@ -13,6 +12,7 @@ import ServiceDescription from '@/components/services/ServiceDescription';
 import ServiceBenefits from '@/components/services/ServiceBenefits';
 import ServiceFAQs from '@/components/services/ServiceFAQs';
 import RelatedServices from '@/components/services/RelatedServices';
+import ServiceSEO from '@/components/services/ServiceSEO';
 
 const ServicePage: React.FC = () => {
   const { serviceType } = useParams<{ serviceType: string }>();
@@ -22,16 +22,10 @@ const ServicePage: React.FC = () => {
   }, [serviceType]);
   
   const service = getServiceData(serviceType);
-  const pageTitle = `${service.title} | Wrapping The World`;
-  const pageDescription = service.description;
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <link rel="canonical" href={`https://wrappingtheworld.com/services/${serviceType}`} />
-      </Helmet>
+      <ServiceSEO service={service} serviceType={serviceType} />
       <Navbar />
       <main className="service-page">
         <RegionalHero 
