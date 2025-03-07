@@ -1,7 +1,16 @@
-
 import { generateWebPageSchema, generateBreadcrumbSchema, generateOrganizationSchema } from './schemas/baseSchemas';
+import { 
+  generateInsuranceSchemas as importedGenerateInsuranceSchemas,
+  generateWarrantySchemas,
+  generateTrainingClassesSchemas as importedGenerateTrainingClassesSchemas
+} from './schemas/productSchemas';
 
 export { generateWebPageSchema, generateBreadcrumbSchema, generateOrganizationSchema };
+export { generateWarrantySchemas };
+
+// Re-export the imported schemas generators
+export const generateInsuranceSchemas = importedGenerateInsuranceSchemas;
+export const generateTrainingClassesSchemas = importedGenerateTrainingClassesSchemas;
 
 /**
  * Generates a Schema.org Service schema for a service page
@@ -102,5 +111,58 @@ export const generateContactPageSchema = () => {
       "areaServed": "Chicago and nationwide",
       "availableLanguage": "English"
     }
+  };
+};
+
+/**
+ * Generates a local business schema for location pages
+ */
+export const generateLocalBusinessSchema = ({ 
+  townName = "Chicago"
+}: { 
+  townName?: string 
+}) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Wrapping The World",
+    "description": `Professional vehicle wrapping and ceramic coating services in ${townName}. Expert installers providing commercial fleet wraps, color change wraps, and paint protection.`,
+    "url": "https://wrappingtheworld.com",
+    "logo": "https://wrappingtheworld.com/logo.png",
+    "image": "https://wrappingtheworld.com/og-image.jpg",
+    "telephone": "+13125971286",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "4711 N. Lamon Ave",
+      "addressLocality": townName,
+      "addressRegion": townName === "Chicago" ? "IL" : "IL",
+      "postalCode": "60630",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "41.8781",
+      "longitude": "-87.6298"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "16:00"
+      }
+    ],
+    "sameAs": [
+      "https://facebook.com/wrappingtheworld",
+      "https://instagram.com/wrappingtheworld",
+      "https://linkedin.com/company/wrappingtheworld"
+    ]
   };
 };
