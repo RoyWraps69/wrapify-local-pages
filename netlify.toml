@@ -5,6 +5,10 @@
   publish = "dist"
   functions = "netlify/functions"
   
+# Specify Node.js version
+[build.environment]
+  NODE_VERSION = "18"
+  
 # Handle SPA routing by redirecting all paths to index.html
 [[redirects]]
   from = "/*"
@@ -56,6 +60,7 @@
 [context.production.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
+  NODE_VERSION = "18"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
@@ -64,6 +69,7 @@
 [context.deploy-preview.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
+  NODE_VERSION = "18"
 
 # Branch deploy settings
 [context.branch-deploy]
@@ -72,6 +78,7 @@
 [context.branch-deploy.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
+  NODE_VERSION = "18"
 
 # Enable bundler
 [build.processing]
