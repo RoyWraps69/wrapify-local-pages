@@ -8,7 +8,10 @@ interface ServiceFAQsProps {
 }
 
 const ServiceFAQs: React.FC<ServiceFAQsProps> = ({ service }) => {
-  const serviceFaqs = [
+  // Check if we're on the vehicle wraps page to show more specific FAQs
+  const isVehicleWraps = service.title === 'Vehicle Wraps';
+  
+  const commonFaqs = [
     {
       question: `How much does a ${service.title.toLowerCase()} cost?`,
       answer: (
@@ -38,6 +41,44 @@ const ServiceFAQs: React.FC<ServiceFAQsProps> = ({ service }) => {
       )
     }
   ];
+  
+  // Additional FAQs specific to vehicle wraps
+  const vehicleWrapFaqs = isVehicleWraps ? [
+    {
+      question: "Can I wash my car after getting a vehicle wrap?",
+      answer: (
+        <p>
+          Yes, but we recommend waiting at least 7 days after installation before washing. Use gentle, 
+          non-abrasive cleaning methods - hand washing with mild soap is best. Avoid automatic car washes 
+          with brushes and high-pressure sprayers as they can damage the edges of the wrap.
+        </p>
+      )
+    },
+    {
+      question: "Will a vehicle wrap damage my paint?",
+      answer: (
+        <p>
+          No, when properly installed and removed by professionals, vehicle wraps actually protect your 
+          original paint. The adhesive used is designed to be removable without damaging the factory finish. 
+          In fact, areas covered by the wrap will be shielded from UV rays and minor abrasions, potentially 
+          preserving your paint's condition better than exposed areas.
+        </p>
+      )
+    },
+    {
+      question: "How long does it take to install a vehicle wrap?",
+      answer: (
+        <p>
+          A full vehicle wrap typically takes 3-5 business days to complete, depending on the complexity 
+          of your vehicle and the design. Partial wraps and simple designs may be completed in 1-2 days. 
+          We'll provide you with a specific timeframe during your consultation.
+        </p>
+      )
+    }
+  ] : [];
+  
+  // Combine common FAQs with vehicle wrap specific FAQs
+  const serviceFaqs = [...commonFaqs, ...vehicleWrapFaqs];
 
   return <FAQSection faqs={serviceFaqs} />;
 };

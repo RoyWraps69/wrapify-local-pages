@@ -1,4 +1,3 @@
-
 export interface ServiceBenefit {
   title: string;
   description: string;
@@ -34,6 +33,14 @@ const serviceData: Record<string, ServiceInfo> = {
       {
         title: 'Cost-Effective Alternative',
         description: 'Achieve a complete transformation for a fraction of the cost of a quality paint job.'
+      },
+      {
+        title: 'Professional Installation',
+        description: 'Our certified installers ensure a perfect fit with no bubbles, wrinkles, or lifting edges.'
+      },
+      {
+        title: 'Durable Materials',
+        description: 'Premium vinyl materials from trusted brands like 3M and Avery Dennison for lasting quality.'
       }
     ]
   },

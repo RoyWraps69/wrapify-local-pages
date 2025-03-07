@@ -11,9 +11,36 @@ interface RelatedServicesProps {
 const RelatedServices: React.FC<RelatedServicesProps> = ({ currentService }) => {
   // Get all service keys, filter out the current service, and take up to 3 related services
   const allServices = Object.keys(serviceData);
-  const relatedServiceKeys = allServices
-    .filter(key => key !== currentService)
-    .slice(0, 3);
+  
+  // For vehicle wraps page, prioritize showing wrapping-related services
+  const wrapRelatedServices = ['color-change-wraps', 'commercial-fleet-wraps', 'vehicle-graphics'];
+  const ppfAndCoatingServices = ['paint-protection-film', 'ceramic-coatings'];
+  
+  let relatedServiceKeys: string[] = [];
+  
+  if (currentService === 'vehicle-wraps') {
+    // For vehicle wraps, prioritize showing PPF and coating services
+    relatedServiceKeys = ppfAndCoatingServices.concat(
+      allServices.filter(key => 
+        key !== currentService && 
+        !ppfAndCoatingServices.includes(key)
+      )
+    ).slice(0, 3);
+  } else if (ppfAndCoatingServices.includes(currentService || '')) {
+    // For PPF or coating pages, prioritize vehicle wraps and other wrap services
+    relatedServiceKeys = ['vehicle-wraps'].concat(
+      allServices.filter(key => 
+        key !== currentService && 
+        key !== 'vehicle-wraps' && 
+        wrapRelatedServices.includes(key)
+      )
+    ).slice(0, 3);
+  } else {
+    // For other services, show a mix of services
+    relatedServiceKeys = allServices
+      .filter(key => key !== currentService)
+      .slice(0, 3);
+  }
   
   // Map the keys to service data
   const relatedServices = relatedServiceKeys.map(key => ({
