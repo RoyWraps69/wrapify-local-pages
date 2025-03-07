@@ -33,11 +33,11 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden">
-      {/* Background image with overlay */}
+      {/* Background image */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{ 
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${heroImageUrl})`,
+          backgroundImage: `url(${heroImageUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transition: 'background-image 0.5s ease-in-out'

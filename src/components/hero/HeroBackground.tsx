@@ -19,16 +19,6 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
 }) => {
   return (
     <>
-      {/* Base background during transitions */}
-      <div
-        className="absolute inset-0 w-full h-full overflow-hidden"
-        style={{ 
-          backgroundImage: `url(${fleetWrapBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center'
-        }}
-      />
-      
       {/* Dynamic background with transition effect */}
       {backgrounds.map((bg, index) => {
         const bgUrl = backgroundImage || bg;
@@ -40,15 +30,12 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
               activeBackground === index ? "opacity-100" : "opacity-0"
             )}
             style={{
-              backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${bgUrl})`,
+              backgroundImage: `url(${bgUrl})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
             }}
-          >
-            {/* Very light overlay for text readability */}
-            <div className="absolute inset-0 bg-black/20"></div>
-          </div>
+          />
         );
       })}
       

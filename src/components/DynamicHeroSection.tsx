@@ -79,7 +79,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className={cn(
-            "transition-all duration-1000 transform",
+            "transition-all duration-1000 transform backdrop-blur-sm bg-black/10 p-6 rounded-lg",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             {/* Big WRAPPING THE WORLD logo - with object-contain to maintain aspect ratio */}
@@ -93,7 +93,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             
             <HeroHeadline townName={townName} />
             
-            <p className="text-xl text-white mb-8 max-w-2xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
               <span className="font-bold">WRAPPING THE WORLD</span> offers premier car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             

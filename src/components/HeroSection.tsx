@@ -41,11 +41,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden">
-      {/* Background image with overlay */}
+      {/* Background image */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(29, 53, 87, 0.7), rgba(29, 53, 87, 0.5)), url(${currentBackground})`,
+          backgroundImage: `url(${currentBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transition: 'background-image 0.5s ease-in-out'
@@ -54,7 +54,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
-          <div className="animate-fade-up">
+          <div className="animate-fade-up backdrop-blur-sm bg-black/30 p-6 rounded-lg">
             {/* Added logo */}
             <div className="flex justify-center mb-6">
               <img 
@@ -70,7 +70,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-balance">
               Top Car Wraps & Protection in {townName}
             </h1>
-            <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto backdrop-blur-sm bg-black/20 p-4 rounded-lg">
+            <p className="text-xl text-wrap-light/90 mb-8 max-w-2xl mx-auto">
               <span className="font-bold">WRAPPING THE WORLD</span> offers great car wrapping and protection services in {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
             </p>
             
