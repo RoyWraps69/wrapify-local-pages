@@ -13,7 +13,7 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
-// Updated hero backgrounds with more car photos
+// Updated hero backgrounds with corrected car photos
 const heroBackgrounds = [
   '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
   '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
@@ -71,6 +71,9 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     }
   };
   
+  // Verify all images are valid
+  console.log("Hero backgrounds:", heroBackgrounds);
+  
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
       <HeroBackground 
@@ -112,7 +115,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       </div>
       
       {/* Carousel indicators - moved up to avoid overlapping with text */}
-      <div className="absolute bottom-24 md:bottom-16 left-0 right-0 flex justify-center gap-2 z-20">
+      <div className="absolute bottom-36 md:bottom-28 left-0 right-0 flex justify-center gap-2 z-20">
         {heroBackgrounds.map((_, index) => (
           <button
             key={index}

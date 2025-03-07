@@ -1,3 +1,4 @@
+
 /* Layout styles */
 .container {
   @apply px-4 sm:px-6 lg:px-8;
@@ -10,14 +11,12 @@
 .hero-section {
   @apply relative overflow-hidden;
   min-height: calc(100vh - 5rem);
-  background-size: cover;
-  background-position: center;
 }
 
 /* Carousel indicators - repositioned to avoid text overlap */
 .carousel-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 32px;
   left: 0;
   right: 0;
   display: flex;

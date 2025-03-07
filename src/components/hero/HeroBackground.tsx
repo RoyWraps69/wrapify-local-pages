@@ -17,16 +17,20 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   backgroundImage,
   fleetWrapBackground
 }) => {
+  // Make sure we're using a valid background
+  const currentBackground = backgroundImage || backgrounds[activeBackground] || backgrounds[0];
+  
   return (
     <>
       {/* Dynamic background with transition effect */}
       {backgrounds.map((bg, index) => {
-        const bgUrl = backgroundImage || bg;
+        // Ensure we have a valid image URL
+        const bgUrl = bg || fleetWrapBackground;
         return (
           <div
             key={index}
             className={cn(
-              "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out",
+              "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out bg-cover bg-center",
               activeBackground === index ? "opacity-100" : "opacity-0"
             )}
             style={{

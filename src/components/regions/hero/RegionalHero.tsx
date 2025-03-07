@@ -40,6 +40,9 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
     return () => clearInterval(intervalId);
   }, []);
   
+  // Log to verify images
+  console.log("Regional hero image:", heroImageUrl);
+  
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
       {/* Background image */}
@@ -52,6 +55,9 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
           transition: 'background-image 0.5s ease-in-out'
         }}
       />
+      
+      {/* Add dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black opacity-30 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
@@ -83,8 +89,8 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
         </div>
       </div>
       
-      {/* Background image indicators - repositioned */}
-      <div className="absolute bottom-16 left-0 right-0 flex justify-center gap-2 z-10">
+      {/* Background image indicators - repositioned higher */}
+      <div className="absolute bottom-24 left-0 right-0 flex justify-center gap-2 z-10">
         {vehicleBackgrounds.map((_, index) => (
           <button
             key={index}
