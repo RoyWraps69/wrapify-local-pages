@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import SEOSchema from '@/components/SEOSchema';
-import { getTownData, getNearbyTowns } from '@/utils/townFunctions';
+import { getTownData } from '@/utils/townFunctions';
 import { normalizeSlug } from '@/utils/towns/slugUtils';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import TownStructuredData from '@/components/town/seo/TownStructuredData';
@@ -13,7 +13,6 @@ import { Helmet } from 'react-helmet-async';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import { toast } from 'sonner';
 
-// Define reliable town background images focused on local business vehicles
 const townBackgroundImages = [
   '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',  // MH Equipment
   '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png',  // Shopping Truck
@@ -33,22 +32,17 @@ const TownPage: React.FC = () => {
   
   useScrollAnimation();
   
-  console.log("TownPage rendering with townSlug:", townSlug);
-  
-  // Preload the background image
   useEffect(() => {
     const img = new Image();
     img.src = townBackgroundImage;
     img.onload = () => console.log("Town background image loaded successfully:", townBackgroundImage);
     img.onerror = () => {
       console.error("Town background image failed to load, using fallback:", townBackgroundImage);
-      // If the image fails to load, try another one
       const nextImageIndex = (townBackgroundImages.indexOf(townBackgroundImage) + 1) % townBackgroundImages.length;
       setTownBackgroundImage(townBackgroundImages[nextImageIndex]);
     };
   }, [townBackgroundImage]);
   
-  // Get town data and handle loading state
   useEffect(() => {
     if (!townSlug) {
       console.error("No townSlug provided");
@@ -58,7 +52,6 @@ const TownPage: React.FC = () => {
     }
     
     try {
-      // Normalize the slug for better matching
       const normalizedSlug = normalizeSlug(townSlug);
       
       const fetchedTownData = getTownData(normalizedSlug);
@@ -70,7 +63,6 @@ const TownPage: React.FC = () => {
         setError(true);
         setLoading(false);
         
-        // Show a toast notification to inform the user
         toast.error(`Town information for "${townSlug}" not found`, {
           description: "Please check our locations page for available towns.",
           duration: 5000,
@@ -81,7 +73,6 @@ const TownPage: React.FC = () => {
 
       setTownData(fetchedTownData);
       
-      // Assign a consistent background image based on the town's ID
       const imageIndex = fetchedTownData.id.charCodeAt(0) % townBackgroundImages.length;
       setTownBackgroundImage(townBackgroundImages[imageIndex]);
       
@@ -142,7 +133,6 @@ const TownPage: React.FC = () => {
   
   const { name, state } = townData;
   
-  // Format state name fully
   const stateFullName = 
     state === 'IL' ? 'Illinois' : 
     state === 'MI' ? 'Michigan' : 
@@ -154,7 +144,6 @@ const TownPage: React.FC = () => {
   const pageUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
   const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
 
-  // Generate location-specific FAQs
   const locationFaqs = createTownFAQs({ townName: name });
 
   return (
@@ -183,7 +172,6 @@ const TownPage: React.FC = () => {
       
       <Navbar />
       
-      {/* Hero Section with town name and guaranteed image */}
       <RegionalHero regionName={name} regionImage={townBackgroundImage} />
       
       <TownPageContent 

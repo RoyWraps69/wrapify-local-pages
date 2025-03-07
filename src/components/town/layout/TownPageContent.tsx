@@ -59,52 +59,54 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
   
   return (
     <main className="town-page" itemScope itemType="https://schema.org/WebPage">
-      <div className="animate-on-scroll fade-up">
-        <TownDescription townName={name} townData={townData} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <TownFeaturedProjects townName={name} featuredProjects={featuredProjects} />
-      </div>
-      
-      <div className="services-section animate-on-scroll fade-up">
-        <ServicesSection townName={name} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <BenefitsSection townName={name} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <TownTransformationsSection townName={name} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <ProcessSection townName={name} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <GalleryShowcase townName={name} itemLimit={6} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <TestimonialSection townName={name} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <FAQSection townName={name} faqs={locationFaqs} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <MapSection townName={name} mapUrl={mapUrl} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <NearbyTownsSection townId={id} townName={name} maxDistance={50} />
-      </div>
-      
-      <div className="animate-on-scroll fade-up">
-        <CTASection townName={name} />
+      <div className="space-y-16">
+        <div className="animate-on-scroll fade-up">
+          <TownDescription townName={name} townData={townData} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <TownFeaturedProjects townName={name} featuredProjects={featuredProjects} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <ServicesSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <BenefitsSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <TownTransformationsSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <ProcessSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <GalleryShowcase townName={name} itemLimit={6} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <TestimonialSection townName={name} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <FAQSection townName={name} faqs={locationFaqs} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <MapSection townName={name} mapUrl={mapUrl} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <NearbyTownsSection townId={id} townName={name} maxDistance={50} />
+        </div>
+        
+        <div className="animate-on-scroll fade-up">
+          <CTASection townName={name} />
+        </div>
       </div>
     </main>
   );
