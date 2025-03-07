@@ -19,7 +19,7 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
 }) => {
   return (
     <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
-      <div className="max-w-3xl mt-16 md:mt-0 text-center">
+      <div className="max-w-3xl mt-16 md:mt-0 text-center pb-24">
         <div className={cn(
           "transition-all duration-1000 transform backdrop-blur-sm bg-black/30 p-6 rounded-lg",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
