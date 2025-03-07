@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { ShoppingCartProvider } from './shopping-cart/ShoppingCart';
-import DirectoryContent from './installer-directory/DirectoryContent';
+import { ShoppingCartProvider } from '../shopping-cart/ShoppingCart';
+import DirectoryContent from './DirectoryContent';
 
 const InstallerDirectory: React.FC = () => {
   return (
