@@ -6,7 +6,7 @@ import SEOSchema from '@/components/SEOSchema';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Contact = () => {
@@ -30,16 +30,26 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // In a real implementation, this would be an API call to your backend
-      // For now, we'll simulate a successful submission after a delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call our Netlify function to send the email
+      const response = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       
-      // Send email notification (in a real app this would be handled by a backend)
-      console.log('Sending email to multiple recipients:');
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+      
+      // Log the email recipients for debugging
+      console.log('Email sent to multiple recipients:');
       console.log('- info@wrappingtheworld.com');
       console.log('- roy@chicagofleetwraps.com');
       console.log('- patti@chicagofleetwraps.com');
-      console.log('Form data:', formData);
       
       // Reset form
       setFormData({
