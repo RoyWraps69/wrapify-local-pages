@@ -24,10 +24,13 @@ const DesktopNavigation: React.FC = () => {
       </Link>
       <Link
         to="/print-ship"
-        className="flex items-center px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
+        className="flex items-center px-4 py-2 rounded-md bg-gradient-to-r from-cyber-blue to-cyber-purple text-white font-medium shadow-neon-blue transform hover:scale-105 transition-all duration-300 group"
       >
-        <Printer className="mr-1" size={16} />
-        Print & Ship
+        <Printer className="mr-1.5 group-hover:animate-pulse" size={18} />
+        <span className="relative">
+          Print & Ship
+          <span className="absolute inset-0 w-full h-full bg-white/20 animate-light-streak"></span>
+        </span>
       </Link>
       <LocationsDropdown />
       <ResourcesDropdown />
