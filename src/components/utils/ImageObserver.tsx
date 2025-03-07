@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 const InitImageObserver = () => {
   useEffect(() => {
     // Check if IntersectionObserver is available
-    if ('IntersectionObserver' in window) {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
       const lazyImages = document.querySelectorAll('img[data-src]');
       const lazyBackgrounds = document.querySelectorAll('.lazy-background');
       
@@ -62,6 +62,8 @@ const InitImageObserver = () => {
         });
       };
     }
+    
+    return undefined;
   }, []);
   
   return null;
