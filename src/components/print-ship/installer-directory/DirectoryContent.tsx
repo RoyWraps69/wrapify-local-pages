@@ -4,12 +4,12 @@ import DirectoryHeader from './DirectoryHeader';
 import SearchForm from './SearchForm';
 import InstallerSubmissionForm from '../InstallerSubmissionForm';
 import DirectorySearchResults from './DirectorySearchResults';
-import { mockInstallers } from '../data/installers';
+import { installers } from '../data/installers';
 
 const DirectoryContent: React.FC = () => {
   const [showSubmissionForm, setShowSubmissionForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [results, setResults] = useState<typeof mockInstallers>([]);
+  const [results, setResults] = useState<typeof installers>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
   
@@ -20,7 +20,7 @@ const DirectoryContent: React.FC = () => {
     
     // Simulate API call
     setTimeout(() => {
-      const filtered = mockInstallers.filter(installer => 
+      const filtered = installers.filter(installer => 
         installer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         installer.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
         installer.specialties.some(s => s.toLowerCase().includes(searchQuery.toLowerCase()))
