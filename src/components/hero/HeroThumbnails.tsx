@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { heroBackgrounds } from './HeroBackground';
 import { Button } from '@/components/ui/button';
@@ -14,19 +15,11 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
 }) => {
   const [enlargedImage, setEnlargedImage] = useState<string | null>(null);
   
-  // Create a Set of unique image paths, keeping only one copy of each image
-  const uniqueThumbnails = Array.from(new Set([
-    ...heroBackgrounds,
-    '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png',
-    '/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png',
-    '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',
-    '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png'
-  ]));
+  // Create a Set of unique image paths
+  const uniqueThumbnails = Array.from(new Set(heroBackgrounds));
 
   const handleThumbnailClick = (bgUrl: string, index: number) => {
-    // Set the selected background in the parent component
     onThumbnailClick(index);
-    // Also show the enlarged view
     setEnlargedImage(bgUrl);
   };
 
@@ -42,7 +35,7 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
           <button
             key={index}
             onClick={() => handleThumbnailClick(bg, index)}
-            className={`w-10 h-10 rounded-md overflow-hidden border-2 transition-all ${
+            className={`w-14 h-10 rounded-md overflow-hidden border-2 transition-all ${
               currentBgIndex === index ? 'border-wrap-red scale-110' : 'border-white/30'
             }`}
             aria-label={`View vehicle wrap ${index + 1}`}
@@ -51,21 +44,22 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
           >
             <meta itemProp="contentUrl" content={bg} />
             <meta itemProp="name" content={`Vehicle wrap ${index + 1}`} />
-            <img 
-              src={bg} 
-              alt={`Vehicle wrap ${index + 1}`} 
-              className="w-full h-full object-cover"
-              itemProp="thumbnail"
-              onError={(e) => {
-                // If thumbnail fails to load, add a class to dim it
-                e.currentTarget.classList.add('opacity-30');
-              }} 
-            />
+            <div className="w-full h-full relative">
+              <img 
+                src={bg} 
+                alt={`Vehicle wrap ${index + 1}`} 
+                className="w-full h-full object-cover"
+                itemProp="thumbnail"
+                onError={(e) => {
+                  e.currentTarget.classList.add('opacity-30');
+                }} 
+              />
+            </div>
           </button>
         ))}
       </div>
 
-      {/* Enlarged image view */}
+      {/* Enlarged image view with proper sizing */}
       {enlargedImage && (
         <div 
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
@@ -79,7 +73,7 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
           <meta itemProp="contentUrl" content={enlargedImage} />
           <meta itemProp="name" content="Enlarged vehicle wrap image" />
           
-          <div className="relative max-w-5xl max-h-[90vh] w-full">
+          <div className="relative max-w-5xl w-full max-h-[80vh] flex items-center justify-center">
             <Button 
               variant="secondary" 
               size="icon" 
@@ -92,7 +86,7 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
             <img 
               src={enlargedImage} 
               alt="Enlarged vehicle wrap" 
-              className="w-full h-full object-contain rounded-lg"
+              className="max-w-full max-h-[80vh] object-contain rounded-lg"
               itemProp="contentUrl"
             />
           </div>

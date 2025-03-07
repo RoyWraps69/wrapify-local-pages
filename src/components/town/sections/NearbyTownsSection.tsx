@@ -45,9 +45,14 @@ const NearbyTownsSection: React.FC<NearbyTownsSectionProps> = ({
                 to={`/locations/${town.id}`}
                 className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition-all flex flex-col border border-gray-100 hover:border-wrap-red"
                 aria-label={`Vehicle wrapping services in ${town.name}, ${town.state}`}
+                itemScope
+                itemType="https://schema.org/Place"
               >
+                <meta itemProp="name" content={`${town.name}, ${town.state}`} />
+                <meta itemProp="address" content={`${town.name}, ${town.state}`} />
+                
                 <h3 className="text-lg font-semibold text-wrap-blue mb-2 flex items-center">
-                  <span>{town.name}, {town.state}</span>
+                  <span itemProp="name">{town.name}, {town.state}</span>
                   <ArrowRight size={14} className="ml-2 text-wrap-red opacity-70" />
                 </h3>
                 
