@@ -17,6 +17,7 @@ const TownPage: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [townData, setTownData] = useState<any>(null);
+  const [error, setError] = useState<boolean>(false);
   
   useScrollAnimation();
   
@@ -26,7 +27,8 @@ const TownPage: React.FC = () => {
   useEffect(() => {
     if (!townSlug) {
       console.error("No townSlug provided");
-      navigate('/not-found', { replace: true });
+      setError(true);
+      setLoading(false);
       return;
     }
     
@@ -34,8 +36,9 @@ const TownPage: React.FC = () => {
     console.log("TownPage useEffect running, fetchedTownData:", fetchedTownData);
     
     if (!fetchedTownData) {
-      console.log(`Town not found for slug: ${townSlug}, redirecting to 404`);
-      navigate('/not-found', { replace: true });
+      console.log(`Town not found for slug: ${townSlug}, setting error state`);
+      setError(true);
+      setLoading(false);
       return;
     }
 
@@ -63,8 +66,29 @@ const TownPage: React.FC = () => {
     );
   }
   
-  if (!townData) {
-    return null; // Will be redirected by the useEffect
+  if (error || !townData) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <div className="text-center max-w-md p-8">
+            <h1 className="text-3xl font-bold text-wrap-blue mb-4">Town Not Found</h1>
+            <p className="text-wrap-grey mb-6">
+              We couldn't find information for {townSlug}. This location may not be in our service area yet.
+            </p>
+            <div className="flex justify-center">
+              <button 
+                onClick={() => navigate('/locations')} 
+                className="bg-wrap-blue text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition-all"
+              >
+                See All Locations
+              </button>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
   }
   
   const { name, state } = townData;
@@ -80,7 +104,7 @@ const TownPage: React.FC = () => {
   const townBackgroundImage = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
   
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name}, ${stateFullName} | Wrapping The World`;
-  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps and protection from the Midwest's top-rated vehicle enhancement company.`;
+  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps from the Midwest's top-rated vehicle enhancement company.`;
   const pageUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
   const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
 
