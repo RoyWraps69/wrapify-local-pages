@@ -9,4 +9,4 @@ export * from './townFunctions';
 export * from './towns/illinois/index';
 export * from './towns/michigan';
 export * from './towns/indiana';
-export * from './towns/wisconsin';
+export * from './towns/wisconsin/index';
