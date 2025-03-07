@@ -16,6 +16,7 @@ import WrapInsurance from './pages/WrapInsurance';
 import WarrantyInformation from './pages/WarrantyInformation';
 import Checkout from './pages/Checkout';
 import ThankYou from './pages/ThankYou';
+import Locations from './pages/Locations';
 import SEOWrapper from './components/SEOWrapper';
 import { Toaster } from 'sonner';
 
@@ -26,6 +27,7 @@ function App() {
         <Toaster position="top-right" richColors closeButton />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/locations" element={<Locations />} />
           <Route path="/locations/:townSlug" element={<TownPage />} />
           <Route path="/regions/:regionName" element={<RegionPage />} />
           <Route path="/services/:serviceType" element={<ServicePage />} />
