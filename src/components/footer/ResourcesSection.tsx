@@ -30,10 +30,10 @@ const ResourcesSection = () => {
     {
       title: "Resources",
       links: [
-        { to: "/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
-        { to: "/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
-        { to: "/design-template-library", label: "Design Template Library" },
-        { to: "/wrap-installation-process", label: "Installation Process" },
+        { to: "/resources/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
+        { to: "/resources/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
+        { to: "/resources/design-template-library", label: "Design Template Library" },
+        { to: "/support/wrap-installation-process", label: "Installation Process" },
       ]
     },
     {
@@ -47,16 +47,16 @@ const ResourcesSection = () => {
     {
       title: "Support",
       links: [
-        { to: "/warranty-information", label: "Warranty Information" },
-        { to: "/wrap-installation-process", label: "Installation Process" },
-        { to: "/payment-options", label: "Payment Options" },
+        { to: "/support/warranty-information", label: "Warranty Information" },
+        { to: "/support/wrap-installation-process", label: "Installation Process" },
+        { to: "/support/payment-options", label: "Payment Options" },
       ]
     },
     {
       title: "About Us",
       links: [
-        { to: "/our-team", label: "Our Team" },
-        { to: "/careers", label: "Careers" },
+        { to: "/about/our-team", label: "Our Team" },
+        { to: "/about/careers", label: "Careers" },
         { to: "/testimonials", label: "Testimonials" },
       ]
     }

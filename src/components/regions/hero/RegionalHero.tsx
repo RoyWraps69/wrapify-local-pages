@@ -8,7 +8,7 @@ interface RegionalHeroProps {
   regionImage?: string;
 }
 
-// Static background image
+// Static background image as fallback
 const staticBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {

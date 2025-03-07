@@ -15,22 +15,35 @@ interface RegionalMainContentProps {
   regionDescription: string;
   regionFocus: string;
   citiesServed: RegionalLocation[];
+  // Add these new props to match usage in RegionalPageTemplate.tsx
+  title?: string;
+  description?: string;
+  content?: string;
 }
 
 const RegionalMainContent: React.FC<RegionalMainContentProps> = ({
   regionName,
   regionDescription,
   regionFocus,
-  citiesServed
+  citiesServed,
+  // Add the new props with defaults
+  title = '',
+  description = '',
+  content = '',
 }) => {
+  // Use the new props if provided, otherwise fall back to the original ones
+  const displayTitle = title || `Professional Vehicle Wrapping Services in ${regionName}`;
+  const displayDescription = description || regionDescription;
+  const displayContent = content || regionFocus;
+
   return (
     <div className="md:col-span-2">
       <h2 className="text-3xl font-serif font-semibold text-wrap-blue mb-6">
-        Professional Vehicle Wrapping Services in {regionName}
+        {displayTitle}
       </h2>
       
       <div className="prose prose-lg max-w-none text-wrap-grey">
-        <p dangerouslySetInnerHTML={{ __html: regionDescription }}></p>
+        <p dangerouslySetInnerHTML={{ __html: displayDescription }}></p>
         
         <h3>Why Choose Wrapping The World for {regionName} Vehicle Services?</h3>
         <ul>
@@ -42,9 +55,11 @@ const RegionalMainContent: React.FC<RegionalMainContentProps> = ({
         </ul>
         
         <h3>Our Services in {regionName}</h3>
-        <p>{regionFocus}</p>
+        <p>{displayContent}</p>
         
-        <CitiesServedGrid regionName={regionName} citiesServed={citiesServed} />
+        {citiesServed && citiesServed.length > 0 && (
+          <CitiesServedGrid regionName={regionName} citiesServed={citiesServed} />
+        )}
       </div>
     </div>
   );
