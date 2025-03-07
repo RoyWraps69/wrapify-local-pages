@@ -1,8 +1,8 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SEOSchema from '@/components/SEOSchema';
+import Footer from '@/components/footer/Footer';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -29,12 +29,11 @@ const ResourcePageTemplate: React.FC<ResourcePageTemplateProps> = ({
 }) => {
   return (
     <>
-      <SEOSchema 
-        townName="Chicago"
-        pageTitle={seoTitle}
-        pageDescription={seoDescription}
-        pageUrl={`https://wrappingtheworld.com${window.location.pathname}`}
-      />
+      <Helmet>
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
+        <link rel="canonical" href={`https://wrappingtheworld.com${window.location.pathname}`} />
+      </Helmet>
       <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4">

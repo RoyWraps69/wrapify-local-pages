@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { getTownByName } from '@/utils/townData';
-import HeroBackground from './hero/HeroBackground';
 import HeroHeadline from './hero/HeroHeadline';
 import HeroServiceFeatures from './hero/HeroServiceFeatures';
 import HeroCTAButtons from './hero/HeroCTAButtons';
@@ -47,13 +46,16 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     }
   };
   
+  // Ensure we have a valid background image
+  const heroBackground = backgroundImage || staticBackground;
+  
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
-      {/* Use static background */}
+      {/* Use background */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
-          backgroundImage: `url(${backgroundImage || staticBackground})`,
+          backgroundImage: `url(${heroBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect

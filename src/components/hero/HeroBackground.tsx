@@ -11,7 +11,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   backgroundImage,
   scrollPos
 }) => {
-  // Default reliable background image - new pink car image
+  // Default reliable background image - pink car image
   const defaultBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png'; 
   
   // Use the provided backgroundImage or fall back to default

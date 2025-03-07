@@ -17,9 +17,9 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
-      {/* Static background image */}
+      {/* Background image */}
       <div 
-        className="absolute inset-0 z-0 w-full h-full"
+        className="absolute inset-0 z-0 w-full h-full bg-cover bg-center"
         style={{ 
           backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
@@ -27,7 +27,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
         }}
       />
       
-      {/* Increased dark overlay for text readability */}
+      {/* Overlay for text readability */}
       <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">

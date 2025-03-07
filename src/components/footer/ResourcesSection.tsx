@@ -33,6 +33,7 @@ const ResourcesSection = () => {
         { to: "/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
         { to: "/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
         { to: "/design-template-library", label: "Design Template Library" },
+        { to: "/wrap-installation-process", label: "Installation Process" },
       ]
     },
     {

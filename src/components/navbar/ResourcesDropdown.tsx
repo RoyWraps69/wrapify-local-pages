@@ -28,25 +28,46 @@ const ResourcesDropdown: React.FC = () => {
         <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
           <div className="py-1" role="menu" aria-orientation="vertical">
             <Link
-              to="/resources/vinyl-wrap-care-guide"
+              to="/vinyl-wrap-care-guide"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
               role="menuitem"
             >
               Vinyl Wrap Care Guide
             </Link>
             <Link
-              to="/resources/ceramic-coating-faq"
+              to="/ceramic-coating-faq"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
               role="menuitem"
             >
               Ceramic Coating FAQ
             </Link>
             <Link
-              to="/resources/design-template-library"
+              to="/design-template-library"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
               role="menuitem"
             >
               Design Templates
+            </Link>
+            <Link
+              to="/warranty-information"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Warranty Information
+            </Link>
+            <Link
+              to="/wrap-installation-process"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Installation Process
+            </Link>
+            <Link
+              to="/payment-options"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
+              role="menuitem"
+            >
+              Payment Options
             </Link>
             <Link
               to="/blog"
@@ -54,13 +75,6 @@ const ResourcesDropdown: React.FC = () => {
               role="menuitem"
             >
               Blog
-            </Link>
-            <Link
-              to="/case-studies"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-wrap-red"
-              role="menuitem"
-            >
-              Case Studies
             </Link>
           </div>
         </div>

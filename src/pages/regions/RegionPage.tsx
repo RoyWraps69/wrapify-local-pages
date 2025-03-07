@@ -20,7 +20,7 @@ const RegionPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Background image for the region
+  // Background image for the region - ensure we always have an image
   const regionBackgroundImage = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
   
   return (

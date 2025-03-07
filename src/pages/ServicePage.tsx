@@ -22,6 +22,9 @@ const ServicePage: React.FC = () => {
   }, [serviceType]);
   
   const service = getServiceData(serviceType);
+  
+  // Make sure we have a valid hero image
+  const heroImage = service.hero || '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
 
   return (
     <>
@@ -30,7 +33,7 @@ const ServicePage: React.FC = () => {
       <main className="service-page">
         <RegionalHero 
           regionName={service.title} 
-          regionImage={service.hero}
+          regionImage={heroImage}
         />
         
         <ServicesBreadcrumb 
