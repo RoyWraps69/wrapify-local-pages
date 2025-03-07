@@ -35,7 +35,10 @@ const Contact = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Send email notification (in a real app this would be handled by a backend)
-      console.log('Sending email to: info@wrappingtheworld.com');
+      console.log('Sending email to multiple recipients:');
+      console.log('- info@wrappingtheworld.com');
+      console.log('- roy@chicagofleetwraps.com');
+      console.log('- patti@chicagofleetwraps.com');
       console.log('Form data:', formData);
       
       // Reset form

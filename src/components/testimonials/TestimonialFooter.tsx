@@ -9,7 +9,10 @@ const TestimonialFooter: React.FC = () => {
   const handleClick = () => {
     // Track testimonial page visits
     console.log('User navigated to full testimonials page');
-    // Could send analytics data to backend in a real implementation
+    console.log('Analytics notification will be sent to:');
+    console.log('- info@wrappingtheworld.com');
+    console.log('- roy@chicagofleetwraps.com');
+    console.log('- patti@chicagofleetwraps.com');
     
     toast({
       title: "Loading Testimonials",

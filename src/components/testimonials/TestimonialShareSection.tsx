@@ -12,7 +12,10 @@ const TestimonialShareSection: React.FC<TestimonialShareSectionProps> = ({ getSo
   const handleReviewLinkClick = (platform: string) => {
     // Track review link clicks
     console.log(`Customer clicked to leave review on ${platform}`);
-    // This could send analytics data to your backend in a real implementation
+    console.log('Notification will be sent to:');
+    console.log('- info@wrappingtheworld.com');
+    console.log('- roy@chicagofleetwraps.com');
+    console.log('- patti@chicagofleetwraps.com');
     
     // Show notification that discount will be applied
     toast({
