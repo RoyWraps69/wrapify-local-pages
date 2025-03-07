@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import PrintShipHeader from '../PrintShipHeader';
 import InstallationNotice from '../InstallationNotice';
 import PricingAndControls from '../PricingAndControls';
@@ -51,6 +51,14 @@ const MainContent: React.FC<MainContentProps> = ({
 }) => {
   // Ensure installer section has a background image
   const installerSectionBackground = '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png'; // White Chevy truck
+  
+  useEffect(() => {
+    // Verify image loads
+    const img = new Image();
+    img.src = installerSectionBackground;
+    img.onload = () => console.log("Installer section background loaded successfully:", installerSectionBackground);
+    img.onerror = () => console.error("ERROR: Installer section background failed to load:", installerSectionBackground);
+  }, []);
   
   return (
     <>

@@ -30,23 +30,67 @@ const fallbackImage = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [imagesValidated, setImagesValidated] = useState(false);
+  const [validImages, setValidImages] = useState<string[]>([]);
+  
+  // Verify all images on component mount
+  useEffect(() => {
+    console.log("RegionalHero - Component mounted");
+    console.log("RegionalHero - Validating background images...");
+    
+    const validateImages = async () => {
+      const validatedImages: string[] = [];
+      const promises = vehicleBackgrounds.map((bg, index) => 
+        new Promise<void>((resolve) => {
+          const img = new Image();
+          img.src = bg;
+          img.onload = () => {
+            console.log(`Background ${index + 1} loaded successfully:`, bg);
+            validatedImages.push(bg);
+            resolve();
+          };
+          img.onerror = () => {
+            console.error(`ERROR: Background ${index + 1} failed to load:`, bg);
+            resolve();
+          };
+        })
+      );
+      
+      await Promise.all(promises);
+      
+      if (validatedImages.length === 0) {
+        // Add fallback if no images validated
+        validatedImages.push(fallbackImage);
+      }
+      
+      setValidImages(validatedImages);
+      setImagesValidated(true);
+      console.log("RegionalHero - Validation complete, valid images:", validatedImages.length);
+    };
+    
+    validateImages();
+  }, []);
   
   // Always use our local vehicle backgrounds, ignore external URLs
-  const bgImage = vehicleBackgrounds[currentBgIndex] || fallbackImage;
+  const bgImage = imagesValidated && validImages.length > 0 
+    ? validImages[currentBgIndex % validImages.length] 
+    : fallbackImage;
   
   // Implement background carousel
   useEffect(() => {
+    if (!imagesValidated || validImages.length === 0) return;
+    
     const intervalId = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % vehicleBackgrounds.length);
+      setCurrentBgIndex((prev) => (prev + 1) % validImages.length);
     }, 5000);
     
     // Enhanced logging for debugging
-    console.log("RegionalHero - All background images:", vehicleBackgrounds);
+    console.log("RegionalHero - Carousel started with valid images:", validImages.length);
     console.log("RegionalHero - Current background index:", currentBgIndex);
     console.log("RegionalHero - Active background image:", bgImage);
     
     return () => clearInterval(intervalId);
-  }, [currentBgIndex, bgImage]);
+  }, [currentBgIndex, bgImage, imagesValidated, validImages]);
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
@@ -62,7 +106,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       />
       
       {/* Add dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black opacity-60 z-1"></div>
+      <div className="absolute inset-0 bg-black opacity-70 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
@@ -95,16 +139,18 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       </div>
       
       {/* Background image indicators - repositioned higher */}
-      <div className="absolute bottom-24 left-0 right-0 flex justify-center gap-2 z-10">
-        {vehicleBackgrounds.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all ${index === currentBgIndex ? 'bg-wrap-red scale-110' : 'bg-white/70'}`}
-            onClick={() => setCurrentBgIndex(index)}
-            aria-label={`Switch to background ${index + 1}`}
-          />
-        ))}
-      </div>
+      {imagesValidated && validImages.length > 1 && (
+        <div className="absolute bottom-24 left-0 right-0 flex justify-center gap-2 z-10">
+          {validImages.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full transition-all ${index === currentBgIndex % validImages.length ? 'bg-wrap-red scale-110' : 'bg-white/70'}`}
+              onClick={() => setCurrentBgIndex(index)}
+              aria-label={`Switch to background ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

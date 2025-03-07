@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import RegionalPageContent from '@/components/regions/RegionalPageContent';
@@ -43,6 +43,25 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
 }) => {
   const pageTitle = `${regionName} Vehicle Wrapping Services | Fleet Wraps & Ceramic Coatings`;
   const [latitude, longitude] = geoPosition.split(';');
+  
+  // Validate region image on component mount
+  useEffect(() => {
+    console.log(`RegionalPageTemplate - Loading for ${regionName}`);
+    
+    // Validate region image
+    if (regionImage) {
+      const img = new Image();
+      img.src = regionImage;
+      img.onload = () => console.log(`Region image for ${regionName} loaded successfully:`, regionImage);
+      img.onerror = () => console.error(`ERROR: Region image for ${regionName} failed to load:`, regionImage);
+    }
+    
+    // Log cities served for debugging
+    console.log(`${regionName} - Cities served:`, citiesServed);
+    
+    // Scroll to top on region page load
+    window.scrollTo(0, 0);
+  }, [regionName, regionImage, citiesServed]);
   
   return (
     <>

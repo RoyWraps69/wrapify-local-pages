@@ -12,7 +12,14 @@ const PrintShip = () => {
   // Hero background with ensured path
   const heroBackgroundImage = '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png'; // Tesla Cybertruck camo
   
-  console.log("PrintShip - Hero background image:", heroBackgroundImage);
+  // Verify image loads on component mount
+  React.useEffect(() => {
+    console.log("PrintShip - Hero background image:", heroBackgroundImage);
+    const img = new Image();
+    img.src = heroBackgroundImage;
+    img.onload = () => console.log("PrintShip hero image loaded successfully:", heroBackgroundImage);
+    img.onerror = () => console.error("ERROR: PrintShip hero image failed to load:", heroBackgroundImage);
+  }, []);
   
   return (
     <>
@@ -46,7 +53,8 @@ const PrintShip = () => {
               backgroundPosition: 'center'
             }}
           >
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black opacity-70"></div>
             <div className="container mx-auto px-4 text-center relative z-10">
               <m.h1 
                 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 text-white"

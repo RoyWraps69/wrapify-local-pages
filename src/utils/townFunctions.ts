@@ -7,32 +7,78 @@ import { wisconsinTowns } from './towns/wisconsin';
 
 // Combine all towns data for easy access
 export const getAllTowns = (): TownData[] => {
-  return [
+  const allTowns = [
     ...illinoisTowns,
     ...michiganTowns,
     ...indianaTowns,
     ...wisconsinTowns
-  ].sort((a, b) => a.name.localeCompare(b.name));
+  ];
+  
+  console.log(`getAllTowns: Found ${allTowns.length} towns total`);
+  
+  // Return sorted list
+  return allTowns.sort((a, b) => a.name.localeCompare(b.name));
 };
 
 // Get town data by slug
 export const getTownData = (townSlug: string): TownData | null => {
+  if (!townSlug) {
+    console.error("getTownData called with empty townSlug");
+    return null;
+  }
+  
   const allTowns = getAllTowns();
-  const town = allTowns.find(t => t.id === townSlug);
+  console.log(`getTownData: Looking for town with slug "${townSlug}" among ${allTowns.length} towns`);
+  
+  // Normalize the slug for comparison
+  const normalizedSlug = townSlug.toLowerCase().trim();
+  
+  // First try exact match
+  let town = allTowns.find(t => t.id === normalizedSlug);
+  
+  // Log available town IDs if town not found
+  if (!town) {
+    console.error(`Town not found with slug "${townSlug}". Available town IDs:`, 
+      allTowns.map(t => t.id).slice(0, 20)); // Show first 20 for debugging
+    
+    // Try case-insensitive match as fallback
+    town = allTowns.find(t => t.id.toLowerCase() === normalizedSlug);
+    
+    if (town) {
+      console.log(`Found town with case-insensitive matching: ${town.name} (${town.id})`);
+    }
+  } else {
+    console.log(`Found town: ${town.name} (${town.id})`);
+  }
+  
   return town || null;
 };
 
 // Get town data by name
 export const getTownByName = (townName: string): TownData | null => {
+  if (!townName) return null;
+  
   const towns = getAllTowns();
-  const town = towns.find(t => t.name === townName);
+  
+  // First try exact match
+  let town = towns.find(t => t.name === townName);
+  
+  // If not found, try case-insensitive match
+  if (!town) {
+    const normalizedName = townName.toLowerCase().trim();
+    town = towns.find(t => t.name.toLowerCase() === normalizedName);
+  }
+  
   return town || null;
 };
 
 // Get towns by state
 export const getTownsByState = (state: string): TownData[] => {
+  if (!state) return [];
+  
   const allTowns = getAllTowns();
-  return allTowns.filter(town => town.state === state);
+  const normalizedState = state.toUpperCase().trim();
+  return allTowns.filter(town => town.state.toUpperCase() === normalizedState);
 };
 
 // Get nearby towns (within a certain distance)
