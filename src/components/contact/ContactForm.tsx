@@ -124,60 +124,68 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-md">
+    <div className="bg-white rounded-xl p-6 shadow-md" id="quote-form">
       <h2 className="text-2xl font-serif font-semibold mb-6">Request a Free Vehicle Wrap Quote</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
         <div>
-          <label className="block text-sm font-medium mb-2">Your Name</label>
+          <label htmlFor="name" className="block text-sm font-medium mb-2">Your Name</label>
           <Input 
+            id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
             placeholder="Enter your full name" 
             required 
+            aria-required="true"
           />
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-2">Email Address</label>
+          <label htmlFor="email" className="block text-sm font-medium mb-2">Email Address</label>
           <Input 
+            id="email"
             type="email" 
             name="email"
             value={formData.email}
             onChange={handleChange}
             placeholder="Enter your email address" 
             required 
+            aria-required="true"
+            aria-invalid={errors.email ? "true" : "false"}
             className={errors.email ? "border-red-500" : ""}
           />
           {errors.email && (
-            <div className="mt-2 text-red-500 text-sm flex items-center">
-              <AlertCircle className="h-4 w-4 mr-1" />
+            <div className="mt-2 text-red-500 text-sm flex items-center" id="email-error">
+              <AlertCircle className="h-4 w-4 mr-1" aria-hidden="true" />
               {errors.email}
             </div>
           )}
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-2">Phone Number</label>
+          <label htmlFor="phone" className="block text-sm font-medium mb-2">Phone Number</label>
           <Input 
+            id="phone"
             type="tel" 
             name="phone"
             value={formData.phone}
             onChange={handleChange}
             placeholder="Enter your phone number" 
+            aria-invalid={errors.phone ? "true" : "false"}
             className={errors.phone ? "border-red-500" : ""}
           />
           {errors.phone && (
-            <div className="mt-2 text-red-500 text-sm flex items-center">
-              <AlertCircle className="h-4 w-4 mr-1" />
+            <div className="mt-2 text-red-500 text-sm flex items-center" id="phone-error">
+              <AlertCircle className="h-4 w-4 mr-1" aria-hidden="true" />
               {errors.phone}
             </div>
           )}
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-2">Vehicle Type</label>
+          <label htmlFor="vehicleType" className="block text-sm font-medium mb-2">Vehicle Type</label>
           <Input 
+            id="vehicleType"
             name="vehicleType"
             value={formData.vehicleType}
             onChange={handleChange}
@@ -186,14 +194,16 @@ const ContactForm = () => {
         </div>
         
         <div>
-          <label className="block text-sm font-medium mb-2">Project Details</label>
+          <label htmlFor="message" className="block text-sm font-medium mb-2">Project Details</label>
           <Textarea 
+            id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             placeholder="Tell us about your vehicle wrap project needs" 
             className="min-h-[120px]"
             required 
+            aria-required="true"
           />
         </div>
         
@@ -201,10 +211,11 @@ const ContactForm = () => {
           type="submit" 
           className="w-full"
           disabled={isSubmitting}
+          aria-busy={isSubmitting}
         >
           {isSubmitting ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> 
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" /> 
               Sending...
             </>
           ) : (
