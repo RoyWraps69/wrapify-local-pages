@@ -1,7 +1,7 @@
 
 import { TownData } from '../townTypes';
 
-// Example town data (Chicago)
+// Chicago data
 export const chicago: TownData = {
   id: "chicago",
   name: "Chicago",
@@ -22,7 +22,7 @@ export const chicago: TownData = {
   longitude: -87.6298
 };
 
-// Example town data (Evanston)
+// Evanston data
 export const evanston: TownData = {
   id: "evanston",
   name: "Evanston",
@@ -43,7 +43,7 @@ export const evanston: TownData = {
   longitude: -87.6878
 };
 
-// Example town data (Oak Park)
+// Oak Park data
 export const oakPark: TownData = {
   id: "oak-park",
   name: "Oak Park",
@@ -64,7 +64,7 @@ export const oakPark: TownData = {
   longitude: -87.7909
 };
 
-// Example town data (Naperville)
+// Naperville data
 export const naperville: TownData = {
   id: "naperville",
   name: "Naperville",
@@ -85,7 +85,7 @@ export const naperville: TownData = {
   longitude: -88.1561
 };
 
-// Example town data (Schaumburg)
+// Schaumburg data
 export const schaumburg: TownData = {
   id: "schaumburg",
   name: "Schaumburg",
@@ -106,7 +106,7 @@ export const schaumburg: TownData = {
   longitude: -88.0830
 };
 
-// Example town data (Arlington Heights)
+// Arlington Heights data
 export const arlingtonHeights: TownData = {
   id: "arlington-heights",
   name: "Arlington Heights",
@@ -127,7 +127,7 @@ export const arlingtonHeights: TownData = {
   longitude: -87.9809
 };
 
-// Example town data (Skokie)
+// Skokie data
 export const skokie: TownData = {
   id: "skokie",
   name: "Skokie",
@@ -143,32 +143,33 @@ export const skokie: TownData = {
     "fleet wraps skokie"
   ],
   governmentUrl: "https://www.skokie.org/",
-  businessStats: "Diverse suburb with a strong local economy and convenient location.",
-  latitude: 42.0338,
-  longitude: -87.7311
+  businessStats: "Diverse suburban community with strong local businesses.",
+  latitude: 42.0334,
+  longitude: -87.7406
 };
 
-// Example town data (Des Plaines)
-export const desPlaines: TownData = {
-  id: "des-plaines",
-  name: "Des Plaines",
+// Joliet data
+export const joliet: TownData = {
+  id: "joliet",
+  name: "Joliet",
   state: "IL",
-  description: "Des Plaines, a suburb northwest of Chicago, is known for its convenient transportation options, diverse business community, and family-friendly environment. The city offers a mix of residential neighborhoods, commercial districts, and recreational amenities.",
-  population: 58899,
-  businessCount: 4800,
-  distance: 17,
-  mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23688.92923247013!2d-87.8908122642106!3d42.02044821877258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fc159a4089561%3A0x5001dfb0ca1ba20!2sDes%20Plaines%2C%20IL!5e0!3m2!1sen!2sus!4v1683134722474!5m2!1sen!2sus",
+  description: "Joliet, located southwest of Chicago, is a growing city with historic architecture, entertainment venues, and strong transportation links. The city serves as an important logistics and manufacturing hub in the region.",
+  population: 147344,
+  businessCount: 8500,
+  distance: 45,
+  mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95155.44559492093!2d-88.17498781743702!3d41.5293237146778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e5b9346690565%3A0x3038cd7150eef142!2sJoliet%2C%20IL!5e0!3m2!1sen!2sus!4v1683134787754!5m2!1sen!2sus",
   keywords: [
-    "vehicle wraps des plaines",
-    "car wraps des plaines",
-    "fleet wraps des plaines"
+    "vehicle wraps joliet",
+    "car wraps joliet",
+    "fleet wraps joliet"
   ],
-  governmentUrl: "https://www.desplaines.org/",
-  businessStats: "Transportation hub with a diverse economy and family-friendly community.",
-  latitude: 42.0205,
-  longitude: -87.8842
+  governmentUrl: "https://www.joliet.gov/",
+  businessStats: "Important logistics and manufacturing center.",
+  latitude: 41.5250,
+  longitude: -88.0817
 };
 
+// Combine all Illinois towns
 export const illinoisTowns = [
   chicago,
   evanston,
@@ -177,5 +178,5 @@ export const illinoisTowns = [
   schaumburg,
   arlingtonHeights,
   skokie,
-  desPlaines
+  joliet
 ];

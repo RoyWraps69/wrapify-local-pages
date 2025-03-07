@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { SEOWrapper } from "./components/SEOSchema";
 import Index from "./pages/Index";
 import TownPage from "./pages/TownPage";
+import Towns from "./pages/Towns";
 import Gallery from "./pages/Gallery";
 import Services from "./pages/Services";
 import ServicePage from "./pages/ServicePage";
@@ -95,6 +96,7 @@ const App = () => {
               <Route path="/member-dashboard" element={<MemberDashboard />} />
               
               {/* Town Pages */}
+              <Route path="/locations" element={<Towns />} />
               <Route path="/locations/:townSlug" element={<TownPage />} />
               
               {/* Regional Pages */}

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import DynamicHeroSection from '@/components/DynamicHeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import ProcessSection from '@/components/ProcessSection';
@@ -10,6 +9,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TownDescription from '@/components/town/sections/TownDescription';
 import MapSection from '@/components/MapSection';
+import NearbyTownsSection from '@/components/town/sections/NearbyTownsSection';
 
 interface TownPageContentProps {
   townData: any;
@@ -25,12 +25,10 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
 }) => {
   if (!townData) return null;
   
-  const { name, mapUrl } = townData;
+  const { id, name, mapUrl } = townData;
   
   return (
     <main className="town-page" itemScope itemType="https://schema.org/WebPage">
-      <DynamicHeroSection townName={name} />
-      
       <div className="animate-on-scroll fade-up">
         <TownDescription townName={name} townData={townData} />
       </div>
@@ -61,6 +59,10 @@ const TownPageContent: React.FC<TownPageContentProps> = ({
       
       <div className="animate-on-scroll fade-up">
         <MapSection townName={name} mapUrl={mapUrl} />
+      </div>
+      
+      <div className="animate-on-scroll fade-up">
+        <NearbyTownsSection townId={id} townName={name} maxDistance={50} />
       </div>
       
       <div className="animate-on-scroll fade-up">

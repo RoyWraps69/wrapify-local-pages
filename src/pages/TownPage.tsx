@@ -7,10 +7,10 @@ import SEOSchema from '@/components/SEOSchema';
 import { getTownData, getAllTowns } from '@/utils/townData';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import TownStructuredData from '@/components/town/seo/TownStructuredData';
-import LazyTownPageContent from '@/components/town/layout/LazyTownPageContent';
+import TownPageContent from '@/components/town/layout/TownPageContent';
 import { createTownFAQs } from '@/components/town/data/TownFAQData';
 import { Helmet } from 'react-helmet-async';
-import HeroSection from '@/components/HeroSection';
+import RegionalHero from '@/components/regions/hero/RegionalHero';
 
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
@@ -69,8 +69,8 @@ const TownPage: React.FC = () => {
   
   const { name } = townData;
   
-  // Set up town background image
-  const townBackgroundImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png'; // Default to first wrap image
+  // Set up town background image - use fallback image that we know works
+  const townBackgroundImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
   
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name} | Wrapping The World`;
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}. Transform your business vehicles with custom wraps and protection from the world's top-rated vehicle enhancement company.`;
@@ -106,10 +106,10 @@ const TownPage: React.FC = () => {
       
       <Navbar />
       
-      {/* Add the HeroSection with town name */}
-      <HeroSection townName={name} backgroundImage={townBackgroundImage} />
+      {/* Hero Section with town name */}
+      <RegionalHero regionName={name} regionImage={townBackgroundImage} />
       
-      <LazyTownPageContent 
+      <TownPageContent 
         townData={townData}
         locationFaqs={locationFaqs}
       />

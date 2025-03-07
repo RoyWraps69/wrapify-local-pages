@@ -1,5 +1,4 @@
 
-// Define the structure for town data
 export interface TownData {
   id: string;
   name: string;
@@ -15,6 +14,3 @@ export interface TownData {
   latitude: number;
   longitude: number;
 }
-
-// Export the Town interface that's being imported elsewhere
-export type Town = TownData;

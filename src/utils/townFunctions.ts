@@ -88,6 +88,15 @@ export const getNearbyTowns = (townId: string, maxDistance: number = 50): TownDa
   
   const allTowns = getAllTowns();
   return allTowns
-    .filter(t => t.id !== townId && t.distance <= maxDistance)
-    .sort((a, b) => a.distance - b.distance);
+    .filter(t => t.id !== townId) // Exclude the current town
+    .sort((a, b) => {
+      // Calculate distance from current town
+      const distanceA = Math.abs(a.distance - town.distance);
+      const distanceB = Math.abs(b.distance - town.distance);
+      
+      // Sort by distance
+      return distanceA - distanceB;
+    })
+    .filter(t => Math.abs(t.distance - town.distance) <= maxDistance)
+    .slice(0, 12); // Limit to 12 nearby towns
 };
