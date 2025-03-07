@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Illinois Locations -->
+  <!-- Illinois Major Cities -->
   <url>
     <loc>https://wrappingtheworld.com/locations/chicago</loc>
     <lastmod>2024-09-15</lastmod>
@@ -27,5 +27,13 @@
       <image:title>Vehicle Wrapping in Evanston</image:title>
       <image:caption>Professional vehicle wraps and ceramic coatings in Evanston, IL</image:caption>
     </image:image>
+  </url>
+  
+  <!-- Link to Chicago Suburbs sitemap index -->
+  <url>
+    <loc>https://wrappingtheworld.com/chicago-suburbs</loc>
+    <lastmod>2024-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
