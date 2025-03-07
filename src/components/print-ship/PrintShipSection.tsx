@@ -47,7 +47,9 @@ const PrintShipSection: React.FC = () => {
     <ShoppingCartProvider>
       <section className="py-16 bg-white" id="print-ship">
         <div className="container mx-auto px-4">
-          <PrintShipContent />
+          <div className="animate-on-scroll fade-up">
+            <PrintShipContent />
+          </div>
         </div>
       </section>
     </ShoppingCartProvider>
