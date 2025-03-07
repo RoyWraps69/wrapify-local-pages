@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { getTownByName } from '@/utils/townData';
@@ -12,46 +13,19 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
-// Hero backgrounds with absolute paths
-const heroBackgrounds = [
-  '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png', // Blue/red van with American flag 
-  '/lovable-uploads/bd00fa2f-6aa7-4400-ac3f-100c2b957604.png', // Green/orange leprechaun car
-  '/lovable-uploads/3ab4ec3b-922a-452c-997a-58979643de96.png', // ProTap white/gold van
-  '/lovable-uploads/534b738a-234d-4256-b471-ec668cdf8035.png', // DinoRoof truck with dinosaur
-  '/lovable-uploads/591f84c2-c45c-4b93-a7c8-66da870f3cf8.png', // White Mercedes with blue windows
-  '/lovable-uploads/8c159fc0-a3cf-4be9-87e1-f30adcef078e.png', // Hot pink car wrap
-  '/lovable-uploads/3906054e-2f97-4984-ba74-f8e08d20db82.png', // T-Mobile pink truck
-];
-
-// Fleet wrap background to use as default fallback
-const fleetWrapBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
+// Use a single reliable static background instead of carousel
+const staticBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
   townName = 'Chicago',
   backgroundImage
 }) => {
-  const [activeBackground, setActiveBackground] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
   
-  // Preload all images on component mount
+  // Show content with animation on load
   useEffect(() => {
-    heroBackgrounds.forEach(src => {
-      const img = new Image();
-      img.src = src;
-      img.onload = () => console.log(`Image loaded: ${src}`);
-      img.onerror = () => console.error(`Failed to load image: ${src}`);
-    });
-  }, []);
-  
-  useEffect(() => {
-    // Show content with animation on load
     setIsVisible(true);
-    
-    // Change background every 5 seconds
-    const interval = setInterval(() => {
-      setActiveBackground((prev) => (prev + 1) % heroBackgrounds.length);
-    }, 5000);
     
     // Parallax scroll effect
     const handleScroll = () => {
@@ -60,14 +34,10 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     
     window.addEventListener('scroll', handleScroll);
     
-    console.log("DynamicHero - Active background index:", activeBackground);
-    console.log("DynamicHero - Current background:", heroBackgrounds[activeBackground]);
-    
     return () => {
-      clearInterval(interval);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [activeBackground]);
+  }, []);
   
   // Handle scroll to services section
   const scrollToServices = () => {
@@ -79,12 +49,28 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
-      <HeroBackground 
-        backgrounds={heroBackgrounds}
-        activeBackground={activeBackground}
-        scrollPos={scrollPos}
-        backgroundImage={backgroundImage}
-        fleetWrapBackground={fleetWrapBackground}
+      {/* Use static background */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${backgroundImage || staticBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
+        }}
+      />
+      
+      {/* Darker overlay for better text readability */}
+      <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
+      
+      {/* Vehicle silhouette overlay effect for added dimension */}
+      <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
+        style={{
+          backgroundImage: "url('/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png')",
+          backgroundSize: "contain",
+          backgroundPosition: "right bottom",
+          mixBlendMode: "overlay"
+        }}
       />
       
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
@@ -115,18 +101,6 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
             <HeroFooterInfo townName={townName} scrollToServices={scrollToServices} />
           </div>
         </div>
-      </div>
-      
-      {/* Background image indicators */}
-      <div className="absolute bottom-40 md:bottom-32 left-0 right-0 flex justify-center gap-2 z-20">
-        {heroBackgrounds.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all ${index === activeBackground ? 'bg-wrap-red scale-110' : 'bg-white/70'}`}
-            onClick={() => setActiveBackground(index)}
-            aria-label={`Switch to background ${index + 1}`}
-          />
-        ))}
       </div>
     </section>
   );

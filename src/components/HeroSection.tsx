@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Check } from 'lucide-react';
 import { getTownByName } from '@/utils/townData';
@@ -8,60 +9,26 @@ interface HeroSectionProps {
   backgroundImage?: string;
 }
 
-// Vehicle backgrounds with absolute paths
-const vehicleBackgrounds = [
-  '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png', // Blue/red van with American flag 
-  '/lovable-uploads/bd00fa2f-6aa7-4400-ac3f-100c2b957604.png', // Green/orange leprechaun car
-  '/lovable-uploads/3ab4ec3b-922a-452c-997a-58979643de96.png', // ProTap white/gold van
-  '/lovable-uploads/534b738a-234d-4256-b471-ec668cdf8035.png', // DinoRoof truck with dinosaur
-  '/lovable-uploads/591f84c2-c45c-4b93-a7c8-66da870f3cf8.png', // White Mercedes with blue windows
-  '/lovable-uploads/8c159fc0-a3cf-4be9-87e1-f30adcef078e.png', // Hot pink car wrap
-  '/lovable-uploads/3906054e-2f97-4984-ba74-f8e08d20db82.png', // T-Mobile pink truck
-];
-
 const HeroSection: React.FC<HeroSectionProps> = ({ 
   townName = 'Chicago',
   backgroundImage
 }) => {
-  const [currentBgIndex, setCurrentBgIndex] = useState(0);
-  
   // Get the town's government website URL
   const townData = getTownByName(townName);
   const townUrl = townData?.governmentUrl || `https://www.google.com/search?q=${townName}+government+website`;
   
-  // Use provided backgroundImage or cycle through vehicle backgrounds
-  const currentBackground = backgroundImage || vehicleBackgrounds[currentBgIndex];
-  
-  // Preload all images on component mount
-  useEffect(() => {
-    vehicleBackgrounds.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, []);
-  
-  // Background image carousel
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % vehicleBackgrounds.length);
-    }, 5000);
-    
-    // Log for debugging
-    console.log("HeroSection - Using background:", currentBackground);
-    
-    return () => clearInterval(intervalId);
-  }, [currentBackground]);
+  // Use a static background image instead of cycling through images
+  const staticBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
   
   return (
     <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
-      {/* Background image - using inline style with important to ensure it shows */}
+      {/* Static background image */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{
-          backgroundImage: `url(${currentBackground})`,
+          backgroundImage: `url(${backgroundImage || staticBackground})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          transition: 'background-image 0.5s ease-in-out'
+          backgroundPosition: 'center'
         }}
       />
       
@@ -71,7 +38,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className="backdrop-blur-sm bg-black/30 p-6 rounded-lg">
-            {/* Added logo */}
+            {/* Logo */}
             <div className="flex justify-center mb-6">
               <img 
                 src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
@@ -158,18 +125,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Background image indicators - repositioned higher */}
-      <div className="absolute bottom-24 md:bottom-20 left-0 right-0 flex justify-center gap-2 z-10">
-        {vehicleBackgrounds.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all ${index === currentBgIndex ? 'bg-wrap-red scale-110' : 'bg-white/70'}`}
-            onClick={() => setCurrentBgIndex(index)}
-            aria-label={`Switch to background ${index + 1}`}
-          />
-        ))}
       </div>
     </section>
   );

@@ -1,32 +1,23 @@
-import React, { useEffect } from 'react';
+
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 
 interface RegionalHeroProps {
   regionName: string;
-  regionImage: string;
+  regionImage?: string;
 }
 
-// Updated reliable background image
-const fallbackImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
+// Static background image
+const staticBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
-  // Use the provided regionImage or fall back to our reliable image
-  const bgImage = regionImage || fallbackImage;
-  
-  // Preload the image
-  useEffect(() => {
-    const img = new Image();
-    img.src = bgImage;
-    img.onload = () => console.log(`RegionalHero - Image loaded successfully: ${bgImage}`);
-    img.onerror = () => console.error(`RegionalHero - Failed to load image: ${bgImage}`);
-  }, [bgImage]);
-  
-  console.log("RegionalHero - Using background image:", bgImage);
+  // Use the provided regionImage or fall back to our static image
+  const bgImage = regionImage || staticBackground;
   
   return (
     <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
-      {/* Background image with verified source */}
+      {/* Static background image */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{ 

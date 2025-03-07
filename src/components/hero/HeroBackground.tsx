@@ -1,47 +1,25 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface HeroBackgroundProps {
-  backgrounds: string[];
-  activeBackground: number;
-  scrollPos: number;
   backgroundImage?: string;
-  fleetWrapBackground: string;
+  scrollPos: number;
 }
 
 const HeroBackground: React.FC<HeroBackgroundProps> = ({
-  backgrounds,
-  activeBackground,
-  scrollPos,
   backgroundImage,
-  fleetWrapBackground
+  scrollPos
 }) => {
-  // Default fallback image if everything else fails
-  const fallbackImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png'; 
+  // Default reliable background image
+  const defaultBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png'; 
   
-  // Directly use backgroundImage if provided, otherwise use the active background from the carousel
-  const currentBackground = backgroundImage || 
-    backgrounds[activeBackground] || 
-    fleetWrapBackground ||
-    fallbackImage;
-    
-  // Log background for debugging
-  useEffect(() => {
-    console.log("HeroBackground - Using background:", currentBackground);
-  }, [currentBackground]);
-
-  // Preload images to prevent blank backgrounds
-  useEffect(() => {
-    backgrounds.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }, [backgrounds]);
-
+  // Use the provided backgroundImage or fall back to default
+  const currentBackground = backgroundImage || defaultBackground;
+  
   return (
     <>
-      {/* Single background with parallax effect */}
+      {/* Single static background with parallax effect */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
