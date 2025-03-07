@@ -7,14 +7,16 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 interface MaterialSelectorProps {
   selectedMaterial: WrapMaterial;
   setSelectedMaterial: (material: WrapMaterial) => void;
+  className?: string;
 }
 
 const MaterialSelector: React.FC<MaterialSelectorProps> = ({
   selectedMaterial,
   setSelectedMaterial,
+  className = "",
 }) => {
   return (
-    <div>
+    <div className={className}>
       <label className="block text-wrap-blue font-medium mb-3 flex items-center">
         Wrap Material
         <TooltipProvider>
@@ -50,6 +52,7 @@ const MaterialSelector: React.FC<MaterialSelectorProps> = ({
               <span className="font-medium text-wrap-blue">${material.pricePerSqFt.toFixed(2)}/sq ft</span>
             </div>
             <p className="text-sm text-gray-600 mt-1">{material.description}</p>
+            <p className="text-xs text-gray-500 mt-1">Durability: {material.durabilityYears} years</p>
           </div>
         ))}
       </div>

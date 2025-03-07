@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CartButton from '@/components/print-ship/shopping-cart/CartButton';
@@ -10,6 +9,7 @@ import ShopFooter from './ShopFooter';
 import { shopItems } from '@/components/print-ship/data/installers';
 import ProductDetails from './ProductDetails';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
+import MaterialSelectionPanel from './MaterialSelectionPanel';
 
 interface ShoppingContentProps {
   activeCategory: string;
@@ -80,7 +80,15 @@ const ShoppingContent: React.FC<ShoppingContentProps> = ({
               items={wrapMaterialItems}
               title="Premium Wrap Materials"
               description="High-quality vinyl wrap materials for professional results."
-            />
+            >
+              <section>
+                <h2>Wrap Materials</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <MaterialSelectionPanel />
+                  {/* Other product cards */}
+                </div>
+              </section>
+            </CategorySectionRenderer>
             
             <CategorySectionRenderer 
               activeCategory={activeCategory}
