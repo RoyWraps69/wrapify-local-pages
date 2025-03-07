@@ -15,8 +15,6 @@ interface MainContentProps {
   setSelectedMaterial: (material: any) => void;
   selectedDesign: any;
   setSelectedDesign: (design: any) => void;
-  selectedShipping: any;
-  setSelectedShipping: (shipping: any) => void;
   coverage: number;
   setCoverage: (coverage: number) => void;
   price: {
@@ -41,8 +39,6 @@ const MainContent: React.FC<MainContentProps> = ({
   setSelectedMaterial,
   selectedDesign,
   setSelectedDesign,
-  selectedShipping,
-  setSelectedShipping,
   coverage,
   setCoverage,
   price,
@@ -75,8 +71,6 @@ const MainContent: React.FC<MainContentProps> = ({
         setSelectedMaterial={setSelectedMaterial}
         selectedDesign={selectedDesign}
         setSelectedDesign={setSelectedDesign}
-        selectedShipping={selectedShipping}
-        setSelectedShipping={setSelectedShipping}
         coverage={coverage}
         setCoverage={setCoverage}
         price={price}

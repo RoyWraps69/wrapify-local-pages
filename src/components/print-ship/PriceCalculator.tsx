@@ -5,7 +5,6 @@ import {
   VehicleSize,
   WrapMaterial,
   DesignOption,
-  ShippingOption
 } from '@/utils/vehiclePricingData';
 
 import CalculatorHeader from './calculator/CalculatorHeader';
@@ -13,7 +12,6 @@ import VehicleSelector from './calculator/VehicleSelector';
 import MaterialSelector from './calculator/MaterialSelector';
 import CoverageSlider from './calculator/CoverageSlider';
 import DesignSelector from './calculator/DesignSelector';
-import ShippingSelector from './calculator/ShippingSelector';
 import InstallationNotice from './calculator/InstallationNotice';
 import { Button } from '@/components/ui/button';
 import { RefreshCcw } from 'lucide-react';
@@ -25,8 +23,6 @@ interface PriceCalculatorProps {
   setSelectedMaterial: (material: WrapMaterial) => void;
   selectedDesign: DesignOption;
   setSelectedDesign: (design: DesignOption) => void;
-  selectedShipping: ShippingOption;
-  setSelectedShipping: (shipping: ShippingOption) => void;
   coverage: number;
   setCoverage: (coverage: number) => void;
   resetAllSelections?: () => void;
@@ -39,8 +35,6 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
   setSelectedMaterial,
   selectedDesign,
   setSelectedDesign,
-  selectedShipping,
-  setSelectedShipping,
   coverage,
   setCoverage,
   resetAllSelections
@@ -99,12 +93,6 @@ const PriceCalculator: React.FC<PriceCalculatorProps> = ({
         <DesignSelector 
           selectedDesign={selectedDesign} 
           setSelectedDesign={setSelectedDesign} 
-        />
-        
-        {/* Shipping Options */}
-        <ShippingSelector 
-          selectedShipping={selectedShipping} 
-          setSelectedShipping={setSelectedShipping} 
         />
       </div>
 

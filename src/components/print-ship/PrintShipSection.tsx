@@ -13,8 +13,6 @@ const PrintShipContent: React.FC = () => {
     setSelectedMaterial,
     selectedDesign,
     setSelectedDesign,
-    selectedShipping,
-    setSelectedShipping,
     coverage,
     setCoverage,
     selectedAddOns,
@@ -35,8 +33,6 @@ const PrintShipContent: React.FC = () => {
       setSelectedMaterial={setSelectedMaterial}
       selectedDesign={selectedDesign}
       setSelectedDesign={setSelectedDesign}
-      selectedShipping={selectedShipping}
-      setSelectedShipping={setSelectedShipping}
       coverage={coverage}
       setCoverage={setCoverage}
       selectedAddOns={selectedAddOns}

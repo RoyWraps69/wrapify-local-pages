@@ -20,7 +20,7 @@ export const usePrintShipState = () => {
   const [selectedVehicle, setSelectedVehicle] = useState<VehicleSize>(vehicleSizes[1]);
   const [selectedMaterial, setSelectedMaterial] = useState<WrapMaterial>(wrapMaterials[0]);
   const [selectedDesign, setSelectedDesign] = useState<DesignOption>(designOptions[0]);
-  const [selectedShipping, setSelectedShipping] = useState<ShippingOption>(shippingOptions[0]);
+  const [selectedShipping] = useState<ShippingOption>(shippingOptions[0]); // Default shipping, no longer controlled by UI
   const [coverage, setCoverage] = useState(1); // 100% coverage by default
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [price, setPrice] = useState({ 
@@ -40,7 +40,6 @@ export const usePrintShipState = () => {
     setSelectedVehicle(vehicleSizes[1]); // Mid-Size
     setSelectedMaterial(wrapMaterials[0]); // Standard Vinyl
     setSelectedDesign(designOptions[0]); // Basic Design
-    setSelectedShipping(shippingOptions[0]); // Standard Shipping
     setCoverage(1); // 100% coverage
     setSelectedAddOns([]); // No add-ons
   };
@@ -134,7 +133,6 @@ export const usePrintShipState = () => {
     selectedDesign,
     setSelectedDesign,
     selectedShipping,
-    setSelectedShipping,
     coverage,
     setCoverage,
     selectedAddOns,

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import PriceCalculator from './PriceCalculator';
 import PriceSummary from './price-summary/PriceSummary';
-import { VehicleSize, WrapMaterial, DesignOption, ShippingOption } from '@/utils/vehiclePricingData';
+import { VehicleSize, WrapMaterial, DesignOption } from '@/utils/vehiclePricingData';
 
 interface PricingAndControlsProps {
   selectedVehicle: VehicleSize;
@@ -13,8 +13,6 @@ interface PricingAndControlsProps {
   setSelectedMaterial: (material: WrapMaterial) => void;
   selectedDesign: DesignOption;
   setSelectedDesign: (design: DesignOption) => void;
-  selectedShipping: ShippingOption;
-  setSelectedShipping: (shipping: ShippingOption) => void;
   coverage: number;
   setCoverage: (coverage: number) => void;
   price: {
@@ -38,8 +36,6 @@ const PricingAndControls: React.FC<PricingAndControlsProps> = ({
   setSelectedMaterial,
   selectedDesign,
   setSelectedDesign,
-  selectedShipping,
-  setSelectedShipping,
   coverage,
   setCoverage,
   price,
@@ -57,8 +53,6 @@ const PricingAndControls: React.FC<PricingAndControlsProps> = ({
         setSelectedMaterial={setSelectedMaterial}
         selectedDesign={selectedDesign}
         setSelectedDesign={setSelectedDesign}
-        selectedShipping={selectedShipping}
-        setSelectedShipping={setSelectedShipping}
         coverage={coverage}
         setCoverage={setCoverage}
         resetAllSelections={resetAllSelections}
