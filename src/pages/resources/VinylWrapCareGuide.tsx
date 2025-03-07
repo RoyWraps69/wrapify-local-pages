@@ -13,6 +13,14 @@ const VinylWrapCareGuide = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleDownloadGuide = () => {
+    // Create an analytics event if needed
+    console.log('PDF Guide Downloaded');
+    
+    // Direct link to the PDF file
+    window.open('/downloads/vinyl-wrap-care-guide.pdf', '_blank');
+  };
+
   return (
     <>
       <Helmet>
@@ -22,6 +30,78 @@ const VinylWrapCareGuide = () => {
           content="Expert tips on how to care for your vinyl vehicle wrap. Proper cleaning, maintenance and protection advice to extend the life of your car or fleet wrap."
         />
         <link rel="canonical" href="https://wrappingtheworld.com/vinyl-wrap-care-guide" />
+        
+        {/* Additional SEO meta tags */}
+        <meta property="og:title" content="Vinyl Wrap Care & Maintenance Guide | Wrapping The World" />
+        <meta property="og:description" content="Expert tips on how to care for your vinyl vehicle wrap. Download our free comprehensive care guide PDF." />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://wrappingtheworld.com/vinyl-wrap-care-guide" />
+        <meta property="og:image" content="https://wrappingtheworld.com/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "Vinyl Wrap Care & Maintenance Guide",
+            "description": "Expert tips on how to care for your vinyl vehicle wrap to maximize its lifespan and appearance.",
+            "image": "https://wrappingtheworld.com/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png",
+            "totalTime": "PT15M",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "name": "Regular Washing",
+                "text": "Hand wash with a gentle automotive detergent and a soft cloth or sponge, rinse thoroughly, and air dry or use a microfiber cloth.",
+                "image": "https://wrappingtheworld.com/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png",
+                "url": "https://wrappingtheworld.com/vinyl-wrap-care-guide#washing"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Removing Stains",
+                "text": "For tough stains, soak with warm soapy water, let sit, and gently wipe away. Use diluted isopropyl alcohol for persistent stains.",
+                "image": "https://wrappingtheworld.com/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png",
+                "url": "https://wrappingtheworld.com/vinyl-wrap-care-guide#stains"
+              },
+              {
+                "@type": "HowToStep",
+                "name": "Protecting From Elements",
+                "text": "Park in covered areas when possible, use a car cover for extended outdoor parking, and rinse off road salt regularly in winter.",
+                "image": "https://wrappingtheworld.com/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png",
+                "url": "https://wrappingtheworld.com/vinyl-wrap-care-guide#protection"
+              }
+            ],
+            "tool": [
+              {
+                "@type": "HowToTool",
+                "name": "Gentle automotive detergent"
+              },
+              {
+                "@type": "HowToTool",
+                "name": "Microfiber cloths"
+              },
+              {
+                "@type": "HowToTool",
+                "name": "Isopropyl alcohol (diluted 2:1 with water)"
+              }
+            ],
+            "supply": [
+              {
+                "@type": "HowToSupply",
+                "name": "Clean water"
+              },
+              {
+                "@type": "HowToSupply",
+                "name": "Car cover (optional)"
+              }
+            ],
+            "offers": {
+              "@type": "Offer",
+              "url": "https://wrappingtheworld.com/downloads/vinyl-wrap-care-guide.pdf",
+              "priceCurrency": "USD",
+              "price": "0",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
       </Helmet>
       
       <SEOSchema 
@@ -196,7 +276,10 @@ const VinylWrapCareGuide = () => {
                   <div id="download-guide" className="bg-wrap-blue text-white p-6 my-8 rounded-lg">
                     <h3 className="text-white mb-3">Download Our Complete Care Guide</h3>
                     <p>Get our detailed care guide with printable maintenance schedules and product recommendations.</p>
-                    <button className="bg-white text-wrap-blue px-6 py-2 rounded-md hover:bg-gray-100 transition-colors mt-2 flex items-center">
+                    <button 
+                      onClick={handleDownloadGuide}
+                      className="bg-white text-wrap-blue px-6 py-2 rounded-md hover:bg-gray-100 transition-colors mt-2 flex items-center"
+                    >
                       <FileText className="mr-2" size={18} />
                       Download PDF Guide
                     </button>

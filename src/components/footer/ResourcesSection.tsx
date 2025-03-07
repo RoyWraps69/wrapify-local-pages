@@ -7,6 +7,7 @@ type ResourceColumnProps = {
   links: Array<{
     to: string;
     label: string;
+    isDownload?: boolean;
   }>;
 };
 
@@ -16,9 +17,20 @@ const ResourceColumn = ({ title, links }: ResourceColumnProps) => (
     <ul className="space-y-2">
       {links.map((link, index) => (
         <li key={index}>
-          <Link to={link.to} className="text-wrap-light/70 text-sm hover:text-wrap-red transition-colors">
-            {link.label}
-          </Link>
+          {link.isDownload ? (
+            <a 
+              href={link.to} 
+              className="text-wrap-light/70 text-sm hover:text-wrap-red transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link to={link.to} className="text-wrap-light/70 text-sm hover:text-wrap-red transition-colors">
+              {link.label}
+            </Link>
+          )}
         </li>
       ))}
     </ul>
@@ -31,6 +43,7 @@ const ResourcesSection = () => {
       title: "Resources",
       links: [
         { to: "/resources/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
+        { to: "/downloads/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true },
         { to: "/resources/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
         { to: "/resources/design-template-library", label: "Design Template Library" },
         { to: "/support/wrap-installation-process", label: "Installation Process" },
