@@ -8,7 +8,7 @@ const TrainingTestimonials: React.FC = () => {
     {
       name: 'Jason Reynolds',
       business: 'Owner, Wrap Masters LLC',
-      testimonial: 'The 5-day intensive training completely transformed my approach to vehicle wrapping. The instructors were incredibly knowledgeable and patient. I've doubled my business since applying these techniques.',
+      testimonial: "The 5-day intensive training completely transformed my approach to vehicle wrapping. The instructors were incredibly knowledgeable and patient. I've doubled my business since applying these techniques.",
       image: '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png',
       rating: 5
     },
@@ -22,7 +22,7 @@ const TrainingTestimonials: React.FC = () => {
     {
       name: 'Michael Chen',
       business: 'Car Enthusiast',
-      testimonial: 'As a DIY enthusiast, I wanted to learn how to properly wrap my own vehicles. The 3-day course was perfect for my needs. Now I'm helping friends with their projects too!',
+      testimonial: "As a DIY enthusiast, I wanted to learn how to properly wrap my own vehicles. The 3-day course was perfect for my needs. Now I'm helping friends with their projects too!",
       image: '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png',
       rating: 5
     }

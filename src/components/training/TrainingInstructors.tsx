@@ -8,7 +8,7 @@ const TrainingInstructors: React.FC = () => {
       name: 'Mike Johnson',
       title: 'Lead Instructor, Master Wrapper',
       experience: '30+ years experience',
-      bio: 'Mike has been wrapping vehicles since vinyl wraps first entered the market. He's worked with major automotive brands and has wrapped everything from luxury sports cars to commercial fleet vehicles.',
+      bio: "Mike has been wrapping vehicles since vinyl wraps first entered the market. He's worked with major automotive brands and has wrapped everything from luxury sports cars to commercial fleet vehicles.",
       image: '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png'
     },
     {
@@ -22,7 +22,7 @@ const TrainingInstructors: React.FC = () => {
       name: 'David Martinez',
       title: 'Technical Instructor',
       experience: '12+ years experience',
-      bio: 'David's expertise is in complex installations and problem-solving. He specializes in teaching students how to handle challenging surfaces and unusual vehicle configurations.',
+      bio: "David's expertise is in complex installations and problem-solving. He specializes in teaching students how to handle challenging surfaces and unusual vehicle configurations.",
       image: '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png'
     }
   ];
