@@ -17,12 +17,13 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   backgroundImage,
   fleetWrapBackground
 }) => {
-  // Use a single background image instead of trying to validate multiple
-  const fallbackImage = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png'; 
+  // Default fallback image if everything else fails
+  const fallbackImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png'; 
   
   // Simplify to a direct usage of backgroundImage or fallback to a static image
   const currentBackground = backgroundImage || 
     backgrounds[activeBackground] || 
+    fleetWrapBackground ||
     fallbackImage;
     
   // Log background for debugging
@@ -32,7 +33,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
 
   return (
     <>
-      {/* Single background with no transitions for reliability */}
+      {/* Single background with parallax effect */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
@@ -43,13 +44,13 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
         }}
       />
       
-      {/* Increased opacity overlay for better text readability */}
-      <div className="absolute inset-0 bg-black opacity-75 z-1"></div>
+      {/* Darker overlay for better text readability */}
+      <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
       
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
         style={{
-          backgroundImage: "url('/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png')",
+          backgroundImage: "url('/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png')",
           backgroundSize: "contain",
           backgroundPosition: "right bottom",
           mixBlendMode: "overlay"

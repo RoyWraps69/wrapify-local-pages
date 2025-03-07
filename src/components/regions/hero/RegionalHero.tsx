@@ -8,8 +8,8 @@ interface RegionalHeroProps {
   regionImage: string;
 }
 
-// Single reliable background image - Bratcher fleet vans
-const fallbackImage = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png';
+// Updated reliable background image - Blue/red van with American flag
+const fallbackImage = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   // Use the provided regionImage or fall back to our reliable image
@@ -30,7 +30,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       />
       
       {/* Increased dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black opacity-75 z-1"></div>
+      <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">

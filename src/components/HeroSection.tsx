@@ -9,21 +9,15 @@ interface HeroSectionProps {
   backgroundImage?: string;
 }
 
-// Vehicle background images for carousel - matching the DynamicHeroSection
+// Updated vehicle backgrounds with new uploaded images
 const vehicleBackgrounds = [
-  '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // #1 Blue Ford truck
-  '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // #2 Tesla Cybertruck green camo
-  '/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png', // #3 Tesla Cybertruck black camo
-  '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png', // #4 Blue Lexus
-  '/lovable-uploads/82b9909a-f0d1-4fd3-aa13-a2e8c40659af.png', // #5 Fighting Illini bus
-  '/lovable-uploads/39af2f7f-a89b-42b4-833b-75a980a647ba.png', // #6 Red vintage car
-  '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png', // #7 Bratcher fleet vans
-  '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png', // #8 White Chevy truck
-  '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png', // #9 White BMW sedan
-  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // #10 Tesla Model 3
-  '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png', // #11 Jeep Wrangler
-  '/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png', // #12 Ford Transit van
-  '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png'  // #13 Corvette sports car
+  '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png', // Blue/red van with American flag 
+  '/lovable-uploads/bd00fa2f-6aa7-4400-ac3f-100c2b957604.png', // Green/orange leprechaun car
+  '/lovable-uploads/3ab4ec3b-922a-452c-997a-58979643de96.png', // ProTap white/gold van
+  '/lovable-uploads/534b738a-234d-4256-b471-ec668cdf8035.png', // DinoRoof truck with dinosaur
+  '/lovable-uploads/591f84c2-c45c-4b93-a7c8-66da870f3cf8.png', // White Mercedes with blue windows
+  '/lovable-uploads/8c159fc0-a3cf-4be9-87e1-f30adcef078e.png', // Hot pink car wrap
+  '/lovable-uploads/3906054e-2f97-4984-ba74-f8e08d20db82.png', // T-Mobile pink truck
 ];
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
@@ -46,7 +40,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     }, 5000);
     
     // Log for debugging
-    console.log("HeroSection - All background images:", vehicleBackgrounds);
+    console.log("HeroSection - Using new vehicle wrap images");
     console.log("HeroSection - Current background:", currentBackground);
     
     return () => clearInterval(intervalId);
@@ -66,7 +60,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       />
       
       {/* Darker overlay for better text readability */}
-      <div className="absolute inset-0 bg-black opacity-40 z-1"></div>
+      <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
       
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">

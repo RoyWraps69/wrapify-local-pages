@@ -13,16 +13,19 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
-// Simplified hero backgrounds - using only the most reliable images
+// New hero backgrounds with the uploaded vehicle wrap images
 const heroBackgrounds = [
-  '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png', // Bratcher fleet vans
-  '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
-  '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png', // White Chevy truck
-  '/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png', // Tesla Cybertruck black
+  '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png', // Blue/red van with American flag 
+  '/lovable-uploads/bd00fa2f-6aa7-4400-ac3f-100c2b957604.png', // Green/orange leprechaun car
+  '/lovable-uploads/3ab4ec3b-922a-452c-997a-58979643de96.png', // ProTap white/gold van
+  '/lovable-uploads/534b738a-234d-4256-b471-ec668cdf8035.png', // DinoRoof truck with dinosaur
+  '/lovable-uploads/591f84c2-c45c-4b93-a7c8-66da870f3cf8.png', // White Mercedes with blue windows
+  '/lovable-uploads/8c159fc0-a3cf-4be9-87e1-f30adcef078e.png', // Hot pink car wrap
+  '/lovable-uploads/3906054e-2f97-4984-ba74-f8e08d20db82.png', // T-Mobile pink truck
 ];
 
-// Fleet wrap background to use as default
-const fleetWrapBackground = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png';
+// Fleet wrap background to use as default fallback
+const fleetWrapBackground = '/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png';
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
   townName = 'Chicago',
@@ -48,6 +51,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     
     window.addEventListener('scroll', handleScroll);
     
+    console.log("DynamicHero - Using new vehicle wrap images");
     console.log("DynamicHero - Initial background:", heroBackgrounds[0]);
     
     return () => {
