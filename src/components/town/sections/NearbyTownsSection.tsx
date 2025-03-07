@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight, Navigation, Building } from 'lucide-react';
 import { getNearbyTowns } from '@/utils/townFunctions';
 
 interface NearbyTownsSectionProps {
@@ -23,7 +23,7 @@ const NearbyTownsSection: React.FC<NearbyTownsSectionProps> = ({
   }
   
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50" id="nearby-towns">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center mb-8">
@@ -43,20 +43,43 @@ const NearbyTownsSection: React.FC<NearbyTownsSectionProps> = ({
               <Link 
                 key={town.id}
                 to={`/locations/${town.id}`}
-                className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition-all flex flex-col border border-gray-100"
+                className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition-all flex flex-col border border-gray-100 hover:border-wrap-red"
+                aria-label={`Vehicle wrapping services in ${town.name}, ${town.state}`}
               >
-                <h3 className="text-lg font-semibold text-wrap-blue mb-2">{town.name}, {town.state}</h3>
-                <p className="text-sm text-wrap-grey mb-3 flex-grow">
-                  {town.distance} miles from Chicago
-                </p>
-                <div className="flex justify-between items-center mt-auto">
-                  <span className="text-xs text-wrap-grey">Pop: {town.population.toLocaleString()}</span>
-                  <span className="text-wrap-red text-sm flex items-center">
-                    Visit <ArrowRight size={14} className="ml-1" />
+                <h3 className="text-lg font-semibold text-wrap-blue mb-2 flex items-center">
+                  <span>{town.name}, {town.state}</span>
+                  <ArrowRight size={14} className="ml-2 text-wrap-red opacity-70" />
+                </h3>
+                
+                <div className="flex flex-col space-y-2 text-sm text-wrap-grey mb-4">
+                  <div className="flex items-center">
+                    <Building className="mr-1 h-3 w-3" />
+                    <span>Population: {town.population.toLocaleString()}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Navigation className="mr-1 h-3 w-3" />
+                    <span>{town.distance} miles from Chicago</span>
+                  </div>
+                </div>
+                
+                <div className="mt-auto pt-2 border-t border-gray-100">
+                  <span className="text-xs text-wrap-blue flex items-center">
+                    View wrapping services
+                    <ArrowRight size={12} className="ml-1" />
                   </span>
                 </div>
               </Link>
             ))}
+          </div>
+          
+          <div className="mt-10 text-center">
+            <Link 
+              to="/locations" 
+              className="inline-flex items-center justify-center px-6 py-3 bg-wrap-blue text-white rounded-md hover:bg-wrap-blue/90 transition-colors"
+            >
+              <span>View All Service Locations</span>
+              <ArrowRight size={16} className="ml-2" />
+            </Link>
           </div>
         </div>
       </div>

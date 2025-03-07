@@ -20,10 +20,14 @@ const RegionalCoverageSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-48 bg-center bg-cover" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1494522855154-9297ac14b55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}></div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden group">
+            <div className="h-48 bg-center bg-cover relative" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1494522855154-9297ac14b55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}>
+              <div className="absolute inset-0 bg-wrap-blue/40 group-hover:bg-wrap-blue/30 transition-all"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <h3 className="text-xl font-serif font-semibold text-white mb-1">Illinois</h3>
+              </div>
+            </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-2">Illinois</h3>
               <p className="text-wrap-grey mb-4">
                 Comprehensive vehicle wrapping services throughout Illinois, with special focus on Chicago and surrounding suburbs.
               </p>
@@ -37,10 +41,14 @@ const RegionalCoverageSection = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-48 bg-center bg-cover" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534270804882-7b71aaece2e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}></div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden group">
+            <div className="h-48 bg-center bg-cover relative" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1534270804882-7b71aaece2e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}>
+              <div className="absolute inset-0 bg-wrap-blue/40 group-hover:bg-wrap-blue/30 transition-all"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <h3 className="text-xl font-serif font-semibold text-white mb-1">Michigan</h3>
+              </div>
+            </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-2">Michigan</h3>
               <p className="text-wrap-grey mb-4">
                 Professional vehicle wrapping and ceramic coating services across Michigan, from Detroit to Grand Rapids.
               </p>
@@ -54,10 +62,14 @@ const RegionalCoverageSection = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-48 bg-center bg-cover" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1676280128518-f314ba87a5ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}></div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden group">
+            <div className="h-48 bg-center bg-cover relative" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1676280128518-f314ba87a5ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}>
+              <div className="absolute inset-0 bg-wrap-blue/40 group-hover:bg-wrap-blue/30 transition-all"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <h3 className="text-xl font-serif font-semibold text-white mb-1">Indiana</h3>
+              </div>
+            </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-2">Indiana</h3>
               <p className="text-wrap-grey mb-4">
                 Premium vehicle wrapping solutions for Indiana businesses, from Indianapolis to Northwest Indiana.
               </p>
@@ -71,10 +83,14 @@ const RegionalCoverageSection = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="h-48 bg-center bg-cover" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1596720685811-58ec259bfd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}></div>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden group">
+            <div className="h-48 bg-center bg-cover relative" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1596720685811-58ec259bfd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')" }}>
+              <div className="absolute inset-0 bg-wrap-blue/40 group-hover:bg-wrap-blue/30 transition-all"></div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
+                <h3 className="text-xl font-serif font-semibold text-white mb-1">Wisconsin</h3>
+              </div>
+            </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-2">Wisconsin</h3>
               <p className="text-wrap-grey mb-4">
                 Expert vehicle wrapping and protection services across Wisconsin, including Milwaukee, Madison, and Green Bay.
               </p>
@@ -95,7 +111,7 @@ const RegionalCoverageSection = () => {
           </p>
           <Link
             to="/print-ship"
-            className="inline-flex items-center bg-wrap-blue text-white px-6 py-3 rounded-md hover:bg-wrap-blue-dark transition-colors"
+            className="inline-flex items-center bg-wrap-blue text-white px-6 py-3 rounded-md hover:bg-wrap-blue/90 transition-colors"
           >
             <span className="mr-2">Learn About Nationwide Services</span>
             <ExternalLink size={16} />
