@@ -33,6 +33,17 @@ export const generateResponse = async (message: string, locationName: string): P
   // Find location-specific information
   const townData = getTownByName(locationName);
   
+  // Check for name queries
+  if (
+    lowercaseMessage.includes('what is your name') ||
+    lowercaseMessage.includes('who are you') ||
+    lowercaseMessage.includes('what should i call you') ||
+    lowercaseMessage.includes('chatbot name') ||
+    lowercaseMessage.includes('your name')
+  ) {
+    return `I'm Wrapmaster 3000, your virtual assistant for vehicle wrapping and ceramic coating services in ${locationName}. How can I help you today?`;
+  }
+  
   // Check for scheduling related queries
   if (
     lowercaseMessage.includes('schedule') ||
