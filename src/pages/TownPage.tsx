@@ -15,37 +15,41 @@ const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [townData, setTownData] = useState<any>(null);
   
   useScrollAnimation();
   
   console.log("TownPage rendering with townSlug:", townSlug);
+  
+  // Get town data and handle loading state
+  useEffect(() => {
+    if (!townSlug) {
+      console.error("No townSlug provided");
+      navigate('/not-found', { replace: true });
+      return;
+    }
+    
+    const fetchedTownData = getTownData(townSlug);
+    console.log("TownPage useEffect running, fetchedTownData:", fetchedTownData);
+    
+    if (!fetchedTownData) {
+      console.log(`Town not found for slug: ${townSlug}, redirecting to 404`);
+      navigate('/not-found', { replace: true });
+      return;
+    }
+
+    setTownData(fetchedTownData);
+    setLoading(false);
+    window.scrollTo(0, 0);
+    
+    console.log(`Town page loaded successfully for: ${fetchedTownData?.name} with id: ${fetchedTownData?.id}`);
+  }, [townSlug, navigate]);
   
   // Log all available towns for debugging
   useEffect(() => {
     const allTowns = getAllTowns();
     console.log("All available towns:", allTowns.map(t => ({id: t.id, name: t.name})));
   }, []);
-  
-  // Get town data and handle loading state
-  const townData = getTownData(townSlug || '');
-  
-  useEffect(() => {
-    console.log("TownPage useEffect running, townData:", townData);
-    
-    if (!townData && townSlug) {
-      console.log(`Town not found for slug: ${townSlug}, redirecting to 404`);
-      navigate('/not-found', { replace: true });
-      return;
-    }
-    
-    window.scrollTo(0, 0);
-    setLoading(false);
-    
-    if (townData) {
-      console.log(`Town page loaded successfully for: ${townData?.name} with id: ${townData?.id}`);
-    }
-    
-  }, [townSlug, townData, navigate]);
   
   if (loading) {
     return (
@@ -59,7 +63,6 @@ const TownPage: React.FC = () => {
   }
   
   if (!townData) {
-    console.log("No town data found, returning null");
     return null; // Will be redirected by the useEffect
   }
   
