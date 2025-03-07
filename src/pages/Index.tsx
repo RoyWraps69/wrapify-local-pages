@@ -10,6 +10,7 @@ import NationwideSection from '@/components/nationwide/NationwideSection';
 import PrintShipSection from '@/components/print-ship/PrintShipSection';
 import { getAllTowns } from '@/utils/townData';
 import { Helmet } from 'react-helmet-async';
+import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
 
 const Index = () => {
   console.log("Index component rendering");
@@ -179,6 +180,7 @@ const Index = () => {
         </section>
       </main>
       <Footer />
+      <ChatbotWithSchema />
     </>
   );
 };

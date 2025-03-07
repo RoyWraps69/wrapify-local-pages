@@ -4,6 +4,7 @@ import WarrantyHeader from './WarrantyHeader';
 import WarrantyPromise from './WarrantyPromise';
 import WarrantyAccordion from './WarrantyAccordion';
 import WarrantyCTA from './WarrantyCTA';
+import ChatbotWithSchema from '../chatbot/ChatbotWithSchema';
 
 const WarrantyContent = () => {
   return (
@@ -16,6 +17,8 @@ const WarrantyContent = () => {
           <WarrantyCTA />
         </div>
       </div>
+      
+      <ChatbotWithSchema initialMessage="Hello! I'm your virtual warranty assistant. I can answer any questions about our 5-year warranty coverage for vehicle wraps, ceramic coatings, and PPF. How can I help you today?" />
     </main>
   );
 };
