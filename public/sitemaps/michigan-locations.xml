@@ -1,0 +1,79 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Michigan Locations -->
+  <url>
+    <loc>https://wrappingtheworld.com/locations/detroit</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/detroit-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Detroit</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Detroit, MI</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/grand-rapids</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/grand-rapids-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Grand Rapids</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Grand Rapids, MI</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/ann-arbor</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/ann-arbor-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Ann Arbor</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Ann Arbor, MI</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/lansing</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/lansing-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Lansing</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Lansing, MI</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/kalamazoo</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/kalamazoo-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Kalamazoo</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Kalamazoo, MI</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/battle-creek</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/battle-creek-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Battle Creek</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Battle Creek, MI</image:caption>
+    </image:image>
+  </url>
+</urlset>

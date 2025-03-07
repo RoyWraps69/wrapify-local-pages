@@ -1,0 +1,79 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Indiana Locations -->
+  <url>
+    <loc>https://wrappingtheworld.com/locations/indianapolis</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/indianapolis-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Indianapolis</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Indianapolis, IN</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/fort-wayne</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/fort-wayne-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Fort Wayne</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Fort Wayne, IN</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/south-bend</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/south-bend-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in South Bend</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in South Bend, IN</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/gary</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/gary-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Gary</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Gary, IN</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/hammond</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/hammond-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Hammond</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Hammond, IN</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/merrillville</loc>
+    <lastmod>2024-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/merrillville-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Merrillville</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Merrillville, IN</image:caption>
+    </image:image>
+  </url>
+</urlset>
