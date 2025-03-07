@@ -179,8 +179,8 @@ const Index = () => {
           </div>
         </section>
       </main>
+      <ChatbotWithSchema initialMessage="Hello! How can I help you with vehicle wraps or ceramic coatings today? Ask me about services, pricing, or locations near you." />
       <Footer />
-      <ChatbotWithSchema />
     </>
   );
 };
