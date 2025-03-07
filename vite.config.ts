@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'dist',
     sourcemap: mode === 'development',
-    minify: 'terser',
+    minify: true, // Use true instead of 'terser' to let Vite choose the best minifier
     assetsDir: 'assets',
     // Improved asset handling
     assetsInlineLimit: 4096, // Inline assets smaller than 4kb
