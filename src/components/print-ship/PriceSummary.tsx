@@ -203,7 +203,7 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
         </div>
         
         <div className="mt-4 text-center text-white/80 text-sm">
-          <p>Or call us at (312) 555-WRAP for immediate assistance</p>
+          <p>Or call us at (312) 597-1286 for immediate assistance</p>
         </div>
       </div>
       
