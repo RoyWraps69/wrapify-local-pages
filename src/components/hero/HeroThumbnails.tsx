@@ -24,7 +24,7 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
   ];
 
   return (
-    <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-wrap justify-center gap-2 max-w-4xl px-4">
+    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-wrap justify-center gap-2 max-w-4xl px-4">
       {allThumbnails.map((bg, index) => (
         <button
           key={index}
