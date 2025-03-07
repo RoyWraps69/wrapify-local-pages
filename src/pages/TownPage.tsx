@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -150,8 +149,23 @@ const TownPage: React.FC = () => {
   const pageUrl = `/locations/${townSlug}`;
   const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
   
+  // Create a conversion function for FAQs
+  const convertJSXFaqsToStringFaqs = (jsxFaqs: { question: string; answer: React.ReactNode }[]) => {
+    return jsxFaqs.map(faq => ({
+      question: faq.question,
+      answer: typeof faq.answer === 'string' 
+        ? faq.answer 
+        : React.isValidElement(faq.answer) 
+          ? (faq.answer.props.children || '').toString() 
+          : ''
+    }));
+  };
+  
   // Create location FAQs
   const locationFaqs = createTownFAQs({ townName: name });
+  
+  // When generating the schema, convert JSX FAQs to string FAQs
+  const faqSchema = generateFAQSchema(convertJSXFaqsToStringFaqs(locationFaqs));
   
   // Generate structured data for this town page
   const localBusinessSchema = generateLocalBusinessSchema({ townName: name });
@@ -169,7 +183,6 @@ const TownPage: React.FC = () => {
     datePublished: "2023-01-15T08:00:00+08:00",
     dateModified: new Date().toISOString()
   });
-  const faqSchema = generateFAQSchema(locationFaqs);
   
   // Keywords for this town
   const keywords = `vehicle wraps ${name}, commercial fleet wraps ${name}, ${stateFullName} vehicle branding, car wraps ${name}, ceramic coating ${name}, paint protection film ${stateFullName}, business vehicle graphics ${name}, ${name} wrap shop, mobile advertising ${name}, premium vehicle wraps ${stateFullName}`;

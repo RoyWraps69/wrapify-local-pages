@@ -1,4 +1,6 @@
 
+// Only modifying parts that handle the faqs property
+
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -71,6 +73,7 @@ const ServicePage: React.FC = () => {
   ]);
   
   // Convert service FAQs to the format needed for schema
+  // Handle the case where service.faqs might be undefined
   const serviceFAQs = service.faqs ? service.faqs.map(faq => ({
     question: faq.question,
     answer: faq.answer

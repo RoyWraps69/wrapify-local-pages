@@ -1,20 +1,20 @@
 
 import { FAQ } from '@/components/insurance/InsuranceFAQSection';
 import { 
-  generateInsuranceSchema,
-  generateFAQSchema as generateFAQSchemaFromUtil
+  generateInsuranceSchema as generateBaseInsuranceSchema,
+  generateFAQSchema as generateBaseFAQSchema
 } from '../seo/schemaGenerator';
 
 /**
  * @deprecated Use the utilities in src/utils/seo/schemaGenerator.ts instead
  */
-export const generateInsuranceSchema = () => {
-  return generateInsuranceSchema();
+export const generateLegacyInsuranceSchema = () => {
+  return generateBaseInsuranceSchema();
 };
 
 /**
  * @deprecated Use the utilities in src/utils/seo/schemaGenerator.ts instead
  */
-export const generateFAQSchema = (faqs: FAQ[] = []) => {
-  return generateFAQSchemaFromUtil(faqs);
+export const generateLegacyFAQSchema = (faqs: FAQ[] = []) => {
+  return generateBaseFAQSchema(faqs);
 };

@@ -6,7 +6,7 @@ import InsurancePlansSection from '@/components/insurance/InsurancePlansSection'
 import InsuranceFAQSection, { FAQ } from '@/components/insurance/InsuranceFAQSection';
 import InsuranceCTASection from '@/components/insurance/InsuranceCTASection';
 import PageSEO from '@/components/seo/PageSEO';
-import { generateInsuranceSchemas } from '@/utils/seo/schemaGenerator';
+import { generateInsuranceSchemas, generateFAQSchema } from '@/utils/seo/schemaGenerator';
 
 const WrapInsurance = () => {
   const [selectedPlan, setSelectedPlan] = useState<string>('gold');
