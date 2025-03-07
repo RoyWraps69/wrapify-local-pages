@@ -8,12 +8,21 @@ interface RegionalHeroProps {
   regionImage: string;
 }
 
-// Vehicle background images for carousel - ensured all clearly show vehicles
+// Vehicle background images for carousel - matching the main hero images
 const vehicleBackgrounds = [
   '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
   '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
   '/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png', // Tesla Cybertruck black
-  '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png'  // Blue Lexus sports car
+  '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png', // Blue Lexus sports car
+  '/lovable-uploads/82b9909a-f0d1-4fd3-aa13-a2e8c40659af.png', // Fighting Illini bus
+  '/lovable-uploads/39af2f7f-a89b-42b4-833b-75a980a647ba.png', // Red vintage car
+  '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png', // Bratcher fleet vans
+  '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png', // White Chevy truck
+  '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png', // White BMW sedan
+  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Tesla Model 3
+  '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png', // Jeep Wrangler
+  '/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png', // Ford Transit van
+  '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png'  // Corvette sports car
 ];
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {

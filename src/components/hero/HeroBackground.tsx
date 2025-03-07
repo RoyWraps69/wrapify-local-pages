@@ -39,6 +39,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
         );
       })}
       
+      {/* Subtle dark overlay to improve text readability */}
+      <div className="absolute inset-0 bg-black opacity-30 z-1"></div>
+      
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
         style={{
