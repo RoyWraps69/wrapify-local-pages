@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm run build"
+  command = "npm run build --legacy-peer-deps"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -67,7 +67,7 @@
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm run build"
+  command = "npm run build --legacy-peer-deps"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -77,7 +77,7 @@
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm run build"
+  command = "npm run build --legacy-peer-deps"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
