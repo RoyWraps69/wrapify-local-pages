@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Shopping from './pages/Shopping';
 import ShoppingProduct from './pages/ShoppingProduct';
 import PrintShip from './pages/PrintShip';
+import TrainingClasses from './pages/TrainingClasses';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Gallery from './pages/Gallery';
@@ -32,6 +33,7 @@ function App() {
           <Route path="/shopping" element={<Shopping />} />
           <Route path="/shopping/:productId" element={<ShoppingProduct />} />
           <Route path="/print-ship" element={<PrintShip />} />
+          <Route path="/training-classes" element={<TrainingClasses />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/login" element={<Login />} />

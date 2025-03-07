@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Printer } from 'lucide-react';
+import { Menu, X, Phone, Printer, GraduationCap } from 'lucide-react';
 import ServicesDropdown from '../components/navbar/ServicesDropdown';
 import ResourcesDropdown from '../components/navbar/ResourcesDropdown';
 import LocationsDropdown from '../components/navbar/LocationsDropdown';
@@ -76,6 +76,13 @@ const Navbar: React.FC = () => {
               <Printer className="mr-1" size={16} />
               Print & Ship
             </Link>
+            <Link
+              to="/training-classes"
+              className="flex items-center px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
+            >
+              <GraduationCap className="mr-1" size={16} />
+              Training Classes
+            </Link>
             <LocationsDropdown />
             <ResourcesDropdown />
             <Link
@@ -146,6 +153,13 @@ const Navbar: React.FC = () => {
               >
                 <Printer className="mr-1" size={16} />
                 Print & Ship
+              </Link>
+              <Link
+                to="/training-classes"
+                className="flex items-center px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
+              >
+                <GraduationCap className="mr-1" size={16} />
+                Training Classes
               </Link>
               <div className="px-3 py-2">
                 <p className="font-medium text-wrap-grey mb-2">Locations</p>
