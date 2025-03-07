@@ -13,13 +13,11 @@ interface DynamicHeroSectionProps {
   backgroundImage?: string;
 }
 
-// Updated hero backgrounds with impressive vehicle photos
+// Updated hero backgrounds with visible car photos only
 const heroBackgrounds = [
   '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
   '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
   '/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png', // Tesla Cybertruck black camo
-  '/lovable-uploads/712c766b-dd74-41af-942c-ef67e92c62c8.png', // Rivian truck
-  '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png', // Fleet of Rivian trucks
   '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png', // Blue Lexus sports car
   '/lovable-uploads/82b9909a-f0d1-4fd3-aa13-a2e8c40659af.png', // Fighting Illini bus
   '/lovable-uploads/39af2f7f-a89b-42b4-833b-75a980a647ba.png'  // Red vintage car
@@ -67,7 +65,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   };
   
   return (
-    <section className="hero-section relative min-h-screen w-full overflow-hidden">
+    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
       <HeroBackground 
         backgrounds={heroBackgrounds}
         activeBackground={activeBackground}
@@ -79,7 +77,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
         <div className="max-w-3xl mt-16 md:mt-0 text-center">
           <div className={cn(
-            "transition-all duration-1000 transform backdrop-blur-sm bg-black/10 p-6 rounded-lg",
+            "transition-all duration-1000 transform backdrop-blur-sm bg-black/25 p-6 rounded-lg",
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           )}>
             {/* Big WRAPPING THE WORLD logo - with object-contain to maintain aspect ratio */}
@@ -106,12 +104,12 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
         </div>
       </div>
       
-      {/* Carousel indicators */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2 z-20">
+      {/* Carousel indicators - moved up to avoid overlapping with text */}
+      <div className="absolute bottom-24 md:bottom-16 left-0 right-0 flex justify-center gap-2 z-20">
         {heroBackgrounds.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full ${index === activeBackground ? 'bg-wrap-red' : 'bg-white/50'}`}
+            className={`w-3 h-3 rounded-full transition-all ${index === activeBackground ? 'bg-wrap-red scale-110' : 'bg-white/70'}`}
             onClick={() => setActiveBackground(index)}
             aria-label={`Switch to background ${index + 1}`}
           />

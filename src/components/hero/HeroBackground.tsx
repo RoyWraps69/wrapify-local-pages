@@ -26,7 +26,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
           <div
             key={index}
             className={cn(
-              "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out overflow-hidden",
+              "absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out",
               activeBackground === index ? "opacity-100" : "opacity-0"
             )}
             style={{
@@ -40,7 +40,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
       })}
       
       {/* Vehicle silhouette overlay effect for added dimension */}
-      <div className="absolute inset-0 bg-center bg-no-repeat opacity-15 overflow-hidden"
+      <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
         style={{
           backgroundImage: "url('/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png')",
           backgroundSize: "contain",

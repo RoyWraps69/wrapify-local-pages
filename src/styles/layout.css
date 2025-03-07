@@ -11,7 +11,6 @@
 .hero-section {
   @apply relative overflow-hidden;
   min-height: calc(100vh - 5rem);
-  background-image: linear-gradient(to right, rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.7));
   background-size: cover;
   background-position: center;
 }

@@ -8,11 +8,11 @@ interface RegionalHeroProps {
   regionImage: string;
 }
 
-// Vehicle background images for carousel
+// Vehicle background images for carousel - ensured all clearly show vehicles
 const vehicleBackgrounds = [
   '/lovable-uploads/15b9c65f-a662-4712-a305-d20c02f5ca70.png', // Blue Ford truck
   '/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png', // Tesla Cybertruck green camo
-  '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png', // Fleet of Rivian trucks
+  '/lovable-uploads/367237b5-2640-4f95-87eb-9a1f9f0b6696.png', // Tesla Cybertruck black
   '/lovable-uploads/6f06c0f2-2138-4d06-87b1-52a216974632.png'  // Blue Lexus sports car
 ];
 
@@ -32,7 +32,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   }, []);
   
   return (
-    <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden">
+    <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
       {/* Background image */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
@@ -74,12 +74,12 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
         </div>
       </div>
       
-      {/* Background image indicators */}
-      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+      {/* Background image indicators - repositioned */}
+      <div className="absolute bottom-16 left-0 right-0 flex justify-center gap-2 z-10">
         {vehicleBackgrounds.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full ${index === currentBgIndex ? 'bg-wrap-red' : 'bg-white/50'}`}
+            className={`w-3 h-3 rounded-full transition-all ${index === currentBgIndex ? 'bg-wrap-red scale-110' : 'bg-white/70'}`}
             onClick={() => setCurrentBgIndex(index)}
             aria-label={`Switch to background ${index + 1}`}
           />
