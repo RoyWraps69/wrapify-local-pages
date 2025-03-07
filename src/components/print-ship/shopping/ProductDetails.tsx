@@ -1,9 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ShopItem } from '@/components/print-ship/types/installer';
 import { Button } from '@/components/ui/button';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
-import { ChevronLeft, ShoppingCart, Star, Package, Shield, Palette, Shirt } from 'lucide-react';
+import { ChevronLeft, ShoppingCart, Star, Package, Shield, Palette, Shirt, Image } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
 interface ProductDetailsProps {
@@ -11,9 +11,18 @@ interface ProductDetailsProps {
   onBackToShop: () => void;
 }
 
+// Sample additional product images
+const sampleImages = [
+  "/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png",
+  "/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png",
+  "/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png",
+  "/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png"
+];
+
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBackToShop }) => {
   const { addItem } = useShoppingCart();
   const { toast } = useToast();
+  const [activeImage, setActiveImage] = useState(product.image || sampleImages[0]);
   
   // Get icon based on category
   let icon;
@@ -42,6 +51,10 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBackToShop }
     });
   };
   
+  // Generate product images - use sample images if product doesn't have its own
+  const productImages = product.images || 
+    (product.image ? [product.image, ...sampleImages.slice(0, 3)] : sampleImages);
+  
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden">
       <button 
@@ -52,18 +65,35 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBackToShop }
       </button>
       
       <div className="grid md:grid-cols-2 gap-6 p-6">
-        {/* Product Image */}
-        <div className={`rounded-lg overflow-hidden flex items-center justify-center h-[400px]
-          ${!product.image && !product.color ? 'bg-gradient-to-r from-blue-500 to-purple-500' : ''}
-        `} style={product.color ? { backgroundColor: product.color } : {}}>
-          {product.image ? (
-            <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-          ) : (
-            <div className="text-white text-center p-8">
-              {React.cloneElement(icon, { size: 128 })}
-              <p className="mt-4 text-xl font-medium">Product Visualization</p>
-            </div>
-          )}
+        {/* Product Image Gallery */}
+        <div className="space-y-4">
+          <div className={`rounded-lg overflow-hidden flex items-center justify-center h-[400px]
+            ${!activeImage && !product.color ? 'bg-gradient-to-r from-blue-500 to-purple-500' : ''}
+          `} style={!activeImage && product.color ? { backgroundColor: product.color } : {}}>
+            {activeImage ? (
+              <img src={activeImage} alt={product.name} className="w-full h-full object-cover" />
+            ) : (
+              <div className="text-white text-center p-8">
+                {React.cloneElement(icon, { size: 128 })}
+                <p className="mt-4 text-xl font-medium">Product Visualization</p>
+              </div>
+            )}
+          </div>
+          
+          {/* Thumbnail gallery */}
+          <div className="flex space-x-2 overflow-x-auto pb-2">
+            {productImages.map((img, index) => (
+              <button 
+                key={index}
+                onClick={() => setActiveImage(img)}
+                className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 transition-all ${
+                  activeImage === img ? 'border-wrap-red' : 'border-gray-200'
+                }`}
+              >
+                <img src={img} alt={`${product.name} view ${index + 1}`} className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
         </div>
         
         {/* Product Info */}
@@ -124,6 +154,25 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBackToShop }
             >
               <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
             </Button>
+          </div>
+        </div>
+      </div>
+      
+      {/* Product example gallery */}
+      <div className="p-6 border-t border-gray-100">
+        <h2 className="text-xl font-medium text-wrap-blue mb-4">Example Applications</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="rounded-lg overflow-hidden h-32 shadow-sm">
+            <img src="/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png" alt="Example 1" className="w-full h-full object-cover" />
+          </div>
+          <div className="rounded-lg overflow-hidden h-32 shadow-sm">
+            <img src="/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png" alt="Example 2" className="w-full h-full object-cover" />
+          </div>
+          <div className="rounded-lg overflow-hidden h-32 shadow-sm">
+            <img src="/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png" alt="Example 3" className="w-full h-full object-cover" />
+          </div>
+          <div className="rounded-lg overflow-hidden h-32 shadow-sm">
+            <img src="/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png" alt="Example 4" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
