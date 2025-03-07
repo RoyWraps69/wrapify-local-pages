@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -7,8 +6,8 @@ import Footer from '@/components/footer/Footer';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import RegionalPageContent from '@/components/regions/RegionalPageContent';
 import { toast } from 'sonner';
+import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
 
-// Define reliable region background images
 const regionBackgroundImages = [
   '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
   '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
@@ -25,12 +24,10 @@ const RegionPage: React.FC = () => {
   );
   const [imageLoaded, setImageLoaded] = useState(false);
   
-  // Format region name for display (convert "illinois" to "Illinois")
   const formattedRegionName = regionName 
     ? regionName.charAt(0).toUpperCase() + regionName.slice(1) 
     : '';
   
-  // Preload the background image and fallback if needed
   useEffect(() => {
     const img = new Image();
     img.src = regionImage;
@@ -40,13 +37,11 @@ const RegionPage: React.FC = () => {
     };
     img.onerror = () => {
       console.error("Region background image failed to load, using fallback");
-      // If the image fails to load, try another one
       const nextImageIndex = (regionBackgroundImages.indexOf(regionImage) + 1) % regionBackgroundImages.length;
       setRegionImage(regionBackgroundImages[nextImageIndex]);
     };
   }, [regionImage]);
   
-  // Validate region name
   useEffect(() => {
     const validRegions = ['illinois', 'indiana', 'michigan', 'wisconsin'];
     
@@ -57,7 +52,6 @@ const RegionPage: React.FC = () => {
       navigate('/locations');
     }
     
-    // Scroll to top on page load
     window.scrollTo(0, 0);
   }, [regionName, navigate]);
   
@@ -105,6 +99,10 @@ const RegionPage: React.FC = () => {
       />
       
       <RegionalPageContent regionName={formattedRegionName} />
+      
+      <ChatbotWithSchema 
+        initialMessage={`Hello! I'm your virtual assistant for the ${formattedRegionName} region. How can I help you with vehicle wraps, ceramic coatings, or paint protection services in your area?`}
+      />
       
       <Footer />
     </>

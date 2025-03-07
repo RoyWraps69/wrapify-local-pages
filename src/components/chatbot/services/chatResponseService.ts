@@ -1,3 +1,4 @@
+
 import { getTownByName, getNearbyTowns } from '@/utils/townFunctions';
 import { installers } from '@/components/print-ship/data/installers';
 
@@ -32,6 +33,17 @@ export const generateResponse = async (message: string, locationName: string): P
   // Find location-specific information
   const townData = getTownByName(locationName);
   
+  // Check for scheduling related queries
+  if (
+    lowercaseMessage.includes('schedule') ||
+    lowercaseMessage.includes('appointment') ||
+    lowercaseMessage.includes('booking') ||
+    lowercaseMessage.includes('consult') ||
+    lowercaseMessage.includes('calendar')
+  ) {
+    return `I'd be happy to help you schedule a consultation in ${locationName}. You can tell me "I'd like to book an appointment" and I'll help you set that up with our team. Would you like to schedule a consultation now?`;
+  }
+  
   // Check for installer requests
   if (lowercaseMessage.includes('installer') || lowercaseMessage.includes('shop') || lowercaseMessage.includes('location')) {
     // Find the nearest installer based on the current location
@@ -55,32 +67,32 @@ export const generateResponse = async (message: string, locationName: string): P
   
   // Respond to warranty questions
   if (lowercaseMessage.includes('warranty') || lowercaseMessage.includes('guarantee')) {
-    return `Our comprehensive 5-year warranty covers all professional vehicle wraps and ceramic coatings performed by our certified ${locationName} technicians. It includes protection against peeling, cracking, and excessive fading under normal conditions.`;
+    return `Our comprehensive 5-year warranty covers all professional vehicle wraps and ceramic coatings performed by our certified ${locationName} technicians. It includes protection against peeling, cracking, and excessive fading under normal conditions. You can schedule a consultation to learn more about our warranty options.`;
   }
   
   // Respond to pricing questions  
   if (lowercaseMessage.includes('price') || lowercaseMessage.includes('cost') || lowercaseMessage.includes('how much')) {
-    return `The cost of vehicle wraps in ${locationName} depends on your vehicle size and project needs. Full wraps typically range from $2,500-$6,000, while partial wraps start around $1,000. We're very competitive for the ${locationName} area and offer free consultations!`;
+    return `The cost of vehicle wraps in ${locationName} depends on your vehicle size and project needs. Full wraps typically range from $2,500-$6,000, while partial wraps start around $1,000. We're very competitive for the ${locationName} area and offer free consultations! Would you like to schedule one to get an exact quote?`;
   }
   
   // Respond to location questions
   if (lowercaseMessage.includes('address') || lowercaseMessage.includes('where')) {
-    return `Our ${locationName} installation center is located at 4711 N. Lamon Ave, Chicago. We're just 5 minutes from the Kennedy Expressway and serve all ${locationName} and surrounding areas!`;
+    return `Our ${locationName} installation center is located at 4711 N. Lamon Ave, Chicago. We're just 5 minutes from the Kennedy Expressway and serve all ${locationName} and surrounding areas! Would you like directions or to schedule a consultation at our facility?`;
   }
   
   // Respond to timeline questions
   if (lowercaseMessage.includes('time') || lowercaseMessage.includes('how long') || lowercaseMessage.includes('duration')) {
-    return `In our ${locationName} facility, a complete vehicle wrap typically takes 3-5 business days to install. Partial wraps may be completed in 1-2 days. Ceramic coating applications usually require 2-3 days, as we need time for proper curing in our climate-controlled environment.`;
+    return `In our ${locationName} facility, a complete vehicle wrap typically takes 3-5 business days to install. Partial wraps may be completed in 1-2 days. Ceramic coating applications usually require 2-3 days, as we need time for proper curing in our climate-controlled environment. Would you like to schedule a consultation to discuss your specific timeline needs?`;
   }
   
   // Respond to contact inquiries
   if (lowercaseMessage.includes('contact') || lowercaseMessage.includes('phone') || lowercaseMessage.includes('email')) {
-    return `You can reach our ${locationName} team at (312) 597-1286 or by email at info@wrappingtheworld.com. Our business hours are Monday-Friday 8am-6pm and Saturday 9am-3pm.`;
+    return `You can reach our ${locationName} team at (312) 597-1286 or by email at info@wrappingtheworld.com. Our business hours are Monday-Friday 8am-6pm and Saturday 9am-3pm. Would you prefer to schedule a consultation instead?`;
   }
 
   // Respond to ceramic coating inquiries
   if (lowercaseMessage.includes('ceramic') || lowercaseMessage.includes('coating')) {
-    return `Our ceramic coating services in ${locationName} provide exceptional protection against weather elements, road salt, and UV damage. We use premium nano-ceramic formulations that last up to 5 years and maintain your vehicle's shine in all ${locationName} weather conditions.`;
+    return `Our ceramic coating services in ${locationName} provide exceptional protection against weather elements, road salt, and UV damage. We use premium nano-ceramic formulations that last up to 5 years and maintain your vehicle's shine in all ${locationName} weather conditions. Would you like to schedule a consultation to learn more about ceramic coating options for your vehicle?`;
   }
   
   // Default response

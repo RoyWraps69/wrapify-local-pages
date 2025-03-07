@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
@@ -6,16 +5,8 @@ import Footer from '@/components/footer/Footer';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import ServicesBreadcrumb from '@/components/ServicesBreadcrumb';
 import { ServiceInfo } from '@/data/serviceData';
+import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
 
-// Import from the correct paths with content/ prefix
-import RegionalMainContent from '@/components/regions/content/RegionalMainContent';
-import CitiesServedGrid from '@/components/regions/cities/CitiesServedGrid';
-import ContactSidebar from '@/components/regions/sidebar/ContactSidebar';
-import ServicesSidebar from '@/components/regions/sidebar/ServicesSidebar';
-import NearbyRegionsSidebar from '@/components/regions/sidebar/NearbyRegionsSidebar';
-import RegionalCTA from '@/components/regions/cta/RegionalCTA';
-
-// Define city and region interfaces
 interface City {
   name: string;
   slug: string;
@@ -30,7 +21,6 @@ interface AdjacentRegion {
 }
 
 interface RegionalPageTemplateProps {
-  // Update props to match what's used in the region components
   regionName: string;
   regionDescription: string;
   regionFocus: string;
@@ -43,7 +33,6 @@ interface RegionalPageTemplateProps {
   geoPosition: string;
   canonicalUrl: string;
   
-  // Optional props from the original interface
   title?: string;
   description?: string;
   content?: string;
@@ -59,7 +48,6 @@ interface RegionalPageTemplateProps {
 }
 
 const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
-  // Add the new props first
   regionName,
   regionDescription,
   regionFocus,
@@ -72,7 +60,6 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
   geoPosition,
   canonicalUrl,
   
-  // Original props
   title,
   description,
   content,
@@ -83,7 +70,6 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
   regionalLocation,
   nearbyCity,
 }) => {
-  // Use regionName as title if title is not provided
   const pageTitle = title || `${regionName} | Wrapping The World`;
   const pageDescription = description || metaDescription;
   const heroImage = regionImage || `/img/regions/${regionName.toLowerCase().replace(/\s+/g, '-')}-hero.jpg`;
@@ -94,7 +80,6 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
         <link rel="canonical" href={canonicalUrl || `https://wrappingtheworld.com/locations/${regionName.toLowerCase().replace(/\s+/g, '-')}`} />
-        {/* Add geo meta tags */}
         {geoRegion && <meta name="geo.region" content={geoRegion} />}
         {geoPlacename && <meta name="geo.placename" content={geoPlacename} />}
         {geoPosition && <meta name="geo.position" content={geoPosition} />}
@@ -127,7 +112,6 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
                 content={content}
               />
               
-              {/* Display cities served section */}
               {citiesServed && citiesServed.length > 0 && (
                 <CitiesServedGrid 
                   regionName={regionName}
@@ -162,6 +146,11 @@ const RegionalPageTemplate: React.FC<RegionalPageTemplateProps> = ({
           region={regionName}
         />
       </main>
+      
+      <ChatbotWithSchema 
+        initialMessage={`Hello! I'm your virtual assistant for the ${regionName} region. I can help you with information about our services in ${regionName}, nearby locations, or scheduling a consultation. How can I assist you today?`}
+      />
+      
       <Footer />
     </>
   );

@@ -138,7 +138,6 @@ const TownPage: React.FC = () => {
   }
   
   const { name, state } = townData;
-  
   const stateFullName = 
     state === 'IL' ? 'Illinois' : 
     state === 'MI' ? 'Michigan' : 

@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllTowns, getTownsByState } from '@/utils/townFunctions';
@@ -7,6 +8,7 @@ import Footer from '@/components/footer/Footer';
 import PageSEO from '@/components/seo/PageSEO';
 import { generateWebPageSchema } from '@/utils/seo/schemaGenerator';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
+import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
 
 const Locations: React.FC = () => {
   // Get all towns grouped by state
@@ -194,6 +196,10 @@ const Locations: React.FC = () => {
             </div>
           </div>
         </main>
+        
+        <ChatbotWithSchema 
+          initialMessage="Hello! I'm your virtual assistant for Wrapping The World locations. I can help you find service locations near you, provide information about our services in different areas, or schedule a consultation. How can I assist you today?"
+        />
         
         <Footer />
       </div>
