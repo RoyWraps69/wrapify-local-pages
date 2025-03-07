@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ChevronDown, Phone, ShoppingBag, Shield } from 'lucide-react';
+import { MapPin, ChevronDown, Phone, ShoppingBag, Shield, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileMenuProps {
@@ -68,6 +68,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Print & Ship
+              </Link>
+              <Link 
+                to="/print-ship/#installer-network" 
+                className="text-wrap-blue flex items-center gap-1"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Users size={14} />
+                <span>Installer Network</span>
               </Link>
               <Link 
                 to="/wrap-insurance" 

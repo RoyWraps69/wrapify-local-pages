@@ -80,7 +80,7 @@ const MainContent: React.FC<MainContentProps> = ({
       />
       
       {/* Local Installers Directory */}
-      <div id="installer-network" className="mt-12 bg-gradient-to-b from-gray-50 to-white rounded-xl shadow-sm border border-gray-100 p-6">
+      <div className="mt-12 bg-gradient-to-b from-gray-50 to-white rounded-xl shadow-sm border border-gray-100 p-6">
         <h2 className="text-2xl font-serif font-semibold text-wrap-blue text-center mb-3">
           Professional Installation Network
         </h2>

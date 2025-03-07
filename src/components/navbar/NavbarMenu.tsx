@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, ChevronDown, ShoppingBag, Shield } from 'lucide-react';
+import { MapPin, ChevronDown, ShoppingBag, Shield, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface NavbarMenuProps {
@@ -63,6 +63,14 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({
                 onClick={() => setIsServicesOpen(false)}
               >
                 Print & Ship
+              </Link>
+              <Link 
+                to="/print-ship/#installer-network" 
+                className="block px-4 py-2 text-sm text-wrap-blue hover:bg-gray-100 flex items-center gap-1"
+                onClick={() => setIsServicesOpen(false)}
+              >
+                <Users size={14} />
+                <span>Installer Network</span>
               </Link>
               <Link 
                 to="/wrap-insurance" 
