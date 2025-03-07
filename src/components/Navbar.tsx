@@ -117,12 +117,23 @@ const Navbar: React.FC = () => {
               >
                 Home
               </Link>
-              <Link
-                to="/services"
-                className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
-              >
-                Services
-              </Link>
+              <div className="px-3 py-2">
+                <p className="font-medium text-wrap-grey mb-2">Services</p>
+                <div className="pl-4 flex flex-col space-y-2">
+                  <Link to="/services/vehicle-wraps" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Vehicle Wraps
+                  </Link>
+                  <Link to="/services/fleet-graphics" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Fleet Graphics
+                  </Link>
+                  <Link to="/services/commercial-fleet-wraps" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Commercial Fleet Wraps
+                  </Link>
+                  <Link to="/services" className="text-sm font-medium text-wrap-grey hover:text-wrap-red">
+                    View All Services
+                  </Link>
+                </div>
+              </div>
               <Link
                 to="/gallery"
                 className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
@@ -136,18 +147,37 @@ const Navbar: React.FC = () => {
                 <Printer className="mr-1" size={16} />
                 Print & Ship
               </Link>
-              <Link
-                to="/locations"
-                className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
-              >
-                Locations
-              </Link>
-              <Link
-                to="/resources"
-                className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
-              >
-                Resources
-              </Link>
+              <div className="px-3 py-2">
+                <p className="font-medium text-wrap-grey mb-2">Locations</p>
+                <div className="pl-4 flex flex-col space-y-2">
+                  <Link to="/regions/illinois" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Illinois Region
+                  </Link>
+                  <Link to="/regions/michigan" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Michigan Region
+                  </Link>
+                  <Link to="/regions/indiana" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Indiana Region
+                  </Link>
+                  <Link to="/regions/wisconsin" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Wisconsin Region
+                  </Link>
+                </div>
+              </div>
+              <div className="px-3 py-2">
+                <p className="font-medium text-wrap-grey mb-2">Resources</p>
+                <div className="pl-4 flex flex-col space-y-2">
+                  <Link to="/vinyl-wrap-care-guide" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Vinyl Wrap Care Guide
+                  </Link>
+                  <Link to="/about" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    About Us
+                  </Link>
+                  <Link to="/blog" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    Blog
+                  </Link>
+                </div>
+              </div>
               <Link
                 to="/contact"
                 className="px-3 py-2 rounded-md text-wrap-grey hover:text-wrap-red transition-colors"
