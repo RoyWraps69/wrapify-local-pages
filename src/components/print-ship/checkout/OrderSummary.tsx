@@ -11,13 +11,16 @@ interface OrderSummaryProps {
 
 const OrderSummary: React.FC<OrderSummaryProps> = ({ items, total }) => {
   // Calculate subtotal (without shipping, tax, etc.)
-  const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const subtotal: number = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   
   // Shipping fee
-  const shipping = 0; // Free shipping for now
+  const shipping: number = 0; // Free shipping for now
   
   // Tax (calculate properly in production)
-  const tax = subtotal * 0.0625; // Example tax rate of 6.25%
+  const tax: number = subtotal * 0.0625; // Example tax rate of 6.25%
+  
+  // Calculate total (this ensures it's a number)
+  const calculatedTotal: number = subtotal + shipping + tax;
   
   return (
     <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm">
@@ -65,7 +68,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ items, total }) => {
         <div className="pt-4">
           <div className="flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>${(subtotal + shipping + tax).toFixed(2)}</span>
+            <span>${calculatedTotal.toFixed(2)}</span>
           </div>
         </div>
       </div>
