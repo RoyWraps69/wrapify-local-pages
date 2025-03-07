@@ -45,7 +45,7 @@ const NavbarContainer: React.FC = () => {
   const headerStyle = {
     backgroundColor: scrolled ? 'white' : 'rgba(255, 255, 255, 0.9)',
     boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-    position: 'fixed',
+    position: 'fixed' as const, // Type assertion to make position a valid CSSProperties type
     top: 0,
     left: 0,
     right: 0,
