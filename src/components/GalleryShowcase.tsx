@@ -1,14 +1,16 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Camera, Upload, ThumbsUp } from 'lucide-react';
 
 interface GalleryItem {
   image: string;
   title: string;
   category: string;
   serviceLink?: string;
+  isCustomerSubmission?: boolean;
+  customerName?: string;
+  location?: string;
 }
 
 interface GalleryShowcaseProps {
@@ -33,7 +35,10 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
       image: "/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png",
       title: "Green Lightning Mustang",
       category: "Custom Design",
-      serviceLink: "/services/vehicle-graphics"
+      serviceLink: "/services/vehicle-graphics",
+      isCustomerSubmission: true,
+      customerName: "Alex Chen",
+      location: "Naperville, IL"
     },
     {
       image: "/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png",
@@ -51,7 +56,10 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
       image: "/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png",
       title: "White Bentley Car",
       category: "Luxury Vehicle Wrap",
-      serviceLink: "/services/color-change-wraps"
+      serviceLink: "/services/color-change-wraps",
+      isCustomerSubmission: true,
+      customerName: "Jessica Park",
+      location: "Oak Brook, IL"
     },
     {
       image: "/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png",
@@ -105,9 +113,17 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
 
   const categories = [...new Set(galleryItems.map(item => item.category))];
   
-  const filteredItems = activeFilter 
-    ? galleryItems.filter(item => item.category === activeFilter) 
-    : galleryItems;
+  const filters = [
+    { id: null, name: 'All Projects' },
+    ...categories.map(category => ({ id: category, name: category })),
+    { id: 'customer', name: 'Customer Submissions' }
+  ];
+  
+  const filteredItems = activeFilter === 'customer'
+    ? galleryItems.filter(item => item.isCustomerSubmission)
+    : activeFilter 
+      ? galleryItems.filter(item => item.category === activeFilter) 
+      : galleryItems;
     
   const displayItems = itemLimit ? filteredItems.slice(0, itemLimit) : filteredItems;
 
@@ -118,38 +134,26 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
           <span className="inline-block px-4 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-sm font-medium mb-4">
             Our Work
           </span>
-          <h2 className="section-title">
-            Recent Projects in {townName} and Nearby Areas
+          <h2 className="text-3xl md:text-4xl font-serif font-semibold text-wrap-blue mb-4">
+            Recent Vehicle Wrap Projects in {townName} and Nearby Areas
           </h2>
-          <p className="section-subtitle">
-            Look at our gallery of car wraps to see the quality work we do on every project.
+          <p className="text-wrap-grey max-w-2xl mx-auto">
+            Browse our gallery of recent vehicle wraps including customer submissions from {townName} and surrounding communities.
           </p>
           
-          {/* Category filters */}
           <div className="flex flex-wrap justify-center gap-2 mt-8">
-            <button 
-              onClick={() => setActiveFilter(null)}
-              className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all",
-                activeFilter === null 
-                  ? "bg-wrap-blue text-white" 
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              )}
-            >
-              All Projects
-            </button>
-            {categories.map((category, index) => (
+            {filters.map((filter) => (
               <button 
-                key={index}
-                onClick={() => setActiveFilter(category)}
+                key={filter.id || 'all'}
+                onClick={() => setActiveFilter(filter.id)}
                 className={cn(
                   "px-4 py-2 rounded-full text-sm font-medium transition-all",
-                  activeFilter === category 
+                  activeFilter === filter.id 
                     ? "bg-wrap-blue text-white" 
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 )}
               >
-                {category}
+                {filter.name}
               </button>
             ))}
           </div>
@@ -173,13 +177,30 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-90"></div>
               <div className="absolute bottom-0 left-0 p-6 text-white">
-                <span className="inline-block px-3 py-1 bg-wrap-red text-white rounded-full text-xs font-medium mb-2">
-                  {item.category}
-                </span>
+                <div className="flex items-center justify-between w-full">
+                  <span className="inline-block px-3 py-1 bg-wrap-red text-white rounded-full text-xs font-medium mb-2">
+                    {item.category}
+                  </span>
+                  
+                  {item.isCustomerSubmission && (
+                    <span className="inline-flex items-center px-3 py-1 bg-green-500 text-white rounded-full text-xs font-medium mb-2">
+                      <ThumbsUp className="mr-1 h-3 w-3" /> Customer Photo
+                    </span>
+                  )}
+                </div>
+                
                 <h3 className="text-lg font-medium mb-2">{item.title}</h3>
+                
+                {item.isCustomerSubmission && item.customerName && (
+                  <p className="text-white/90 text-sm mb-1">
+                    Submitted by: {item.customerName}
+                  </p>
+                )}
+                
                 <p className="text-white/80 text-sm mb-3">
-                  Project done in {townName} area
+                  {item.location || `Project completed in ${townName} area`}
                 </p>
+                
                 {item.serviceLink && (
                   <Link to={item.serviceLink} className="inline-flex items-center text-white hover:text-wrap-red transition-colors text-sm">
                     <span>Learn more about this service</span>
@@ -189,6 +210,31 @@ const GalleryShowcase: React.FC<GalleryShowcaseProps> = ({
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 bg-white p-6 rounded-xl shadow-md max-w-3xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center">
+            <div className="md:w-1/4 flex justify-center mb-4 md:mb-0">
+              <div className="w-20 h-20 bg-wrap-blue/10 rounded-full flex items-center justify-center">
+                <Camera className="h-10 w-10 text-wrap-blue" />
+              </div>
+            </div>
+            <div className="md:w-3/4 text-center md:text-left md:pl-6">
+              <h3 className="text-xl font-semibold text-wrap-blue mb-2">
+                Got a wrapped vehicle? Share your photos!
+              </h3>
+              <p className="text-wrap-grey mb-4">
+                Submit photos of your wrapped vehicle and get featured in our gallery. Plus, receive a 10% discount on your next service!
+              </p>
+              <Link 
+                to="/submit-photos" 
+                className="inline-flex items-center px-5 py-2.5 bg-wrap-red text-white rounded-md hover:bg-wrap-red/90 transition-colors"
+              >
+                <Upload className="mr-2 h-4 w-4" />
+                Submit Your Vehicle Photos
+              </Link>
+            </div>
+          </div>
         </div>
 
         {itemLimit && itemLimit < galleryItems.length && (

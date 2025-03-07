@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Mail, Phone, HelpCircle, MapPin } from 'lucide-react';
+import { ArrowRight, Mail, Phone, HelpCircle, MapPin, Facebook, Instagram, Camera } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ShopFooterProps {
@@ -54,6 +54,45 @@ const ShopFooter: React.FC<ShopFooterProps> = ({ setActiveCategory }) => {
         >
           Explore Print & Ship Services <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
+      </div>
+      
+      {/* Social Check-in Section */}
+      <div className="mt-8 p-6 bg-white rounded-xl shadow-sm border border-gray-100">
+        <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 text-center">
+          Check-In & Save on Your Vehicle Wrap
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-blue-50 p-4 rounded-lg text-center">
+            <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Facebook className="h-5 w-5 text-blue-600" />
+            </div>
+            <h4 className="font-medium mb-2">Facebook Check-In</h4>
+            <p className="text-sm text-wrap-grey mb-3">Check in on Facebook when you visit our shop</p>
+            <div className="text-wrap-blue font-semibold">Save 10%</div>
+          </div>
+          
+          <div className="bg-pink-50 p-4 rounded-lg text-center">
+            <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Instagram className="h-5 w-5 text-pink-600" />
+            </div>
+            <h4 className="font-medium mb-2">Instagram Post</h4>
+            <p className="text-sm text-wrap-grey mb-3">Tag us in your post with your wrapped vehicle</p>
+            <div className="text-wrap-blue font-semibold">Save 15%</div>
+          </div>
+          
+          <div className="bg-green-50 p-4 rounded-lg text-center">
+            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+              <Camera className="h-5 w-5 text-green-600" />
+            </div>
+            <h4 className="font-medium mb-2">Share Your Photos</h4>
+            <p className="text-sm text-wrap-grey mb-3">Submit photos of your wrapped vehicle for our gallery</p>
+            <div className="text-wrap-blue font-semibold">Get Featured + 10% Off</div>
+          </div>
+        </div>
+        <p className="text-xs text-center text-wrap-grey mt-4">
+          *Discounts apply to your next service or purchase. Cannot be combined with other offers. 
+          Must be claimed within 90 days.
+        </p>
       </div>
       
       <div className="mt-8 pt-6 border-t border-gray-200">
