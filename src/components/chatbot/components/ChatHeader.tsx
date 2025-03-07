@@ -17,7 +17,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({ locationName, onClose }) => {
           <span className="text-lg font-bold">WW</span>
         </Avatar>
         <div>
-          <h3 className="font-semibold">Wrapping Assistant</h3>
+          <h3 className="font-semibold">How Can We Wrap Your World?</h3>
           <p className="text-xs">{locationName} Vehicle Wraps Expert</p>
         </div>
       </div>

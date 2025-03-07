@@ -1,8 +1,7 @@
 
-import React, { useRef, useEffect } from 'react';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+import React, { KeyboardEvent } from 'react';
 import { Send } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface ChatInputProps {
   inputMessage: string;
@@ -21,45 +20,43 @@ const ChatInput: React.FC<ChatInputProps> = ({
   locationName,
   isOpen
 }) => {
-  const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isOpen]);
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      onSendMessage();
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      if (inputMessage.trim()) {
+        onSendMessage();
+      }
     }
   };
-
+  
   return (
-    <div className="p-3 border-t border-gray-200 bg-white">
-      <div className="flex items-end space-x-2">
-        <Textarea
-          ref={inputRef}
+    <div className="border-t border-gray-200 p-3 bg-white">
+      <div className="flex items-center">
+        <input
+          type="text"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type your message..."
-          className="resize-none min-h-[60px] max-h-[120px]"
-          rows={2}
+          placeholder={`Ask how we can wrap your world in ${locationName}...`}
+          className="flex-grow py-2 px-3 rounded-l-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-wrap-blue focus:border-transparent"
+          disabled={isLoading}
+          aria-label="Chat message"
+          autoComplete="off"
+          autoFocus={isOpen}
         />
         <Button
           onClick={onSendMessage}
-          disabled={isLoading || !inputMessage.trim()}
-          className="h-10 w-10 p-0 rounded-full bg-wrap-blue hover:bg-blue-700"
+          disabled={!inputMessage.trim() || isLoading}
+          className={`rounded-r-md py-2 px-4 ${
+            isLoading || !inputMessage.trim() 
+              ? 'bg-gray-300' 
+              : 'bg-wrap-blue hover:bg-blue-700'
+          }`}
           aria-label="Send message"
         >
-          <Send size={18} />
+          <Send className="h-5 w-5 text-white" />
         </Button>
       </div>
-      <p className="text-xs text-center mt-2 text-gray-500">
-        Powered by AI with local {locationName} expertise
-      </p>
     </div>
   );
 };
