@@ -33,8 +33,7 @@ const MaterialSelectionPanel = () => {
       name: `${selectedMaterial.name} Wrap Material (${selectedVehicleSize.name})`,
       price: totalPrice,
       category: 'wrap_material',
-      description: `${totalSqFt.toFixed(1)} sq ft of ${selectedMaterial.name} vinyl wrap material for ${selectedVehicleSize.name} with ${coverage}% coverage.`,
-      quantity: 1
+      description: `${totalSqFt.toFixed(1)} sq ft of ${selectedMaterial.name} vinyl wrap material for ${selectedVehicleSize.name} with ${coverage}% coverage.`
     });
 
     toast({
