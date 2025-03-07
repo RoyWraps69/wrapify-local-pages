@@ -1,45 +1,41 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
-const IndustrySolutions: React.FC = () => {
+interface IndustrySolution {
+  name: string;
+  icon: React.ReactNode;
+  description: string;
+  link: string;
+}
+
+interface IndustrySolutionsProps {
+  industries: IndustrySolution[];
+}
+
+const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ industries }) => {
   return (
-    <div className="bg-wrap-blue/5 rounded-xl p-8 md:p-12 mb-16">
-      <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-serif font-semibold text-wrap-blue mb-6 text-center">
-          Industry-Specific Vehicle Wrap Solutions
-        </h2>
-        <p className="text-wrap-grey mb-8 text-center">
-          We understand different industries have unique vehicle branding requirements. Explore our tailored solutions for these sectors:
-        </p>
-        
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <Link to="/industries/construction" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-            <h3 className="font-medium text-wrap-blue mb-2">Home Services</h3>
-            <p className="text-xs text-wrap-grey mb-2">HVAC, Plumbing, Electrical</p>
-          </Link>
-          <Link to="/industries/food-beverage" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-            <h3 className="font-medium text-wrap-blue mb-2">Food & Beverage</h3>
-            <p className="text-xs text-wrap-grey mb-2">Food Trucks, Delivery, Catering</p>
-          </Link>
-          <Link to="/industries/construction" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-            <h3 className="font-medium text-wrap-blue mb-2">Construction</h3>
-            <p className="text-xs text-wrap-grey mb-2">Contractors, Equipment, Services</p>
-          </Link>
-          <Link to="/industries/real-estate" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-            <h3 className="font-medium text-wrap-blue mb-2">Real Estate</h3>
-            <p className="text-xs text-wrap-grey mb-2">Agents, Brokers, Property Management</p>
-          </Link>
-          <Link to="/services/commercial-fleet-wraps" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-            <h3 className="font-medium text-wrap-blue mb-2">Retail</h3>
-            <p className="text-xs text-wrap-grey mb-2">Delivery, Mobile Stores, Promotions</p>
-          </Link>
-          <Link to="/services/vehicle-graphics" className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-            <h3 className="font-medium text-wrap-blue mb-2">Automotive</h3>
-            <p className="text-xs text-wrap-grey mb-2">Dealerships, Auto Services, Rentals</p>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {industries.map((industry, index) => (
+        <div key={index} className="bg-gray-50 rounded-lg p-8 text-center">
+          <div className="flex justify-center">
+            {industry.icon}
+          </div>
+          <h3 className="text-xl font-bold text-wrap-blue mb-3">
+            {industry.name} Solutions
+          </h3>
+          <p className="text-wrap-grey mb-6">
+            {industry.description}
+          </p>
+          <Link 
+            to={industry.link}
+            className="inline-flex items-center text-wrap-red hover:text-wrap-red/80 font-medium transition-colors"
+          >
+            View Solutions <ArrowRight size={16} className="ml-1" />
           </Link>
         </div>
-      </div>
+      ))}
     </div>
   );
 };

@@ -1,49 +1,63 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { CaseStudy } from '@/types/case-study';
+import { ArrowRight, MapPin, Briefcase, BarChart } from 'lucide-react';
 
 interface CaseStudyCardProps {
-  study: CaseStudy;
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  industry: string;
+  location: string;
+  results: string;
+  slug: string;
 }
 
-const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study }) => {
+const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
+  id,
+  title,
+  description,
+  image,
+  industry,
+  location,
+  results,
+  slug
+}) => {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-      <div className="h-48 overflow-hidden">
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 flex flex-col">
+      <div className="relative h-48">
         <img 
-          src={study.image} 
-          alt={study.title}
-          className="w-full h-full object-cover transition-transform hover:scale-105 duration-300"
+          src={image} 
+          alt={title}
+          className="w-full h-full object-cover"
         />
-      </div>
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-4">
-          <span className="inline-block px-3 py-1 bg-wrap-blue/10 text-wrap-blue rounded-full text-xs font-medium">
-            {study.industry}
+        <div className="absolute top-3 left-3">
+          <span className="inline-block bg-white/80 backdrop-blur-sm text-wrap-blue text-xs font-medium px-2 py-1 rounded">
+            {industry}
           </span>
         </div>
-        <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
-          {study.title}
-        </h3>
-        <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
-          {study.excerpt}
-        </p>
-        <div className="mb-4">
-          <p className="text-wrap-blue font-medium text-sm mb-2">Key Results:</p>
-          <ul className="space-y-1">
-            {study.results.slice(0, 2).map((result, index) => (
-              <li key={index} className="flex items-start text-xs text-wrap-grey">
-                <span className="text-wrap-red mr-1">✓</span>
-                <span>{result}</span>
-              </li>
-            ))}
-          </ul>
+      </div>
+      <div className="p-6 flex-grow flex flex-col">
+        <h3 className="text-xl font-bold text-wrap-blue mb-3">{title}</h3>
+        <p className="text-wrap-grey text-sm mb-4 flex-grow">{description}</p>
+        
+        <div className="flex justify-between items-center text-sm mb-4">
+          <div className="flex items-center">
+            <MapPin size={14} className="text-wrap-grey mr-1" />
+            <span>{location}</span>
+          </div>
+          <div className="flex items-center text-wrap-red font-medium">
+            <BarChart size={14} className="mr-1" />
+            <span>{results}</span>
+          </div>
         </div>
-        <Link to={`/case-studies/${study.id}`} className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium">
-          View Project Details
-          <ArrowRight className="ml-1" size={14} />
+        
+        <Link 
+          to={`/case-studies/${slug}`}
+          className="inline-flex items-center text-wrap-red hover:text-wrap-red/80 font-medium transition-colors mt-auto"
+        >
+          Read Case Study <ArrowRight size={16} className="ml-1" />
         </Link>
       </div>
     </div>

@@ -1,19 +1,43 @@
 
 import React from 'react';
+import { Quote } from 'lucide-react';
 
-const ClientTestimonial: React.FC = () => {
+interface ClientTestimonialProps {
+  quote: string;
+  author: string;
+  position: string;
+  company: string;
+  image: string;
+}
+
+const ClientTestimonial: React.FC<ClientTestimonialProps> = ({
+  quote,
+  author,
+  position,
+  company,
+  image
+}) => {
   return (
-    <div className="bg-wrap-blue rounded-xl p-8 md:p-12 text-white mb-16">
-      <div className="max-w-3xl mx-auto text-center">
-        <svg className="w-12 h-12 text-wrap-red/70 mx-auto mb-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"></path>
-        </svg>
-        <blockquote className="text-xl md:text-2xl font-serif italic text-wrap-light/90 mb-8">
-          Wrapping The World completely transformed our fleet of service vehicles. The quality of their work is exceptional, and the impact on our business has been immediate and significant. Our branded trucks now generate calls wherever they go.
-        </blockquote>
+    <div className="bg-white rounded-lg shadow-md p-8">
+      <div className="flex items-start">
+        <Quote className="text-wrap-red h-12 w-12 flex-shrink-0 mr-4 opacity-25" />
         <div>
-          <p className="font-medium text-wrap-light">Michael Richardson</p>
-          <p className="text-wrap-light/70 text-sm">CEO, City Plumbing Services</p>
+          <p className="text-lg text-wrap-grey italic mb-6">
+            "{quote}"
+          </p>
+          <div className="flex items-center">
+            <img 
+              src={image} 
+              alt={author} 
+              className="w-12 h-12 rounded-full object-cover mr-4"
+            />
+            <div>
+              <p className="font-bold text-wrap-blue">{author}</p>
+              <p className="text-wrap-grey text-sm">
+                {position}, {company}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
