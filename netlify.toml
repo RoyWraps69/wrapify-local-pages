@@ -10,6 +10,8 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   VITE_APP_ENV = "production"
+  # Enable verbose logging for npm
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
   
 # Handle SPA routing by redirecting all paths to index.html
 [[redirects]]
@@ -62,6 +64,8 @@
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+  # Enable verbose logging for npm
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
@@ -72,6 +76,7 @@
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Branch deploy settings
 [context.branch-deploy]
@@ -82,6 +87,7 @@
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Enable bundler
 [build.processing]
