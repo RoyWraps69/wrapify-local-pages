@@ -17,7 +17,7 @@ import {
   generateWebPageSchema,
   generateFAQSchema
 } from '@/utils/seo/schemaGenerator';
-import ChatbotWithSchema from '@/components/ChatbotWithSchema';
+import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
 
 const townBackgroundImages = [
   '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',  // MH Equipment
