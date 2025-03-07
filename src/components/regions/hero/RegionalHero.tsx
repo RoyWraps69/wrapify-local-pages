@@ -1,39 +1,100 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone } from 'lucide-react';
+import { Phone, Camera, ExternalLink } from 'lucide-react';
 
 interface RegionalHeroProps {
   regionName: string;
   regionImage?: string;
 }
 
-// Use a reliable background image from our public folder as fallback
-const staticBackground = '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
+// Define a set of reliable background images to use
+const heroBackgrounds = [
+  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
+  '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
+  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
+  '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Van
+  '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png'  // White car
+];
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
-  // Use the provided regionImage or fall back to our static image
-  const bgImage = regionImage || staticBackground;
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
-  console.log("RegionalHero rendering with image:", bgImage);
+  // Use the provided regionImage or cycle through our reliable image set
+  const bgImage = regionImage || heroBackgrounds[currentImageIndex];
+  
+  useEffect(() => {
+    // Preload all background images
+    Promise.all(
+      heroBackgrounds.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      })
+    )
+      .then(() => {
+        console.log("All hero images preloaded successfully");
+        setImagesLoaded(true);
+      })
+      .catch((error) => {
+        console.error("Error preloading hero images:", error);
+        setImageError(true);
+      });
+    
+    // Set up image rotation
+    const rotationInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroBackgrounds.length);
+    }, 5000);
+    
+    return () => clearInterval(rotationInterval);
+  }, []);
   
   return (
-    <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-transparent">
-      {/* Background image with error handling */}
-      <div 
-        className="absolute inset-0 z-0 w-full h-full bg-cover bg-center bg-gray-800"
-        style={{ 
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Image load error fallback - will only show if image fails to load */}
-        <div className="absolute inset-0 bg-gradient-to-b from-wrap-blue to-black opacity-90"></div>
-      </div>
+    <section className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-wrap-blue">
+      {/* Background image with improved error handling */}
+      {imagesLoaded ? (
+        <div 
+          className="absolute inset-0 z-0 w-full h-full bg-cover bg-center bg-gray-800 transition-opacity duration-1000"
+          style={{ 
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      ) : (
+        <div className="absolute inset-0 bg-gradient-to-b from-wrap-blue to-black z-0">
+          <div className="flex items-center justify-center h-full">
+            <div className="w-16 h-16 border-4 border-t-wrap-red border-gray-200 rounded-full animate-spin"></div>
+          </div>
+        </div>
+      )}
       
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
+      {/* Darker overlay for text readability */}
+      <div className="absolute inset-0 bg-black opacity-70 z-1"></div>
+      
+      {/* Image navigation controls */}
+      <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center space-x-2">
+        {heroBackgrounds.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImageIndex(index)}
+            className={`w-10 h-10 rounded-md overflow-hidden border-2 transition-all ${
+              currentImageIndex === index ? 'border-wrap-red scale-110' : 'border-white/30'
+            }`}
+          >
+            <img 
+              src={heroBackgrounds[index]} 
+              alt={`Background option ${index + 1}`} 
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
@@ -55,6 +116,18 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
                 <Phone size={18} />
                 <span>312-597-1286</span>
               </a>
+            </div>
+            
+            <div className="mt-6 flex items-center gap-3">
+              <Link to="/gallery" className="text-white hover:text-wrap-red transition-colors flex items-center">
+                <Camera size={18} className="mr-1" />
+                View Our Portfolio
+              </Link>
+              <span className="text-white/50">|</span>
+              <Link to="/services" className="text-white hover:text-wrap-red transition-colors flex items-center">
+                <ExternalLink size={18} className="mr-1" />
+                Our Services
+              </Link>
             </div>
           </div>
           <img 

@@ -14,16 +14,41 @@ import { Helmet } from 'react-helmet-async';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import { toast } from 'sonner';
 
+// Define reliable town background images
+const townBackgroundImages = [
+  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
+  '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
+  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
+  '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Vans
+  '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png'  // White car
+];
+
 const TownPage: React.FC = () => {
   const { townSlug } = useParams<{ townSlug: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [townData, setTownData] = useState<any>(null);
   const [error, setError] = useState<boolean>(false);
+  const [townBackgroundImage, setTownBackgroundImage] = useState<string>(
+    townBackgroundImages[Math.floor(Math.random() * townBackgroundImages.length)]
+  );
   
   useScrollAnimation();
   
   console.log("TownPage rendering with townSlug:", townSlug);
+  
+  // Preload the background image
+  useEffect(() => {
+    const img = new Image();
+    img.src = townBackgroundImage;
+    img.onload = () => console.log("Town background image loaded successfully:", townBackgroundImage);
+    img.onerror = () => {
+      console.error("Town background image failed to load, using fallback:", townBackgroundImage);
+      // If the image fails to load, try another one
+      const nextImageIndex = (townBackgroundImages.indexOf(townBackgroundImage) + 1) % townBackgroundImages.length;
+      setTownBackgroundImage(townBackgroundImages[nextImageIndex]);
+    };
+  }, [townBackgroundImage]);
   
   // Get town data and handle loading state
   useEffect(() => {
@@ -57,6 +82,11 @@ const TownPage: React.FC = () => {
       }
 
       setTownData(fetchedTownData);
+      
+      // Assign a consistent background image based on the town's ID
+      const imageIndex = fetchedTownData.id.charCodeAt(0) % townBackgroundImages.length;
+      setTownBackgroundImage(townBackgroundImages[imageIndex]);
+      
       setLoading(false);
       window.scrollTo(0, 0);
       
@@ -121,9 +151,6 @@ const TownPage: React.FC = () => {
     state === 'IN' ? 'Indiana' : 
     state === 'WI' ? 'Wisconsin' : state;
   
-  // Set up town background image - use fallback image that we know works
-  const townBackgroundImage = '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png';
-  
   const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name}, ${stateFullName} | Wrapping The World`;
   const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps from the Midwest's top-rated vehicle enhancement company.`;
   const pageUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
@@ -158,7 +185,7 @@ const TownPage: React.FC = () => {
       
       <Navbar />
       
-      {/* Hero Section with town name */}
+      {/* Hero Section with town name and guaranteed image */}
       <RegionalHero regionName={name} regionImage={townBackgroundImage} />
       
       <TownPageContent 

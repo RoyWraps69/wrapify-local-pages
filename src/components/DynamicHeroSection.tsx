@@ -28,6 +28,8 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [scrollPos, setScrollPos] = useState(0);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [bgImagesPreloaded, setBgImagesPreloaded] = useState<boolean[]>(heroBackgrounds.map(() => false));
   
   // Show content with animation on load
   useEffect(() => {
@@ -39,6 +41,29 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
     };
     
     window.addEventListener('scroll', handleScroll);
+    
+    // Preload all background images
+    heroBackgrounds.forEach((src, index) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        console.log(`Hero image preloaded: ${src}`);
+        setBgImagesPreloaded(prev => {
+          const updated = [...prev];
+          updated[index] = true;
+          
+          // If all images are loaded, set imagesLoaded to true
+          if (updated.every(loaded => loaded)) {
+            setImagesLoaded(true);
+          }
+          
+          return updated;
+        });
+      };
+      img.onerror = () => {
+        console.error(`Failed to preload hero image: ${src}`);
+      };
+    });
     
     // Cycle through background images
     const interval = setInterval(() => {
@@ -65,10 +90,22 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
   const heroBackground = backgroundImage || heroBackgrounds[currentBgIndex];
   
   return (
-    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-transparent">
+    <section className="hero-section relative min-h-screen w-full overflow-hidden bg-wrap-blue">
+      {/* Loading state while images preload */}
+      {!imagesLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-b from-wrap-blue to-black flex items-center justify-center z-30">
+          <div className="text-center text-white">
+            <div className="w-16 h-16 border-4 border-t-wrap-red border-gray-200 rounded-full animate-spin mx-auto mb-4"></div>
+            <p>Loading stunning vehicle images...</p>
+          </div>
+        </div>
+      )}
+      
       {/* Main background image */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out"
+        className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
+          imagesLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: 'cover',
@@ -81,7 +118,7 @@ const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({
       <div className="absolute inset-0 bg-black opacity-80 z-1"></div>
       
       {/* Thumbnail previews of other vehicle wraps */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 hidden md:flex space-x-2">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
         {heroBackgrounds.map((bg, index) => (
           <button
             key={index}
