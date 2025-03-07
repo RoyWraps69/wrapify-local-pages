@@ -25,11 +25,16 @@ const vehicleBackgrounds = [
   '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png'  // #13 Corvette sports car
 ];
 
+// Default fallback image if all else fails
+const fallbackImage = '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png'; // Bratcher fleet vans
+
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   
-  // Use regionImage or fallback to carousel images
-  const heroImageUrl = regionImage || vehicleBackgrounds[currentBgIndex];
+  // Use the first image from our array if no specific region image is provided
+  const heroImageUrl = regionImage && regionImage.startsWith('http') 
+    ? vehicleBackgrounds[currentBgIndex] // If regionImage is an external URL, use our local images instead
+    : (regionImage || vehicleBackgrounds[currentBgIndex] || fallbackImage);
   
   // Implement background carousel
   useEffect(() => {
@@ -59,7 +64,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       />
       
       {/* Add dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black opacity-40 z-1"></div>
+      <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">

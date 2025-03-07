@@ -17,23 +17,28 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   backgroundImage,
   fleetWrapBackground
 }) => {
-  // Make sure we're using a valid background
-  const currentBackground = backgroundImage || backgrounds[activeBackground] || backgrounds[0];
+  // Make sure we're using a valid background, with fallbacks
+  const validBackgrounds = backgrounds.filter(bg => bg && bg.length > 0);
+  const currentBackground = backgroundImage || 
+    (validBackgrounds[activeBackground] || 
+    validBackgrounds[0] || 
+    fleetWrapBackground || 
+    '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png'); // Ultimate fallback
   
   // Log backgrounds to help debug
   useEffect(() => {
-    console.log("All backgrounds:", backgrounds);
-    console.log("Active background index:", activeBackground);
-    console.log("Current background:", currentBackground);
-  }, [backgrounds, activeBackground, currentBackground]);
+    console.log("HeroBackground - All backgrounds:", backgrounds);
+    console.log("HeroBackground - Active background index:", activeBackground);
+    console.log("HeroBackground - Valid backgrounds count:", validBackgrounds.length);
+    console.log("HeroBackground - Current background:", currentBackground);
+  }, [backgrounds, activeBackground, validBackgrounds, currentBackground]);
 
   return (
     <>
-      {/* Dynamic background with transition effect */}
-      {backgrounds.map((bg, index) => {
+      {/* Dynamic background with transition effect - map only valid backgrounds */}
+      {validBackgrounds.map((bg, index) => {
         // Ensure we have a valid image URL
         const bgUrl = bg || fleetWrapBackground;
-        console.log(`Background ${index + 1}:`, bgUrl);
         
         return (
           <div
@@ -52,8 +57,21 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
         );
       })}
       
-      {/* Subtle dark overlay to improve text readability */}
-      <div className="absolute inset-0 bg-black opacity-40 z-1"></div>
+      {/* Backup single background if the array is empty */}
+      {validBackgrounds.length === 0 && (
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${currentBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
+          }}
+        />
+      )}
+      
+      {/* Increased opacity for better text readability */}
+      <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
       
       {/* Vehicle silhouette overlay effect for added dimension */}
       <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
