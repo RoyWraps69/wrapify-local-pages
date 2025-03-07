@@ -3,13 +3,17 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// Try to import the tagger conditionally
-let componentTagger;
-try {
-  componentTagger = require("lovable-tagger").componentTagger;
-} catch (e) {
-  // If the package is not available, provide a noop function
-  componentTagger = () => null;
+// Safely handle the lovable-tagger import
+let componentTagger = null;
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    const lovableTagger = require("lovable-tagger");
+    if (lovableTagger && typeof lovableTagger.componentTagger === 'function') {
+      componentTagger = lovableTagger.componentTagger;
+    }
+  } catch (e) {
+    console.warn("Lovable tagger not available, continuing without it");
+  }
 }
 
 // https://vitejs.dev/config/
