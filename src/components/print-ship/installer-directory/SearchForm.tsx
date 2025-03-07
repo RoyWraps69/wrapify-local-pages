@@ -17,9 +17,9 @@ const SearchForm: React.FC<SearchFormProps> = ({
   handleSearch
 }) => {
   return (
-    <div className="mb-8">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-semibold text-wrap-blue">Find Installers</h3>
+    <div className="mb-5 border-b border-gray-100 pb-4">
+      <div className="flex justify-between items-center mb-3">
+        <h3 className="text-lg font-medium text-wrap-blue">Find Installers</h3>
         <CartButton />
       </div>
       
@@ -32,7 +32,7 @@ const SearchForm: React.FC<SearchFormProps> = ({
             onChange={(e) => setSearchQuery(e.target.value)}
             className="flex-1"
           />
-          <Button type="submit">
+          <Button type="submit" className="bg-wrap-red hover:bg-wrap-red/90">
             <Search className="mr-2 h-4 w-4" /> Find
           </Button>
         </div>

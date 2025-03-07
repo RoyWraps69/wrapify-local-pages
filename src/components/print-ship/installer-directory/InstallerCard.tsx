@@ -12,17 +12,17 @@ interface InstallerCardProps {
 const InstallerCard: React.FC<InstallerCardProps> = ({ installer, onSelect }) => {
   return (
     <div 
-      className={`bg-white rounded-lg shadow-md border ${
+      className={`bg-white rounded-lg shadow-sm border ${
         installer.isPremium 
-          ? "border-amber-400 shadow-lg" 
+          ? "border-amber-300" 
           : installer.isOurShop 
-            ? "border-wrap-red shadow-lg" 
+            ? "border-wrap-red/40" 
             : "border-gray-200"
-      } p-5 hover:shadow-lg transition-shadow relative`}
+      } p-4 hover:shadow-md transition-shadow relative`}
     >
       {installer.featured && (
-        <div className="absolute -top-3 -right-3">
-          <div className="bg-amber-400 text-white text-xs px-3 py-1 rounded-full shadow-md">
+        <div className="absolute -top-2 -right-2">
+          <div className="bg-amber-400 text-white text-xs px-2 py-0.5 rounded-full shadow-sm">
             <Award className="w-3 h-3 inline-block mr-1" /> Featured
           </div>
         </div>
@@ -30,85 +30,66 @@ const InstallerCard: React.FC<InstallerCardProps> = ({ installer, onSelect }) =>
       
       <div className="flex justify-between items-start mb-2">
         <h4 className="font-semibold text-lg text-wrap-blue">{installer.name}</h4>
-        <div className="flex flex-col items-end gap-1">
+        <div className="flex items-center gap-1">
           {installer.isOurShop && (
-            <span className="bg-wrap-red text-white text-xs px-2 py-1 rounded-full">
+            <span className="bg-wrap-red text-white text-xs px-2 py-0.5 rounded-full">
               Our Shop
             </span>
           )}
           {installer.isPremium && (
-            <span className="bg-amber-400 text-white text-xs px-2 py-1 rounded-full flex items-center">
+            <span className="bg-amber-400 text-white text-xs px-2 py-0.5 rounded-full flex items-center">
               <Star className="w-3 h-3 mr-1" /> Premium
             </span>
           )}
         </div>
       </div>
       
-      <div className="space-y-2 mb-4">
-        <div className="flex items-start">
-          <MapPin className="w-4 h-4 text-wrap-red mt-1 flex-shrink-0 mr-2" />
-          <span className="text-sm text-wrap-grey">{installer.address}</span>
-        </div>
-        <div className="flex items-center">
-          <Phone className="w-4 h-4 text-wrap-red flex-shrink-0 mr-2" />
-          <a href={`tel:${installer.phone}`} className="text-sm text-wrap-grey hover:text-wrap-blue">
-            {installer.phone}
-          </a>
-        </div>
-        <div className="flex items-center">
-          <Mail className="w-4 h-4 text-wrap-red flex-shrink-0 mr-2" />
-          <a href={`mailto:${installer.email}`} className="text-sm text-wrap-grey hover:text-wrap-blue">
-            {installer.email}
-          </a>
-        </div>
-        {installer.website && (
-          <div className="flex items-center">
-            <ExternalLink className="w-4 h-4 text-wrap-red flex-shrink-0 mr-2" />
-            <a 
-              href={`https://${installer.website}`} 
-              className="text-sm text-wrap-grey hover:text-wrap-blue"
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              {installer.website}
-            </a>
-          </div>
-        )}
-      </div>
-      
-      <div className="flex flex-wrap gap-2 mb-4">
-        {installer.specialties.map((specialty, index) => (
+      <div className="flex flex-wrap gap-1 mb-3">
+        {installer.specialties.slice(0, 3).map((specialty, index) => (
           <span 
             key={index} 
             className={`text-xs ${
               installer.isPremium 
-                ? "bg-amber-100 text-amber-800" 
+                ? "bg-amber-50 text-amber-800" 
                 : installer.isOurShop 
                   ? "bg-wrap-red/10 text-wrap-red" 
                   : "bg-gray-100 text-wrap-grey"
-            } px-2 py-1 rounded-full`}
+            } px-2 py-0.5 rounded-full`}
           >
             {specialty}
           </span>
         ))}
+        {installer.specialties.length > 3 && (
+          <span className="text-xs bg-gray-100 text-wrap-grey px-2 py-0.5 rounded-full">
+            +{installer.specialties.length - 3} more
+          </span>
+        )}
+      </div>
+      
+      <div className="grid grid-cols-2 gap-2 mb-3">
+        <div className="flex items-start">
+          <MapPin className="w-4 h-4 text-wrap-red mt-1 flex-shrink-0 mr-1" />
+          <span className="text-xs text-wrap-grey">{installer.address}</span>
+        </div>
+        <div className="flex items-center">
+          <Phone className="w-4 h-4 text-wrap-red flex-shrink-0 mr-1" />
+          <a href={`tel:${installer.phone}`} className="text-xs text-wrap-grey hover:text-wrap-blue">
+            {installer.phone}
+          </a>
+        </div>
       </div>
       
       {installer.isPremium && (
-        <div className="bg-amber-50 rounded-md p-2 mb-4">
-          <h5 className="text-xs font-semibold text-amber-800 mb-1 flex items-center">
-            <Award className="w-3 h-3 mr-1" /> Premium Benefits
-          </h5>
-          <ul className="text-xs text-amber-700 space-y-1">
-            <li className="flex items-center"><Check className="w-3 h-3 mr-1 text-amber-500" /> Priority placement in search results</li>
-            <li className="flex items-center"><Check className="w-3 h-3 mr-1 text-amber-500" /> Custom business description</li>
-            <li className="flex items-center"><Check className="w-3 h-3 mr-1 text-amber-500" /> Dedicated profile page</li>
-          </ul>
+        <div className="bg-amber-50 rounded-md p-2 mb-3 text-center">
+          <span className="text-xs font-medium text-amber-800 flex items-center justify-center">
+            <Award className="w-3 h-3 mr-1" /> Premium Installer
+          </span>
         </div>
       )}
       
       <Button 
         variant={installer.isPremium ? "default" : installer.isOurShop ? "default" : "outline"}
-        className={`w-full ${installer.isPremium ? "bg-amber-500 hover:bg-amber-600" : ""}`}
+        className={`w-full text-sm py-1 h-auto ${installer.isPremium ? "bg-amber-500 hover:bg-amber-600" : installer.isOurShop ? "bg-wrap-red hover:bg-wrap-red/90" : ""}`}
         onClick={() => onSelect(installer)}
       >
         Contact Installer

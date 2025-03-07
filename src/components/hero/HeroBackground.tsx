@@ -43,13 +43,13 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
             transform: `translateY(${scrollPos * 0.2}px)` // Parallax effect
           }}
         >
-          {/* Animated overlay with gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+          {/* Overlay with subtle gradient for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
         </div>
       ))}
       
       {/* Vehicle silhouette overlay effect for added dimension */}
-      <div className="absolute inset-0 bg-center bg-no-repeat opacity-10"
+      <div className="absolute inset-0 bg-center bg-no-repeat opacity-15"
         style={{
           backgroundImage: "url('/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png')",
           backgroundSize: "contain",
@@ -57,14 +57,6 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
           mixBlendMode: "overlay"
         }}
       />
-      
-      {/* Animated particles effect */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute w-4 h-4 bg-wrap-red/30 rounded-full top-1/4 left-1/4 animate-ping"></div>
-        <div className="absolute w-3 h-3 bg-white/20 rounded-full top-1/3 right-1/4 animate-ping" style={{animationDelay: '0.5s'}}></div>
-        <div className="absolute w-2 h-2 bg-wrap-red/20 rounded-full bottom-1/3 left-1/3 animate-ping" style={{animationDelay: '1s'}}></div>
-        <div className="absolute w-5 h-5 bg-white/30 rounded-full bottom-1/4 right-1/3 animate-ping" style={{animationDelay: '1.5s'}}></div>
-      </div>
     </>
   );
 };

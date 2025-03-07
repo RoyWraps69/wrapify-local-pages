@@ -57,18 +57,18 @@ const DirectoryContent: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="px-4">
       <DirectoryHeader 
         showSubmissionForm={showSubmissionForm} 
         setShowSubmissionForm={setShowSubmissionForm} 
       />
       
       {showSubmissionForm ? (
-        <div className="max-w-3xl mx-auto mb-10">
+        <div className="max-w-3xl mx-auto mb-6">
           <InstallerSubmissionForm />
         </div>
       ) : (
-        <>
+        <div className="bg-white rounded-lg shadow-sm p-4">
           <MiniCart />
           
           {!selectedInstaller ? (
@@ -91,9 +91,9 @@ const DirectoryContent: React.FC = () => {
               onBack={() => setSelectedInstaller(null)}
             />
           )}
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

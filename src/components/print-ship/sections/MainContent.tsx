@@ -80,13 +80,12 @@ const MainContent: React.FC<MainContentProps> = ({
       />
       
       {/* Local Installers Directory */}
-      <div id="installer-network" className="mt-16 border-t border-gray-200 pt-12">
-        <h2 className="text-3xl font-serif font-semibold text-wrap-blue text-center mb-4">
+      <div id="installer-network" className="mt-12 bg-gradient-to-b from-gray-50 to-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h2 className="text-2xl font-serif font-semibold text-wrap-blue text-center mb-3">
           Professional Installation Network
         </h2>
-        <p className="text-center text-wrap-grey mb-10 max-w-3xl mx-auto">
-          Wrap shops across the USA charge different installation rates based on vehicle type, complexity, and local market conditions. 
-          Connect with one of our trusted installation partners in major cities nationwide.
+        <p className="text-center text-wrap-grey mb-6 max-w-3xl mx-auto">
+          Connect with our trusted installation partners in major cities nationwide for professional wrap installation.
         </p>
         
         <InstallerDirectory />
