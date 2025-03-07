@@ -1,0 +1,55 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Missouri Locations -->
+  <url>
+    <loc>https://wrappingtheworld.com/locations/st-louis</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/st-louis-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in St. Louis</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in St. Louis, MO</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/kansas-city</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/kansas-city-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Kansas City</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Kansas City, MO</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/springfield-mo</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/springfield-mo-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Springfield</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Springfield, MO</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/locations/columbia-mo</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/locations/columbia-mo-vehicle-wraps.jpg</image:loc>
+      <image:title>Vehicle Wrapping in Columbia</image:title>
+      <image:caption>Professional vehicle wraps and ceramic coatings in Columbia, MO</image:caption>
+    </image:image>
+  </url>
+</urlset>
