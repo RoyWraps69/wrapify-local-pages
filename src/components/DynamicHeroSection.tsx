@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { getTownByName } from '@/utils/townData';
 import HeroHeadline from './hero/HeroHeadline';
 import HeroServiceFeatures from './hero/HeroServiceFeatures';
 import HeroCTAButtons from './hero/HeroCTAButtons';

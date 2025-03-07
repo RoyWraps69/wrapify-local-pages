@@ -45,6 +45,11 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Add our custom colors */
+    --color-wrap-blue: #0F4C81;
+    --color-wrap-red: #E63946;
+    --color-wrap-grey: #4A5568;
   }
 
   .dark {
@@ -149,6 +154,35 @@
   .text-responsive {
     @apply text-sm sm:text-base md:text-lg;
   }
+  
+  /* Custom utility classes for the Wrapping The World site */
+  .bg-wrap-blue {
+    background-color: var(--color-wrap-blue);
+  }
+  
+  .bg-wrap-red {
+    background-color: var(--color-wrap-red);
+  }
+  
+  .text-wrap-blue {
+    color: var(--color-wrap-blue);
+  }
+  
+  .text-wrap-red {
+    color: var(--color-wrap-red);
+  }
+  
+  .text-wrap-grey {
+    color: var(--color-wrap-grey);
+  }
+  
+  .border-wrap-blue {
+    border-color: var(--color-wrap-blue);
+  }
+  
+  .border-wrap-red {
+    border-color: var(--color-wrap-red);
+  }
 }
 
 /* Layout helpers */
@@ -183,6 +217,54 @@
 
 .mobile-menu.closed {
   transform: translateX(-100%);
+}
+
+/* Essential animations */
+.animate-fade-in-down {
+  animation: fadeInDown 1s ease forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-float-subtle {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* Media queries */
