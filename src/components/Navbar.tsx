@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
-import ServicesDropdown from './navbar/ServicesDropdown';
-import ResourcesDropdown from './navbar/ResourcesDropdown';
-import LocationsDropdown from './navbar/LocationsDropdown';
+import ServicesDropdown from '../components/navbar/ServicesDropdown';
+import ResourcesDropdown from '../components/navbar/ResourcesDropdown';
+import LocationsDropdown from '../components/navbar/LocationsDropdown';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
