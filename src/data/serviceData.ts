@@ -1,3 +1,4 @@
+
 export interface ServiceBenefit {
   title: string;
   description: string;
@@ -24,11 +25,11 @@ const serviceData: Record<string, ServiceInfo> = {
       },
       {
         title: 'Paint Protection',
-        description: 'Shield your vehicle's original paint from minor scratches, stone chips, and UV damage.'
+        description: 'Shield your vehicle\'s original paint from minor scratches, stone chips, and UV damage.'
       },
       {
         title: 'Reversible Enhancement',
-        description: 'Change your vehicle's look without permanently altering it - remove or replace as desired.'
+        description: 'Change your vehicle\'s look without permanently altering it - remove or replace as desired.'
       },
       {
         title: 'Cost-Effective Alternative',

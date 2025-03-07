@@ -61,7 +61,7 @@ const ServiceFAQs: React.FC<ServiceFAQsProps> = ({ service }) => {
           No, when properly installed and removed by professionals, vehicle wraps actually protect your 
           original paint. The adhesive used is designed to be removable without damaging the factory finish. 
           In fact, areas covered by the wrap will be shielded from UV rays and minor abrasions, potentially 
-          preserving your paint's condition better than exposed areas.
+          preserving your paint&apos;s condition better than exposed areas.
         </p>
       )
     },
@@ -71,7 +71,7 @@ const ServiceFAQs: React.FC<ServiceFAQsProps> = ({ service }) => {
         <p>
           A full vehicle wrap typically takes 3-5 business days to complete, depending on the complexity 
           of your vehicle and the design. Partial wraps and simple designs may be completed in 1-2 days. 
-          We'll provide you with a specific timeframe during your consultation.
+          We&apos;ll provide you with a specific timeframe during your consultation.
         </p>
       )
     }
