@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { Loader2 } from 'lucide-react';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -138,7 +139,14 @@ const ContactForm = () => {
           className="w-full"
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Sending...' : 'Submit Quote Request'}
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> 
+              Sending...
+            </>
+          ) : (
+            'Submit Quote Request'
+          )}
         </Button>
       </form>
     </div>
