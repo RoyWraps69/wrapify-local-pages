@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PrintShipSection from '@/components/print-ship/PrintShipSection';
@@ -7,8 +6,10 @@ import PrintShipFeatures from '@/components/print-ship/PrintShipFeatures';
 import PrintShipSEO from '@/components/print-ship/PrintShipSEO';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
+import InitImageObserver from '@/components/utils/ImageObserver';
 import { ShoppingCartProvider } from '@/components/print-ship/shopping-cart/ShoppingCart';
 import CartButton from '@/components/print-ship/shopping-cart/CartButton';
+import { Button } from '@/components/ui/button';
 import { ShoppingCart, Phone, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -37,6 +38,7 @@ const PrintShip = () => {
   return (
     <>
       <PrintShipSEO />
+      <InitImageObserver />
       <Navbar />
       <ShoppingCartProvider>
         <LazyMotion features={domAnimation}>

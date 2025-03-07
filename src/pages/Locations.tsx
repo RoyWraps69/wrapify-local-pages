@@ -26,7 +26,6 @@ const Locations: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <Link to="/regions/illinois" className="block">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png')" }}></div>
               <div className="p-6">
                 <h2 className="font-bold text-xl text-wrap-blue mb-2 flex items-center">
                   <MapPin className="w-5 h-5 mr-2 text-wrap-red" />
@@ -44,7 +43,6 @@ const Locations: React.FC = () => {
 
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <Link to="/regions/michigan" className="block">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png')" }}></div>
               <div className="p-6">
                 <h2 className="font-bold text-xl text-wrap-blue mb-2 flex items-center">
                   <MapPin className="w-5 h-5 mr-2 text-wrap-red" />
@@ -62,7 +60,6 @@ const Locations: React.FC = () => {
 
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <Link to="/regions/indiana" className="block">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png')" }}></div>
               <div className="p-6">
                 <h2 className="font-bold text-xl text-wrap-blue mb-2 flex items-center">
                   <MapPin className="w-5 h-5 mr-2 text-wrap-red" />
@@ -80,7 +77,6 @@ const Locations: React.FC = () => {
 
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <Link to="/regions/wisconsin" className="block">
-              <div className="h-40 bg-cover bg-center" style={{ backgroundImage: "url('/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png')" }}></div>
               <div className="p-6">
                 <h2 className="font-bold text-xl text-wrap-blue mb-2 flex items-center">
                   <MapPin className="w-5 h-5 mr-2 text-wrap-red" />
@@ -99,9 +95,9 @@ const Locations: React.FC = () => {
 
         <div className="space-y-12">
           <div className="animate-on-scroll fade-up">
-            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Wrapping Illinois HotSpots</h2>
+            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Popular Illinois Locations</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {illinoisTowns.map((town) => (
+              {illinoisTowns.slice(0, 8).map((town) => (
                 <Link 
                   to={`/locations/${town.id}`} 
                   key={town.id}
@@ -115,7 +111,7 @@ const Locations: React.FC = () => {
           </div>
 
           <div className="animate-on-scroll fade-up">
-            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Wrapping Michigan HotSpots</h2>
+            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Popular Michigan Locations</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {michiganTowns.slice(0, 8).map((town) => (
                 <Link 
@@ -131,7 +127,7 @@ const Locations: React.FC = () => {
           </div>
 
           <div className="animate-on-scroll fade-up">
-            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Wrapping Indiana HotSpots</h2>
+            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Popular Indiana Locations</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {indianaTowns.slice(0, 8).map((town) => (
                 <Link 
@@ -147,7 +143,7 @@ const Locations: React.FC = () => {
           </div>
 
           <div className="animate-on-scroll fade-up">
-            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Wrapping Wisconsin HotSpots</h2>
+            <h2 className="text-2xl font-bold text-wrap-blue mb-6 border-b pb-2">Popular Wisconsin Locations</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {wisconsinTowns.slice(0, 8).map((town) => (
                 <Link 

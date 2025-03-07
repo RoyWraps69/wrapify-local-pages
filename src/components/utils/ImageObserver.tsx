@@ -1,94 +1,67 @@
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-/**
- * Component to initialize image lazy loading observers on mount
- * This automatically observes image elements with data-src attributes
- * and replaces the src when they come into view
- */
-const InitImageObserver = () => {
+// Helper function to lazy load images
+export const useImageObserver = () => {
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  
   useEffect(() => {
-    console.log('InitImageObserver mounted');
-    
-    // Wrap in setTimeout to ensure it doesn't block initial render
-    setTimeout(() => {
-      try {
-        // Check if IntersectionObserver is available
-        if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
-          const lazyImages = document.querySelectorAll('img[data-src]');
-          console.log(`Found ${lazyImages.length} lazy images`);
-          
-          const lazyBackgrounds = document.querySelectorAll('.lazy-background');
-          console.log(`Found ${lazyBackgrounds.length} lazy backgrounds`);
-          
-          if (lazyImages.length === 0 && lazyBackgrounds.length === 0) {
-            console.log('No lazy-loaded elements found');
-            return;
-          }
-          
-          // Observer callback for images
-          const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const img = entry.target as HTMLImageElement;
-                if (img.dataset.src) {
-                  console.log(`Loading image: ${img.dataset.src}`);
-                  img.src = img.dataset.src;
-                  img.removeAttribute('data-src');
-                  imageObserver.unobserve(img);
-                }
-              }
-            });
-          });
-          
-          // Observer callback for background images
-          const bgObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const element = entry.target as HTMLElement;
-                if (element.dataset.background) {
-                  console.log(`Loading background: ${element.dataset.background}`);
-                  element.style.backgroundImage = `url('${element.dataset.background}')`;
-                  element.classList.remove('lazy-background');
-                  bgObserver.unobserve(element);
-                }
-              }
-            });
-          });
-          
-          // Observe all lazy images
-          lazyImages.forEach((img) => {
-            imageObserver.observe(img);
-          });
-          
-          // Observe all lazy backgrounds
-          lazyBackgrounds.forEach((bg) => {
-            bgObserver.observe(bg);
-          });
-          
-          return () => {
-            // Cleanup observers
-            lazyImages.forEach((img) => {
-              imageObserver.unobserve(img);
-            });
-            
-            lazyBackgrounds.forEach((bg) => {
-              bgObserver.unobserve(bg);
-            });
-            
-            console.log('ImageObserver cleanup completed');
-          };
-        } else {
-          console.warn('IntersectionObserver not supported in this browser');
+    // If browser doesn't support IntersectionObserver, load all images immediately
+    if (!('IntersectionObserver' in window)) {
+      const lazyImages = document.querySelectorAll('img[data-src]');
+      lazyImages.forEach(img => {
+        const dataElement = img as HTMLImageElement;
+        if (dataElement.dataset.src) {
+          dataElement.src = dataElement.dataset.src;
         }
-      } catch (error) {
-        console.error('Error in ImageObserver:', error);
-      }
-    }, 0);
+        if (dataElement.dataset.srcset) {
+          dataElement.srcset = dataElement.dataset.srcset;
+        }
+      });
+      return;
+    }
     
-    return undefined;
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          if (img.dataset.srcset) {
+            img.srcset = img.dataset.srcset;
+            img.removeAttribute('data-srcset');
+          }
+          observerRef.current?.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '200px 0px',
+      threshold: 0.01
+    });
+    
+    // Get all images with data-src attribute
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    lazyImages.forEach(img => {
+      observerRef.current?.observe(img);
+    });
+    
+    return () => {
+      if (observerRef.current) {
+        lazyImages.forEach(img => {
+          observerRef.current?.unobserve(img);
+        });
+      }
+    };
   }, []);
   
+  return null;
+};
+
+// Hook to initialize the observer
+export const InitImageObserver: React.FC = () => {
+  useImageObserver();
   return null;
 };
 

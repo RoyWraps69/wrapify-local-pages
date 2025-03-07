@@ -8,12 +8,9 @@ import ContactButton from './ContactButton';
 import MobileNavigation from './MobileNavigation';
 
 const NavbarContainer: React.FC = () => {
-  console.log('NavbarContainer rendering');
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  
-  console.log('Current location:', location.pathname);
 
   // Close mobile menu when changing routes
   useEffect(() => {
@@ -41,23 +38,11 @@ const NavbarContainer: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
-  // Force background to ensure visibility
-  const headerStyle = {
-    backgroundColor: scrolled ? 'white' : 'rgba(255, 255, 255, 0.9)',
-    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-    position: 'fixed' as const, // Type assertion to make position a valid CSSProperties type
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 50,
-    padding: '0.5rem 0',
-    transition: 'all 0.3s ease-out'
-  };
-
   return (
     <header 
-      className="navbar-container"
-      style={headerStyle}
+      className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
+        scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent'
+      }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
