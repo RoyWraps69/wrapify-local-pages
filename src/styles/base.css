@@ -49,6 +49,10 @@
     --color-wrap-blue: #0F4C81;
     --color-wrap-red: #E63946;
     --color-wrap-grey: #4A5568;
+    
+    /* Cyber theme colors for Print & Ship */
+    --cyber-blue: #0072ff;
+    --cyber-purple: #8033e6;
   }
 
   .dark {
@@ -181,6 +185,20 @@
   
   .border-wrap-red {
     border-color: var(--color-wrap-red);
+  }
+  
+  /* Cyber theme utilities for Print & Ship section */
+  .from-cyber-blue {
+    --tw-gradient-from: var(--cyber-blue);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 114, 255, 0));
+  }
+  
+  .to-cyber-purple {
+    --tw-gradient-to: var(--cyber-purple);
+  }
+  
+  .shadow-neon-blue {
+    box-shadow: 0 0 10px rgba(0, 114, 255, 0.7);
   }
 }
 

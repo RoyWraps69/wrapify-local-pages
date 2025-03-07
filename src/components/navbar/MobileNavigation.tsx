@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Printer, GraduationCap, ExternalLink, Shield, FileText, Users } from 'lucide-react';
+import { Phone, Printer, GraduationCap, ExternalLink, Shield, FileText, Users, MapPin } from 'lucide-react';
 
 const MobileNavigation: React.FC = () => {
   return (
@@ -45,9 +45,9 @@ const MobileNavigation: React.FC = () => {
         </Link>
         <Link
           to="/print-ship"
-          className="flex items-center px-4 py-3 my-1 rounded-md bg-gradient-to-r from-cyber-blue to-cyber-purple text-white font-medium shadow-neon-blue"
+          className="flex items-center px-4 py-3 my-1 rounded-md bg-gradient-to-r from-cyber-blue to-cyber-purple text-white font-medium shadow-neon-blue group transition-all duration-300 hover:scale-105"
         >
-          <Printer className="mr-2" size={18} />
+          <Printer className="mr-2 group-hover:animate-pulse" size={18} />
           <span className="relative">
             Print & Ship
             <span className="absolute inset-0 w-full h-full bg-white/20 animate-light-streak"></span>
@@ -82,7 +82,7 @@ const MobileNavigation: React.FC = () => {
         <div className="px-3 py-2 border-b border-gray-100 pb-4">
           <p className="font-medium text-wrap-blue mb-2 flex items-center">
             <span className="w-5 h-5 mr-2 flex items-center justify-center bg-wrap-blue/10 rounded-full text-wrap-blue">
-              <ExternalLink size={14} />
+              <MapPin size={14} />
             </span>
             Locations
           </p>
@@ -98,6 +98,12 @@ const MobileNavigation: React.FC = () => {
             </Link>
             <Link to="/regions/wisconsin" className="text-sm text-wrap-grey hover:text-wrap-red">
               Wisconsin Region
+            </Link>
+            <Link to="/locations/chicago" className="text-sm text-wrap-grey hover:text-wrap-red">
+              Chicago, IL
+            </Link>
+            <Link to="/locations/detroit" className="text-sm text-wrap-grey hover:text-wrap-red">
+              Detroit, MI
             </Link>
           </div>
         </div>
