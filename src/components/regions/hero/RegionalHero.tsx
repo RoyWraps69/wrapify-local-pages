@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Camera, ExternalLink } from 'lucide-react';
@@ -8,13 +7,12 @@ interface RegionalHeroProps {
   regionImage?: string;
 }
 
-// Define a set of reliable background images to use
+// Define a set of reliable background images focused on commercial/fleet vehicles
 const heroBackgrounds = [
-  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
-  '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
-  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
   '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Van
-  '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png'  // White car
+  '/lovable-uploads/37c26304-db0e-44fd-b705-da7a4a74a012.png', // Box Truck
+  '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png', // MedX Waste Van
+  '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png', // Cement Truck
 ];
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {

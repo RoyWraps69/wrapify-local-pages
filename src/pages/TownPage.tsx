@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -14,13 +13,12 @@ import { Helmet } from 'react-helmet-async';
 import RegionalHero from '@/components/regions/hero/RegionalHero';
 import { toast } from 'sonner';
 
-// Define reliable town background images
+// Define reliable town background images focused on local business vehicles
 const townBackgroundImages = [
-  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
-  '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
-  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
-  '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Vans
-  '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png'  // White car
+  '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',  // MH Equipment
+  '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png',  // Shopping Truck
+  '/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png',  // Golden Tixx
+  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png'   // Green Lightning
 ];
 
 const TownPage: React.FC = () => {
