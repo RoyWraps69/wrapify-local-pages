@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOSchema from '@/components/SEOSchema';
@@ -11,13 +11,57 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    vehicleType: '',
+    message: ''
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for your message. We'll get back to you soon!",
-    });
+    setIsSubmitting(true);
+    
+    try {
+      // In a real implementation, this would be an API call to your backend
+      // For now, we'll simulate a successful submission after a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Send email notification (in a real app this would be handled by a backend)
+      console.log('Sending email to: info@wrappingtheworld.com');
+      console.log('Form data:', formData);
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        vehicleType: '',
+        message: ''
+      });
+      
+      // Show success message
+      toast({
+        title: "Message Sent",
+        description: "Thank you for your message. We'll get back to you soon!",
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -80,35 +124,66 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Your Name</label>
-                  <Input placeholder="Enter your full name" required />
+                  <Input 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name" 
+                    required 
+                  />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Email Address</label>
-                  <Input type="email" placeholder="Enter your email address" required />
+                  <Input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email address" 
+                    required 
+                  />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Phone Number</label>
-                  <Input type="tel" placeholder="Enter your phone number" />
+                  <Input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Enter your phone number" 
+                  />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Vehicle Type</label>
-                  <Input placeholder="Car, Van, Truck, Fleet, etc." />
+                  <Input 
+                    name="vehicleType"
+                    value={formData.vehicleType}
+                    onChange={handleChange}
+                    placeholder="Car, Van, Truck, Fleet, etc." 
+                  />
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">Project Details</label>
                   <Textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Tell us about your vehicle wrap project needs" 
                     className="min-h-[120px]"
                     required 
                   />
                 </div>
                 
-                <Button type="submit" className="w-full">
-                  Submit Quote Request
+                <Button 
+                  type="submit" 
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Submit Quote Request'}
                 </Button>
               </form>
             </div>

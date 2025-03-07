@@ -1,11 +1,26 @@
 
 import React from 'react';
+import { useToast } from '@/components/ui/use-toast';
 
 interface TestimonialShareSectionProps {
   getSourceIcon: (source?: 'Google' | 'Yelp' | 'Facebook' | 'Website') => React.ReactNode;
 }
 
 const TestimonialShareSection: React.FC<TestimonialShareSectionProps> = ({ getSourceIcon }) => {
+  const { toast } = useToast();
+  
+  const handleReviewLinkClick = (platform: string) => {
+    // Track review link clicks
+    console.log(`Customer clicked to leave review on ${platform}`);
+    // This could send analytics data to your backend in a real implementation
+    
+    // Show notification that discount will be applied
+    toast({
+      title: "Discount Code Ready",
+      description: `After posting your review on ${platform}, mention it on your next visit to claim your 10% discount!`,
+    });
+  };
+
   return (
     <div className="mt-12 text-center">
       <div className="bg-white p-6 rounded-xl shadow-md max-w-2xl mx-auto">
@@ -21,6 +36,7 @@ const TestimonialShareSection: React.FC<TestimonialShareSectionProps> = ({ getSo
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            onClick={() => handleReviewLinkClick('Google')}
           >
             {getSourceIcon('Google')}
             <span className="ml-2">Review on Google</span>
@@ -30,6 +46,7 @@ const TestimonialShareSection: React.FC<TestimonialShareSectionProps> = ({ getSo
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            onClick={() => handleReviewLinkClick('Yelp')}
           >
             {getSourceIcon('Yelp')}
             <span className="ml-2">Review on Yelp</span>
@@ -39,6 +56,7 @@ const TestimonialShareSection: React.FC<TestimonialShareSectionProps> = ({ getSo
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+            onClick={() => handleReviewLinkClick('Facebook')}
           >
             {getSourceIcon('Facebook')}
             <span className="ml-2">Review on Facebook</span>
