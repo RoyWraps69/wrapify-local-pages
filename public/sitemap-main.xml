@@ -9,7 +9,7 @@
   <!-- Main Pages -->
   <url>
     <loc>https://wrappingtheworld.com/</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -21,56 +21,61 @@
   
   <url>
     <loc>https://wrappingtheworld.com/services</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/gallery</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/about</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/contact</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/blog</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/testimonials</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/print-ship</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png</image:loc>
+      <image:title>Print and Ship Vehicle Wraps</image:title>
+      <image:caption>Premium quality vehicle wraps designed and printed in Chicago, shipped nationwide</image:caption>
+    </image:image>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/wrap-insurance</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
@@ -83,21 +88,21 @@
   <!-- Resource Pages -->
   <url>
     <loc>https://wrappingtheworld.com/vinyl-wrap-care-guide</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/ceramic-coating-faq</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/design-template-library</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -105,21 +110,21 @@
   <!-- Industry Pages -->
   <url>
     <loc>https://wrappingtheworld.com/industries/construction</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/industries/food-beverage</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/industries/real-estate</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -127,21 +132,21 @@
   <!-- Support Pages -->
   <url>
     <loc>https://wrappingtheworld.com/warranty-information</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/wrap-installation-process</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/payment-options</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -149,14 +154,14 @@
   <!-- About Pages -->
   <url>
     <loc>https://wrappingtheworld.com/our-team</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/careers</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -164,29 +169,45 @@
   <!-- Midwest Regional Pages -->
   <url>
     <loc>https://wrappingtheworld.com/regions/illinois</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/regions/michigan</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/regions/indiana</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/regions/wisconsin</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- New Training Classes Page -->
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Installers Directory Page -->
+  <url>
+    <loc>https://wrappingtheworld.com/installer-directory</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>

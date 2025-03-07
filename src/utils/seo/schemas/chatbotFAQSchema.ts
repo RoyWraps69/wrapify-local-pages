@@ -1,39 +1,72 @@
 
-import { generateFAQSchema } from './faqSchemas';
+interface ChatbotFAQItem {
+  question: string;
+  answer: string;
+}
 
-/**
- * Creates an FAQ schema specifically for the AI chatbot responses
- * This helps search engines understand the types of questions the chatbot can answer
- */
 export const generateChatbotFAQSchema = (locationName: string = 'Chicago') => {
-  // Common questions the chatbot can handle with location-specific answers
-  const chatbotFaqs = [
+  // Generate location-specific FAQs
+  const locationSpecificFAQs: ChatbotFAQItem[] = [
     {
-      question: `How much does it cost to wrap a vehicle in ${locationName}?`,
-      answer: `The cost of vehicle wraps in ${locationName} depends on your vehicle size and project needs. Full wraps typically range from $2,500-$6,000, while partial wraps start around $1,000. We're very competitive for the ${locationName} area and offer free consultations.`
+      question: `What services does Wrapping The World offer in ${locationName}?`,
+      answer: `In ${locationName}, we offer a comprehensive range of vehicle transformation services including commercial fleet wraps, color change wraps, ceramic coatings, paint protection film, partial wraps, vehicle graphics, and nationwide print & ship services for DIY installers.`
+    },
+    {
+      question: `How much does a vehicle wrap cost in ${locationName}?`,
+      answer: `Vehicle wrap pricing in ${locationName} varies based on vehicle size, wrap complexity, coverage area, and material quality. Commercial fleet wraps typically range from $2,500 to $5,000+ per vehicle, while color change wraps for personal vehicles range from $3,000 to $7,000+. We offer free consultations and quotes for all projects.`
     },
     {
       question: `How long does a vehicle wrap installation take in ${locationName}?`,
-      answer: `In our ${locationName} facility, a complete vehicle wrap typically takes 3-5 business days to install. Partial wraps may be completed in 1-2 days. We maintain a climate-controlled environment to ensure optimal installation regardless of ${locationName}'s weather conditions.`
-    },
-    {
-      question: `What warranty do you offer on vehicle wraps in ${locationName}?`,
-      answer: `Our comprehensive 5-year warranty covers all professional vehicle wraps performed by our certified ${locationName} technicians. It includes protection against peeling, cracking, and excessive fading under normal conditions when properly maintained.`
-    },
-    {
-      question: `Where is your ${locationName} vehicle wrap facility located?`,
-      answer: `Our ${locationName} installation center is located at 4711 N. Lamon Ave, Chicago. We're just 5 minutes from the Kennedy Expressway and serve all ${locationName} and surrounding areas.`
+      answer: `In our ${locationName} facility, most standard vehicle wraps are completed in 3-5 business days. Complex custom designs or fleet projects may require additional time. We provide detailed timelines during your initial consultation.`
     },
     {
       question: `Do you offer ceramic coating services in ${locationName}?`,
-      answer: `Yes, we provide premium ceramic coating services in ${locationName}. Our ceramic coatings offer exceptional protection against local weather elements, road salt, and UV damage. We use premium nano-ceramic formulations that last up to 5 years and maintain your vehicle's shine in all ${locationName} weather conditions.`
-    },
-    {
-      question: `How do I care for my vehicle wrap in ${locationName}'s climate?`,
-      answer: `For ${locationName}'s climate, we recommend hand washing your wrapped vehicle with a gentle automotive soap, avoiding automatic car washes with brushes. During winter, rinse off road salt promptly. In summer, park in shade when possible to reduce UV exposure. We provide all clients with a detailed care guide specific to ${locationName}'s seasonal conditions.`
+      answer: `Yes, we provide professional ceramic coating services in ${locationName}. Our premium ceramic coatings offer superior protection against environmental contaminants, UV rays, and minor scratches while enhancing your vehicle's appearance with a deep, long-lasting shine.`
     }
   ];
 
-  // Generate the schema using our existing utility
-  return generateFAQSchema(chatbotFaqs);
+  // General FAQs about services
+  const generalServiceFAQs: ChatbotFAQItem[] = [
+    {
+      question: "What's the difference between a partial wrap and a full vehicle wrap?",
+      answer: "A partial wrap covers only portions of your vehicle, typically 25-75% of the surface area, while a full wrap covers the entire vehicle. Partial wraps are a cost-effective option that still offers significant brand visibility by strategically covering key areas of your vehicle."
+    },
+    {
+      question: "How long do your vehicle wraps last?",
+      answer: "Our premium 3M and Avery Dennison vehicle wraps typically last 5-7 years with proper care and maintenance. Factors affecting longevity include exposure to harsh weather conditions, regular washing, and storage conditions."
+    },
+    {
+      question: "Can I wash my wrapped vehicle?",
+      answer: "Yes, but we recommend hand washing with mild soap and water or using touchless car washes. Avoid high-pressure washes, abrasive cleaning tools, and harsh chemicals that can damage the vinyl wrap. We provide detailed care instructions with every wrap installation."
+    }
+  ];
+
+  // Print & Ship specific FAQs
+  const printShipFAQs: ChatbotFAQItem[] = [
+    {
+      question: "How does your Print & Ship service work?",
+      answer: "Our Print & Ship service allows you to order custom-designed vehicle wraps that we print in our Chicago facility and ship directly to you or your preferred installer anywhere in the United States. Each order includes detailed installation instructions and access to technical support."
+    },
+    {
+      question: "Do I need professional installation for a shipped wrap?",
+      answer: "While professional installation is recommended for best results, our Print & Ship wraps are designed to be installer-friendly. We can connect you with our nationwide network of certified installers, or if you have experience, you can perform the installation yourself with our detailed instructions."
+    }
+  ];
+
+  // Combine all FAQs
+  const allFAQs = [...locationSpecificFAQs, ...generalServiceFAQs, ...printShipFAQs];
+
+  // Create the schema
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allFAQs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
 };

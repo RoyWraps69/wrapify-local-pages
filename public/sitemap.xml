@@ -4,14 +4,22 @@
   <!-- Main sitemap entries -->
   <sitemap>
     <loc>https://wrappingtheworld.com/sitemap-main.xml</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://wrappingtheworld.com/sitemap-services.xml</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://wrappingtheworld.com/sitemap-locations.xml</loc>
-    <lastmod>2024-09-15</lastmod>
+    <lastmod>2024-09-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://wrappingtheworld.com/sitemap-blog.xml</loc>
+    <lastmod>2024-09-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://wrappingtheworld.com/sitemap-resources.xml</loc>
+    <lastmod>2024-09-20</lastmod>
   </sitemap>
 </sitemapindex>

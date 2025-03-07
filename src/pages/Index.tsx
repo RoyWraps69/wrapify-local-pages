@@ -10,7 +10,7 @@ import FAQSection from '@/components/FAQSection';
 import NationwideSection from '@/components/nationwide/NationwideSection';
 import PrintShipSection from '@/components/print-ship/PrintShipSection';
 import { getAllTowns } from '@/utils/townData';
-import { Helmet } from 'react-helmet-async';
+import PageSEO from '@/components/seo/PageSEO';
 import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
 
 const Index = () => {
@@ -27,18 +27,83 @@ const Index = () => {
   // Create list of town names for SEO
   const topTownNames = towns.slice(0, 15).map(town => town.name).join(", ");
   
+  // Homepage schema for structured data
+  const homePageSchema = [
+    // Home page schema
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Professional Vehicle Wrapping & Ceramic Coating Services | Wrapping The World",
+      "description": "Transform your vehicles with premium wraps and protection from Wrapping The World. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago and surrounding towns.",
+      "url": "https://wrappingtheworld.com",
+      "lastReviewed": new Date().toISOString().split('T')[0]
+    },
+    
+    // Business schema
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Wrapping The World",
+      "image": "https://wrappingtheworld.com/logo.png",
+      "description": "Professional vehicle wrapping, ceramic coating, and paint protection services for commercial and personal vehicles throughout Chicago and the Midwest.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4711 N. Lamon Ave",
+        "addressLocality": "Chicago",
+        "addressRegion": "IL",
+        "postalCode": "60630",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 41.8781,
+        "longitude": -87.6298
+      },
+      "telephone": "+13125971286",
+      "priceRange": "$$",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Chicago"
+        },
+        {
+          "@type": "State",
+          "name": "Illinois"
+        }
+      ]
+    }
+  ];
+  
   return (
     <>
-      <Helmet>
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <link rel="canonical" href="https://wrappingtheworld.com" />
-        <meta name="keywords" content={`vehicle wraps Chicago, car wraps Chicago, fleet wraps Chicago, ceramic coating Chicago, paint protection film Chicago, commercial vehicle wraps, mobile advertising, business vehicle branding, ${topTownNames} vehicle wraps`} />
+      <PageSEO 
+        title="Professional Vehicle Wrapping & Ceramic Coating Services | Wrapping The World"
+        description="Transform your vehicles with premium wraps and protection from Wrapping The World. Commercial fleet wraps, ceramic coatings, paint protection film, color change wraps, and custom graphics for businesses across Chicago and surrounding towns."
+        canonicalUrl="https://wrappingtheworld.com"
+        keywords={`vehicle wraps Chicago, car wraps Chicago, fleet wraps Chicago, ceramic coating Chicago, paint protection film Chicago, commercial vehicle wraps, mobile advertising, business vehicle branding, ${topTownNames} vehicle wraps`}
+        location="Chicago"
+        structuredData={homePageSchema}
+      >
         <meta name="geo.region" content="US-IL" />
         <meta name="geo.placename" content="Chicago" />
         <meta name="geo.position" content="41.8781;-87.6298" />
         <meta name="ICBM" content="41.8781, -87.6298" />
         <meta name="revisit-after" content="3 days" />
-      </Helmet>
+      </PageSEO>
       
       <Navbar />
       <main>

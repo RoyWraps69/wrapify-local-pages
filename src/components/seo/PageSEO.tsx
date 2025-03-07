@@ -14,6 +14,9 @@ export interface PageSEOProps {
   location?: string;
   modifiedTime?: string;
   publishedTime?: string;
+  language?: string;
+  author?: string;
+  breadcrumbs?: Array<{name: string, url: string}>;
 }
 
 /**
@@ -31,11 +34,29 @@ const PageSEO: React.FC<PageSEOProps> = ({
   structuredData = [],
   location,
   modifiedTime,
-  publishedTime
+  publishedTime,
+  language = 'en_US',
+  author = 'Wrapping The World',
+  breadcrumbs
 }) => {
   const baseUrl = 'https://wrappingtheworld.com';
   const fullCanonicalUrl = canonicalUrl.startsWith('http') ? canonicalUrl : `${baseUrl}${canonicalUrl}`;
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${baseUrl}${ogImage}`;
+  
+  // Generate breadcrumb schema if breadcrumbs are provided
+  let breadcrumbSchema = null;
+  if (breadcrumbs && breadcrumbs.length > 0) {
+    breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": crumb.name,
+        "item": crumb.url.startsWith('http') ? crumb.url : `${baseUrl}${crumb.url}`
+      }))
+    };
+  }
   
   return (
     <Helmet>
@@ -58,10 +79,11 @@ const PageSEO: React.FC<PageSEOProps> = ({
       <meta property="og:url" content={fullCanonicalUrl} />
       <meta property="og:image" content={fullOgImage} />
       <meta property="og:site_name" content="Wrapping The World" />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={language} />
       
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {author && <meta property="article:author" content={author} />}
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -72,6 +94,9 @@ const PageSEO: React.FC<PageSEOProps> = ({
       {/* Keywords */}
       {keywords && <meta name="keywords" content={keywords} />}
       
+      {/* Author */}
+      <meta name="author" content={author} />
+      
       {/* Geo Location Tags */}
       {location === 'Chicago' && (
         <>
@@ -80,6 +105,13 @@ const PageSEO: React.FC<PageSEOProps> = ({
           <meta name="geo.position" content="41.8781;-87.6298" />
           <meta name="ICBM" content="41.8781, -87.6298" />
         </>
+      )}
+      
+      {/* Breadcrumb Schema */}
+      {breadcrumbSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
       )}
       
       {/* Add all structured data schemas */}

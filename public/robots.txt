@@ -22,6 +22,10 @@ Allow: /blog/
 Allow: /resources/
 Allow: /case-studies/
 Allow: /regions/
+Allow: /print-ship
+Allow: /training-classes
+Allow: /installer-directory
+Allow: /wrap-insurance
 
 # Regional focus areas
 Allow: /regions/illinois
@@ -93,7 +97,8 @@ Allow: /
 
 # Sitemap locations
 Sitemap: https://wrappingtheworld.com/sitemap.xml
+Sitemap: https://wrappingtheworld.com/sitemap-main.xml
 Sitemap: https://wrappingtheworld.com/sitemap-services.xml
-Sitemap: https://wrappingtheworld.com/sitemap-towns.xml
+Sitemap: https://wrappingtheworld.com/sitemap-locations.xml
 Sitemap: https://wrappingtheworld.com/sitemap-blog.xml
-Sitemap: https://wrappingtheworld.com/sitemap-midwest.xml
+Sitemap: https://wrappingtheworld.com/sitemap-resources.xml

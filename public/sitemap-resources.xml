@@ -1,0 +1,94 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main Resources Pages -->
+  <url>
+    <loc>https://wrappingtheworld.com/resources</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Guides and FAQs -->
+  <url>
+    <loc>https://wrappingtheworld.com/vinyl-wrap-care-guide</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/resources/vinyl-wrap-care-guide.jpg</image:loc>
+      <image:title>Vinyl Wrap Care Guide</image:title>
+      <image:caption>How to maintain and care for your vehicle wrap</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/ceramic-coating-faq</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/resources/ceramic-coating-faq.jpg</image:loc>
+      <image:title>Ceramic Coating FAQ</image:title>
+      <image:caption>Frequently asked questions about ceramic coating</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Templates and Design Resources -->
+  <url>
+    <loc>https://wrappingtheworld.com/design-template-library</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/resources/design-templates.jpg</image:loc>
+      <image:title>Vehicle Wrap Design Templates</image:title>
+      <image:caption>Pre-designed templates for vehicle wraps</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Training Resources -->
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/resources/training-classes.jpg</image:loc>
+      <image:title>Vehicle Wrap Training Classes</image:title>
+      <image:caption>Professional training for vehicle wrap installation</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Installer Resources -->
+  <url>
+    <loc>https://wrappingtheworld.com/installer-directory</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/resources/installer-directory.jpg</image:loc>
+      <image:title>Nationwide Installer Directory</image:title>
+      <image:caption>Find professional vehicle wrap installers across the country</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Warranty Information -->
+  <url>
+    <loc>https://wrappingtheworld.com/warranty-information</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Insurance Information -->
+  <url>
+    <loc>https://wrappingtheworld.com/wrap-insurance</loc>
+    <lastmod>2024-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

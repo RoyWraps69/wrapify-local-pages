@@ -12,11 +12,32 @@ const PrintShipSEO: React.FC = () => {
   const pageTitle = "Print & Ship Vehicle Wraps Nationwide | Wrapping The World";
   const pageDescription = "Premium vehicle wraps designed and printed in Chicago, shipped nationwide. Perfect for DIY installers, fleet managers, and wrap shops looking for high-quality wrap materials.";
   const canonicalUrl = "https://wrappingtheworld.com/print-ship";
+  const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
   
   // Generate structured data schemas
   const serviceSchema = generatePrintShipServiceSchema();
   const productSchema = generatePrintShipProductSchema();
   const faqSchema = generatePrintShipFAQSchema();
+
+  // Breadcrumb schema for Print & Ship page
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://wrappingtheworld.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Print & Ship Vehicle Wraps",
+        "item": "https://wrappingtheworld.com/print-ship"
+      }
+    ]
+  };
 
   return (
     <Helmet>
@@ -25,7 +46,7 @@ const PrintShipSEO: React.FC = () => {
       <link rel="canonical" href={canonicalUrl} />
       
       {/* Enhanced meta tags */}
-      <meta name="keywords" content="vehicle wrap printing, nationwide vehicle wraps, print and ship car wraps, DIY vehicle wraps, fleet wrap printing, commercial truck wraps, car wrap materials, premium vehicle wraps, 3M vehicle wraps, Avery Dennison wraps, vehicle graphics shipping, wrap installation support" />
+      <meta name="keywords" content="vehicle wrap printing, nationwide vehicle wraps, print and ship car wraps, DIY vehicle wraps, fleet wrap printing, commercial truck wraps, car wrap materials, premium vehicle wraps, 3M vehicle wraps, Avery Dennison wraps, vehicle graphics shipping, wrap installation support, custom vehicle graphics, professional vehicle wraps, business vehicle branding, auto wraps" />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />
       <meta property="og:type" content="website" />
@@ -33,6 +54,7 @@ const PrintShipSEO: React.FC = () => {
       <meta property="og:image" content="https://wrappingtheworld.com/lovable-uploads/f8f4b8b6-d0df-43f3-9ce0-d9f83e7eddb0.png" />
       <meta property="og:site_name" content="Wrapping The World" />
       <meta property="og:locale" content="en-US" />
+      <meta property="og:updated_time" content={currentDate} />
       
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
@@ -56,6 +78,10 @@ const PrintShipSEO: React.FC = () => {
       
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
+      </script>
+      
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
       </script>
     </Helmet>
   );
