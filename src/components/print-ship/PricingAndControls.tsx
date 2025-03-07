@@ -5,9 +5,6 @@ import { ShoppingCart } from 'lucide-react';
 import PriceCalculator from './PriceCalculator';
 import PriceSummary from './price-summary/PriceSummary';
 import { VehicleSize, WrapMaterial, DesignOption, ShippingOption } from '@/utils/vehiclePricingData';
-import { useShoppingCart } from './shopping-cart/ShoppingCart';
-import { ShopItem } from './types/installer';
-import { shopItems } from './data/installers';
 
 interface PricingAndControlsProps {
   selectedVehicle: VehicleSize;
