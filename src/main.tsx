@@ -1,13 +1,15 @@
 
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import './App.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './styles/base.css';
+import './styles/components.css';
+import './styles/animations.css';
+import InitImageObserver from './components/utils/ImageObserver';
 
-console.log("Initializing application");
-const rootElement = document.getElementById("root");
-if (rootElement) {
-  createRoot(rootElement).render(<App />);
-} else {
-  console.error("Root element not found");
-}
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <InitImageObserver />
+    <App />
+  </React.StrictMode>
+);

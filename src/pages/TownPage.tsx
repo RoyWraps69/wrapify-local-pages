@@ -7,7 +7,7 @@ import SEOSchema from '@/components/SEOSchema';
 import { getTownData } from '@/utils/townData';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import TownStructuredData from '@/components/town/seo/TownStructuredData';
-import TownPageContent from '@/components/town/layout/TownPageContent';
+import LazyTownPageContent from '@/components/town/layout/LazyTownPageContent';
 import { createTownFAQs } from '@/components/town/data/TownFAQData';
 
 const TownPage: React.FC = () => {
@@ -70,7 +70,7 @@ const TownPage: React.FC = () => {
       
       <Navbar />
       
-      <TownPageContent 
+      <LazyTownPageContent 
         townData={townData}
         locationFaqs={locationFaqs}
       />

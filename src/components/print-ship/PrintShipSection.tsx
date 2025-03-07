@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   vehicleSizes, 
@@ -10,11 +11,9 @@ import {
   DesignOption,
   ShippingOption
 } from '@/utils/vehiclePricingData';
-import { Button } from '@/components/ui/button';
-import { ShoppingCart } from 'lucide-react';
 import PrintShipHeader from './PrintShipHeader';
-import PriceCalculator from './PriceCalculator';
-import PriceSummary from './PriceSummary';
+import InstallationNotice from './InstallationNotice';
+import PricingAndControls from './PricingAndControls';
 import WrapAddOns from './WrapAddOns';
 import BottomCTA from './BottomCTA';
 import UploadArtwork from './UploadArtwork';
@@ -128,53 +127,25 @@ const PrintShipContent: React.FC = () => {
   return (
     <>
       <PrintShipHeader />
-
-      {/* Installation Notice */}
-      <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6 text-center">
-        <p className="text-amber-800 font-medium">
-          <span className="underline font-bold">Important:</span> Pricing below is for wrap materials and shipping only. Professional installation is not included.
-          <a href="#installer-network" className="text-wrap-red hover:underline ml-1">
-            Find a certified installer in your area below.
-          </a>
-        </p>
-      </div>
-
-      {/* Upload Artwork Link */}
+      <InstallationNotice />
       <UploadArtwork />
-      
-      {/* Avery Color Chart */}
       <ColorPicker />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Left column - Pricing Calculator */}
-        <PriceCalculator 
-          selectedVehicle={selectedVehicle}
-          setSelectedVehicle={setSelectedVehicle}
-          selectedMaterial={selectedMaterial}
-          setSelectedMaterial={setSelectedMaterial}
-          selectedDesign={selectedDesign}
-          setSelectedDesign={setSelectedDesign}
-          selectedShipping={selectedShipping}
-          setSelectedShipping={setSelectedShipping}
-          coverage={coverage}
-          setCoverage={setCoverage}
-        />
-        
-        {/* Right column - Price Summary and CTA */}
-        <div>
-          <PriceSummary price={price} selectedAddOns={selectedAddOns} />
-          
-          {/* Checkout button */}
-          <Button 
-            onClick={handleAddToCart}
-            className="mt-4 w-full bg-wrap-red hover:bg-wrap-red/90 text-white flex items-center justify-center gap-2 py-6"
-            size="lg"
-          >
-            <ShoppingCart className="w-5 h-5" />
-            Add All Items to Cart
-          </Button>
-        </div>
-      </div>
+      <PricingAndControls 
+        selectedVehicle={selectedVehicle}
+        setSelectedVehicle={setSelectedVehicle}
+        selectedMaterial={selectedMaterial}
+        setSelectedMaterial={setSelectedMaterial}
+        selectedDesign={selectedDesign}
+        setSelectedDesign={setSelectedDesign}
+        selectedShipping={selectedShipping}
+        setSelectedShipping={setSelectedShipping}
+        coverage={coverage}
+        setCoverage={setCoverage}
+        price={price}
+        selectedAddOns={selectedAddOns}
+        handleAddToCart={handleAddToCart}
+      />
       
       {/* Add-ons Section */}
       <WrapAddOns 

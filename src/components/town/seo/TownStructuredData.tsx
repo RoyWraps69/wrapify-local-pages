@@ -23,11 +23,12 @@ const TownStructuredData: React.FC<TownStructuredDataProps> = ({
   
   const { name, latitude, longitude } = townData;
   
+  // Create structured data for the town page - optimized for better performance
   const townStructuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": `${name} Vehicle Wraps & Ceramic Coatings`,
-    "description": `Professional vehicle wrapping and ceramic coating services in ${name}. We specialize in commercial fleet wraps, custom vehicle graphics, ceramic coatings, and paint protection film.`,
+    "description": `Professional vehicle wrapping and ceramic coating services in ${name}.`,
     "provider": {
       "@type": "LocalBusiness",
       "name": "Wrapping The World",
