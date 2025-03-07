@@ -26,7 +26,7 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
           "transition-all duration-1000 transform backdrop-blur-sm bg-black/30 p-6 rounded-lg",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         )}>
-          {/* Big WRAPPING THE WORLD logo - with reduced size and object-contain to maintain aspect ratio */}
+          {/* Updated logo with better visibility against different backgrounds */}
           <div className="flex justify-center mb-6">
             <img 
               src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 

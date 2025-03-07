@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -9,21 +8,21 @@ const TrainingInstructors: React.FC = () => {
       title: 'Lead Instructor, Master Wrapper',
       experience: '30+ years experience',
       bio: "Mike has been wrapping vehicles since vinyl wraps first entered the market. He's worked with major automotive brands and has wrapped everything from luxury sports cars to commercial fleet vehicles.",
-      image: '/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png'
+      image: '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png'
     },
     {
       name: 'Sarah Williams',
       title: 'Senior Instructor, Design Specialist',
       experience: '15+ years experience',
       bio: 'With a background in graphic design and vehicle wrapping, Sarah specializes in teaching the intersection of design and installation techniques for maximum visual impact.',
-      image: '/lovable-uploads/37c26304-db0e-44fd-b705-da7a4a74a012.png'
+      image: '/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png'
     },
     {
       name: 'David Martinez',
       title: 'Technical Instructor',
       experience: '12+ years experience',
       bio: "David's expertise is in complex installations and problem-solving. He specializes in teaching students how to handle challenging surfaces and unusual vehicle configurations.",
-      image: '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png'
+      image: '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png'
     }
   ];
 

@@ -11,12 +11,12 @@ interface ProductDetailsProps {
   onBackToShop: () => void;
 }
 
-// Sample additional product images
+// Updated sample images for products that are more product-oriented
 const sampleImages = [
-  "/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png",
-  "/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png",
-  "/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png",
-  "/lovable-uploads/ba4120c9-6cc5-41c6-a7e4-55afd5dab546.png"
+  "/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png", // White Bentley (for premium wraps)
+  "/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png", // Silver Mercedes (for luxury options)
+  "/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png", // Blue car (for color change wraps)
+  "/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png"  // Pink Dodge (for vibrant options)
 ];
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product, onBackToShop }) => {

@@ -10,7 +10,7 @@ interface ShopFooterProps {
 
 const ShopFooter: React.FC<ShopFooterProps> = ({ setActiveCategory }) => {
   return (
-    <div className="mt-16 bg-gray-50 rounded-lg p-8">
+    <div className="mt-16 bg-gray-50 rounded-lg p-8 border border-gray-200 shadow-sm">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-serif font-semibold text-wrap-blue mb-2">
           Can't Find What You're Looking For?

@@ -9,12 +9,12 @@ interface InstallerCardProps {
   onSelect: (installer: Installer) => void;
 }
 
-// Sample shop images to use when installer doesn't have an image
+// Update shop images to be more installer/workshop focused
 const shopImages = [
-  "/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png",
-  "/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png",
-  "/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png",
-  "/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png"
+  "/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png", // Van being wrapped
+  "/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png", // MedX Waste Van (professional installation)
+  "/lovable-uploads/37c26304-db0e-44fd-b705-da7a4a74a012.png", // Box truck (shop work example)
+  "/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png"  // Truck wrap (professional installation)
 ];
 
 const InstallerCard: React.FC<InstallerCardProps> = ({ installer, onSelect }) => {

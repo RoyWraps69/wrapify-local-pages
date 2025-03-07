@@ -10,9 +10,9 @@ interface RegionalHeroProps {
 
 // Define a set of reliable background images focused on commercial/fleet vehicles
 const heroBackgrounds = [
-  '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Van
-  '/lovable-uploads/37c26304-db0e-44fd-b705-da7a4a74a012.png', // Box Truck
   '/lovable-uploads/599e2f1d-44a1-44e0-9fad-0f1e68af2fef.png', // MedX Waste Van
+  '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png', // MH Equipment Service Van
+  '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Frontier Vans
   '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png', // Cement Truck
 ];
 
