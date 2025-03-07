@@ -29,7 +29,7 @@ const HeroThumbnails: React.FC<HeroThumbnailsProps> = ({
         <button
           key={index}
           onClick={() => onThumbnailClick(index)}
-          className={`w-12 h-12 rounded-md overflow-hidden border-2 transition-all ${
+          className={`w-10 h-10 rounded-md overflow-hidden border-2 transition-all ${
             currentBgIndex === index ? 'border-wrap-red scale-110' : 'border-white/30'
           }`}
         >

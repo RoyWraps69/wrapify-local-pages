@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Camera, ExternalLink } from 'lucide-react';
@@ -75,13 +76,13 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       {/* Darker overlay for text readability */}
       <div className="absolute inset-0 bg-black opacity-70 z-1"></div>
       
-      {/* Image navigation controls */}
+      {/* Image navigation controls - smaller size */}
       <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center space-x-2">
         {heroBackgrounds.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className={`w-10 h-10 rounded-md overflow-hidden border-2 transition-all ${
+            className={`w-8 h-8 rounded-md overflow-hidden border-2 transition-all ${
               currentImageIndex === index ? 'border-wrap-red scale-110' : 'border-white/30'
             }`}
           >
@@ -131,7 +132,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
           <img 
             src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
             alt="WRAPPING THE WORLD" 
-            className="w-48 h-auto mt-6 md:mt-0 drop-shadow-lg object-contain"
+            className="w-40 h-auto mt-6 md:mt-0 drop-shadow-lg object-contain"
           />
         </div>
       </div>
