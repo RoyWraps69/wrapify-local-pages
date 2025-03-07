@@ -1,29 +1,39 @@
 
 import React from 'react';
 import { CartItem } from '@/components/print-ship/types/installer';
-import { ShoppingBag, ChevronRight } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface OrderSummaryProps {
   items: CartItem[];
   total: number;
+  zipCode?: string;
 }
 
-const OrderSummary: React.FC<OrderSummaryProps> = ({ items, total }) => {
+const OrderSummary: React.FC<OrderSummaryProps> = ({ items, total, zipCode }) => {
   // Calculate subtotal (without shipping, tax, etc.)
   const subtotal: number = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   
   // Shipping fee
   const shipping: number = 0; // Free shipping for now
   
-  // Tax (calculate properly in production)
-  const tax: number = subtotal * 0.0625; // Example tax rate of 6.25%
+  // Tax calculations - Illinois is 6.25% base, Chicago adds 4.75% for total of 11%
+  // Check if the zipCode is in Chicago (starts with 606)
+  const isChicago = zipCode?.startsWith('606');
   
-  // Calculate total (this ensures it's a number)
-  const calculatedTotal: number = subtotal + shipping + tax;
+  const illinoisTaxRate: number = 0.0625; // 6.25% Illinois base
+  const chicagoTaxRate: number = 0.0475; // 4.75% Chicago add-on
+  
+  // Calculate taxes
+  const illinoisTax: number = subtotal * illinoisTaxRate;
+  const chicagoTax: number = isChicago ? subtotal * chicagoTaxRate : 0;
+  const totalTax: number = illinoisTax + chicagoTax;
+  
+  // Calculate total with taxes
+  const calculatedTotal: number = subtotal + shipping + totalTax;
   
   return (
-    <div className="bg-white p-4 md:p-6 rounded-lg shadow-sm">
+    <div className="bg-white p-4 md:p-6 rounded-lg border border-gray-200 shadow-md">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold flex items-center">
           <ShoppingBag className="mr-2 h-5 w-5 text-wrap-blue" />
@@ -59,9 +69,23 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ items, total }) => {
             <span>{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-600">Estimated Tax</span>
-            <span>${tax.toFixed(2)}</span>
+            <span className="text-gray-600">Illinois Tax (6.25%)</span>
+            <span>${illinoisTax.toFixed(2)}</span>
           </div>
+          
+          {isChicago && (
+            <div className="flex justify-between">
+              <span className="text-gray-600">Chicago Tax (4.75%)</span>
+              <span>${chicagoTax.toFixed(2)}</span>
+            </div>
+          )}
+
+          {zipCode && !isChicago && (
+            <div className="text-xs text-gray-500 mt-1 flex items-start">
+              <Info className="h-3 w-3 mr-1 mt-0.5 flex-shrink-0" />
+              <span>Taxes calculated based on Illinois rates</span>
+            </div>
+          )}
         </div>
         
         {/* Total */}

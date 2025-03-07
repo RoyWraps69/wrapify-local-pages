@@ -17,7 +17,9 @@ import {
   MapPin,
   Globe,
   Building,
-  AlertCircle
+  AlertCircle,
+  CheckCircle,
+  Info
 } from 'lucide-react';
 import OrderSummary from './OrderSummary';
 import { useToast } from '@/components/ui/use-toast';
@@ -46,7 +48,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
     phone: '',
     address: '',
     city: '',
-    state: '',
+    state: 'IL', // Default to Illinois
     zipCode: '',
     country: 'US'
   });
@@ -181,12 +183,18 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
     }
   };
   
+  // Check if the delivery is to Chicago (for tax information)
+  const isChicagoDelivery = customerInfo.zipCode.startsWith('606');
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {/* Left column - Checkout form */}
       <div className="md:col-span-2">
-        <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Your Information</h2>
+        <div className="bg-white p-6 rounded-lg shadow-sm mb-6 border border-gray-200">
+          <h2 className="text-xl font-semibold mb-4 flex items-center text-wrap-blue">
+            <User className="mr-2 h-5 w-5" />
+            Your Information
+          </h2>
           
           <form onSubmit={handleSubmit}>
             {/* Personal Information */}
@@ -275,7 +283,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
             </div>
             
             {/* Shipping Information */}
-            <h3 className="text-lg font-medium mb-3">Shipping Address</h3>
+            <h3 className="text-lg font-medium mb-3 flex items-center text-wrap-blue">
+              <Truck className="mr-2 h-5 w-5" />
+              Shipping Address
+            </h3>
+            
             <div className="space-y-4 mb-6">
               <div className="space-y-2">
                 <label htmlFor="address" className="text-sm font-medium text-gray-700">
@@ -378,18 +390,36 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
                   </div>
                 </div>
               </div>
+              
+              {/* Tax information notice */}
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded text-sm">
+                <div className="flex items-start">
+                  <Info className="text-blue-600 w-4 h-4 mt-0.5 mr-2 flex-shrink-0" />
+                  <div className="text-blue-800">
+                    <p className="font-medium">Tax Information</p>
+                    <p className="text-blue-700">
+                      Illinois sales tax of 6.25% will be applied to your order. 
+                      {isChicagoDelivery && " Chicago residents will also be charged an additional 4.75% city tax."}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Payment Information */}
-            <h3 className="text-lg font-medium mb-3">Payment Information</h3>
+            <h3 className="text-lg font-medium mb-3 flex items-center text-wrap-blue">
+              <CreditCard className="mr-2 h-5 w-5" />
+              Payment Information
+            </h3>
+            
             <div className="mb-6 space-y-4">
-              <div className="p-4 border rounded-md">
+              <div className="p-4 border rounded-md bg-gray-50">
                 <div className="flex items-center mb-4">
                   <CreditCard className="h-5 w-5 text-wrap-blue mr-2" />
                   <h4 className="font-medium">Card Details</h4>
                 </div>
                 
-                <div id="card-container" className="min-h-[100px] border rounded-md p-3 bg-gray-50"></div>
+                <div id="card-container" className="min-h-[100px] border rounded-md p-3 bg-white"></div>
                 
                 <div className="flex items-center text-xs text-gray-500 mt-3">
                   <Lock className="h-3 w-3 mr-1" />
@@ -409,7 +439,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
             
             <Button 
               type="submit" 
-              className="w-full bg-wrap-blue hover:bg-wrap-blue/90 py-6"
+              className="w-full bg-gradient-to-r from-wrap-blue to-wrap-red hover:from-wrap-blue/90 hover:to-wrap-red/90 py-6 shadow-md transition duration-300 ease-in-out transform hover:scale-[1.01]"
               disabled={isProcessing}
             >
               {isProcessing ? (
@@ -422,7 +452,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
                 </span>
               ) : (
                 <span className="flex items-center">
-                  Place Order <ChevronRight className="ml-2 h-5 w-5" />
+                  Complete Order <CheckCircle className="ml-2 h-5 w-5" />
                 </span>
               )}
             </Button>
@@ -432,10 +462,10 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ items, total }) => {
       
       {/* Right column - Order summary */}
       <div className="md:col-span-1">
-        <OrderSummary items={items} total={total} />
+        <OrderSummary items={items} total={total} zipCode={customerInfo.zipCode} />
         
-        <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-          <h3 className="font-medium mb-3">Secure Checkout</h3>
+        <div className="bg-white p-4 rounded-lg shadow-sm mt-4 border border-gray-200">
+          <h3 className="font-medium mb-3 text-wrap-blue">Secure Checkout</h3>
           <div className="space-y-2 text-sm text-gray-600">
             <div className="flex items-start">
               <Shield className="h-4 w-4 text-wrap-blue mr-2 mt-0.5" />
