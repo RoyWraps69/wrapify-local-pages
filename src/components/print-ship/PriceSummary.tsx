@@ -1,11 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { InfoIcon, ShoppingCart, CreditCard, Shield, Truck, CheckCircle } from 'lucide-react';
+import { InfoIcon, ShoppingCart, CreditCard, Shield, Truck, CheckCircle, Phone, Palette, Plus, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useShoppingCart } from '@/components/print-ship/shopping-cart/ShoppingCart';
 import { useToast } from '@/components/ui/use-toast';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface PriceSummaryProps {
   price: {
@@ -24,6 +24,8 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
   const { addItem, setIsCartOpen } = useShoppingCart();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
+  const [showDiscount, setShowDiscount] = useState(false);
   
   const handleAddToCart = () => {
     // Create a complete wrap package item
@@ -53,6 +55,16 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
     }
   };
 
+  const discountBadgeVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -5 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      rotate: 0,
+      transition: { duration: 0.3, type: "spring", stiffness: 300 }
+    }
+  };
+
   // Format currency helper
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -61,9 +73,35 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
       minimumFractionDigits: 2
     }).format(amount);
   };
+
+  // Simulate showing a discount after 3 seconds
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowDiscount(true);
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   return (
-    <motion.div variants={itemVariants}>
+    <motion.div
+      initial="hidden"
+      animate="visible" 
+      variants={itemVariants}
+      className="relative"
+    >
+      {showDiscount && (
+        <motion.div 
+          variants={discountBadgeVariants}
+          initial="hidden"
+          animate="visible"
+          className="absolute -top-6 -right-6 bg-wrap-red text-white rounded-full py-2 px-4 shadow-lg z-10 flex items-center gap-1"
+        >
+          <Sparkles size={16} className="animate-pulse" />
+          <span className="font-bold">10% OFF: FIRSTORDER</span>
+        </motion.div>
+      )}
+
       <div className="bg-gradient-to-br from-wrap-blue to-wrap-blue-dark text-white p-6 rounded-lg shadow-lg mb-8 border border-wrap-blue-dark/20">
         <h3 className="text-2xl font-semibold mb-4 flex items-center">
           <div className="bg-white/20 p-2 rounded-full mr-3">
@@ -82,58 +120,86 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
         </div>
         
         <div className="space-y-4 mb-6">
-          <div className="flex justify-between border-b border-white/20 pb-3 pt-1">
+          <motion.div 
+            className="flex justify-between border-b border-white/20 pb-3 pt-1"
+            whileHover={{ x: 5 }}
+          >
             <span className="flex items-center">
               <Truck className="w-4 h-4 mr-2 text-white/70" />
               Material ({price.totalSqFt.toFixed(0)} sq ft)
             </span>
             <span>{formatCurrency(price.subtotal)}</span>
-          </div>
-          <div className="flex justify-between border-b border-white/20 pb-3">
+          </motion.div>
+          <motion.div 
+            className="flex justify-between border-b border-white/20 pb-3"
+            whileHover={{ x: 5 }}
+          >
             <span className="flex items-center">
               <Palette className="w-4 h-4 mr-2 text-white/70" />
               Design Fee
             </span>
             <span>{formatCurrency(price.designFee)}</span>
-          </div>
-          <div className="flex justify-between border-b border-white/20 pb-3">
+          </motion.div>
+          <motion.div 
+            className="flex justify-between border-b border-white/20 pb-3"
+            whileHover={{ x: 5 }}
+          >
             <span className="flex items-center">
               <Truck className="w-4 h-4 mr-2 text-white/70" />
               Shipping
             </span>
             <span>{formatCurrency(price.shippingFee)}</span>
-          </div>
+          </motion.div>
           
           {(selectedAddOns?.length > 0 && price.addOnsFee) && (
-            <div className="flex justify-between border-b border-white/20 pb-3">
+            <motion.div 
+              className="flex justify-between border-b border-white/20 pb-3"
+              whileHover={{ x: 5 }}
+            >
               <span className="flex items-center">
                 <Plus className="w-4 h-4 mr-2 text-white/70" />
                 Add-ons
               </span>
               <span>{formatCurrency(price.addOnsFee)}</span>
-            </div>
+            </motion.div>
           )}
           
-          <div className="flex justify-between text-xl font-bold bg-white/10 p-3 rounded-lg mt-4">
+          <motion.div 
+            className="flex justify-between text-xl font-bold bg-white/10 p-3 rounded-lg mt-4"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 400 }}
+          >
             <span>Total Price</span>
             <span>{formatCurrency(price.total)}</span>
-          </div>
+          </motion.div>
         </div>
         
         <div className="flex flex-col sm:flex-row gap-3">
-          <Button 
-            onClick={handleAddToCart}
-            className="flex-1 bg-wrap-red hover:bg-red-600 text-white font-medium py-6 transform transition hover:scale-[1.02]"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex-1"
           >
-            <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
-          </Button>
+            <Button 
+              onClick={handleAddToCart}
+              className="w-full bg-wrap-red hover:bg-red-600 text-white font-medium py-6 transform transition"
+            >
+              <ShoppingCart className="mr-2 h-4 w-4" /> Add to Cart
+            </Button>
+          </motion.div>
           
-          <Link 
-            to="/contact" 
-            className="flex-1 flex items-center justify-center py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-md transition-colors"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex-1"
           >
-            <Phone className="mr-2 h-4 w-4" /> Request Custom Quote
-          </Link>
+            <Link 
+              to="/contact" 
+              className="w-full h-full flex items-center justify-center py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-md transition-colors"
+            >
+              <Phone className="mr-2 h-4 w-4" /> Request Custom Quote
+            </Link>
+          </motion.div>
         </div>
         
         <div className="mt-4 text-center text-white/80 text-sm">
@@ -141,7 +207,12 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
         </div>
       </div>
       
-      <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-md">
+      <motion.div 
+        className="bg-white p-6 rounded-lg border border-gray-200 shadow-md"
+        whileHover={{
+          boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+        }}
+      >
         <div className="flex items-start gap-3 mb-4">
           <Shield className="text-wrap-blue w-5 h-5 mt-1 flex-shrink-0" />
           <div>
@@ -151,48 +222,55 @@ const PriceSummary: React.FC<PriceSummaryProps> = ({ price, selectedAddOns = [] 
         </div>
         
         <ul className="space-y-3">
-          <li className="flex items-start gap-2">
-            <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <CheckCircle className="text-green-600 text-xs w-3 h-3" />
-            </div>
-            <span className="text-sm text-wrap-grey">Chicago-quality design and printing, nationwide delivery</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <CheckCircle className="text-green-600 text-xs w-3 h-3" />
-            </div>
-            <span className="text-sm text-wrap-grey">Perfect for DIY installers or local wrap shops</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <CheckCircle className="text-green-600 text-xs w-3 h-3" />
-            </div>
-            <span className="text-sm text-wrap-grey">Comprehensive installation instructions included</span>
-          </li>
-          <li className="flex items-start gap-2">
-            <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-              <CheckCircle className="text-green-600 text-xs w-3 h-3" />
-            </div>
-            <span className="text-sm text-wrap-grey">Installer referrals available in most major cities</span>
-          </li>
+          {[
+            "Chicago-quality design and printing, nationwide delivery",
+            "Perfect for DIY installers or local wrap shops",
+            "Comprehensive installation instructions included",
+            "Installer referrals available in most major cities"
+          ].map((benefit, index) => (
+            <motion.li 
+              key={index}
+              className="flex items-start gap-2"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 + 0.3 }}
+            >
+              <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <CheckCircle className="text-green-600 text-xs w-3 h-3" />
+              </div>
+              <span className="text-sm text-wrap-grey">{benefit}</span>
+            </motion.li>
+          ))}
         </ul>
         
-        <div className="mt-4 pt-4 border-t border-gray-200">
+        <motion.div 
+          className="mt-4 pt-4 border-t border-gray-200"
+          whileHover={{ y: -3 }}
+        >
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-1">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              {[1, 2, 3, 4, 5].map(num => (
+                <div key={num} className="w-2 h-2 bg-green-500 rounded-full"></div>
+              ))}
             </div>
             <span className="text-sm font-medium text-green-700">4,293 satisfied customers</span>
           </div>
-        </div>
-      </div>
+        </motion.div>
+
+        <motion.div 
+          className="mt-4 pt-2 flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <Link to="/testimonials" className="inline-flex items-center text-wrap-blue text-sm hover:text-wrap-red">
+            <span>Read customer testimonials</span>
+            <ArrowRight className="ml-1 w-3 h-3" />
+          </Link>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };
 
-import { Palette, Phone, Plus } from 'lucide-react';
 export default PriceSummary;

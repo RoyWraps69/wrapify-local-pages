@@ -29,7 +29,10 @@ const ResourcesDropdown = () => {
                   to="/training-classes"
                   className="flex h-9 w-full items-center justify-between rounded-md bg-wrap-red px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-wrap-red/90 focus:outline-none mb-2"
                 >
-                  <span>Vinyl Wrap Training Classes</span>
+                  <div className="flex items-center">
+                    <GraduationCap className="mr-1.5 h-4 w-4" />
+                    <span>Vinyl Wrap Training Classes</span>
+                  </div>
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Link>
                 <Link
