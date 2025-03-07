@@ -56,6 +56,17 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes light-streak {
+  0% { 
+    transform: translateX(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  100% { 
+    transform: translateX(200%) rotate(45deg);
+    opacity: 0.7;
+  }
+}
+
 /* Animation classes */
 .animate-fade-in { animation: fade-in 0.3s ease-out; }
 .animate-fade-out { animation: fade-out 0.3s ease-out; }
@@ -67,64 +78,7 @@
 .animate-exit { animation: fade-out 0.3s ease-out, scale-out 0.2s ease-out; }
 .animate-float { animation: float 3s ease-in-out infinite; }
 .animate-enhanced-pulse { animation: enhanced-pulse 3s infinite ease-in-out; }
-
-/* Interactive elements */
-.story-link {
-  position: relative;
-  display: inline-block;
-}
-
-.story-link::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: currentColor;
-  transform-origin: bottom right;
-  transition: transform 0.3s ease-out;
-}
-
-.story-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.hover-scale {
-  transition: transform 0.2s ease;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-.light-streak {
-  position: relative;
-  overflow: hidden;
-}
-
-.light-streak::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(25deg);
-  transition: all 0.8s;
-}
-
-.light-streak:hover::after {
-  left: 200%;
-}
+.animate-light-streak { animation: light-streak 1.5s ease-in-out; }
 
 /* Animation utility classes for scroll effects */
 .animate-on-scroll {
@@ -168,14 +122,34 @@
   transform: scale(1);
 }
 
-.tilt-card {
-  transition: transform 0.5s ease;
+/* Interactive elements */
+.story-link {
+  position: relative;
+  display: inline-block;
 }
 
-.tilt-card:hover {
-  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+.story-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
 }
 
-.floating {
-  animation: float 3s ease-in-out infinite;
+.story-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.hover-scale {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
 }

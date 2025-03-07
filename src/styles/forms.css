@@ -1,0 +1,28 @@
+
+/* Form styles */
+/* Better input experience on mobile */
+input, select, textarea {
+  @apply text-base;
+  font-size: 16px; /* Prevents zoom on focus in iOS */
+}
+
+.interactive-element {
+  transition: all 0.3s ease;
+}
+
+.interactive-element:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form specific animations */
+.input-float label {
+  transition: all 0.3s ease;
+  transform-origin: left top;
+}
+
+.input-float input:focus + label,
+.input-float input:not(:placeholder-shown) + label {
+  transform: translateY(-20px) scale(0.85);
+  color: theme('colors.wrap-blue');
+}

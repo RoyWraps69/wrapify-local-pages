@@ -1,0 +1,109 @@
+
+/* Layout styles */
+.container {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6;
+}
+
+.hero-section {
+  @apply relative overflow-hidden;
+  min-height: calc(100vh - 5rem);
+  background-image: linear-gradient(to right, rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.7));
+  background-size: cover;
+  background-position: center;
+}
+
+/* Layout helpers */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Lazy loading */
+.lazy-background {
+  background-image: none;
+  background-color: #f0f0f0;
+  transition: background-image 0.5s ease-in;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.mobile-menu.closed {
+  transform: translateX(-100%);
+}
+
+/* Parallax container */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+  perspective: 8px;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform-origin: 0 0;
+}
+
+.parallax-back {
+  transform: translateZ(-6px) scale(1.75);
+}
+
+.parallax-mid {
+  transform: translateZ(-3px) scale(1.375);
+}
+
+.parallax-front {
+  transform: translateZ(0);
+}
+
+/* Media queries */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .hero-section {
+    min-height: calc(100vh - 4rem);
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+}

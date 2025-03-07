@@ -1,0 +1,82 @@
+
+/* Card styles */
+.feature-card {
+  @apply relative bg-white rounded-xl p-4 sm:p-6 shadow-soft transition-all duration-300 hover:shadow-lg 
+  border border-gray-100 hover:border-wrap-red/20 overflow-hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(to bottom, #E63946, #E63946aa);
+  transition: height 0.3s ease;
+}
+
+.feature-card:hover::before {
+  height: 100%;
+}
+
+.testimonial-card {
+  @apply bg-white/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-soft border border-gray-100 hover:border-wrap-red/20 transition-all duration-300;
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md rounded-xl shadow-soft border border-white/50 hover:shadow-lg transition-all duration-300;
+}
+
+.neo-glass {
+  @apply rounded-xl backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.shadow-soft {
+  @apply shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)];
+}
+
+/* Animated gradient borders */
+.gradient-border {
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 4px;
+  background: linear-gradient(60deg, #E63946, #457B9D, #1D3557, #E63946) border-box;
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.gradient-border > div {
+  border-radius: 0.3rem;
+  background: white;
+  height: 100%;
+  width: 100%;
+}
+
+/* Cyberpunk-inspired styling */
+.cyber-border {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.cyber-border:hover::before {
+  left: 100%;
+}
