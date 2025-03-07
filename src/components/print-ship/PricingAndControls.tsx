@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import PriceCalculator from './PriceCalculator';
-import PriceSummary from './PriceSummary';
+import PriceSummary from './price-summary/PriceSummary';
 import { VehicleSize, WrapMaterial, DesignOption, ShippingOption } from '@/utils/vehiclePricingData';
 import { useShoppingCart } from './shopping-cart/ShoppingCart';
 import { ShopItem } from './types/installer';
