@@ -13,6 +13,7 @@
   VITE_VERSION = "6.2.1"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"
+  CACHE_DEPS = "true"
   
 # Handle SPA routing by redirecting all paths to index.html
 [[redirects]]
@@ -71,7 +72,11 @@
   VITE_VERSION = "6.2.1"
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
-# ... keep existing code (Enable bundler section)
+# Enable bundler
+[dev]
+  command = "npm run dev"
+  framework = "#custom"
+  targetPort = 8080
 
 # Caching configuration for build optimization
 [build.processing]
@@ -91,23 +96,11 @@
 [build.processing.images]
   compress = true
 
-# Cache dependencies between builds
-[build.environment]
-  NETLIFY_USE_YARN = "false"
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
-  CACHE_DEPS = "true"
-
-# Continuous Deployment settings
-[build.lifecycle]
-  onSuccess = "echo Deployment completed successfully"
-
 # Post-processing for better performance
-[[plugins]]
-  package = "@netlify/plugin-gatsby"
-
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
 
+# Use a more reliable cache plugin
 [[plugins]]
   package = "netlify-plugin-cache"
   [plugins.inputs]
