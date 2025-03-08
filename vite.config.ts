@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => ({
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
     rollupOptions: {
+      external: ['vite'],
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
