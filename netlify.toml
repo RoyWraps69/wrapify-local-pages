@@ -98,14 +98,12 @@
       "dist"
     ]
 
-# Add netlify-plugin-fetch-feeds with valid public feeds
-[[plugins]]
-  package = "netlify-plugin-fetch-feeds"
-  [plugins.inputs]
-    # Required: Directory where feed data will be stored
-    dataDir = "src/data/feeds"
-    # Required: List of feeds to fetch (using publicly available feeds)
-    feeds = [
-      { name = "css-tricks", url = "https://css-tricks.com/feed/", format = "rss" },
-      { name = "netlify", url = "https://netlify.com/blog/index.xml", format = "rss" }
-    ]
+# Comment out problematic plugins until they're properly configured
+# [[plugins]]
+#   package = "netlify-plugin-fetch-feeds"
+#   [plugins.inputs]
+#     dataDir = "src/data/feeds"
+#     feeds = [
+#       { name = "css-tricks", url = "https://css-tricks.com/feed/", format = "rss" },
+#       { name = "netlify", url = "https://netlify.com/blog/index.xml", format = "rss" }
+#     ]

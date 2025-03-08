@@ -65,6 +65,29 @@ The `netlify.toml` file in the root of the project contains the necessary config
 
 #### Common Netlify Deployment Issues:
 
+##### Non-Zero Exit Code Build Failures
+
+If your build fails with a "non-zero exit code" error:
+
+1. Check the build logs for specific error messages
+2. Common causes include:
+   - Syntax errors in configuration files (netlify.toml)
+   - Plugin compatibility issues
+   - Failed dependency installations
+   - Build script errors
+
+3. Troubleshooting steps:
+   - Comment out any problematic plugins in netlify.toml
+   - Check for syntax errors in your configuration files
+   - Verify Node.js and npm versions match those specified in netlify.toml
+   - Try a local build first to identify any issues: `npm run build`
+   - Temporarily simplify your build command to isolate the issue
+
+4. If plugin issues persist:
+   - Disable plugins one by one to identify the problematic one
+   - Check plugin documentation for specific requirements
+   - Ensure plugins are properly installed either in package.json or through the Netlify UI
+
 ##### Vite Dependency Issue
 
 If you encounter an error like `Cannot find package 'vite'`:
@@ -490,3 +513,18 @@ If you're experiencing "Failed to fetch cache" errors:
 7. Temporarily disable the cache plugin to isolate the issue
 
 This ensures your deployments are fast and your application performs optimally for users.
+
+# Troubleshooting Plugin Issues
+
+When using Netlify plugins, it's important to:
+
+1. Install plugins through the Netlify UI first before referencing them in netlify.toml
+2. Check plugin compatibility with your build environment
+3. Verify that plugin inputs/configuration is correct
+4. If a plugin causes build failures, comment it out in netlify.toml temporarily
+
+For the netlify-plugin-fetch-feeds specifically:
+- Ensure all feed URLs are publicly accessible
+- Verify the feed format matches what you've specified (rss, atom, json)
+- Consider creating fallback data in the dataDir location for local development
+- If the plugin continues to cause issues, disable it in netlify.toml until resolved
