@@ -29,7 +29,7 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['src/components/ui/index.ts'],
+          'vendor-ui': ['@/components/ui/index.ts'],
           'vendor-hooks': ['react-hook-form', '@tanstack/react-query'],
           'vendor-animation': ['framer-motion'],
         },

@@ -23,10 +23,21 @@ export const handler = async (event) => {
       packageJson.devDependencies = {};
     }
     
-    // Update or add Vite and related dependencies
-    packageJson.devDependencies.vite = "^6.2.1";
-    packageJson.devDependencies["@vitejs/plugin-react-swc"] = "^3.5.0";
-    packageJson.devDependencies["lovable-tagger"] = "^0.1.0";
+    // Make sure we have all necessary runtime dependencies
+    if (!packageJson.devDependencies["vite"]) {
+      console.log('Adding missing vite dependency');
+      packageJson.devDependencies["vite"] = "^6.2.1";
+    }
+    
+    if (!packageJson.devDependencies["@vitejs/plugin-react-swc"]) {
+      console.log('Adding missing @vitejs/plugin-react-swc dependency');
+      packageJson.devDependencies["@vitejs/plugin-react-swc"] = "^3.5.0";
+    }
+    
+    if (!packageJson.devDependencies["lovable-tagger"]) {
+      console.log('Adding missing lovable-tagger dependency');
+      packageJson.devDependencies["lovable-tagger"] = "^0.1.0";
+    }
     
     // Make sure we have all necessary runtime dependencies
     if (!packageJson.dependencies["@tanstack/react-query"]) {
@@ -49,7 +60,7 @@ export const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ 
         message: 'Successfully updated package.json',
-        viteVersion: '6.2.1',
+        viteVersion: packageJson.devDependencies.vite,
         updatedDependencies: true
       }),
     };

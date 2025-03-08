@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "node --experimental-modules netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
+  command = "npm i vite @vitejs/plugin-react-swc -D && node --experimental-modules netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -25,27 +25,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     
-# Cache for fonts
-[[headers]]
-  for = "/assets/fonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Cache for images (can be revalidated)
-[[headers]]
-  for = "*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "*.jpeg"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+# ... keep existing code (Cache for fonts and images headers)
 
 # Performance optimization headers for all pages
 [[headers]]
@@ -67,7 +47,7 @@
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "node --experimental-modules netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
+  command = "npm i vite @vitejs/plugin-react-swc -D && node --experimental-modules netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -78,7 +58,7 @@
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "node --experimental-modules netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
+  command = "npm i vite @vitejs/plugin-react-swc -D && node --experimental-modules netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
@@ -87,16 +67,4 @@
   NPM_VERSION = "9"
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
-# Enable bundler
-[build.processing]
-  skip_processing = false
-[build.processing.css]
-  bundle = true
-  minify = true
-[build.processing.js]
-  bundle = true
-  minify = true
-[build.processing.images]
-  compress = true
-[build.processing.html]
-  pretty_urls = true
+# ... keep existing code (Enable bundler section)
