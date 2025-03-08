@@ -1,73 +1,67 @@
 
-// Helper function to ensure Vite is properly installed before builds
-import fs from 'fs-extra';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
 
-// Get the directory name in ESM
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export const handler = async (event) => {
+exports.handler = async function(event, context) {
   try {
-    console.log('Ensuring Vite dependency is available...');
+    console.log('Checking Vite dependency...');
     
-    const rootDir = process.cwd();
-    const packageJsonPath = path.resolve(rootDir, 'package.json');
+    // Get required Vite version
+    const requiredViteVersion = process.env.VITE_VERSION || '5.0.0';
     
-    // Read package.json
-    if (fs.existsSync(packageJsonPath)) {
-      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-      
-      // Check if Vite is in dependencies or devDependencies
-      const hasViteInDeps = packageJson.dependencies && packageJson.dependencies.vite;
-      const hasViteInDevDeps = packageJson.devDependencies && packageJson.devDependencies.vite;
-      
-      if (!hasViteInDeps && !hasViteInDevDeps) {
-        console.log('Vite not found in package.json, installing...');
-        try {
-          // Install Vite as a dev dependency
-          execSync('npm install vite@6.2.1 --save-dev', { stdio: 'inherit' });
-          console.log('Vite installed successfully');
-        } catch (err) {
-          console.error('Error installing Vite:', err);
+    // Read current package.json to check Vite
+    const packageJsonPath = path.resolve('./package.json');
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+    
+    // Check if Vite is installed at the correct version
+    let needsInstall = true;
+    
+    try {
+      const vitePackagePath = path.resolve('./node_modules/vite/package.json');
+      if (fs.existsSync(vitePackagePath)) {
+        const vitePackage = JSON.parse(fs.readFileSync(vitePackagePath, 'utf8'));
+        console.log(`Current Vite version: ${vitePackage.version}, Required: ${requiredViteVersion}`);
+        
+        // If it's the correct version, no need to reinstall
+        if (vitePackage.version === requiredViteVersion) {
+          needsInstall = false;
         }
-      } else {
-        console.log('Vite already in package.json');
       }
-    } else {
-      console.error('package.json not found');
+    } catch (err) {
+      console.log('Error checking Vite version:', err);
     }
     
-    // Check if Vite is actually installed in node_modules
-    const vitePath = path.resolve(rootDir, 'node_modules/vite');
-    const viteExists = fs.existsSync(vitePath);
-    
-    if (!viteExists) {
-      console.log('Vite not found in node_modules, reinstalling...');
+    // Install correct Vite version if needed
+    if (needsInstall) {
+      console.log(`Installing Vite version ${requiredViteVersion}...`);
       try {
-        execSync('npm install', { stdio: 'inherit' });
-        console.log('Dependencies reinstalled');
-      } catch (err) {
-        console.error('Error reinstalling dependencies:', err);
+        execSync(`npm install vite@${requiredViteVersion} @vitejs/plugin-react-swc@latest --no-save`, {
+          stdio: 'inherit'
+        });
+        console.log('Vite installation successful');
+      } catch (installError) {
+        console.error('Failed to install Vite:', installError);
+        return {
+          statusCode: 500,
+          body: JSON.stringify({ error: 'Failed to install Vite', details: installError.message })
+        };
       }
     }
     
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: 'Vite dependency check completed',
-        viteInPackageJson: hasViteInDeps || hasViteInDevDeps,
-        viteInNodeModules: viteExists,
-        timestamp: new Date().toISOString()
-      }),
+      body: JSON.stringify({ 
+        message: 'Vite dependency check complete',
+        viteVersion: requiredViteVersion,
+        installedFresh: needsInstall
+      })
     };
   } catch (error) {
-    console.error('Error in ensureViteDependency:', error);
+    console.error('Error in ensureViteDependency function:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.toString() }),
+      body: JSON.stringify({ error: 'Internal server error', details: error.message })
     };
   }
 };

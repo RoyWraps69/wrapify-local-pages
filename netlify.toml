@@ -94,7 +94,10 @@
 [build.processing.images]
   compress = true
 
-# Use Netlify's built-in caching
+# Use Netlify's improved cache plugins
+[[plugins]]
+  package = "@netlify/plugin-nextjs-cache"
+  
 [[plugins]]
   package = "netlify-plugin-cache"  
   [plugins.inputs]
@@ -106,11 +109,12 @@
       "dist"
     ]
 
-# Configure the feed fetching plugin with fixed URLs
+# Configure feed fetching with error handling
 [[plugins]]
   package = "netlify-plugin-fetch-feeds"
   [plugins.inputs]
     dataDir = "src/data/feeds"
+    failBuildOnError = false
     feeds = [
       { name = "css-tricks", url = "https://www.xml-sitemaps.com/download/css-tricks.com-67fb017b/sitemap.xml?view=1", format = "xml" },
       { name = "netlify", url = "https://www.netlify.com/sitemap.xml", format = "xml" }
