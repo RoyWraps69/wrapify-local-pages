@@ -29,9 +29,9 @@ export default defineConfig(({ mode }) => ({
           (currentViteVersion.startsWith('5.') || currentViteVersion.startsWith('6.'));
         
         return isCompatible ? tagger.componentTagger() : null;
-      } catch (e: unknown) {
+      } catch (e) {
         // If it fails, return null
-        console.warn("Could not load lovable-tagger, continuing without it:", (e as Error).message);
+        console.warn("Could not load lovable-tagger, continuing without it:", (e instanceof Error) ? e.message : String(e));
         return null;
       }
     })(),

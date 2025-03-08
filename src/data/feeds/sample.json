@@ -3,16 +3,22 @@
   "urlset": {
     "url": [
       {
-        "loc": "https://example.com/sample-page",
-        "lastmod": "2023-05-01T12:00:00.000Z",
+        "loc": "https://example.com/page1",
+        "lastmod": "2023-05-01T12:00:00Z",
         "changefreq": "monthly",
         "priority": "0.8"
       },
       {
-        "loc": "https://example.com/another-page",
-        "lastmod": "2023-05-02T14:30:00.000Z",
+        "loc": "https://example.com/page2",
+        "lastmod": "2023-05-15T14:30:00Z",
         "changefreq": "weekly",
-        "priority": "0.6"
+        "priority": "0.9"
+      },
+      {
+        "loc": "https://example.com/page3",
+        "lastmod": "2023-06-01T09:15:00Z",
+        "changefreq": "daily",
+        "priority": "1.0"
       }
     ]
   }
