@@ -88,8 +88,12 @@
 
 # Use Netlify's built-in caching for Vite projects
 [[plugins]]
-  package = "netlify-plugin-cache"
-  
+  package = "@netlify/plugin-gatsby"
+  [plugins.inputs]
+    checkLatestVersion = false
+
+[[plugins]]
+  package = "netlify-plugin-cache"  
   [plugins.inputs]
     paths = [
       "node_modules/.cache",
