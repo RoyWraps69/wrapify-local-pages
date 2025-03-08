@@ -95,13 +95,22 @@ export default defineConfig(({ mode }) => {
       esbuildOptions: {
         target: 'es2020',
       },
-      force: false, // Changed from Netlify-specific check
+      force: false,
     },
     experimental: {
-      renderBuiltUrl(filename) {
+      renderBuiltUrl(filename, { hostId, hostType, type }) {
+        // Add debugging for assets
+        console.log(`Rendering URL for: ${filename}, hostType: ${hostType}, type: ${type}`);
+        
         if (filename.endsWith('.node')) {
           return { relative: true };
         }
+        
+        // For GitHub Pages deployment
+        if (mode === 'production') {
+          return { runtime: `window.__assetsBaseUrl + ${JSON.stringify(filename)}` };
+        }
+        
         return filename;
       }
     },

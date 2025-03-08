@@ -7,6 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wrapping The World</title>
     <meta name="description" content="Professional vehicle wrapping and graphics services across the US. Transform your car, truck, or fleet with premium vinyl wraps and custom designs." />
+    <!-- Dynamic base tag for GitHub Pages -->
+    <script>
+      // Dynamically set the base path for deployment
+      (function() {
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        if (isGitHubPages) {
+          const repoName = window.location.pathname.split('/')[1];
+          if (repoName) {
+            document.write('<base href="/' + repoName + '/" />');
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
