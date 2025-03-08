@@ -45,8 +45,8 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
-      // Add external configuration to exclude vite from bundling
-      external: ['vite']
+      // Explicitly mark vite as external to prevent bundling issues
+      external: ['vite', 'node:path', 'node:fs', 'node:url']
     },
     cssCodeSplit: true,
     emptyOutDir: true,
@@ -57,7 +57,7 @@ export default defineConfig(({ mode }) => ({
     jsx: 'automatic',
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'vite'],
-    exclude: [], 
+    include: ['react', 'react-dom', 'react-router-dom'],
+    exclude: ['vite'], 
   },
 }));

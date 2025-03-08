@@ -23,10 +23,36 @@ export const handler = async (event) => {
     const viteConfigPath = path.resolve(rootDir, 'vite.config.ts');
     const viteConfigExists = fs.existsSync(viteConfigPath);
     
+    // Check if package.json has vite
+    const packageJsonPath = path.resolve(rootDir, 'package.json');
+    let viteInPackageJson = false;
+    let viteVersion = null;
+    
+    if (fs.existsSync(packageJsonPath)) {
+      try {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        viteInPackageJson = 
+          (packageJson.dependencies && packageJson.dependencies.vite) || 
+          (packageJson.devDependencies && packageJson.devDependencies.vite);
+        
+        if (packageJson.dependencies && packageJson.dependencies.vite) {
+          viteVersion = packageJson.dependencies.vite;
+        } else if (packageJson.devDependencies && packageJson.devDependencies.vite) {
+          viteVersion = packageJson.devDependencies.vite;
+        }
+      } catch (e) {
+        console.error('Error parsing package.json:', e);
+      }
+    }
+    
     console.log('Environment details:');
     console.log(`- Vite installed: ${viteExists}`);
     console.log(`- Vite config exists: ${viteConfigExists}`);
+    console.log(`- Vite in package.json: ${viteInPackageJson}`);
+    console.log(`- Vite version: ${viteVersion}`);
     console.log(`- Current working directory: ${rootDir}`);
+    console.log(`- NODE_ENV: ${process.env.NODE_ENV}`);
+    console.log(`- VITE_VERSION: ${process.env.VITE_VERSION}`);
     
     return {
       statusCode: 200,
@@ -34,8 +60,11 @@ export const handler = async (event) => {
         nodeVersion,
         viteExists,
         viteConfigExists,
+        viteInPackageJson,
+        viteVersion,
         cwd: rootDir,
-        env: process.env.NODE_ENV || 'undefined'
+        env: process.env.NODE_ENV || 'undefined',
+        viteEnvVersion: process.env.VITE_VERSION || 'undefined'
       }),
     };
   } catch (error) {

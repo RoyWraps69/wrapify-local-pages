@@ -5,8 +5,8 @@ This document outlines how to deploy the Wrapping The World application to vario
 
 ## Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn
+- Node.js (v18 or higher)
+- npm (v9 or higher) or yarn
 - Git
 
 ## Build Process
@@ -14,6 +14,10 @@ This document outlines how to deploy the Wrapping The World application to vario
 To build the application for production:
 
 ```bash
+# First, install Vite explicitly (required)
+npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D
+
+# Then run the build
 npm run build
 ```
 
@@ -59,6 +63,7 @@ The `netlify.toml` file in the root of the project contains the necessary config
 - SPA routing redirects
 - Cache control headers
 - Environment variables
+- Specific Vite version (6.2.1) to ensure consistent builds
 
 ### 2. Vercel
 
@@ -133,6 +138,10 @@ To deploy with AWS Amplify:
    amplify publish
    ```
 
+6. For the build settings in the Amplify Console:
+   - Build command: `npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
+   - Output directory: `dist`
+
 ### 5. Firebase Hosting
 
 To deploy with Firebase:
@@ -155,7 +164,26 @@ To deploy with Firebase:
    - Set "dist" as your public directory
    - Configure as a single-page app
 
-4. Deploy:
+4. Modify the build command in firebase.json:
+   ```json
+   "hosting": {
+     "public": "dist",
+     "predeploy": "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm run build",
+     "ignore": [
+       "firebase.json",
+       "**/.*",
+       "**/node_modules/**"
+     ],
+     "rewrites": [
+       {
+         "source": "**",
+         "destination": "/index.html"
+       }
+     ]
+   }
+   ```
+
+5. Deploy:
    ```bash
    firebase deploy
    ```
@@ -170,7 +198,26 @@ If your application uses environment variables, make sure to set them up in your
 - In AWS Amplify: Environment variables can be configured in the Amplify console
 - In Firebase: Use Firebase functions or Firebase Hosting environment configuration
 
-## Troubleshooting
+## Troubleshooting Common Deployment Issues
+
+### Vite Import Error
+
+If you encounter an error like `Cannot find package 'vite' imported from...`:
+
+1. Ensure you're explicitly installing Vite before the build:
+   ```bash
+   npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D
+   ```
+
+2. Check that your `vite.config.ts` properly marks 'vite' as external:
+   ```js
+   // In rollupOptions
+   external: ['vite', 'node:path', 'node:fs', 'node:url']
+   ```
+
+3. Make sure your Netlify (or other platform) build command includes the Vite installation step.
+
+### Routing Issues
 
 If you encounter routing issues:
 - For Netlify: The `netlify.toml` file includes the necessary redirects
