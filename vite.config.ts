@@ -10,7 +10,10 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
-    react(),
+    react({
+      jsxImportSource: 'react',
+      plugins: []
+    }),
     mode === 'development' && (() => {
       try {
         // Only attempt to load the tagger in development mode
@@ -26,9 +29,9 @@ export default defineConfig(({ mode }) => ({
           (currentViteVersion.startsWith('5.') || currentViteVersion.startsWith('6.'));
         
         return isCompatible ? tagger.componentTagger() : null;
-      } catch (e: unknown) {
+      } catch (e) {
         // If it fails, return null
-        console.warn("Could not load lovable-tagger, continuing without it:", (e as Error).message);
+        console.warn("Could not load lovable-tagger, continuing without it:", e.message);
         return null;
       }
     })(),
@@ -59,6 +62,9 @@ export default defineConfig(({ mode }) => ({
       external: [
         'lovable-tagger', 
         'vite', 
+        '@swc/wasm',
+        '@swc/core-linux-x64-musl',
+        '@swc/core-linux-x64-gnu',
         'node:path', 
         'node:fs', 
         'node:url'
@@ -81,7 +87,7 @@ export default defineConfig(({ mode }) => ({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', '@vitejs/plugin-react-swc'],
-    exclude: ['lovable-tagger'],
+    exclude: ['lovable-tagger', '@swc/wasm', '@swc/core-linux-x64-musl', '@swc/core-linux-x64-gnu'],
     esbuildOptions: {
       target: 'es2020',
     },
