@@ -1,3 +1,4 @@
+
 # Deployment Guide
 
 This document outlines how to deploy the Wrapping The World application to various hosting platforms.
@@ -118,25 +119,6 @@ You have two options:
 2. Remove the plugin reference from netlify.toml if you don't need it
 
 The current configuration has been updated to use the standard `netlify-plugin-cache` plugin which is more appropriate for Vite projects.
-
-# Important: Install the Required Netlify Plugins
-
-Make sure to install the required Netlify plugins for proper caching and build optimization:
-
-1. You need these plugins in your project dependencies:
-   ```bash
-   npm install -D netlify-plugin-cache
-   ```
-
-2. Additionally, some plugins need to be installed through the Netlify UI:
-   - Go to your site in Netlify
-   - Navigate to "Plugins" in the left sidebar
-   - Click "Add plugins"
-   - Search for and install:
-     - "netlify-plugin-cache"
-     - "@netlify/plugin-gatsby" (for build optimizations)
-
-Without these plugins, the caching configuration in the netlify.toml file won't work properly.
 
 # Important: Install the Required Netlify Plugin
 
