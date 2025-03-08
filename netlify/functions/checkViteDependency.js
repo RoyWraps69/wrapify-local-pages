@@ -44,6 +44,10 @@ export const handler = async (event) => {
       }
     }
     
+    // Check environment variables
+    console.log(`Environment VITE_VERSION: ${process.env.VITE_VERSION || 'not set'}`);
+    console.log(`Environment NODE_VERSION: ${process.env.NODE_VERSION || 'not set'}`);
+    
     return {
       statusCode: 200,
       body: JSON.stringify({

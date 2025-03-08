@@ -117,14 +117,4 @@
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
 
-# Use a more reliable cache plugin
-[[plugins]]
-  package = "netlify-plugin-cache"
-  [plugins.inputs]
-    paths = [
-      "node_modules/.cache",
-      "node_modules/.vite",
-      ".netlify/functions",
-      ".netlify/plugins",
-      "dist"
-    ]
+# Removed the netlify-plugin-cache plugin since it's not installed

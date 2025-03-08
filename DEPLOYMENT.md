@@ -62,7 +62,7 @@ The `netlify.toml` file in the root of the project contains the necessary config
 - SPA routing redirects
 - Cache control headers
 - Environment variables
-- Optimized caching configuration for faster builds
+- Optimized build settings
 
 #### Common Netlify Deployment Issues:
 
@@ -74,12 +74,27 @@ mise go@1.19 download go1.19.linux-amd64.tar.gz
 mise go@1.19 checksum go1.19.linux-amd64.tar.gz
 ```
 
-Add the following environment variables in your Netlify dashboard:
+The current configuration already includes these environment variables to prevent this issue:
 - `SKIP_GO_INSTALL=true`
 - `SKIP_PYTHON_INSTALL=true`
 - `SKIP_RUBY_INSTALL=true`
+- `SKIP_RUST_INSTALL=true`
 
 These variables prevent unnecessary language installations during the build process.
+
+##### Plugin Installation Errors
+
+If you encounter errors related to Netlify plugins like:
+```
+Plugins must be installed either in the Netlify App or in "package.json".
+Please run "npm install -D netlify-plugin-name"
+```
+
+You have two options:
+1. Install the plugin through the Netlify UI dashboard (recommended)
+2. Remove the plugin reference from netlify.toml if you don't need it
+
+The current configuration has been updated to remove unnecessary plugin references.
 
 ##### Vite Import Error
 
@@ -102,14 +117,6 @@ If you encounter a "Cannot find package 'vite'" error:
    - In the Netlify dashboard, go to your site's "Deploys" tab
    - Click on "Trigger deploy" dropdown
    - Select "Clear cache and deploy site"
-
-#### Netlify Cache Optimization:
-
-The deployment is configured with optimized caching to speed up builds:
-- Dependencies are cached between builds
-- Build artifacts are cached appropriately
-- Cache plugins are enabled to manage caching effectively
-- Auto-deployment is configured with cache optimization
 
 ### 2. Vercel
 
@@ -255,9 +262,20 @@ If you see errors related to Go, Python, or Ruby installation:
    SKIP_GO_INSTALL=true
    SKIP_PYTHON_INSTALL=true
    SKIP_RUBY_INSTALL=true
+   SKIP_RUST_INSTALL=true
    ```
 
 2. These variables will prevent unnecessary language installations that might be causing build failures.
+
+### Netlify Plugin Errors
+
+If you encounter plugin-related errors on Netlify:
+
+1. Make sure any plugin referenced in netlify.toml is either:
+   - Installed via the Netlify UI in the plugins section
+   - Added as a dev dependency in package.json
+
+2. If you can't install the plugin, remove the reference from netlify.toml
 
 ### Vite Import Error
 
@@ -291,11 +309,10 @@ For other deployment issues, check the build logs in your deployment platform fo
 
 ### Netlify Cache Configuration
 
-Netlify automatically caches dependencies between builds to speed up deployment. The configuration in `netlify.toml` includes:
+Netlify automatically caches dependencies between builds to speed up deployment. For additional caching:
 
-- Dependency caching with the `netlify-plugin-cache` plugin
-- Cache paths configured for node_modules, build artifacts, and Netlify functions
-- Automatic cache invalidation when package.json changes
+1. If you want to use the netlify-plugin-cache, first install it through the Netlify UI in the plugins section
+2. Or add any other caching plugins through the Netlify UI dashboard
 
 ### Manual Cache Purging
 
