@@ -1,7 +1,0 @@
-
-# This directory is used by the netlify-plugin-fetch-feeds plugin
-# to store JSON files with feed data fetched during build.
-#
-# The following feeds will be stored here:
-# - css-tricks.json
-# - netlify.json

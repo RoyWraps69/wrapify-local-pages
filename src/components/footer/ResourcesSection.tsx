@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DownloadTracker from '@/components/resources/DownloadTracker';
 
 type ResourceColumnProps = {
   title: string;
@@ -9,7 +8,6 @@ type ResourceColumnProps = {
     to: string;
     label: string;
     isDownload?: boolean;
-    isAvailable?: boolean;
   }>;
 };
 
@@ -20,13 +18,14 @@ const ResourceColumn = ({ title, links }: ResourceColumnProps) => (
       {links.map((link, index) => (
         <li key={index}>
           {link.isDownload ? (
-            <DownloadTracker
-              fileName={link.to.split('/').pop() || ''}
-              displayName={link.label}
-              isAvailable={link.isAvailable !== false}
+            <a 
+              href={link.to} 
               className="text-wrap-light/70 text-sm hover:text-wrap-red transition-colors"
-              showIcon={false}
-            />
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
           ) : (
             <Link to={link.to} className="text-wrap-light/70 text-sm hover:text-wrap-red transition-colors">
               {link.label}
@@ -44,8 +43,7 @@ const ResourcesSection = () => {
       title: "Resources",
       links: [
         { to: "/resources/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
-        { to: "/downloads/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true, isAvailable: true },
-        { to: "/downloads/vinyl-wrap-materials-guide.pdf", label: "Vinyl Materials Comparison", isDownload: true, isAvailable: true },
+        { to: "/downloads/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true },
         { to: "/resources/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
         { to: "/resources/design-template-library", label: "Design Template Library" },
         { to: "/wrap-insurance", label: "Wrap Insurance" },

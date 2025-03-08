@@ -1,4 +1,3 @@
-
 # Welcome to your Lovable project
 
 ## Project info
@@ -63,17 +62,8 @@ This project is built with .
 
 ## How can I deploy this project?
 
-This project is configured to deploy to GitHub Pages automatically when changes are pushed to the main branch. The GitHub Actions workflow will build and deploy your application to the gh-pages branch.
-
-To view your deployed site, go to: https://yourusername.github.io/reponame/ (replace with your actual GitHub username and repository name)
+Simply open [Lovable](https://lovable.dev/projects/1f9161d1-593c-422f-ab1b-0e3a2999a3c2) and click on Share -> Publish.
 
 ## I want to use a custom domain - is that possible?
 
-Yes, you can set up a custom domain with GitHub Pages:
-
-1. In your repository, go to Settings > Pages
-2. Under "Custom domain", enter your domain name and click Save
-3. Follow GitHub's instructions to configure your DNS settings
-4. Your site will be available at your custom domain once DNS propagation is complete
-
-For more details, visit our docs: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)

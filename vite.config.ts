@@ -2,111 +2,64 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  // Get repository name for GitHub Pages base path
-  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
-  
-  return {
-    // For GitHub Pages, we need to set the base path to /<repo-name>/
-    base: mode === 'production' ? `/${repo}/` : '/',
-    server: {
-      host: "::",
-      port: 8080,
+export default defineConfig(({ mode }) => ({
+  server: {
+    host: "::",
+    port: 8080,
+  },
+  plugins: [
+    react(),
+    mode === 'development' &&
+    componentTagger(),
+  ].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
     },
-    plugins: [
-      react({
-        jsxImportSource: 'react',
-        plugins: []
-      }),
-      mode === 'development' && (() => {
-        try {
-          // Only attempt to load the tagger in development mode
-          if (process.env.NODE_ENV === 'production') {
-            return null;
-          }
-          
-          // Conditional import for lovable-tagger
-          const isVite5 = require('vite/package.json').version.startsWith('5.');
-          if (isVite5) {
-            const tagger = require("lovable-tagger");
-            return tagger.componentTagger();
-          }
-          return null;
-        } catch (e) {
-          // If it fails, return null
-          console.warn("Could not load lovable-tagger, continuing without it:", (e instanceof Error) ? e.message : String(e));
-          return null;
-        }
-      })(),
-    ].filter(Boolean),
-    resolve: {
-      alias: {
-        "@": path.resolve(__dirname, "./src"),
-      },
-      // Add native .node files to the list of extensions
-      extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.node']
-    },
-    build: {
-      outDir: 'dist',
-      sourcemap: false,
-      minify: true,
-      assetsDir: 'assets',
-      assetsInlineLimit: 4096,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-            'vendor-ui': ['@/components/ui/index.ts'],
-            'vendor-hooks': ['react-hook-form', '@tanstack/react-query'],
-            'vendor-animation': ['framer-motion'],
-          },
-          chunkFileNames: 'assets/js/[name]-[hash].js',
-          entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+  },
+  build: {
+    outDir: 'dist',
+    sourcemap: false,
+    minify: true,
+    assetsDir: 'assets',
+    // Improved asset handling
+    assetsInlineLimit: 4096, // Inline assets smaller than 4kb
+    // Configure asset handling
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Vendor chunks
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-ui': ['src/components/ui/index.ts'],
+          'vendor-hooks': ['react-hook-form', '@tanstack/react-query'],
+          'vendor-animation': ['framer-motion'],
+          // Feature based chunks
+          'feature-towns': ['src/components/town/layout/TownPageContent.tsx'],
+          'feature-shopping': ['src/components/print-ship/shopping-cart/ShoppingCart.tsx'],
+          'feature-print': ['src/components/print-ship/PrintShipSection.tsx'],
         },
-        external: [
-          'lovable-tagger', 
-          '@swc/wasm',
-          '@swc/core-linux-x64-musl',
-          '@swc/core-linux-x64-gnu',
-          'node:path', 
-          'node:fs', 
-          'node:url',
-          'vite'
-        ],
-      },
-      cssCodeSplit: true,
-      emptyOutDir: true,
-      target: 'es2020',
-      reportCompressedSize: false,
-      chunkSizeWarningLimit: 1000,
-    },
-    esbuild: {
-      jsx: 'automatic',
-      logOverride: {
-        'this-is-undefined-in-esm': 'silent'
+        // Ensure that dynamic imports have meaningful chunk names
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       }
     },
-    optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router-dom'],
-      exclude: ['lovable-tagger', '@swc/wasm', '@swc/core-linux-x64-musl', '@swc/core-linux-x64-gnu', 'vite'],
-      esbuildOptions: {
-        target: 'es2020',
-      },
-      force: false, // Changed from Netlify-specific check
-    },
-    experimental: {
-      renderBuiltUrl(filename) {
-        if (filename.endsWith('.node')) {
-          return { relative: true };
-        }
-        return filename;
-      }
-    },
-    assetsInclude: ['**/*.node'],
-    cacheDir: 'node_modules/.vite', // Changed from Netlify-specific path
-    logLevel: 'warn',
-  }
-});
+    // Add automatic CSS purging in production
+    cssCodeSplit: true,
+    cssMinify: true,
+    emptyOutDir: true,
+  },
+  // Base path for production (important for Netlify)
+  base: '/',
+  esbuild: {
+    // Enable JSX in .js files
+    jsx: 'automatic',
+  },
+  // Optimize dependencies that may slow down dev server
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
+  },
+}));

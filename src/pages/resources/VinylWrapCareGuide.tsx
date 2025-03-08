@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import SEOSchema from '@/components/SEOSchema';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Phone, FileText, Clock, Shield, CheckCircle, DownloadCloud, AlertTriangle } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { Phone, FileText, Clock, Shield, CheckCircle, DownloadCloud } from 'lucide-react';
 
 const VinylWrapCareGuide = () => {
-  // State to track PDF availability for demo purposes
-  const [isPdfAvailable, setIsPdfAvailable] = useState(true);
-
-  // For demo purposes, this can be toggled to test availability
-  const togglePdfAvailability = () => {
-    setIsPdfAvailable(!isPdfAvailable);
-  };
-
   // Scroll to top on component mount
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,16 +16,6 @@ const VinylWrapCareGuide = () => {
   const handleDownloadGuide = () => {
     // Create an analytics event if needed
     console.log('PDF Guide Downloaded');
-    
-    if (!isPdfAvailable) {
-      // Show toast notification for unavailable PDF
-      toast({
-        title: "PDF Currently Unavailable",
-        description: "We're sorry, the care guide PDF is currently being updated. Please check back later.",
-        variant: "destructive",
-      });
-      return;
-    }
     
     // Direct link to the PDF file
     window.open('/downloads/vinyl-wrap-care-guide.pdf', '_blank');
@@ -294,30 +276,12 @@ const VinylWrapCareGuide = () => {
                   <div id="download-guide" className="bg-wrap-blue text-white p-6 my-8 rounded-lg">
                     <h3 className="text-white mb-3">Download Our Complete Care Guide</h3>
                     <p>Get our detailed care guide with printable maintenance schedules and product recommendations.</p>
-                    
-                    {!isPdfAvailable && (
-                      <div className="bg-yellow-600 p-3 mb-3 rounded flex items-start">
-                        <AlertTriangle className="mr-2 flex-shrink-0 mt-0.5" size={18} />
-                        <p className="text-sm m-0">
-                          Our PDF guide is currently unavailable as we're updating it with the latest care recommendations. Please check back soon!
-                        </p>
-                      </div>
-                    )}
-                    
                     <button 
                       onClick={handleDownloadGuide}
-                      className={`bg-white text-wrap-blue px-6 py-2 rounded-md hover:bg-gray-100 transition-colors mt-2 flex items-center ${!isPdfAvailable ? 'opacity-75' : ''}`}
+                      className="bg-white text-wrap-blue px-6 py-2 rounded-md hover:bg-gray-100 transition-colors mt-2 flex items-center"
                     >
                       <FileText className="mr-2" size={18} />
                       Download PDF Guide
-                    </button>
-                    
-                    {/* Toggle button for demo purposes - can be removed in production */}
-                    <button 
-                      onClick={togglePdfAvailability} 
-                      className="mt-3 text-xs underline hover:no-underline"
-                    >
-                      {isPdfAvailable ? 'Test: Simulate Unavailable PDF' : 'Test: Simulate Available PDF'}
                     </button>
                   </div>
                 </div>
