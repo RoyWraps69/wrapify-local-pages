@@ -100,4 +100,3 @@
   compress = true
 [build.processing.html]
   pretty_urls = true
-
