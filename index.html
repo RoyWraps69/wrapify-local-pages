@@ -16,6 +16,7 @@
           const repoName = window.location.pathname.split('/')[1];
           if (repoName) {
             document.write('<base href="/' + repoName + '/" />');
+            console.log('Set base href to: /' + repoName + '/');
           }
         }
       })();

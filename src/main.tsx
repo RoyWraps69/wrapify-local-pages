@@ -14,10 +14,27 @@ declare global {
 
 // Set the base URL for assets based on deployment environment
 window.__assetsBaseUrl = (() => {
+  // Get base URL from the base tag
   const baseElement = document.querySelector('base');
   if (baseElement) {
-    return baseElement.getAttribute('href') || '/';
+    const href = baseElement.getAttribute('href');
+    console.log("Found base element with href:", href);
+    return href || '/';
   }
+  
+  // Fallback - check if we're on GitHub Pages
+  if (window.location.hostname.includes('github.io')) {
+    const pathSegments = window.location.pathname.split('/');
+    if (pathSegments.length > 1) {
+      const repoName = pathSegments[1];
+      if (repoName) {
+        console.log("Determined base URL from hostname:", `/${repoName}/`);
+        return `/${repoName}/`;
+      }
+    }
+  }
+  
+  console.log("Using default base URL: /");
   return '/';
 })();
 
@@ -27,24 +44,10 @@ console.log("Application starting with base URL:", window.__assetsBaseUrl);
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Root element not found');
 
-// Production only code
-if (import.meta.env.PROD) {
-  // Log some info but disable other logs
-  console.log("Running in production mode");
-  console.log("Base path:", import.meta.env.BASE_URL);
-  
-  // Only disable non-essential logs
-  const originalConsoleLog = console.log;
-  console.log = function() {
-    if (arguments[0] && typeof arguments[0] === 'string' && 
-        (arguments[0].includes('GitHub Pages') || 
-         arguments[0].includes('Application starting'))) {
-      originalConsoleLog.apply(console, arguments);
-    }
-  };
-  console.warn = () => {};
-  console.info = () => {};
-}
+// Log environment info
+console.log("Current URL:", window.location.href);
+console.log("Running in mode:", import.meta.env.MODE);
+console.log("Base path from env:", import.meta.env.BASE_URL);
 
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>

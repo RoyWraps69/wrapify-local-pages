@@ -5,17 +5,28 @@
   <meta charset="utf-8">
   <title>Redirecting...</title>
   <script>
-    // This script takes the current URL and redirects to the root with a hash
-    // which the HashRouter can then interpret properly
-    var segmentCount = 0;
-    var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/#' +
-      l.pathname.slice(1).split('/').slice(segmentCount).join('/') +
-      (l.search ? '?' + l.search.slice(1) : '') +
-      l.hash
-    );
+    // Single-page application redirect script for GitHub Pages
+    (function() {
+      // Get the repository name from the pathname
+      const pathname = window.location.pathname;
+      const segments = pathname.split('/');
+      const repoName = segments.length > 1 ? segments[1] : '';
+      
+      // Debug information
+      console.log('Pathname:', pathname);
+      console.log('Repo name detected:', repoName);
+      
+      // Create the redirect URL
+      const redirectTo = window.location.origin + 
+                        (repoName ? '/' + repoName : '') + 
+                        '/#' + 
+                        pathname.replace(new RegExp('^/' + repoName), '');
+      
+      console.log('Redirecting to:', redirectTo);
+      
+      // Redirect
+      window.location.replace(redirectTo);
+    })();
   </script>
 </head>
 <body>
