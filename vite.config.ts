@@ -49,6 +49,7 @@ export default defineConfig(({ mode }) => ({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
+    exclude: [], // Remove any potential vite exclusions
   },
   ssr: {
     external: ['vite']
