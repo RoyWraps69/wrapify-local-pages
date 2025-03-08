@@ -1,4 +1,3 @@
-
 # Deployment Guide
 
 This document outlines how to deploy the Wrapping The World application to various hosting platforms.
@@ -64,6 +63,24 @@ The `netlify.toml` file in the root of the project contains the necessary config
 - Cache control headers
 - Environment variables
 - Specific Vite version (6.2.1) to ensure consistent builds
+- Optimized caching configuration for faster builds
+- Automatic deployment with dependencies caching
+
+#### Netlify Cache Optimization:
+
+The deployment is configured with optimized caching to speed up builds:
+- Dependencies are cached between builds
+- Build artifacts are cached appropriately
+- Cache plugins are enabled to manage caching effectively
+- Auto-deployment is configured with cache optimization
+
+#### Netlify Cache Configuration
+
+Netlify automatically caches dependencies between builds to speed up deployment. The configuration in `netlify.toml` includes:
+
+- Dependency caching with the `netlify-plugin-cache` plugin
+- Cache paths configured for node_modules, build artifacts, and Netlify functions
+- Automatic cache invalidation when package.json changes
 
 ### 2. Vercel
 
@@ -227,3 +244,30 @@ If you encounter routing issues:
 - For Firebase: Add redirects to the `firebase.json` file
 
 For other deployment issues, check the build logs in your deployment platform for specific error messages.
+
+## Cache Management
+
+### Netlify Cache Configuration
+
+Netlify automatically caches dependencies between builds to speed up deployment. The configuration in `netlify.toml` includes:
+
+- Dependency caching with the `netlify-plugin-cache` plugin
+- Cache paths configured for node_modules, build artifacts, and Netlify functions
+- Automatic cache invalidation when package.json changes
+
+### Manual Cache Purging
+
+If you need to purge the cache:
+
+1. In the Netlify dashboard, go to your site's "Deploys" tab
+2. Click on "Trigger deploy" dropdown
+3. Select "Clear cache and deploy site"
+
+### Cache Headers
+
+The application is configured with optimal cache headers:
+- Static assets: 1 year cache (immutable)
+- HTML/API responses: Appropriate cache control based on content type
+- Service worker: No-cache for service worker files to ensure updates
+
+This ensures your deployments are fast and your application performs optimally for users.

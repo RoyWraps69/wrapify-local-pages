@@ -72,3 +72,49 @@
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # ... keep existing code (Enable bundler section)
+
+# Caching configuration for build optimization
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
+
+# Cache dependencies between builds
+[build.environment]
+  NETLIFY_USE_YARN = "false"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  CACHE_DEPS = "true"
+
+# Continuous Deployment settings
+[build.lifecycle]
+  onSuccess = "echo Deployment completed successfully"
+
+# Post-processing for better performance
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+  package = "netlify-plugin-cache"
+  [plugins.inputs]
+    paths = [
+      "node_modules/.cache",
+      "node_modules/.vite",
+      ".netlify/functions",
+      ".netlify/plugins",
+      "dist"
+    ]
