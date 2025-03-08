@@ -173,7 +173,8 @@ The "netlify-plugin-fetch-feeds" plugin requires specific configuration:
 4. Troubleshooting plugin issues:
    - Verify the plugin is installed through the Netlify UI
    - Check that the feeds URLs are accessible by testing them in a browser
-   - Ensure the dataDir exists in your codebase
+   - Ensure the dataDir exists in your codebase and is writable during build
+   - If you get "Failed during stage 'building site'" errors, check Netlify logs for specific plugin errors
    - If you encounter "ENOTFOUND" errors, it means the domain cannot be resolved - use known public feed URLs
    - For local testing, you may need to manually create JSON files in the dataDir with sample feed data
 

@@ -98,12 +98,12 @@
       "dist"
     ]
 
-# Comment out problematic plugins until they're properly configured
-# [[plugins]]
-#   package = "netlify-plugin-fetch-feeds"
-#   [plugins.inputs]
-#     dataDir = "src/data/feeds"
-#     feeds = [
-#       { name = "css-tricks", url = "https://css-tricks.com/feed/", format = "rss" },
-#       { name = "netlify", url = "https://netlify.com/blog/index.xml", format = "rss" }
-#     ]
+# Configure the feed fetching plugin properly
+[[plugins]]
+  package = "netlify-plugin-fetch-feeds"
+  [plugins.inputs]
+    dataDir = "src/data/feeds"
+    feeds = [
+      { name = "css-tricks", url = "https://css-tricks.com/feed/", format = "rss" },
+      { name = "netlify", url = "https://netlify.com/blog/index.xml", format = "rss" }
+    ]
