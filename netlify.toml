@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install -g vite@6.2.1 && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci --legacy-peer-deps && npx vite build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -50,7 +50,7 @@
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install -g vite@6.2.1 && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci --legacy-peer-deps && npx vite build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -62,7 +62,7 @@
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install -g vite@6.2.1 && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci --legacy-peer-deps && npx vite build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"

@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
-      // Explicitly mark vite as external to prevent circular reference
+      // Explicitly mark vite as external to prevent circular reference issues during build
       external: ['vite', 'node:path', 'node:fs', 'node:url', 'lovable-tagger']
     },
     cssCodeSplit: true,

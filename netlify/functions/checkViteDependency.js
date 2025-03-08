@@ -1,6 +1,6 @@
 
-// Netlify function to check for Vite dependency
-import fs from 'fs';
+// Function to check if Vite is available during build
+import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -9,45 +9,57 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const handler = async (event) => {
-  console.log('Checking for dependencies...');
-  
   try {
-    // Path to package.json
-    const packageJsonPath = path.resolve(process.cwd(), 'package.json');
+    console.log('Checking Vite dependency...');
     
-    // Check if package.json exists
-    if (!fs.existsSync(packageJsonPath)) {
-      console.error('package.json not found');
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ message: 'package.json not found' }),
-      };
+    const rootDir = process.cwd();
+    
+    // Check for vite in node_modules
+    const vitePath = path.resolve(rootDir, 'node_modules/vite');
+    const viteExists = fs.existsSync(vitePath);
+    console.log(`Vite in node_modules: ${viteExists ? 'Yes' : 'No'}`);
+    
+    // Check if package.json has vite
+    const packageJsonPath = path.resolve(rootDir, 'package.json');
+    let viteInPackageJson = false;
+    let viteVersion = null;
+    
+    if (fs.existsSync(packageJsonPath)) {
+      try {
+        const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+        const hasViteInDeps = packageJson.dependencies && packageJson.dependencies.vite;
+        const hasViteInDevDeps = packageJson.devDependencies && packageJson.devDependencies.vite;
+        viteInPackageJson = hasViteInDeps || hasViteInDevDeps;
+        
+        if (hasViteInDeps) {
+          viteVersion = packageJson.dependencies.vite;
+        } else if (hasViteInDevDeps) {
+          viteVersion = packageJson.devDependencies.vite;
+        }
+        
+        console.log(`Vite in package.json: ${viteInPackageJson ? 'Yes' : 'No'}`);
+        console.log(`Vite version: ${viteVersion}`);
+      } catch (e) {
+        console.error('Error parsing package.json:', e);
+      }
     }
-    
-    // Read package.json
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-    
-    // Check for vite in devDependencies
-    const viteVersion = packageJson.devDependencies?.vite;
-    const reactQueryVersion = packageJson.dependencies?.["@tanstack/react-query"];
     
     return {
       statusCode: 200,
-      body: JSON.stringify({ 
-        message: 'Dependency check completed',
-        viteVersion: viteVersion || 'not found', 
-        reactQueryVersion: reactQueryVersion || 'not found',
-        allDependencies: {
-          devDependencies: packageJson.devDependencies || {},
-          dependencies: packageJson.dependencies || {}
-        }
+      body: JSON.stringify({
+        viteExists,
+        viteInPackageJson,
+        viteVersion,
+        nodeVersion: process.version,
+        env: process.env.NODE_ENV || 'undefined',
+        viteEnvVersion: process.env.VITE_VERSION || 'undefined'
       }),
     };
   } catch (error) {
-    console.error('Error checking dependencies:', error);
+    console.error('Error checking Vite dependency:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Error checking dependencies', error: error.toString() }),
+      body: JSON.stringify({ error: error.toString() }),
     };
   }
 };
