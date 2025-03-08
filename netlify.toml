@@ -20,17 +20,9 @@
   NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
   CACHE_DEPS = "true"
   
-# Handle SPA routing by redirecting all paths to index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# ... keep existing code (handle SPA routing redirects)
   
-# Cache control for static assets
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# ... keep existing code (Cache for static assets headers)
     
 # ... keep existing code (Cache for fonts and images headers)
 
@@ -89,30 +81,6 @@
   SKIP_RUST_INSTALL = "true"
   NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
 
-# Enable bundler
-[dev]
-  command = "npm run dev"
-  framework = "#custom"
-  targetPort = 8080
+# ... keep existing code (dev settings, bundler and caching configuration)
 
-# Caching configuration for build optimization
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-[build.processing.images]
-  compress = true
-
-# Post-processing for better performance
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
+# ... keep existing code (post-processing settings for performance)
