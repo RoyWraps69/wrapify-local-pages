@@ -1,0 +1,93 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Training Pages -->
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/training/vehicle-wrap-training-class.jpg</image:loc>
+      <image:title>Professional Vehicle Wrap Training Classes</image:title>
+      <image:caption>Expert instruction in vehicle wrap installation techniques</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/beginner</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/training/beginner-wrap-training.jpg</image:loc>
+      <image:title>Beginner Vehicle Wrap Training</image:title>
+      <image:caption>Introduction to vehicle wrap installation techniques</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/advanced</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/training/advanced-wrap-training.jpg</image:loc>
+      <image:title>Advanced Vehicle Wrap Training</image:title>
+      <image:caption>Advanced techniques for complex vehicle wrap installations</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/certification</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/training/wrap-certification-program.jpg</image:loc>
+      <image:title>Vehicle Wrap Certification Program</image:title>
+      <image:caption>Professional certification for vehicle wrap installers</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/ceramic-coating</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/training/ceramic-coating-training.jpg</image:loc>
+      <image:title>Ceramic Coating Application Training</image:title>
+      <image:caption>Professional training for ceramic coating application techniques</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/paint-protection-film</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/training/ppf-installation-training.jpg</image:loc>
+      <image:title>Paint Protection Film Installation Training</image:title>
+      <image:caption>Professional training for PPF installation techniques</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/schedule</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/training-classes/testimonials</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

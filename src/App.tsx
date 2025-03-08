@@ -46,12 +46,14 @@ import Wisconsin from './pages/regions/Wisconsin';
 import Indiana from './pages/regions/Indiana';
 import Michigan from './pages/regions/Michigan';
 import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
+import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
   return (
     <HelmetProvider>
       <Router>
         <RootSEO />
+        <ScrollToTop />
         <ChatbotProvider>
           <Routes>
             <Route path="/" element={<Index />} />

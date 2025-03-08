@@ -7,7 +7,7 @@
   <!-- Main Blog Page -->
   <url>
     <loc>https://wrappingtheworld.com/blog</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -15,43 +15,57 @@
   <!-- Blog Categories -->
   <url>
     <loc>https://wrappingtheworld.com/blog/category/vehicle-wraps</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/blog/category/ceramic-coatings</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/blog/category/paint-protection</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/blog/category/fleet-branding</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
     <loc>https://wrappingtheworld.com/blog/category/industry-news</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
-  <!-- Sample Blog Posts (placeholders) -->
+  <url>
+    <loc>https://wrappingtheworld.com/blog/category/diy-wrapping</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/blog/category/case-studies</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog Posts -->
   <url>
     <loc>https://wrappingtheworld.com/blog/benefits-of-fleet-vehicle-wraps</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -62,7 +76,7 @@
   
   <url>
     <loc>https://wrappingtheworld.com/blog/ceramic-coating-vs-wax</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
@@ -73,12 +87,67 @@
   
   <url>
     <loc>https://wrappingtheworld.com/blog/vehicle-wrap-design-trends</loc>
-    <lastmod>2024-09-20</lastmod>
+    <lastmod>2024-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
       <image:loc>https://wrappingtheworld.com/images/blog/wrap-design-trends.jpg</image:loc>
       <image:title>Vehicle Wrap Design Trends</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/blog/how-to-care-for-your-vehicle-wrap</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/blog/wrap-care-guide.jpg</image:loc>
+      <image:title>How to Care for Your Vehicle Wrap</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/blog/choosing-the-right-wrap-material</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/blog/wrap-materials-guide.jpg</image:loc>
+      <image:title>Choosing the Right Wrap Material</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/blog/roi-of-vehicle-wraps-for-businesses</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/blog/wrap-roi-for-business.jpg</image:loc>
+      <image:title>ROI of Vehicle Wraps for Business</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/blog/diy-vehicle-wrap-installation-tips</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/blog/diy-wrap-tips.jpg</image:loc>
+      <image:title>DIY Vehicle Wrap Installation Tips</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://wrappingtheworld.com/blog/common-vehicle-wrap-installation-mistakes</loc>
+    <lastmod>2024-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://wrappingtheworld.com/images/blog/wrap-mistakes.jpg</image:loc>
+      <image:title>Common Vehicle Wrap Installation Mistakes</image:title>
     </image:image>
   </url>
 </urlset>
