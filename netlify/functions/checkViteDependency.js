@@ -28,10 +28,20 @@ export const handler = async (event) => {
       try {
         const vitePackage = JSON.parse(fs.readFileSync(vitePackageJson, 'utf8'));
         console.log(`Installed Vite version: ${vitePackage.version}`);
+        
+        // Check for peer dependencies
+        if (vitePackage.peerDependencies) {
+          console.log('Vite peer dependencies:', JSON.stringify(vitePackage.peerDependencies, null, 2));
+        }
       } catch (e) {
         console.error('Error reading Vite package.json:', e);
       }
     }
+    
+    // Check for @vitejs/plugin-react-swc
+    const swcPluginPath = path.resolve(rootDir, 'node_modules/@vitejs/plugin-react-swc');
+    const swcPluginExists = fs.existsSync(swcPluginPath);
+    console.log(`@vitejs/plugin-react-swc in node_modules: ${swcPluginExists ? 'Yes' : 'No'}`);
     
     // Check if package.json has vite
     const packageJsonPath = path.resolve(rootDir, 'package.json');
@@ -52,7 +62,15 @@ export const handler = async (event) => {
         }
         
         console.log(`Vite in package.json: ${viteInPackageJson ? 'Yes' : 'No'}`);
-        console.log(`Vite version: ${viteVersion}`);
+        console.log(`Vite version in package.json: ${viteVersion}`);
+        
+        // Check for peer dependency issues
+        const allDependencies = {
+          ...packageJson.dependencies,
+          ...packageJson.devDependencies
+        };
+        
+        console.log("All dependencies:", JSON.stringify(allDependencies, null, 2));
       } catch (e) {
         console.error('Error parsing package.json:', e);
       }
@@ -61,14 +79,22 @@ export const handler = async (event) => {
     // Check environment variables
     console.log(`Environment VITE_VERSION: ${process.env.VITE_VERSION || 'not set'}`);
     console.log(`Environment NODE_VERSION: ${process.env.NODE_VERSION || 'not set'}`);
+    console.log(`Environment NPM_FLAGS: ${process.env.NPM_FLAGS || 'not set'}`);
     
-    // Create a directory tree to see what's available
-    console.log('Directory structure of node_modules:');
-    if (fs.existsSync(path.resolve(rootDir, 'node_modules'))) {
-      const nodeModulesDirs = fs.readdirSync(path.resolve(rootDir, 'node_modules')).slice(0, 20); // First 20 directories
-      console.log('First 20 packages:', nodeModulesDirs.join(', '));
-    } else {
-      console.log('node_modules directory not found');
+    // Try to require vite
+    try {
+      const vitePath = require.resolve('vite');
+      console.log(`Successfully resolved vite at: ${vitePath}`);
+    } catch (e) {
+      console.error(`Error resolving vite: ${e.message}`);
+    }
+    
+    // Try to resolve plugin-react-swc
+    try {
+      const swcPath = require.resolve('@vitejs/plugin-react-swc');
+      console.log(`Successfully resolved @vitejs/plugin-react-swc at: ${swcPath}`);
+    } catch (e) {
+      console.error(`Error resolving @vitejs/plugin-react-swc: ${e.message}`);
     }
     
     return {
@@ -77,9 +103,11 @@ export const handler = async (event) => {
         viteExists,
         viteInPackageJson,
         viteVersion,
+        swcPluginExists,
         nodeVersion: process.version,
         env: process.env.NODE_ENV || 'undefined',
-        viteEnvVersion: process.env.VITE_VERSION || 'undefined'
+        viteEnvVersion: process.env.VITE_VERSION || 'undefined',
+        npmFlags: process.env.NPM_FLAGS || 'undefined'
       }),
     };
   } catch (error) {

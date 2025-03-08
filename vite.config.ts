@@ -45,6 +45,7 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
+      external: ['lovable-tagger'],
     },
     cssCodeSplit: true,
     emptyOutDir: true,
@@ -55,7 +56,10 @@ export default defineConfig(({ mode }) => ({
     jsx: 'automatic',
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
-    exclude: ['vite', 'lovable-tagger'],
+    include: ['react', 'react-dom', 'react-router-dom', '@vitejs/plugin-react-swc'],
+    exclude: ['lovable-tagger'],
+    esbuildOptions: {
+      target: 'es2020',
+    }
   },
 }));

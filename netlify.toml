@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -17,7 +17,7 @@
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
   # Enable verbose logging for npm
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
   CACHE_DEPS = "true"
   
 # Handle SPA routing by redirecting all paths to index.html
@@ -55,11 +55,11 @@
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
   # Enable verbose logging for npm
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -71,11 +71,11 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
@@ -87,7 +87,7 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
 
 # Enable bundler
 [dev]
