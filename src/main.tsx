@@ -11,7 +11,10 @@ if (!rootElement) throw new Error('Root element not found');
 
 // Production only code
 if (import.meta.env.PROD) {
-  console.log = () => {}; // Disable console.log in production
+  // Disable console logging in production for performance
+  console.log = () => {};
+  console.warn = () => {};
+  console.info = () => {};
 }
 
 ReactDOM.createRoot(rootElement).render(

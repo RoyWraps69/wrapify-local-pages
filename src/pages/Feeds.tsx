@@ -1,164 +1,113 @@
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import SEOSchema from '@/components/SEOSchema';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, ExternalLink } from 'lucide-react';
-import CTASection from '@/components/CTASection';
+import { Helmet } from 'react-helmet-async';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// Import feed data - these will be populated by the netlify-plugin-fetch-feeds plugin
-// Default to empty arrays with proper typing if files don't exist yet
-const cssTricksData = (() => {
-  try {
-    return require('@/data/feeds/css-tricks.json');
-  } catch (e) {
-    return { items: [] };
-  }
-})();
-
-const netlifyData = (() => {
-  try {
-    return require('@/data/feeds/netlify.json');
-  } catch (e) {
-    return { items: [] };
-  }
-})();
+// Import sample feed data (these will be replaced by the actual feeds during build)
+import cssData from '../data/feeds/css-tricks.json';
+import netlifyData from '../data/feeds/netlify.json';
 
 const Feeds = () => {
+  // Function to safely get feed items
+  const getFeedItems = (feedData: any) => {
+    try {
+      // Check if the feed has items array
+      if (feedData && Array.isArray(feedData.items)) {
+        return feedData.items;
+      }
+      
+      // For XML sitemaps that might be converted differently
+      if (feedData && feedData.urlset && Array.isArray(feedData.urlset.url)) {
+        return feedData.urlset.url.map((url: any) => ({
+          title: url.loc || 'No title',
+          link: url.loc || '#',
+          pubDate: url.lastmod || 'Unknown date',
+          contentSnippet: 'Sitemap entry'
+        }));
+      }
+      
+      // Fallback for empty or malformed feeds
+      return [];
+    } catch (error) {
+      console.error("Error parsing feed data:", error);
+      return [];
+    }
+  };
+
+  const cssItems = getFeedItems(cssData);
+  const netlifyItems = getFeedItems(netlifyData);
+
   return (
-    <>
-      <SEOSchema 
-        townName="Chicago"
-        pageTitle="Web Design & Development Resources | Wrapping The World"
-        pageDescription="Explore curated articles and resources on web design, development, and industry trends from top sources like CSS-Tricks and Netlify."
-        pageUrl="https://wrappingtheworld.com/feeds"
-      />
-      <Navbar />
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-wrap-blue mb-6">
-              Design & Development Resources
-            </h1>
-            <p className="text-wrap-grey text-lg mb-8 max-w-3xl mx-auto">
-              Explore the latest web design and development articles from trusted industry sources.
-            </p>
-          </div>
-          
-          {/* CSS-Tricks Feed */}
-          <section className="mb-16">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-serif font-semibold text-wrap-blue">
-                CSS-Tricks Articles
-              </h2>
-              <a 
-                href="https://css-tricks.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-wrap-blue hover:text-wrap-red flex items-center text-sm font-medium"
-              >
-                Visit CSS-Tricks
-                <ExternalLink className="ml-1" size={14} />
-              </a>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cssTricksData.items && cssTricksData.items.length > 0 ? (
-                cssTricksData.items.map((item, index) => (
-                  <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                    <div className="p-6">
-                      <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
-                        {item.contentSnippet || item.content?.substring(0, 150) || "No content available"}
-                      </p>
-                      <div className="flex items-center text-wrap-grey/70 text-xs mb-4">
-                        <div className="flex items-center">
-                          <Calendar size={12} className="mr-1" />
-                          <span>{new Date(item.isoDate || item.pubDate || Date.now()).toLocaleDateString()}</span>
-                        </div>
-                      </div>
-                      <a 
-                        href={item.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium"
-                      >
-                        Read Article
-                        <ArrowRight className="ml-1" size={14} />
-                      </a>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="col-span-3 text-center py-8">
-                  <p>Loading CSS-Tricks content...</p>
-                </div>
-              )}
-            </div>
-          </section>
-          
-          {/* Netlify Feed */}
-          <section className="mb-16">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl font-serif font-semibold text-wrap-blue">
-                Netlify Blog
-              </h2>
-              <a 
-                href="https://netlify.com/blog" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-wrap-blue hover:text-wrap-red flex items-center text-sm font-medium"
-              >
-                Visit Netlify Blog
-                <ExternalLink className="ml-1" size={14} />
-              </a>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {netlifyData.items && netlifyData.items.length > 0 ? (
-                netlifyData.items.map((item, index) => (
-                  <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                    <div className="p-6">
-                      <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
-                        {item.contentSnippet || item.content?.substring(0, 150) || "No content available"}
-                      </p>
-                      <div className="flex items-center text-wrap-grey/70 text-xs mb-4">
-                        <div className="flex items-center">
-                          <Calendar size={12} className="mr-1" />
-                          <span>{new Date(item.isoDate || item.pubDate || Date.now()).toLocaleDateString()}</span>
-                        </div>
-                      </div>
-                      <a 
-                        href={item.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium"
-                      >
-                        Read Article
-                        <ArrowRight className="ml-1" size={14} />
-                      </a>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="col-span-3 text-center py-8">
-                  <p>Loading Netlify content...</p>
-                </div>
-              )}
-            </div>
-          </section>
-        </div>
-        
-        <CTASection townName="Chicago" />
-      </main>
-      <Footer />
-    </>
+    <div className="container mx-auto py-10">
+      <Helmet>
+        <title>Feeds | Wrapping The World</title>
+        <meta name="description" content="Latest feeds from our partners and resources" />
+      </Helmet>
+
+      <h1 className="text-3xl font-bold mb-8 text-center">Latest Feeds</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>CSS Tricks</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {cssItems.length > 0 ? (
+              <ul className="space-y-4">
+                {cssItems.slice(0, 5).map((item: any, index: number) => (
+                  <li key={index} className="border-b pb-3">
+                    <a 
+                      href={item.link || '#'} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline font-medium"
+                    >
+                      {item.title || 'No title'}
+                    </a>
+                    <p className="text-sm text-gray-600 mt-1">
+                      {item.pubDate || item.lastmod || 'Unknown date'}
+                    </p>
+                    <p className="mt-1">{item.contentSnippet || 'No description available'}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-600">No feed items available at this time.</p>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Netlify</CardTitle>
+          </CardHeader>
+          <CardContent>
+            {netlifyItems.length > 0 ? (
+              <ul className="space-y-4">
+                {netlifyItems.slice(0, 5).map((item: any, index: number) => (
+                  <li key={index} className="border-b pb-3">
+                    <a 
+                      href={item.link || '#'} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline font-medium"
+                    >
+                      {item.title || 'No title'}
+                    </a>
+                    <p className="text-sm text-gray-600 mt-1">
+                      {item.pubDate || item.lastmod || 'Unknown date'}
+                    </p>
+                    <p className="mt-1">{item.contentSnippet || 'No description available'}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-gray-600">No feed items available at this time.</p>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 };
 

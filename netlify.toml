@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci && npm run build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -10,16 +10,11 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   VITE_APP_ENV = "production"
-  VITE_VERSION = "6.2.1"
-  NODE_ENV = "production"
   # Disable unnecessary language installations
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  # Enable verbose logging for npm
-  NPM_FLAGS = "--legacy-peer-deps"
-  CACHE_DEPS = "true"
   
 # Handle SPA routing
 [[redirects]]
@@ -51,47 +46,26 @@
 # Environment variables for production
 [context.production.environment]
   NODE_ENV = "production"
-  VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  VITE_VERSION = "6.2.1"
-  SKIP_GO_INSTALL = "true"
-  SKIP_PYTHON_INSTALL = "true"
-  SKIP_RUBY_INSTALL = "true"
-  SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--legacy-peer-deps"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci && npm run build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
-  VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  VITE_VERSION = "6.2.1"
-  SKIP_GO_INSTALL = "true"
-  SKIP_PYTHON_INSTALL = "true"
-  SKIP_RUBY_INSTALL = "true"
-  SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--legacy-peer-deps"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci && npm run build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
-  VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  VITE_VERSION = "6.2.1"
-  SKIP_GO_INSTALL = "true"
-  SKIP_PYTHON_INSTALL = "true"
-  SKIP_RUBY_INSTALL = "true"
-  SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--legacy-peer-deps"
 
 # Dev settings
 [dev]
@@ -116,7 +90,7 @@
 [build.processing.images]
   compress = true
 
-# Use Netlify's built-in caching for Vite projects
+# Use Netlify's built-in caching
 [[plugins]]
   package = "netlify-plugin-cache"  
   [plugins.inputs]
@@ -128,12 +102,12 @@
       "dist"
     ]
 
-# Configure the feed fetching plugin properly
+# Configure the feed fetching plugin with fixed URLs
 [[plugins]]
   package = "netlify-plugin-fetch-feeds"
   [plugins.inputs]
     dataDir = "src/data/feeds"
     feeds = [
-      { name = "css-tricks", url = "https://css-tricks.com/feed/", format = "rss" },
-      { name = "netlify", url = "https://netlify.com/blog/index.xml", format = "rss" }
+      { name = "css-tricks", url = "https://www.xml-sitemaps.com/download/css-tricks.com-67fb017b/sitemap.xml?view=1", format = "xml" },
+      { name = "netlify", url = "https://www.netlify.com/sitemap.xml", format = "xml" }
     ]
