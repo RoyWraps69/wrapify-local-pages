@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm ci --legacy-peer-deps && npx vite build"
+  command = "npm install vite --save-dev && npm ci --legacy-peer-deps && npx vite build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -67,7 +67,7 @@
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm ci --legacy-peer-deps && npx vite build"
+  command = "npm install vite --save-dev && npm ci --legacy-peer-deps && npx vite build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -78,7 +78,7 @@
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm ci --legacy-peer-deps && npx vite build"
+  command = "npm install vite --save-dev && npm ci --legacy-peer-deps && npx vite build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
@@ -100,3 +100,4 @@
   compress = true
 [build.processing.html]
   pretty_urls = true
+
