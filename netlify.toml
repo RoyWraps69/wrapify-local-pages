@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install vite@6.2.1 --save-dev && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
+  command = "node netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -67,7 +67,7 @@
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install vite@6.2.1 --save-dev && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
+  command = "node netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -78,7 +78,7 @@
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install vite@6.2.1 --save-dev && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
+  command = "node netlify/functions/updatePackageJson.js && npm ci --legacy-peer-deps && npx vite build --config vite.config.ts"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
