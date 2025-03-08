@@ -1,5 +1,5 @@
 
-import fs from 'fs';
+import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -22,6 +22,17 @@ export const handler = async (event) => {
     
     const viteConfigPath = path.resolve(rootDir, 'vite.config.ts');
     const viteConfigExists = fs.existsSync(viteConfigPath);
+    
+    // List contents of node_modules to check for vite
+    let nodeModulesContents = [];
+    const nodeModulesPath = path.resolve(rootDir, 'node_modules');
+    if (fs.existsSync(nodeModulesPath)) {
+      try {
+        nodeModulesContents = fs.readdirSync(nodeModulesPath);
+      } catch (e) {
+        console.error('Error reading node_modules:', e);
+      }
+    }
     
     // Check if package.json has vite
     const packageJsonPath = path.resolve(rootDir, 'package.json');
@@ -53,6 +64,7 @@ export const handler = async (event) => {
     console.log(`- Current working directory: ${rootDir}`);
     console.log(`- NODE_ENV: ${process.env.NODE_ENV}`);
     console.log(`- VITE_VERSION: ${process.env.VITE_VERSION}`);
+    console.log(`- Node modules found: ${nodeModulesContents.includes('vite') ? 'Yes' : 'No'}`);
     
     return {
       statusCode: 200,
@@ -64,7 +76,8 @@ export const handler = async (event) => {
         viteVersion,
         cwd: rootDir,
         env: process.env.NODE_ENV || 'undefined',
-        viteEnvVersion: process.env.VITE_VERSION || 'undefined'
+        viteEnvVersion: process.env.VITE_VERSION || 'undefined',
+        nodeModulesContainsVite: nodeModulesContents.includes('vite')
       }),
     };
   } catch (error) {

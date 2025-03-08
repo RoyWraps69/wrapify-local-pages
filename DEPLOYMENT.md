@@ -1,3 +1,4 @@
+
 # Deployment Guide
 
 This document outlines how to deploy the Wrapping The World application to various hosting platforms.
@@ -51,7 +52,7 @@ This will create a `dist` directory with all the necessary files for deployment.
 2. Click "New site from Git"
 3. Select your Git provider and repository
 4. Configure build settings:
-   - Build command: `npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
+   - Build command: `npm install -g vite@6.2.1 && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
    - Publish directory: `dist`
 5. Click "Deploy site"
 
@@ -65,6 +66,22 @@ The `netlify.toml` file in the root of the project contains the necessary config
 - Specific Vite version (6.2.1) to ensure consistent builds
 - Optimized caching configuration for faster builds
 - Automatic deployment with dependencies caching
+
+#### Troubleshooting Netlify Vite Errors:
+
+If you encounter the "Cannot find package 'vite'" error:
+1. Ensure the build command starts with installing Vite globally AND locally:
+   ```
+   npm install -g vite@6.2.1 && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build
+   ```
+2. Check that vite.config.ts has the external configuration:
+   ```js
+   external: ['vite', 'node:path', 'node:fs', 'node:url', 'lovable-tagger']
+   ```
+3. In the Netlify dashboard, under "Build & deploy" → "Environment", set:
+   - VITE_VERSION=6.2.1 
+   - NODE_VERSION=18
+   - NPM_VERSION=9
 
 #### Netlify Cache Optimization:
 
