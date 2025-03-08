@@ -97,3 +97,15 @@
       ".netlify/cache/.vite",
       "dist"
     ]
+
+# Add netlify-plugin-fetch-feeds with required parameters
+[[plugins]]
+  package = "netlify-plugin-fetch-feeds"
+  [plugins.inputs]
+    # Required: Directory where feed data will be stored
+    dataDir = "src/data/feeds"
+    # Required: List of feeds to fetch
+    feeds = [
+      { name = "blog", url = "https://wrappingtheworld.com/feed/blog.xml", format = "rss" },
+      { name = "news", url = "https://wrappingtheworld.com/feed/news.xml", format = "rss" }
+    ]

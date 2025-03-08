@@ -1,4 +1,3 @@
-
 # Deployment Guide
 
 This document outlines how to deploy the Wrapping The World application to various hosting platforms.
@@ -119,6 +118,38 @@ You have two options:
 2. Remove the plugin reference from netlify.toml if you don't need it
 
 The current configuration has been updated to use the standard `netlify-plugin-cache` plugin which is more appropriate for Vite projects.
+
+# Important: Install the Required Netlify Plugins
+
+Make sure to install the required Netlify plugins through the Netlify UI:
+1. Go to your site in Netlify
+2. Navigate to "Plugins" in the left sidebar
+3. Click "Add plugins"
+4. Search for and install:
+   - "netlify-plugin-cache" - for proper caching of build files
+   - "netlify-plugin-fetch-feeds" - for fetching RSS/Atom feeds during build
+
+Without these plugins, the configuration in the netlify.toml file won't work properly.
+
+## netlify-plugin-fetch-feeds Configuration
+
+The "netlify-plugin-fetch-feeds" plugin requires specific configuration:
+
+1. In netlify.toml, we've configured:
+   - `dataDir`: Where feed data will be stored (src/data/feeds)
+   - `feeds`: Array of feed objects with name, url, and format properties
+
+2. The plugin will fetch these feeds during build time and save them as JSON files in the specified directory.
+
+3. If you need to add more feeds:
+   - Add them to the `feeds` array in netlify.toml
+   - Each feed needs a name, url, and format (rss, atom, or json)
+   - Access the fetched data in your components from the dataDir location
+
+4. Troubleshooting plugin issues:
+   - Verify the plugin is installed through the Netlify UI
+   - Check that the feeds URLs are accessible
+   - Ensure the dataDir exists in your codebase
 
 # Important: Install the Required Netlify Plugin
 
