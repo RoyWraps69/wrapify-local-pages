@@ -1,9 +1,15 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm run build"
+  command = "npm install --force && NODE_ENV=production npm run build"
   publish = "dist"
   functions = "netlify/functions"
+  
+# Specify Node.js version
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+  VITE_APP_ENV = "production"
   
 # Handle SPA routing by redirecting all paths to index.html
 [[redirects]]
@@ -56,22 +62,28 @@
 [context.production.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
+  NODE_VERSION = "16"
+  NPM_VERSION = "8"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm run build"
+  command = "npm install --force && NODE_ENV=production npm run build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
+  NODE_VERSION = "16"
+  NPM_VERSION = "8"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm run build"
+  command = "npm install --force && NODE_ENV=production npm run build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
+  NODE_VERSION = "16"
+  NPM_VERSION = "8"
 
 # Enable bundler
 [build.processing]

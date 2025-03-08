@@ -2,7 +2,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
+
+// Safely handle the lovable-tagger import
+let componentTagger = null;
+if (process.env.NODE_ENV !== 'production') {
+  try {
+    const lovableTagger = require("lovable-tagger");
+    if (lovableTagger && typeof lovableTagger.componentTagger === 'function') {
+      componentTagger = lovableTagger.componentTagger;
+    }
+  } catch (e) {
+    console.warn("Lovable tagger not available, continuing without it");
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -12,8 +24,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    // Only use componentTagger in development mode if available
+    mode === 'development' && componentTagger ? componentTagger() : null,
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -51,6 +63,8 @@ export default defineConfig(({ mode }) => ({
     cssCodeSplit: true,
     cssMinify: true,
     emptyOutDir: true,
+    // Ensure compatibility with Netlify
+    target: 'es2015',
   },
   // Base path for production (important for Netlify)
   base: '/',
@@ -61,5 +75,6 @@ export default defineConfig(({ mode }) => ({
   // Optimize dependencies that may slow down dev server
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
+    exclude: ['lovable-tagger'] // Exclude lovable-tagger from optimization
   },
 }));
