@@ -10,6 +10,7 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   VITE_APP_ENV = "production"
+  VITE_VERSION = "6.2.1"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"
   
@@ -42,7 +43,6 @@
   VITE_BASE_URL = "/"
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  # Add Vite version specifically for production
   VITE_VERSION = "6.2.1"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"

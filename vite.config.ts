@@ -45,8 +45,8 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
-      // Explicitly mark vite as external to prevent bundling issues
-      external: ['vite', 'node:path', 'node:fs', 'node:url']
+      // Make sure vite is not bundled
+      external: ['vite', 'node:path', 'node:fs', 'node:url', 'lovable-tagger']
     },
     cssCodeSplit: true,
     emptyOutDir: true,
@@ -58,6 +58,6 @@ export default defineConfig(({ mode }) => ({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
-    exclude: ['vite'], 
+    exclude: ['vite', 'lovable-tagger'], 
   },
 }));
