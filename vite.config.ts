@@ -40,6 +40,8 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    // Add native .node files to the list of extensions
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.node']
   },
   build: {
     outDir: 'dist',
@@ -94,6 +96,17 @@ export default defineConfig(({ mode }) => ({
     // Force dependency pre-bundling to improve caching
     force: process.env.NETLIFY === 'true',
   },
+  // Configure loader for .node files
+  experimental: {
+    renderBuiltUrl(filename) {
+      if (filename.endsWith('.node')) {
+        return { relative: true };
+      }
+      return filename;
+    }
+  },
+  // Add Node loader for native addons
+  assetsInclude: ['**/*.node'],
   // Improve caching in CI/CD environments
   cacheDir: process.env.NETLIFY === 'true' ? '.netlify/cache/.vite' : 'node_modules/.vite',
   // Improve error reporting
