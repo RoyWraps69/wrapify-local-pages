@@ -40,8 +40,10 @@ jobs:
           npm run build
           echo "wrappingtheworld.com" > dist/CNAME
           touch dist/.nojekyll
+          cp dist/index.html dist/404.html
         env:
           SKIP_PYTHON_CHECK: 'true'
+          VITE_BASE_URL: '/'
           
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

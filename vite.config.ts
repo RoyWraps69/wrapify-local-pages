@@ -8,7 +8,10 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => {
   console.log('Running Vite in mode:', mode);
   console.log('Node version:', process.version);
-  console.log('Base URL:', '/wrappingtheworld/');
+  
+  // Determine base path based on environment
+  const BASE_PATH = process.env.VITE_BASE_URL || '/';
+  console.log('Using base path:', BASE_PATH);
   
   // Skip node-gyp operations in certain environments
   if (process.env.SKIP_PYTHON_CHECK) {
@@ -61,8 +64,9 @@ export default defineConfig(({ mode }) => {
       cssMinify: true,
       emptyOutDir: true,
     },
-    // Base path for GitHub Pages deployment
-    base: '/wrappingtheworld/',
+    // Use '/' as the base for production builds (for Netlify)
+    // GitHub Pages deployment will set a different base via env variable
+    base: BASE_PATH,
     esbuild: {
       jsx: 'automatic',
     },

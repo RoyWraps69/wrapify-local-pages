@@ -10,6 +10,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
   
 # Cache control for static assets
 [[headers]]
@@ -47,10 +48,6 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
-    # Enable compression
-    Content-Encoding = "br"
-    # Preload key assets
-    Link = "</assets/js/vendor-react-*.js>; rel=preload; as=script, </assets/js/vendor-ui-*.js>; rel=preload; as=script"
     
 # Environment variables for production
 [context.production.environment]
@@ -86,8 +83,3 @@
   compress = true
 [build.processing.html]
   pretty_urls = true
-
-# Set up deploy notifications
-[build.notify]
-  success = "Deploy successful! Site is live."
-  error = "Deploy failed. Check build logs."

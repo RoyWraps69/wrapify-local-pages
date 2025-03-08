@@ -48,9 +48,13 @@ import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
 import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
-  // Get the base URL from Vite
-  const basename = import.meta.env.BASE_URL || '/wrappingtheworld/';
+  // Handle the base URL dynamically
+  // For both GitHub Pages and custom domain deployments
+  console.log('Environment base URL:', import.meta.env.BASE_URL);
+  console.log('Window location:', window.location);
   
+  // Use a minimal basename that works in all environments
+  const basename = '/';
   console.log('Using router basename:', basename);
   
   return (
