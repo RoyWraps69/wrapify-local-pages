@@ -1,3 +1,4 @@
+
 import { generateWebPageSchema, generateBreadcrumbSchema, generateOrganizationSchema } from './schemas/baseSchemas';
 import { 
   generateInsuranceSchemas as importedGenerateInsuranceSchemas,

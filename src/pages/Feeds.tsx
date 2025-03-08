@@ -7,9 +7,23 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, ExternalLink } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 
-// Import feed data - these will be populated by the netlify-plugin-fetch-feeds
-import cssTricksFeed from '@/data/feeds/css-tricks.json';
-import netlifyFeed from '@/data/feeds/netlify.json';
+// Import feed data - these will be populated by the netlify-plugin-fetch-feeds plugin
+// Default to empty arrays with proper typing if files don't exist yet
+const cssTricksData = (() => {
+  try {
+    return require('@/data/feeds/css-tricks.json');
+  } catch (e) {
+    return { items: [] };
+  }
+})();
+
+const netlifyData = (() => {
+  try {
+    return require('@/data/feeds/netlify.json');
+  } catch (e) {
+    return { items: [] };
+  }
+})();
 
 const Feeds = () => {
   return (
@@ -50,33 +64,39 @@ const Feeds = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {cssTricksFeed.items?.map((item, index) => (
-                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <div className="p-6">
-                    <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
-                      {item.contentSnippet}
-                    </p>
-                    <div className="flex items-center text-wrap-grey/70 text-xs mb-4">
-                      <div className="flex items-center">
-                        <Calendar size={12} className="mr-1" />
-                        <span>{new Date(item.isoDate).toLocaleDateString()}</span>
+              {cssTricksData.items && cssTricksData.items.length > 0 ? (
+                cssTricksData.items.map((item, index) => (
+                  <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                    <div className="p-6">
+                      <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
+                        {item.contentSnippet || item.content?.substring(0, 150) || "No content available"}
+                      </p>
+                      <div className="flex items-center text-wrap-grey/70 text-xs mb-4">
+                        <div className="flex items-center">
+                          <Calendar size={12} className="mr-1" />
+                          <span>{new Date(item.isoDate || item.pubDate || Date.now()).toLocaleDateString()}</span>
+                        </div>
                       </div>
+                      <a 
+                        href={item.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium"
+                      >
+                        Read Article
+                        <ArrowRight className="ml-1" size={14} />
+                      </a>
                     </div>
-                    <a 
-                      href={item.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium"
-                    >
-                      Read Article
-                      <ArrowRight className="ml-1" size={14} />
-                    </a>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-8">
+                  <p>Loading CSS-Tricks content...</p>
                 </div>
-              ))}
+              )}
             </div>
           </section>
           
@@ -98,33 +118,39 @@ const Feeds = () => {
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {netlifyFeed.items?.map((item, index) => (
-                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <div className="p-6">
-                    <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
-                      {item.contentSnippet}
-                    </p>
-                    <div className="flex items-center text-wrap-grey/70 text-xs mb-4">
-                      <div className="flex items-center">
-                        <Calendar size={12} className="mr-1" />
-                        <span>{new Date(item.isoDate).toLocaleDateString()}</span>
+              {netlifyData.items && netlifyData.items.length > 0 ? (
+                netlifyData.items.map((item, index) => (
+                  <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                    <div className="p-6">
+                      <h3 className="text-xl font-serif font-semibold text-wrap-blue mb-3 line-clamp-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-wrap-grey text-sm mb-4 line-clamp-3">
+                        {item.contentSnippet || item.content?.substring(0, 150) || "No content available"}
+                      </p>
+                      <div className="flex items-center text-wrap-grey/70 text-xs mb-4">
+                        <div className="flex items-center">
+                          <Calendar size={12} className="mr-1" />
+                          <span>{new Date(item.isoDate || item.pubDate || Date.now()).toLocaleDateString()}</span>
+                        </div>
                       </div>
+                      <a 
+                        href={item.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium"
+                      >
+                        Read Article
+                        <ArrowRight className="ml-1" size={14} />
+                      </a>
                     </div>
-                    <a 
-                      href={item.link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-wrap-blue hover:text-wrap-red inline-flex items-center text-sm font-medium"
-                    >
-                      Read Article
-                      <ArrowRight className="ml-1" size={14} />
-                    </a>
                   </div>
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-8">
+                  <p>Loading Netlify content...</p>
                 </div>
-              ))}
+              )}
             </div>
           </section>
         </div>

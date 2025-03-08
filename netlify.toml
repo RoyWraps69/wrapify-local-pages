@@ -18,7 +18,7 @@
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
   # Enable verbose logging for npm
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--legacy-peer-deps"
   CACHE_DEPS = "true"
   
 # Handle SPA routing
@@ -59,7 +59,7 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
@@ -75,7 +75,7 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 # Branch deploy settings
 [context.branch-deploy]
@@ -91,7 +91,7 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --legacy-peer-deps"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 # Dev settings
 [dev]

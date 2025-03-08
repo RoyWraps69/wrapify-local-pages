@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: 'dist',
-    sourcemap: mode === 'development',
+    sourcemap: false, // Changed this to false for production builds
     minify: true,
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
@@ -63,7 +63,6 @@ export default defineConfig(({ mode }) => ({
       },
       external: [
         'lovable-tagger', 
-        'vite', 
         '@swc/wasm',
         '@swc/core-linux-x64-musl',
         '@swc/core-linux-x64-gnu',

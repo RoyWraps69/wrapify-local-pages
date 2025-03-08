@@ -9,6 +9,11 @@ import InitImageObserver from './components/utils/ImageObserver';
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Root element not found');
 
+// Production only code
+if (import.meta.env.PROD) {
+  console.log = () => {}; // Disable console.log in production
+}
+
 ReactDOM.createRoot(rootElement).render(
   <React.StrictMode>
     <InitImageObserver />
