@@ -17,9 +17,25 @@ exports.handler = async (event) => {
     if (!packageJson.devDependencies) {
       packageJson.devDependencies = {};
     }
-    packageJson.devDependencies.vite = "^6.2.1";
     
-    console.log('Updated package.json with vite 6.2.1');
+    // Update or add Vite and related dependencies
+    packageJson.devDependencies.vite = "^6.2.1";
+    packageJson.devDependencies["@vitejs/plugin-react-swc"] = "^3.5.0";
+    packageJson.devDependencies["lovable-tagger"] = "^0.1.0";
+    
+    // Make sure we have all necessary runtime dependencies
+    if (!packageJson.dependencies["@tanstack/react-query"]) {
+      console.log('Adding missing @tanstack/react-query dependency');
+      packageJson.dependencies["@tanstack/react-query"] = "^5.56.2";
+    }
+    
+    // Make sure TypeScript is available
+    if (!packageJson.devDependencies.typescript) {
+      console.log('Adding TypeScript dependency');
+      packageJson.devDependencies.typescript = "^5.2.2";
+    }
+    
+    console.log('Updated package.json with necessary dependencies');
     
     // Write the updated package.json back to disk
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
@@ -28,7 +44,8 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ 
         message: 'Successfully updated package.json',
-        viteVersion: '6.2.1' 
+        viteVersion: '6.2.1',
+        updatedDependencies: true
       }),
     };
   } catch (error) {
