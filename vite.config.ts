@@ -6,7 +6,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // Get repository name for GitHub Pages base path
-  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
+  const repo = 'wrapify-local-pages';
   
   return {
     // For GitHub Pages, we need to set the base path to /<repo-name>/
@@ -106,7 +106,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     assetsInclude: ['**/*.node'],
-    cacheDir: 'node_modules/.vite', // Changed from Netlify-specific path
+    cacheDir: 'node_modules/.vite',
     logLevel: 'warn',
   }
 });
