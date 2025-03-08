@@ -48,7 +48,7 @@ This will create a `dist` directory with all the necessary files for deployment.
 2. Click "New site from Git"
 3. Select your Git provider and repository
 4. Configure build settings:
-   - Build command: `npm install vite@latest @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
+   - Build command: `npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
    - Publish directory: `dist`
 5. Click "Deploy site"
 
@@ -79,7 +79,7 @@ The `netlify.toml` file in the root of the project contains the necessary config
 1. Go to [Vercel](https://vercel.com/)
 2. Import your Git repository and follow the setup instructions.
 3. Configure build settings:
-   - Build command: `npm install vite@latest @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
+   - Build command: `npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm ci --legacy-peer-deps && npx vite build`
    - Output directory: `dist`
 
 ### 3. GitHub Pages
@@ -94,7 +94,7 @@ To deploy to GitHub Pages:
 2. Add these scripts to your package.json:
    ```json
    "scripts": {
-     "predeploy": "npm run build",
+     "predeploy": "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npm run build",
      "deploy": "gh-pages -d dist"
    }
    ```

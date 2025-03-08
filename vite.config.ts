@@ -44,7 +44,9 @@ export default defineConfig(({ mode }) => ({
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-      }
+      },
+      // Add external configuration to exclude vite from bundling
+      external: ['vite']
     },
     cssCodeSplit: true,
     emptyOutDir: true,
