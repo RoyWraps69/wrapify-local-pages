@@ -84,3 +84,15 @@
 # ... keep existing code (dev settings, bundler and caching configuration)
 
 # ... keep existing code (post-processing settings for performance)
+
+# Cache management - Explicitly define cache paths for node_modules
+[[plugins]]
+  package = "netlify-plugin-cache"
+  
+  [plugins.inputs]
+    paths = [
+      "node_modules/.cache",
+      "node_modules/.vite",
+      ".netlify/functions-serve",
+      "dist"
+    ]

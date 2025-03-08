@@ -311,10 +311,30 @@ For other deployment issues, check the build logs in your deployment platform fo
 
 ### Netlify Cache Configuration
 
-Netlify automatically caches dependencies between builds to speed up deployment. For additional caching:
+Netlify automatically caches dependencies between builds to speed up deployment. To ensure optimal caching:
 
-1. If you want to use the netlify-plugin-cache, first install it through the Netlify UI in the plugins section
-2. Or add any other caching plugins through the Netlify UI dashboard
+1. The netlify-plugin-cache has been added to netlify.toml to explicitly cache:
+   - node_modules/.cache
+   - node_modules/.vite
+   - .netlify/functions-serve
+   - dist
+
+2. To install the cache plugin:
+   - Go to the Netlify UI dashboard
+   - Navigate to your site settings
+   - Go to the Plugins section
+   - Click "Add plugin"
+   - Search for "netlify-plugin-cache" and install it
+
+3. Alternatively, install the plugin via Netlify CLI:
+   ```bash
+   netlify plugins:install netlify-plugin-cache
+   ```
+
+4. Troubleshooting cache issues:
+   - Verify the plugin is installed in your Netlify UI
+   - Check build logs for cache hit/miss messages
+   - If you suspect cache corruption, clear it (see below)
 
 ### Manual Cache Purging
 
@@ -324,11 +344,34 @@ If you need to purge the cache:
 2. Click on "Trigger deploy" dropdown
 3. Select "Clear cache and deploy site"
 
+4. Via Netlify CLI:
+   ```bash
+   netlify deploy --clear-cache
+   ```
+
+5. For persistent cache issues, try these troubleshooting steps:
+   - Check the build logs for any cache-related errors
+   - Verify that the cache paths in netlify.toml are correct
+   - Temporarily disable caching by removing the plugin to see if it resolves the issue
+   - Ensure you're not exceeding Netlify's cache size limits
+
 ### Cache Headers
 
 The application is configured with optimal cache headers:
 - Static assets: 1 year cache (immutable)
 - HTML/API responses: Appropriate cache control based on content type
 - Service worker: No-cache for service worker files to ensure updates
+
+### Preventing "Failed to fetch cache" Errors
+
+If you're experiencing "Failed to fetch cache" errors:
+
+1. Ensure your Netlify account has sufficient permissions
+2. Check that the cache plugin is correctly installed
+3. Verify that the cache paths specified in netlify.toml are valid
+4. Try deploying with a cleared cache to reset
+5. Check for any network or firewall issues that might be blocking cache access
+6. Review Netlify logs for specific error details
+7. Temporarily disable the cache plugin to isolate the issue
 
 This ensures your deployments are fast and your application performs optimally for users.

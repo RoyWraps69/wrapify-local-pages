@@ -50,6 +50,9 @@ export default defineConfig(({ mode }) => ({
     cssCodeSplit: true,
     emptyOutDir: true,
     target: 'es2020',
+    // Improve caching by enabling more aggressive optimizations
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1000,
   },
   base: '/',
   esbuild: {
@@ -60,6 +63,10 @@ export default defineConfig(({ mode }) => ({
     exclude: ['lovable-tagger'],
     esbuildOptions: {
       target: 'es2020',
-    }
+    },
+    // Force dependency pre-bundling to improve caching
+    force: process.env.NETLIFY === 'true',
   },
+  // Improve caching in CI/CD environments
+  cacheDir: process.env.NETLIFY === 'true' ? '.netlify/cache/.vite' : 'node_modules/.vite',
 }));
