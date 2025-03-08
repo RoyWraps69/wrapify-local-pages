@@ -15,6 +15,7 @@
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
+  SKIP_RUST_INSTALL = "true"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"
   CACHE_DEPS = "true"
@@ -52,6 +53,7 @@
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
+  SKIP_RUST_INSTALL = "true"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
@@ -68,6 +70,7 @@
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
+  SKIP_RUST_INSTALL = "true"
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Branch deploy settings
@@ -83,6 +86,7 @@
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
+  SKIP_RUST_INSTALL = "true"
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Enable bundler
