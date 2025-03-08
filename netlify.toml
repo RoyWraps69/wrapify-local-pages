@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build --debug --mode production"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --legacy-peer-deps && npx vite build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -18,14 +18,26 @@
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
   # Enable verbose logging for npm
-  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
   CACHE_DEPS = "true"
   
-# ... keep existing code (handle SPA routing redirects)
+# Handle SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
   
-# ... keep existing code (Cache for static assets headers)
+# Cache for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
     
-# ... keep existing code (Cache for fonts and images headers)
+# Cache for fonts and images
+[[headers]]
+  for = "*.{woff,woff2,ttf,otf,png,jpg,jpeg,gif,webp,svg}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 # Performance optimization headers for all pages
 [[headers]]
@@ -47,12 +59,11 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  # Enable verbose logging for npm
-  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build --debug --mode production"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --legacy-peer-deps && npx vite build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -64,11 +75,11 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build --debug --mode production"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest && npm ci --legacy-peer-deps && npx vite build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
@@ -80,11 +91,30 @@
   SKIP_PYTHON_INSTALL = "true"
   SKIP_RUBY_INSTALL = "true"
   SKIP_RUST_INSTALL = "true"
-  NPM_FLAGS = "--verbose --no-fund --prefer-offline --legacy-peer-deps"
+  NPM_FLAGS = "--verbose --legacy-peer-deps"
 
-# ... keep existing code (dev settings, bundler and caching configuration)
-
-# ... keep existing code (post-processing settings for performance)
+# Dev settings
+[dev]
+  command = "npm run dev"
+  port = 8080
+  targetPort = 8080
+  framework = "#custom"
+  publish = "dist"
+  autoLaunch = false
+  
+# Post-processing settings
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
 
 # Use Netlify's built-in caching for Vite projects
 [[plugins]]
