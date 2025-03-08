@@ -9,6 +9,8 @@ export default defineConfig(({ mode }) => {
   const repo = 'wrapify-local-pages';
   
   console.log(`Building in ${mode} mode with base path: ${mode === 'production' ? `/${repo}/` : '/'}`);
+  console.log(`Python path: ${process.env.PYTHON || 'Not set'}`);
+  console.log(`NODE_GYP_FORCE_PYTHON: ${process.env.NODE_GYP_FORCE_PYTHON || 'Not set'}`);
   
   return {
     // For GitHub Pages, we need to set the base path to /<repo-name>/
