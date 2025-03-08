@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm ci && npm run build"
+  command = "npm install vite@5.0.0 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npm run build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -10,6 +10,7 @@
   NODE_VERSION = "18"
   NPM_VERSION = ">=9"  # Updated to accept npm 9 or higher
   VITE_APP_ENV = "production"
+  VITE_VERSION = "5.0.0"  # Explicitly set Vite version
   # Disable unnecessary language installations
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
@@ -47,25 +48,28 @@
 [context.production.environment]
   NODE_ENV = "production"
   NODE_VERSION = "18"
-  NPM_VERSION = ">=9"  # Updated to accept npm 9 or higher
+  NPM_VERSION = ">=9"
+  VITE_VERSION = "5.0.0"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm ci && npm run build"
+  command = "npm install vite@5.0.0 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npm run build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
   NODE_VERSION = "18"
-  NPM_VERSION = ">=9"  # Updated to accept npm 9 or higher
+  NPM_VERSION = ">=9"
+  VITE_VERSION = "5.0.0"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm ci && npm run build"
+  command = "npm install vite@5.0.0 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npm run build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
   NODE_VERSION = "18"
-  NPM_VERSION = ">=9"  # Updated to accept npm 9 or higher
+  NPM_VERSION = ">=9"
+  VITE_VERSION = "5.0.0"
 
 # Dev settings
 [dev]
@@ -92,7 +96,7 @@
 
 # Use Netlify's built-in caching
 [[plugins]]
-  package = "@netlify/plugin-nextjs-cache"  
+  package = "netlify-plugin-cache"  
   [plugins.inputs]
     paths = [
       "node_modules/.cache",

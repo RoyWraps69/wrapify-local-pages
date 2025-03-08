@@ -21,14 +21,13 @@ export default defineConfig(({ mode }) => ({
           return null;
         }
         
-        // Try to import componentTagger dynamically with specific Vite version requirement
-        const tagger = require("lovable-tagger");
-        // Check if Vite version is compatible before loading
-        const currentViteVersion = require('vite/package.json').version;
-        const isCompatible = currentViteVersion && 
-          (currentViteVersion.startsWith('5.') || currentViteVersion.startsWith('6.'));
-        
-        return isCompatible ? tagger.componentTagger() : null;
+        // Conditional import for lovable-tagger
+        const isVite5 = require('vite/package.json').version.startsWith('5.');
+        if (isVite5) {
+          const tagger = require("lovable-tagger");
+          return tagger.componentTagger();
+        }
+        return null;
       } catch (e) {
         // If it fails, return null
         console.warn("Could not load lovable-tagger, continuing without it:", (e instanceof Error) ? e.message : String(e));
@@ -68,7 +67,9 @@ export default defineConfig(({ mode }) => ({
         '@swc/core-linux-x64-gnu',
         'node:path', 
         'node:fs', 
-        'node:url'
+        'node:url',
+        // Ensure vite is marked as external for build
+        'vite'
       ],
     },
     cssCodeSplit: true,
@@ -87,8 +88,8 @@ export default defineConfig(({ mode }) => ({
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', '@vitejs/plugin-react-swc'],
-    exclude: ['lovable-tagger', '@swc/wasm', '@swc/core-linux-x64-musl', '@swc/core-linux-x64-gnu'],
+    include: ['react', 'react-dom', 'react-router-dom'],
+    exclude: ['lovable-tagger', '@swc/wasm', '@swc/core-linux-x64-musl', '@swc/core-linux-x64-gnu', 'vite'],
     esbuildOptions: {
       target: 'es2020',
     },
