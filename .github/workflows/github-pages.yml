@@ -31,11 +31,13 @@ jobs:
         run: npm ci --legacy-peer-deps
         env:
           PYTHON: python3
+          NODE_GYP_FORCE_PYTHON: python3
           
       - name: Build
         run: npm run build
         env:
           PYTHON: python3
+          NODE_GYP_FORCE_PYTHON: python3
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
