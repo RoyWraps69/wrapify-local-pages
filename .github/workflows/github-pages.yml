@@ -41,17 +41,20 @@ jobs:
       - name: Install Vite
         run: npm install vite@5.0.0 @vitejs/plugin-react-swc@latest --no-save
         
+      - name: Set Python Path
+        run: echo "PYTHON_PATH=$(which python3)" >> $GITHUB_ENV
+        
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
         env:
-          PYTHON: $(which python3)
-          NODE_GYP_FORCE_PYTHON: $(which python3)
+          PYTHON: ${{ env.PYTHON_PATH }}
+          NODE_GYP_FORCE_PYTHON: ${{ env.PYTHON_PATH }}
           
       - name: Build
         run: npm run build
         env:
-          PYTHON: $(which python3)
-          NODE_GYP_FORCE_PYTHON: $(which python3)
+          PYTHON: ${{ env.PYTHON_PATH }}
+          NODE_GYP_FORCE_PYTHON: ${{ env.PYTHON_PATH }}
         
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
