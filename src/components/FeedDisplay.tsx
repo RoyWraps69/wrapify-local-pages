@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 
 interface FeedItem {
@@ -25,6 +26,11 @@ interface Feed {
   language: string;
   lastBuildDate: string;
 }
+
+// Type guard to check if an object is a sitemap
+const isSitemap = (data: any): boolean => {
+  return data && typeof data === 'object' && 'urlset' in data && data.urlset && Array.isArray(data.urlset.url);
+};
 
 const convertSitemapToFeed = (sitemapData: any): Feed => {
   if (!sitemapData || !sitemapData.urlset || !Array.isArray(sitemapData.urlset.url)) {
@@ -77,7 +83,7 @@ const FeedDisplay: React.FC = () => {
           const cssTricksFeed = await import('../data/feeds/css-tricks.json');
           const cssTricksData = cssTricksFeed.default || cssTricksFeed;
           
-          if (cssTricksData.urlset) {
+          if (isSitemap(cssTricksData)) {
             feedData['css-tricks'] = convertSitemapToFeed(cssTricksData);
           } else {
             feedData['css-tricks'] = cssTricksData as Feed;
@@ -90,7 +96,7 @@ const FeedDisplay: React.FC = () => {
           const netlifyFeed = await import('../data/feeds/netlify.json');
           const netlifyData = netlifyFeed.default || netlifyFeed;
           
-          if (netlifyData.urlset) {
+          if (isSitemap(netlifyData)) {
             feedData['netlify'] = convertSitemapToFeed(netlifyData);
           } else {
             feedData['netlify'] = netlifyData as Feed;
@@ -99,19 +105,21 @@ const FeedDisplay: React.FC = () => {
           console.log('Netlify feed not available:', e);
         }
         
-        if (Object.keys(feedData).length === 0) {
-          try {
-            const sampleFeed = await import('../data/feeds/sample.json');
-            const sampleData = sampleFeed.default || sampleFeed;
-            
-            if (sampleData.urlset) {
-              feedData['sample'] = convertSitemapToFeed(sampleData);
-            } else {
-              feedData['sample'] = sampleData as Feed;
-            }
-          } catch (e) {
-            throw new Error('Failed to load any feed data: ' + (e as Error).message);
+        try {
+          const sampleFeed = await import('../data/feeds/sample.json');
+          const sampleData = sampleFeed.default || sampleFeed;
+          
+          if (isSitemap(sampleData)) {
+            feedData['sample'] = convertSitemapToFeed(sampleData);
+          } else {
+            feedData['sample'] = sampleData as Feed;
           }
+        } catch (e) {
+          console.log('Sample feed not available:', e);
+        }
+        
+        if (Object.keys(feedData).length === 0) {
+          throw new Error('Failed to load any feed data');
         }
         
         setFeeds(feedData);
