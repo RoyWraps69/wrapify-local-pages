@@ -32,44 +32,33 @@ const FeedDisplay: React.FC = () => {
     const loadFeeds = async () => {
       try {
         // In a production Netlify build, these files would be created by the plugin
-        // For local development, we're using the sample data
+        // For local development, we're using the pre-created JSON files
         const feedData: {[key: string]: Feed} = {};
         
         try {
           // Try to load the CSS Tricks feed
-          const cssTricksFeed = await import('../data/feeds/css-tricks.json')
-            .then(module => module.default)
-            .catch(() => null);
-          
-          if (cssTricksFeed) {
-            feedData['css-tricks'] = cssTricksFeed;
-          }
+          const cssTricksFeed = await import('../data/feeds/css-tricks.json');
+          feedData['css-tricks'] = cssTricksFeed.default || cssTricksFeed;
         } catch (e) {
-          console.log('CSS Tricks feed not available, using sample data');
+          console.log('CSS Tricks feed not available:', e);
         }
         
         try {
           // Try to load the Netlify feed
-          const netlifyFeed = await import('../data/feeds/netlify.json')
-            .then(module => module.default)
-            .catch(() => null);
-          
-          if (netlifyFeed) {
-            feedData['netlify'] = netlifyFeed;
-          }
+          const netlifyFeed = await import('../data/feeds/netlify.json');
+          feedData['netlify'] = netlifyFeed.default || netlifyFeed;
         } catch (e) {
-          console.log('Netlify feed not available, using sample data');
+          console.log('Netlify feed not available:', e);
         }
         
-        // If no feeds were loaded, use the sample data
+        // If no feeds were loaded, load the sample data
         if (Object.keys(feedData).length === 0) {
-          const sampleFeed = await import('../data/feeds/sample.json')
-            .then(module => module.default)
-            .catch(() => {
-              throw new Error('Failed to load sample feed data');
-            });
-          
-          feedData['sample'] = sampleFeed;
+          try {
+            const sampleFeed = await import('../data/feeds/sample.json');
+            feedData['sample'] = sampleFeed.default || sampleFeed;
+          } catch (e) {
+            throw new Error('Failed to load any feed data: ' + e.message);
+          }
         }
         
         setFeeds(feedData);
@@ -115,8 +104,8 @@ const FeedDisplay: React.FC = () => {
                   </a>
                 </h4>
                 <p className="text-sm text-gray-500 mt-1">
-                  {new Date(item.isoDate).toLocaleDateString()} - 
-                  {item.categories?.join(', ')}
+                  {new Date(item.isoDate).toLocaleDateString()}
+                  {item.categories && item.categories.length > 0 && ` - ${item.categories.join(', ')}`}
                 </p>
                 <div className="mt-2 text-gray-700">
                   {item.contentSnippet}

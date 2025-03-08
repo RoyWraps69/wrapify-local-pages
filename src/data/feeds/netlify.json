@@ -1,0 +1,32 @@
+
+{
+  "items": [
+    {
+      "title": "Introducing Netlify Blobs",
+      "link": "https://netlify.com/blog/introducing-netlify-blobs",
+      "pubDate": "Mon, 10 Jul 2023 12:00:00 GMT",
+      "content": "A new way to store and access unstructured data directly from your Netlify functions and Edge Functions.",
+      "contentSnippet": "A new way to store and access unstructured data...",
+      "guid": "https://netlify.com/blog/introducing-netlify-blobs",
+      "categories": ["Serverless", "Storage", "Netlify Functions"],
+      "isoDate": "2023-07-10T12:00:00.000Z"
+    },
+    {
+      "title": "The Evolution of Jamstack",
+      "link": "https://netlify.com/blog/evolution-of-jamstack",
+      "pubDate": "Tue, 20 Jul 2023 14:30:00 GMT",
+      "content": "How Jamstack has evolved from a static site architecture to a dynamic web development approach.",
+      "contentSnippet": "How Jamstack has evolved from a static site architecture...",
+      "guid": "https://netlify.com/blog/evolution-of-jamstack",
+      "categories": ["Jamstack", "Web Development", "Architecture"],
+      "isoDate": "2023-07-20T14:30:00.000Z"
+    }
+  ],
+  "feedUrl": "https://netlify.com/blog/index.xml",
+  "title": "Netlify Blog",
+  "description": "The latest news, updates, and insights from the Netlify team",
+  "generator": "Hugo",
+  "link": "https://netlify.com/blog",
+  "language": "en",
+  "lastBuildDate": "Wed, 25 Jul 2023 08:00:00.000Z"
+}
