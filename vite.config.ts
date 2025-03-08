@@ -6,11 +6,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   // Get repository name for GitHub Pages base path
-  const repo = 'wrapify-local-pages';
-  
-  console.log(`Building in ${mode} mode with base path: ${mode === 'production' ? `/${repo}/` : '/'}`);
-  console.log(`Python path: ${process.env.PYTHON || 'Not set'}`);
-  console.log(`NODE_GYP_FORCE_PYTHON: ${process.env.NODE_GYP_FORCE_PYTHON || 'Not set'}`);
+  const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
   
   return {
     // For GitHub Pages, we need to set the base path to /<repo-name>/
@@ -49,12 +45,13 @@ export default defineConfig(({ mode }) => {
       alias: {
         "@": path.resolve(__dirname, "./src"),
       },
+      // Add native .node files to the list of extensions
       extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.node']
     },
     build: {
       outDir: 'dist',
-      sourcemap: true, // Enable sourcemaps for debugging
-      minify: 'terser',
+      sourcemap: false,
+      minify: true,
       assetsDir: 'assets',
       assetsInlineLimit: 4096,
       rollupOptions: {
@@ -67,17 +64,7 @@ export default defineConfig(({ mode }) => {
           },
           chunkFileNames: 'assets/js/[name]-[hash].js',
           entryFileNames: 'assets/js/[name]-[hash].js',
-          assetFileNames: ({name}) => {
-            if (/\.(gif|jpe?g|png|svg)$/.test(name ?? '')) {
-              return 'assets/images/[name]-[hash][extname]';
-            }
-            
-            if (/\.(woff|woff2|eot|ttf|otf)$/.test(name ?? '')) {
-              return 'assets/fonts/[name]-[hash][extname]';
-            }
-            
-            return 'assets/[ext]/[name]-[hash][extname]';
-          },
+          assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
         },
         external: [
           'lovable-tagger', 
@@ -108,26 +95,18 @@ export default defineConfig(({ mode }) => {
       esbuildOptions: {
         target: 'es2020',
       },
-      force: false,
+      force: false, // Changed from Netlify-specific check
     },
     experimental: {
-      renderBuiltUrl(filename, { hostId, hostType, type }) {
-        console.log(`[Vite] Rendering URL for: ${filename}, hostType: ${hostType}, type: ${type}`);
-        
+      renderBuiltUrl(filename) {
         if (filename.endsWith('.node')) {
           return { relative: true };
         }
-        
-        // For GitHub Pages deployment, use the dynamic base URL from window.__assetsBaseUrl
-        if (mode === 'production') {
-          return { runtime: `window.__assetsBaseUrl + "${filename}"` };
-        }
-        
         return filename;
       }
     },
     assetsInclude: ['**/*.node'],
-    cacheDir: 'node_modules/.vite',
-    logLevel: 'info', // Increase log level for more info
+    cacheDir: 'node_modules/.vite', // Changed from Netlify-specific path
+    logLevel: 'warn',
   }
 });
