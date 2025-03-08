@@ -117,15 +117,15 @@ You have two options:
 1. Install the plugin through the Netlify UI dashboard (recommended)
 2. Remove the plugin reference from netlify.toml if you don't need it
 
-The current configuration has been updated to remove unnecessary plugin references.
+The current configuration has been updated to use the standard `netlify-plugin-cache` plugin which is more appropriate for Vite projects.
 
 # Important: Install the Required Netlify Plugin
 
-Make sure to install the `@netlify/plugin-gatsby-cache` plugin through the Netlify UI:
+Make sure to install the `netlify-plugin-cache` plugin through the Netlify UI:
 1. Go to your site in Netlify
 2. Navigate to "Plugins" in the left sidebar
 3. Click "Add plugins"
-4. Search for "@netlify/plugin-gatsby-cache"
+4. Search for "netlify-plugin-cache"
 5. Install the plugin
 
 Without this step, the caching configuration in the netlify.toml file won't work properly.
@@ -394,20 +394,20 @@ For other deployment issues, check the build logs in your deployment platform fo
 
 Netlify automatically caches dependencies between builds to speed up deployment. To ensure optimal caching:
 
-1. The project now uses Netlify's official cache plugins:
-   - `@netlify/plugin-gatsby-cache` (recommended)
-   - Or alternatively, `netlify-plugin-cache`
+1. The project now uses Netlify's standard cache plugin:
+   - `netlify-plugin-cache`
 
 2. To install the recommended cache plugin:
    - Go to the Netlify UI dashboard
    - Navigate to your site settings
    - Go to the Plugins section
    - Click "Add plugin"
-   - Search for "@netlify/plugin-gatsby-cache" and install it
+   - Search for "netlify-plugin-cache" and install it
 
 3. The plugin configuration in netlify.toml specifies these cache paths:
    - node_modules/.cache
    - node_modules/.vite
+   - .netlify/functions-serve
    - .netlify/cache/.vite
    - dist
 
@@ -455,4 +455,3 @@ If you're experiencing "Failed to fetch cache" errors:
 7. Temporarily disable the cache plugin to isolate the issue
 
 This ensures your deployments are fast and your application performs optimally for users.
-

@@ -85,22 +85,15 @@
 
 # ... keep existing code (post-processing settings for performance)
 
-# Use the built-in Netlify cache plugin
+# Use Netlify's built-in caching for Vite projects
 [[plugins]]
-  package = "@netlify/plugin-gatsby-cache"
+  package = "netlify-plugin-cache"
   
   [plugins.inputs]
-    publicCacheDirs = ["node_modules/.cache", "node_modules/.vite", ".netlify/cache/.vite", "dist"]
-
-# For the older netlify-plugin-cache plugin if you prefer it
-# [[plugins]]
-#   package = "netlify-plugin-cache"
-#   
-#   [plugins.inputs]
-#     paths = [
-#       "node_modules/.cache",
-#       "node_modules/.vite",
-#       ".netlify/functions-serve",
-#       ".netlify/cache/.vite",
-#       "dist"
-#     ]
+    paths = [
+      "node_modules/.cache",
+      "node_modules/.vite",
+      ".netlify/functions-serve",
+      ".netlify/cache/.vite",
+      "dist"
+    ]
