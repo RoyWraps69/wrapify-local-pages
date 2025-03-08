@@ -27,12 +27,25 @@ interface Feed {
   lastBuildDate: string;
 }
 
+interface SitemapUrl {
+  loc: string;
+  lastmod?: string;
+  changefreq?: string;
+  priority?: string;
+}
+
+interface SitemapData {
+  urlset: {
+    url: SitemapUrl[];
+  };
+}
+
 // Type guard to check if an object is a sitemap
-const isSitemap = (data: any): boolean => {
+const isSitemap = (data: any): data is SitemapData => {
   return data && typeof data === 'object' && 'urlset' in data && data.urlset && Array.isArray(data.urlset.url);
 };
 
-const convertSitemapToFeed = (sitemapData: any): Feed => {
+const convertSitemapToFeed = (sitemapData: SitemapData): Feed => {
   if (!sitemapData || !sitemapData.urlset || !Array.isArray(sitemapData.urlset.url)) {
     return {
       items: [],
@@ -45,7 +58,7 @@ const convertSitemapToFeed = (sitemapData: any): Feed => {
     };
   }
 
-  const items = sitemapData.urlset.url.map((url: any) => ({
+  const items = sitemapData.urlset.url.map((url: SitemapUrl) => ({
     title: url.loc || 'No title',
     link: url.loc || '#',
     pubDate: url.lastmod || new Date().toISOString(),
