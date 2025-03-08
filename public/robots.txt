@@ -32,8 +32,6 @@ Allow: /regions/illinois
 Allow: /regions/michigan
 Allow: /regions/indiana
 Allow: /regions/wisconsin
-Allow: /regions/ohio
-Allow: /regions/missouri
 
 # Town/city pages explicitly allowed for better indexing
 Allow: /locations/chicago
@@ -59,25 +57,6 @@ Allow: /locations/green-bay
 Allow: /locations/kenosha
 Allow: /locations/racine
 Allow: /locations/waukesha
-Allow: /locations/cleveland
-Allow: /locations/columbus
-Allow: /locations/cincinnati
-Allow: /locations/toledo
-Allow: /locations/akron
-Allow: /locations/dayton
-Allow: /locations/st-louis
-Allow: /locations/kansas-city
-Allow: /locations/springfield-mo
-Allow: /locations/columbia-mo
-
-# New training pages
-Allow: /training-classes/beginner
-Allow: /training-classes/advanced
-Allow: /training-classes/certification
-Allow: /training-classes/ceramic-coating
-Allow: /training-classes/paint-protection-film
-Allow: /training-classes/schedule
-Allow: /training-classes/testimonials
 
 # Crawl-delay for non-Google bots
 User-agent: *
@@ -123,4 +102,3 @@ Sitemap: https://wrappingtheworld.com/sitemap-services.xml
 Sitemap: https://wrappingtheworld.com/sitemap-locations.xml
 Sitemap: https://wrappingtheworld.com/sitemap-blog.xml
 Sitemap: https://wrappingtheworld.com/sitemap-resources.xml
-Sitemap: https://wrappingtheworld.com/sitemap-training.xml

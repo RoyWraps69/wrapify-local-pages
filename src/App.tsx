@@ -21,6 +21,7 @@ import TrainingClasses from './pages/TrainingClasses';
 import ThankYou from './pages/ThankYou';
 import Blog from './pages/Blog';
 import CaseStudies from './pages/CaseStudies';
+import OurTeam from './pages/about/OurTeam';
 import Careers from './pages/about/Careers';
 import PrintShip from './pages/PrintShip';
 import Shopping from './pages/Shopping';
@@ -45,27 +46,17 @@ import Wisconsin from './pages/regions/Wisconsin';
 import Indiana from './pages/regions/Indiana';
 import Michigan from './pages/regions/Michigan';
 import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
-import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
-  // Handle the base URL dynamically
-  // For both GitHub Pages and custom domain deployments
-  console.log('Environment base URL:', import.meta.env.BASE_URL);
-  console.log('Window location:', window.location);
-  
-  // Use a minimal basename that works in all environments
-  const basename = '/';
-  console.log('Using router basename:', basename);
-  
   return (
     <HelmetProvider>
-      <Router basename={basename}>
+      <Router>
         <RootSEO />
-        <ScrollToTop />
         <ChatbotProvider>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
+            <Route path="/about/our-team" element={<OurTeam />} />
             <Route path="/about/careers" element={<Careers />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceSlug" element={<ServicePage />} />

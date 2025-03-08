@@ -7,7 +7,6 @@ import HeroCTAButtons from './HeroCTAButtons';
 import HeroFooterInfo from './HeroFooterInfo';
 import { Link } from 'react-router-dom';
 import { Mail, ArrowRight, MapPin, Camera, Star } from 'lucide-react';
-import ImagePathFixer from '../utils/ImagePathFixer';
 
 interface HeroContentContainerProps {
   isVisible: boolean;
@@ -20,12 +19,8 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
   townName,
   scrollToServices
 }) => {
-  // Get base URL for image paths
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  
   return (
     <div className="container mx-auto px-4 h-full flex items-center justify-center relative z-10 py-20">
-      <ImagePathFixer />
       <div className="max-w-3xl mt-16 md:mt-0 text-center pb-28">
         <div className={cn(
           "transition-all duration-1000 transform backdrop-blur-sm bg-black/30 p-6 rounded-lg",
@@ -34,7 +29,7 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
           {/* Updated logo with better visibility against different backgrounds */}
           <div className="flex justify-center mb-6">
             <img 
-              src={`${baseUrl}lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png`}
+              src="/lovable-uploads/497ecda8-3e8f-4eb8-9d97-bdd37187e766.png" 
               alt="WRAPPING THE WORLD - Vehicle Wrap Services Near You" 
               className="w-56 h-auto max-w-full animate-fade-in-down drop-shadow-lg object-contain"
             />
@@ -65,21 +60,21 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
             <div className="flex items-center space-x-1 overflow-hidden rounded-lg bg-white/10 backdrop-blur-sm p-1.5">
               <div className="w-16 h-16 rounded overflow-hidden">
                 <img 
-                  src={`${baseUrl}lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png`}
+                  src="/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png" 
                   alt="Customer vehicle wrap" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="w-16 h-16 rounded overflow-hidden">
                 <img 
-                  src={`${baseUrl}lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png`}
+                  src="/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png" 
                   alt="Customer vehicle wrap" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="w-16 h-16 rounded overflow-hidden">
                 <img 
-                  src={`${baseUrl}lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png`}
+                  src="/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png" 
                   alt="Customer vehicle wrap" 
                   className="w-full h-full object-cover"
                 />

@@ -3,14 +3,12 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  functions = "netlify/functions"
   
 # Handle SPA routing by redirecting all paths to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
   
 # Cache control for static assets
 [[headers]]
@@ -48,25 +46,13 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
+    # Enable compression
+    Content-Encoding = "br"
+    # Preload key assets
+    Link = "</assets/js/vendor-react-*.js>; rel=preload; as=script, </assets/js/vendor-ui-*.js>; rel=preload; as=script"
     
 # Environment variables for production
 [context.production.environment]
-  NODE_ENV = "production"
-  VITE_BASE_URL = "/"
-
-# Add specific settings for preview deployments
-[context.deploy-preview]
-  command = "npm run build"
-  
-[context.deploy-preview.environment]
-  NODE_ENV = "production"
-  VITE_BASE_URL = "/"
-
-# Branch deploy settings
-[context.branch-deploy]
-  command = "npm run build"
-
-[context.branch-deploy.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
 

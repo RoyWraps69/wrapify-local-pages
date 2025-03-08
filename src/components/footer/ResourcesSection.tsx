@@ -70,6 +70,7 @@ const ResourcesSection = () => {
       title: "About Us",
       links: [
         { to: "/about", label: "About Us" },
+        { to: "/about/our-team", label: "Our Team" },
         { to: "/about/careers", label: "Careers" },
         { to: "/testimonials", label: "Testimonials" },
       ]
