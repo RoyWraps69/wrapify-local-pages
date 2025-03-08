@@ -48,9 +48,12 @@ import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
 import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
+  // Get the base URL from Vite
+  const basename = import.meta.env.BASE_URL;
+  
   return (
     <HelmetProvider>
-      <Router>
+      <Router basename={basename}>
         <RootSEO />
         <ScrollToTop />
         <ChatbotProvider>

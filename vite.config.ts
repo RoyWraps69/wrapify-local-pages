@@ -61,8 +61,8 @@ export default defineConfig(({ mode }) => {
       cssMinify: true,
       emptyOutDir: true,
     },
-    // Base path for production
-    base: './',
+    // Base path for GitHub Pages deployment (using repository name)
+    base: '/wrappingtheworld/',
     esbuild: {
       // Enable JSX in .js files
       jsx: 'automatic',
