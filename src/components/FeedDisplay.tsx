@@ -1,15 +1,18 @@
-
 import React, { useEffect, useState } from 'react';
 
 interface FeedItem {
   title: string;
   link: string;
-  pubDate: string;
-  content: string;
-  contentSnippet: string;
-  guid: string;
+  pubDate?: string;
+  content?: string;
+  contentSnippet?: string;
+  guid?: string;
   categories?: string[];
-  isoDate: string;
+  isoDate?: string;
+  loc?: string;
+  lastmod?: string;
+  changefreq?: string;
+  priority?: string;
 }
 
 interface Feed {
@@ -23,6 +26,43 @@ interface Feed {
   lastBuildDate: string;
 }
 
+const convertSitemapToFeed = (sitemapData: any): Feed => {
+  if (!sitemapData || !sitemapData.urlset || !Array.isArray(sitemapData.urlset.url)) {
+    return {
+      items: [],
+      feedUrl: '',
+      title: 'Sitemap',
+      description: 'Converted from XML sitemap',
+      link: '',
+      language: 'en',
+      lastBuildDate: new Date().toISOString()
+    };
+  }
+
+  const items = sitemapData.urlset.url.map((url: any) => ({
+    title: url.loc || 'No title',
+    link: url.loc || '#',
+    pubDate: url.lastmod || new Date().toISOString(),
+    contentSnippet: `Priority: ${url.priority || 'N/A'}, Change frequency: ${url.changefreq || 'N/A'}`,
+    guid: url.loc,
+    isoDate: url.lastmod || new Date().toISOString(),
+    loc: url.loc,
+    lastmod: url.lastmod,
+    changefreq: url.changefreq,
+    priority: url.priority
+  }));
+
+  return {
+    items,
+    feedUrl: 'sitemap.xml',
+    title: 'Sitemap',
+    description: 'Converted from XML sitemap',
+    link: '',
+    language: 'en',
+    lastBuildDate: new Date().toISOString()
+  };
+};
+
 const FeedDisplay: React.FC = () => {
   const [feeds, setFeeds] = useState<{[key: string]: Feed}>({});
   const [loading, setLoading] = useState(true);
@@ -31,33 +71,46 @@ const FeedDisplay: React.FC = () => {
   useEffect(() => {
     const loadFeeds = async () => {
       try {
-        // In a production Netlify build, these files would be created by the plugin
-        // For local development, we're using the pre-created JSON files
         const feedData: {[key: string]: Feed} = {};
         
         try {
-          // Try to load the CSS Tricks feed
           const cssTricksFeed = await import('../data/feeds/css-tricks.json');
-          feedData['css-tricks'] = cssTricksFeed.default || cssTricksFeed;
+          const cssTricksData = cssTricksFeed.default || cssTricksFeed;
+          
+          if (cssTricksData.urlset) {
+            feedData['css-tricks'] = convertSitemapToFeed(cssTricksData);
+          } else {
+            feedData['css-tricks'] = cssTricksData as Feed;
+          }
         } catch (e) {
           console.log('CSS Tricks feed not available:', e);
         }
         
         try {
-          // Try to load the Netlify feed
           const netlifyFeed = await import('../data/feeds/netlify.json');
-          feedData['netlify'] = netlifyFeed.default || netlifyFeed;
+          const netlifyData = netlifyFeed.default || netlifyFeed;
+          
+          if (netlifyData.urlset) {
+            feedData['netlify'] = convertSitemapToFeed(netlifyData);
+          } else {
+            feedData['netlify'] = netlifyData as Feed;
+          }
         } catch (e) {
           console.log('Netlify feed not available:', e);
         }
         
-        // If no feeds were loaded, load the sample data
         if (Object.keys(feedData).length === 0) {
           try {
             const sampleFeed = await import('../data/feeds/sample.json');
-            feedData['sample'] = sampleFeed.default || sampleFeed;
+            const sampleData = sampleFeed.default || sampleFeed;
+            
+            if (sampleData.urlset) {
+              feedData['sample'] = convertSitemapToFeed(sampleData);
+            } else {
+              feedData['sample'] = sampleData as Feed;
+            }
           } catch (e) {
-            throw new Error('Failed to load any feed data: ' + e.message);
+            throw new Error('Failed to load any feed data: ' + (e as Error).message);
           }
         }
         
@@ -95,20 +148,20 @@ const FeedDisplay: React.FC = () => {
               <div key={index} className="border p-3 rounded">
                 <h4 className="font-medium text-lg">
                   <a 
-                    href={item.link} 
+                    href={item.link || item.loc || '#'} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline"
                   >
-                    {item.title}
+                    {item.title || 'No title'}
                   </a>
                 </h4>
                 <p className="text-sm text-gray-500 mt-1">
-                  {new Date(item.isoDate).toLocaleDateString()}
+                  {new Date(item.isoDate || item.lastmod || '').toLocaleDateString()}
                   {item.categories && item.categories.length > 0 && ` - ${item.categories.join(', ')}`}
                 </p>
                 <div className="mt-2 text-gray-700">
-                  {item.contentSnippet}
+                  {item.contentSnippet || 'No description available'}
                 </div>
               </div>
             ))}
