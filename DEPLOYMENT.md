@@ -1,3 +1,4 @@
+
 # Deployment Guide
 
 This document outlines how to deploy the Wrapping The World application to various hosting platforms.
@@ -15,6 +16,7 @@ To build the application for production:
 ```bash
 # Install dependencies and build
 npm ci --legacy-peer-deps
+npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D
 npm run build
 ```
 
@@ -49,7 +51,7 @@ This will create a `dist` directory with all the necessary files for deployment.
 2. Click "New site from Git"
 3. Select your Git provider and repository
 4. Configure build settings:
-   - Build command: `npm ci --legacy-peer-deps && npx vite build`
+   - Build command: `npm ci --legacy-peer-deps && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npx vite build`
    - Publish directory: `dist`
 5. Click "Deploy site"
 
@@ -62,9 +64,26 @@ The `netlify.toml` file in the root of the project contains the necessary config
 - Environment variables
 - Optimized caching configuration for faster builds
 
-#### Troubleshooting Netlify Vite Errors:
+#### Common Netlify Deployment Issues:
 
-If you encounter build errors related to Vite:
+##### Go Installation Error
+
+If you encounter an error related to Go installation like:
+```
+mise go@1.19 download go1.19.linux-amd64.tar.gz
+mise go@1.19 checksum go1.19.linux-amd64.tar.gz
+```
+
+Add the following environment variables in your Netlify dashboard:
+- `SKIP_GO_INSTALL=true`
+- `SKIP_PYTHON_INSTALL=true`
+- `SKIP_RUBY_INSTALL=true`
+
+These variables prevent unnecessary language installations during the build process.
+
+##### Vite Import Error
+
+If you encounter a "Cannot find package 'vite'" error:
 
 1. Check that package.json has Vite:
    - If not, add it: `npm install vite@6.2.1 --save-dev`
@@ -226,6 +245,19 @@ If your application uses environment variables, make sure to set them up in your
 - In Firebase: Use Firebase functions or Firebase Hosting environment configuration
 
 ## Troubleshooting Common Deployment Issues
+
+### Go, Python or Ruby Installation Errors
+
+If you see errors related to Go, Python, or Ruby installation:
+
+1. Add the following environment variables to your deployment platform:
+   ```
+   SKIP_GO_INSTALL=true
+   SKIP_PYTHON_INSTALL=true
+   SKIP_RUBY_INSTALL=true
+   ```
+
+2. These variables will prevent unnecessary language installations that might be causing build failures.
 
 ### Vite Import Error
 

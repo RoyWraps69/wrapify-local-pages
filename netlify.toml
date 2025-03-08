@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci --legacy-peer-deps && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npx vite build"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -11,6 +11,10 @@
   NPM_VERSION = "9"
   VITE_APP_ENV = "production"
   VITE_VERSION = "6.2.1"
+  # Disable unnecessary language installations
+  SKIP_GO_INSTALL = "true"
+  SKIP_PYTHON_INSTALL = "true"
+  SKIP_RUBY_INSTALL = "true"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"
   CACHE_DEPS = "true"
@@ -45,12 +49,15 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   VITE_VERSION = "6.2.1"
+  SKIP_GO_INSTALL = "true"
+  SKIP_PYTHON_INSTALL = "true"
+  SKIP_RUBY_INSTALL = "true"
   # Enable verbose logging for npm
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci --legacy-peer-deps && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npx vite build"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -58,11 +65,14 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   VITE_VERSION = "6.2.1"
+  SKIP_GO_INSTALL = "true"
+  SKIP_PYTHON_INSTALL = "true"
+  SKIP_RUBY_INSTALL = "true"
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm ci --legacy-peer-deps && npx vite build"
+  command = "npm ci --legacy-peer-deps && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npx vite build"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"
@@ -70,6 +80,9 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
   VITE_VERSION = "6.2.1"
+  SKIP_GO_INSTALL = "true"
+  SKIP_PYTHON_INSTALL = "true"
+  SKIP_RUBY_INSTALL = "true"
   NPM_FLAGS = "--verbose --legacy-peer-deps"
 
 # Enable bundler
