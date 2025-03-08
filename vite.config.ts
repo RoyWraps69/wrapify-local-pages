@@ -26,7 +26,6 @@ export default defineConfig(({ mode }) => ({
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
     rollupOptions: {
-      // Don't include vite in external since we're installing it explicitly in the build command
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
@@ -49,6 +48,6 @@ export default defineConfig(({ mode }) => ({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'vite'],
-    exclude: [], // Remove any potential vite exclusions
+    exclude: [], 
   },
 }));
