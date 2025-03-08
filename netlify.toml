@@ -1,7 +1,7 @@
 
 # Netlify configuration for deployment
 [build]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build --debug"
   publish = "dist"
   functions = "netlify/functions"
   
@@ -11,6 +11,7 @@
   NPM_VERSION = "9"
   VITE_APP_ENV = "production"
   VITE_VERSION = "6.2.1"
+  NODE_ENV = "production"
   # Disable unnecessary language installations
   SKIP_GO_INSTALL = "true"
   SKIP_PYTHON_INSTALL = "true"
@@ -51,7 +52,7 @@
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build --debug"
   
 [context.deploy-preview.environment]
   NODE_ENV = "production"
@@ -67,7 +68,7 @@
 
 # Branch deploy settings
 [context.branch-deploy]
-  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build"
+  command = "npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --no-fund --prefer-offline --legacy-peer-deps && npx vite build --debug"
 
 [context.branch-deploy.environment]
   NODE_ENV = "production"

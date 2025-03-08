@@ -13,6 +13,11 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' && (() => {
       try {
+        // Only attempt to load the tagger in development mode
+        if (process.env.NODE_ENV === 'production') {
+          return null;
+        }
+        
         // Try to import componentTagger dynamically with specific Vite version requirement
         const tagger = require("lovable-tagger");
         // Check if Vite version is compatible before loading
@@ -51,7 +56,13 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
-      external: ['lovable-tagger', 'vite', 'node:path', 'node:fs', 'node:url'],
+      external: [
+        'lovable-tagger', 
+        'vite', 
+        'node:path', 
+        'node:fs', 
+        'node:url'
+      ],
     },
     cssCodeSplit: true,
     emptyOutDir: true,
@@ -63,6 +74,10 @@ export default defineConfig(({ mode }) => ({
   base: '/',
   esbuild: {
     jsx: 'automatic',
+    logOverride: {
+      // Suppress specific warnings that might cause build failures
+      'this-is-undefined-in-esm': 'silent'
+    }
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', '@vitejs/plugin-react-swc'],
@@ -75,4 +90,6 @@ export default defineConfig(({ mode }) => ({
   },
   // Improve caching in CI/CD environments
   cacheDir: process.env.NETLIFY === 'true' ? '.netlify/cache/.vite' : 'node_modules/.vite',
+  // Improve error reporting
+  logLevel: process.env.NETLIFY === 'true' ? 'info' : 'warn',
 }));
