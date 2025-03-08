@@ -4,6 +4,7 @@ import { toast as sonnerToast } from "sonner";
 
 // Define toast types for consistency
 export type ToastProps = {
+  id?: string;
   title?: string;
   description?: string;
   action?: React.ReactNode;
@@ -12,7 +13,7 @@ export type ToastProps = {
 
 // UseToast hook for more controlled toast usage
 export function useToast() {
-  const [toasts, setToasts] = useState<ToastProps[]>([]);
+  const [toasts, setToasts] = useState<(ToastProps & { id: string })[]>([]);
 
   const toast = ({ title, description, action, variant = "default" }: ToastProps) => {
     const id = Date.now().toString();
