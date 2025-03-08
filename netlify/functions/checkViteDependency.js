@@ -19,6 +19,20 @@ export const handler = async (event) => {
     const viteExists = fs.existsSync(vitePath);
     console.log(`Vite in node_modules: ${viteExists ? 'Yes' : 'No'}`);
     
+    // Check if vite/package.json exists within node_modules
+    const vitePackageJson = path.resolve(vitePath, 'package.json');
+    const vitePackageJsonExists = fs.existsSync(vitePackageJson);
+    console.log(`Vite package.json exists: ${vitePackageJsonExists ? 'Yes' : 'No'}`);
+    
+    if (vitePackageJsonExists) {
+      try {
+        const vitePackage = JSON.parse(fs.readFileSync(vitePackageJson, 'utf8'));
+        console.log(`Installed Vite version: ${vitePackage.version}`);
+      } catch (e) {
+        console.error('Error reading Vite package.json:', e);
+      }
+    }
+    
     // Check if package.json has vite
     const packageJsonPath = path.resolve(rootDir, 'package.json');
     let viteInPackageJson = false;
@@ -47,6 +61,15 @@ export const handler = async (event) => {
     // Check environment variables
     console.log(`Environment VITE_VERSION: ${process.env.VITE_VERSION || 'not set'}`);
     console.log(`Environment NODE_VERSION: ${process.env.NODE_VERSION || 'not set'}`);
+    
+    // Create a directory tree to see what's available
+    console.log('Directory structure of node_modules:');
+    if (fs.existsSync(path.resolve(rootDir, 'node_modules'))) {
+      const nodeModulesDirs = fs.readdirSync(path.resolve(rootDir, 'node_modules')).slice(0, 20); // First 20 directories
+      console.log('First 20 packages:', nodeModulesDirs.join(', '));
+    } else {
+      console.log('node_modules directory not found');
+    }
     
     return {
       statusCode: 200,
