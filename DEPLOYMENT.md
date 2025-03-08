@@ -1,4 +1,3 @@
-
 # Deployment Guide
 
 This document outlines how to deploy the Wrapping The World application to various hosting platforms.
@@ -81,6 +80,22 @@ If you encounter an error like `Cannot find package 'vite'`:
    - `VITE_VERSION=6.2.1` 
    - `NODE_VERSION=18`
    - `NPM_VERSION=9`
+
+##### Peer Dependency Issues
+
+If you encounter peer dependency warnings or errors:
+
+1. The peer dependency issue between vite@"^5.0.0" and lovable-tagger@1.1.7 has been addressed in several ways:
+   - Using `--legacy-peer-deps` flag in npm commands
+   - Modifying the vite.config.ts to check version compatibility before loading plugins
+   - Setting external dependencies in the rollup configuration
+
+2. The current configuration uses Vite 6.2.1, which should be compatible with most plugins.
+
+3. If you still encounter peer dependency issues:
+   - Check what version of Vite is being used: `npm list vite`
+   - Ensure that plugins with Vite peer dependencies are compatible
+   - Use `npm install --legacy-peer-deps` to ignore peer dependency conflicts
 
 ##### Go Installation Error
 
@@ -296,6 +311,36 @@ If you encounter an error like `Cannot find package 'vite' imported from...`:
 
 3. Make sure your Netlify (or other platform) build command includes the Vite installation step.
 
+### Peer Dependency Conflicts
+
+If you encounter peer dependency conflicts:
+
+1. Use the `--legacy-peer-deps` flag:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+2. This flag tells npm to ignore peer dependency conflicts, which is useful when plugins require different versions of the same package.
+
+3. In vite.config.ts, make sure the lovable-tagger plugin is loaded conditionally and only when compatible:
+   ```js
+   mode === 'development' && (() => {
+     try {
+       const tagger = require("lovable-tagger");
+       const currentViteVersion = require('vite/package.json').version;
+       const isCompatible = currentViteVersion && 
+         (currentViteVersion.startsWith('5.') || currentViteVersion.startsWith('6.'));
+       
+       return isCompatible ? tagger.componentTagger() : null;
+     } catch (e) {
+       console.warn("Could not load lovable-tagger, continuing without it:", e.message);
+       return null;
+     }
+   })(),
+   ```
+
+4. If specific plugins are causing issues, you can try temporarily disabling them during the build process.
+
 ### Routing Issues
 
 If you encounter routing issues:
@@ -313,23 +358,22 @@ For other deployment issues, check the build logs in your deployment platform fo
 
 Netlify automatically caches dependencies between builds to speed up deployment. To ensure optimal caching:
 
-1. The netlify-plugin-cache has been added to netlify.toml to explicitly cache:
-   - node_modules/.cache
-   - node_modules/.vite
-   - .netlify/functions-serve
-   - dist
+1. The project now uses Netlify's official cache plugins:
+   - `@netlify/plugin-gatsby-cache` (recommended)
+   - Or alternatively, `netlify-plugin-cache`
 
-2. To install the cache plugin:
+2. To install the recommended cache plugin:
    - Go to the Netlify UI dashboard
    - Navigate to your site settings
    - Go to the Plugins section
    - Click "Add plugin"
-   - Search for "netlify-plugin-cache" and install it
+   - Search for "@netlify/plugin-gatsby-cache" and install it
 
-3. Alternatively, install the plugin via Netlify CLI:
-   ```bash
-   netlify plugins:install netlify-plugin-cache
-   ```
+3. The plugin configuration in netlify.toml specifies these cache paths:
+   - node_modules/.cache
+   - node_modules/.vite
+   - .netlify/cache/.vite
+   - dist
 
 4. Troubleshooting cache issues:
    - Verify the plugin is installed in your Netlify UI
@@ -351,7 +395,7 @@ If you need to purge the cache:
 
 5. For persistent cache issues, try these troubleshooting steps:
    - Check the build logs for any cache-related errors
-   - Verify that the cache paths in netlify.toml are correct
+   - Verify that the cache paths specified in netlify.toml are correct
    - Temporarily disable caching by removing the plugin to see if it resolves the issue
    - Ensure you're not exceeding Netlify's cache size limits
 

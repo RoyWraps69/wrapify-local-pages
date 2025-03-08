@@ -85,14 +85,22 @@
 
 # ... keep existing code (post-processing settings for performance)
 
-# Cache management - Explicitly define cache paths for node_modules
+# Use the built-in Netlify cache plugin
 [[plugins]]
-  package = "netlify-plugin-cache"
+  package = "@netlify/plugin-gatsby-cache"
   
   [plugins.inputs]
-    paths = [
-      "node_modules/.cache",
-      "node_modules/.vite",
-      ".netlify/functions-serve",
-      "dist"
-    ]
+    publicCacheDirs = ["node_modules/.cache", "node_modules/.vite", ".netlify/cache/.vite", "dist"]
+
+# For the older netlify-plugin-cache plugin if you prefer it
+# [[plugins]]
+#   package = "netlify-plugin-cache"
+#   
+#   [plugins.inputs]
+#     paths = [
+#       "node_modules/.cache",
+#       "node_modules/.vite",
+#       ".netlify/functions-serve",
+#       ".netlify/cache/.vite",
+#       "dist"
+#     ]

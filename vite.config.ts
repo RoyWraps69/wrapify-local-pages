@@ -13,11 +13,17 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' && (() => {
       try {
-        // Try to import componentTagger dynamically
-        return require("lovable-tagger").componentTagger()
+        // Try to import componentTagger dynamically with specific Vite version requirement
+        const tagger = require("lovable-tagger");
+        // Check if Vite version is compatible before loading
+        const currentViteVersion = require('vite/package.json').version;
+        const isCompatible = currentViteVersion && 
+          (currentViteVersion.startsWith('5.') || currentViteVersion.startsWith('6.'));
+        
+        return isCompatible ? tagger.componentTagger() : null;
       } catch (e) {
         // If it fails, return null
-        console.warn("Could not load lovable-tagger, continuing without it");
+        console.warn("Could not load lovable-tagger, continuing without it:", e.message);
         return null;
       }
     })(),
@@ -45,7 +51,7 @@ export default defineConfig(({ mode }) => ({
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
       },
-      external: ['lovable-tagger'],
+      external: ['lovable-tagger', 'vite', 'node:path', 'node:fs', 'node:url'],
     },
     cssCodeSplit: true,
     emptyOutDir: true,
