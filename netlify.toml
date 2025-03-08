@@ -116,5 +116,3 @@
 # Post-processing for better performance
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
-
-# Removed the netlify-plugin-cache plugin since it's not installed

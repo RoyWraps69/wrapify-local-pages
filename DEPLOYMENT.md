@@ -15,8 +15,8 @@ To build the application for production:
 
 ```bash
 # Install dependencies and build
+npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save
 npm ci --legacy-peer-deps
-npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D
 npm run build
 ```
 
@@ -51,7 +51,7 @@ This will create a `dist` directory with all the necessary files for deployment.
 2. Click "New site from Git"
 3. Select your Git provider and repository
 4. Configure build settings:
-   - Build command: `npm ci --legacy-peer-deps && npm install vite@6.2.1 @vitejs/plugin-react-swc@latest -D && npx vite build`
+   - Build command: `npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npx vite build`
    - Publish directory: `dist`
 5. Click "Deploy site"
 
@@ -66,13 +66,25 @@ The `netlify.toml` file in the root of the project contains the necessary config
 
 #### Common Netlify Deployment Issues:
 
+##### Vite Dependency Issue
+
+If you encounter an error like `Cannot find package 'vite'`:
+
+1. The build command in netlify.toml has been updated to install Vite before any other operations:
+   ```
+   npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npx vite build
+   ```
+
+2. This ensures Vite is available during the build process even if it's not in your package.json.
+
+3. The following environment variables have been set in netlify.toml:
+   - `VITE_VERSION=6.2.1` 
+   - `NODE_VERSION=18`
+   - `NPM_VERSION=9`
+
 ##### Go Installation Error
 
-If you encounter an error related to Go installation like:
-```
-mise go@1.19 download go1.19.linux-amd64.tar.gz
-mise go@1.19 checksum go1.19.linux-amd64.tar.gz
-```
+If you encounter an error related to Go installation:
 
 The current configuration already includes these environment variables to prevent this issue:
 - `SKIP_GO_INSTALL=true`
@@ -84,39 +96,13 @@ These variables prevent unnecessary language installations during the build proc
 
 ##### Plugin Installation Errors
 
-If you encounter errors related to Netlify plugins like:
-```
-Plugins must be installed either in the Netlify App or in "package.json".
-Please run "npm install -D netlify-plugin-name"
-```
+If you encounter errors related to Netlify plugins:
 
 You have two options:
 1. Install the plugin through the Netlify UI dashboard (recommended)
 2. Remove the plugin reference from netlify.toml if you don't need it
 
 The current configuration has been updated to remove unnecessary plugin references.
-
-##### Vite Import Error
-
-If you encounter a "Cannot find package 'vite'" error:
-
-1. Check that package.json has Vite:
-   - If not, add it: `npm install vite@6.2.1 --save-dev`
-
-2. Verify vite.config.ts has the external configuration:
-   ```js
-   external: ['vite', 'node:path', 'node:fs', 'node:url', 'lovable-tagger']
-   ```
-
-3. In the Netlify dashboard, under "Build & deploy" → "Environment", set:
-   - VITE_VERSION=6.2.1 
-   - NODE_VERSION=18
-   - NPM_VERSION=9
-
-4. Try clearing the Netlify cache:
-   - In the Netlify dashboard, go to your site's "Deploys" tab
-   - Click on "Trigger deploy" dropdown
-   - Select "Clear cache and deploy site"
 
 ### 2. Vercel
 
@@ -252,6 +238,22 @@ If your application uses environment variables, make sure to set them up in your
 - In Firebase: Use Firebase functions or Firebase Hosting environment configuration
 
 ## Troubleshooting Common Deployment Issues
+
+### Vite Not Found Error
+
+If you encounter a "Cannot find package 'vite'" error:
+
+1. The build command has been updated in netlify.toml to explicitly install Vite before running anything else:
+   ```
+   npm install vite@6.2.1 @vitejs/plugin-react-swc@latest --no-save && npm ci --legacy-peer-deps && npx vite build
+   ```
+
+2. This ensures that Vite is available during the build process, regardless of whether it's in package.json.
+
+3. You can also try clearing the Netlify cache:
+   - In the Netlify dashboard, go to your site's "Deploys" tab
+   - Click on "Trigger deploy" dropdown
+   - Select "Clear cache and deploy site"
 
 ### Go, Python or Ruby Installation Errors
 
