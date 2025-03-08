@@ -144,12 +144,15 @@ The "netlify-plugin-fetch-feeds" plugin requires specific configuration:
 3. If you need to add more feeds:
    - Add them to the `feeds` array in netlify.toml
    - Each feed needs a name, url, and format (rss, atom, or json)
+   - Make sure the feed URLs are publicly accessible and valid
    - Access the fetched data in your components from the dataDir location
 
 4. Troubleshooting plugin issues:
    - Verify the plugin is installed through the Netlify UI
-   - Check that the feeds URLs are accessible
+   - Check that the feeds URLs are accessible by testing them in a browser
    - Ensure the dataDir exists in your codebase
+   - If you encounter "ENOTFOUND" errors, it means the domain cannot be resolved - use known public feed URLs
+   - For local testing, you may need to manually create JSON files in the dataDir with sample feed data
 
 # Important: Install the Required Netlify Plugin
 
