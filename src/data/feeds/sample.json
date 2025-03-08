@@ -1,0 +1,32 @@
+
+{
+  "items": [
+    {
+      "title": "Sample RSS Feed Item",
+      "link": "https://example.com/sample-post",
+      "pubDate": "Mon, 01 May 2023 12:00:00 GMT",
+      "content": "This is sample content for testing purposes.",
+      "contentSnippet": "This is sample content for testing...",
+      "guid": "https://example.com/sample-post",
+      "categories": ["Sample", "Test"],
+      "isoDate": "2023-05-01T12:00:00.000Z"
+    },
+    {
+      "title": "Another Sample Item",
+      "link": "https://example.com/another-post",
+      "pubDate": "Tue, 02 May 2023 14:30:00 GMT",
+      "content": "More sample content for testing the RSS feed integration.",
+      "contentSnippet": "More sample content for testing...",
+      "guid": "https://example.com/another-post",
+      "categories": ["Example", "Demo"],
+      "isoDate": "2023-05-02T14:30:00.000Z"
+    }
+  ],
+  "feedUrl": "https://example.com/feed.xml",
+  "title": "Sample Feed",
+  "description": "A sample RSS feed for testing purposes",
+  "generator": "Sample RSS Generator",
+  "link": "https://example.com",
+  "language": "en",
+  "lastBuildDate": "Wed, 03 May 2023 08:00:00 GMT"
+}
