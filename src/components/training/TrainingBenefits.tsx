@@ -31,8 +31,8 @@ const TrainingBenefits: React.FC = () => {
       icon: <CheckCircle className="h-5 w-5 text-white" />
     },
     {
-      title: 'Industry Certification',
-      description: 'Receive a professional certification recognized throughout the industry',
+      title: 'Professional Recognition',
+      description: 'Receive documentation of your training completion to enhance your professional profile',
       icon: <CheckCircle className="h-5 w-5 text-white" />
     }
   ];

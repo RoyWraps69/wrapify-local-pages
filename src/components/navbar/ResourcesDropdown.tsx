@@ -89,9 +89,6 @@ const ResourcesDropdown = () => {
                     <Link to="/about" className="text-sm text-wrap-grey hover:text-wrap-red">
                       About Us
                     </Link>
-                    <Link to="/about/our-team" className="text-sm text-wrap-grey hover:text-wrap-red">
-                      Our Team
-                    </Link>
                     <Link to="/about/careers" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Careers
                     </Link>

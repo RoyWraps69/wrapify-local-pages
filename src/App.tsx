@@ -21,7 +21,6 @@ import TrainingClasses from './pages/TrainingClasses';
 import ThankYou from './pages/ThankYou';
 import Blog from './pages/Blog';
 import CaseStudies from './pages/CaseStudies';
-import OurTeam from './pages/about/OurTeam';
 import Careers from './pages/about/Careers';
 import PrintShip from './pages/PrintShip';
 import Shopping from './pages/Shopping';
@@ -58,7 +57,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
-            <Route path="/about/our-team" element={<OurTeam />} />
             <Route path="/about/careers" element={<Careers />} />
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceSlug" element={<ServicePage />} />
