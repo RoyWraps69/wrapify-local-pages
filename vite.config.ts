@@ -8,6 +8,7 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => {
   console.log('Running Vite in mode:', mode);
   console.log('Node version:', process.version);
+  console.log('Base URL:', '/wrappingtheworld/');
   
   // Skip node-gyp operations in certain environments
   if (process.env.SKIP_PYTHON_CHECK) {
@@ -31,8 +32,8 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'dist',
-      sourcemap: false,
-      minify: true,
+      sourcemap: mode === 'development',
+      minify: mode === 'production',
       assetsDir: 'assets',
       // Improved asset handling
       assetsInlineLimit: 4096, // Inline assets smaller than 4kb
@@ -56,18 +57,15 @@ export default defineConfig(({ mode }) => {
           assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
         }
       },
-      // Add automatic CSS purging in production
       cssCodeSplit: true,
       cssMinify: true,
       emptyOutDir: true,
     },
-    // Base path for GitHub Pages deployment (using repository name)
+    // Base path for GitHub Pages deployment
     base: '/wrappingtheworld/',
     esbuild: {
-      // Enable JSX in .js files
       jsx: 'automatic',
     },
-    // Optimize dependencies that may slow down dev server
     optimizeDeps: {
       include: ['react', 'react-dom', 'react-router-dom'],
       exclude: ['node-expat'], // Exclude packages that require Python during build

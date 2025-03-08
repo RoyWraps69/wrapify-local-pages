@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
         
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -34,7 +36,10 @@ jobs:
           SKIP_PYTHON_CHECK: 'true'
           
       - name: Build
-        run: npm run build
+        run: |
+          npm run build
+          echo "wrappingtheworld.com" > dist/CNAME
+          touch dist/.nojekyll
         env:
           SKIP_PYTHON_CHECK: 'true'
           
@@ -44,3 +49,6 @@ jobs:
           folder: dist
           branch: gh-pages
           clean: true  # Automatically remove deleted files from the deploy branch
+          clean-exclude: |
+            .nojekyll
+            CNAME

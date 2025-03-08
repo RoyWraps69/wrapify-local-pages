@@ -49,7 +49,9 @@ import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
   // Get the base URL from Vite
-  const basename = import.meta.env.BASE_URL;
+  const basename = import.meta.env.BASE_URL || '/wrappingtheworld/';
+  
+  console.log('Using router basename:', basename);
   
   return (
     <HelmetProvider>

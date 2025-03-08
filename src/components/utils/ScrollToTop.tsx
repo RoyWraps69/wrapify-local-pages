@@ -9,10 +9,16 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
   
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    console.log('ScrollToTop: Navigation to path:', pathname);
+    try {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      console.log('ScrollToTop: Successfully scrolled to top');
+    } catch (error) {
+      console.error('ScrollToTop: Error scrolling to top:', error);
+    }
   }, [pathname]);
   
   return null;
