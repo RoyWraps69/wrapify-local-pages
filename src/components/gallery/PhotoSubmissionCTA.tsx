@@ -2,14 +2,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Camera, Upload } from 'lucide-react';
+import { PhotoSubmissionCTAProps } from './types';
 
-interface PhotoSubmissionCTAProps {
-  townName?: string;
-}
-
-const PhotoSubmissionCTA: React.FC<PhotoSubmissionCTAProps> = ({ townName = 'Chicago' }) => {
+const PhotoSubmissionCTA: React.FC<PhotoSubmissionCTAProps> = ({ className = "" }) => {
   return (
-    <div className="mt-12 bg-white p-6 rounded-xl shadow-md max-w-3xl mx-auto">
+    <div className={`bg-white p-6 rounded-xl shadow-md max-w-3xl mx-auto ${className}`}>
       <div className="flex flex-col md:flex-row items-center">
         <div className="md:w-1/4 flex justify-center mb-4 md:mb-0">
           <div className="w-20 h-20 bg-wrap-blue/10 rounded-full flex items-center justify-center">

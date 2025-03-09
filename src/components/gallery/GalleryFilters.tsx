@@ -1,17 +1,12 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { GalleryFilterProps } from './types';
 
-interface GalleryFiltersProps {
-  filters: Array<{ id: string | null; name: string; }>;
-  activeFilter: string | null;
-  setActiveFilter: (filter: string | null) => void;
-}
-
-const GalleryFilters: React.FC<GalleryFiltersProps> = ({ 
-  filters, 
+const GalleryFilters: React.FC<GalleryFilterProps> = ({ 
   activeFilter, 
-  setActiveFilter 
+  setActiveFilter, 
+  filters 
 }) => {
   return (
     <div className="flex flex-wrap justify-center gap-2 mt-8">
