@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 
 // Updated hero backgrounds with more premium-looking wraps
@@ -46,12 +47,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   useEffect(() => {
     const loadImages = async () => {
       try {
-        // Force a small delay to ensure the loading spinner appears
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
+        // Attempt to preload at least one image from the heroBackgrounds
         let imageLoaded = false;
         
-        // Try to load at least one image
         for (let i = 0; i < heroBackgrounds.length; i++) {
           const success = await preloadImage(heroBackgrounds[i]);
           if (success) {
@@ -60,13 +58,13 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
           }
         }
         
-        // Always set images as loaded to remove spinner
+        // Always set images as loaded to remove spinner and show content
         setInternalImagesLoaded(true);
-        onImagesLoaded(true, !imageLoaded);
+        onImagesLoaded(true, !imageLoaded); 
         
       } catch (error) {
         console.error("Error loading images:", error);
-        setInternalImagesLoaded(true); // Still mark as loaded to show fallback
+        setInternalImagesLoaded(true);
         onImagesLoaded(true, true);
       }
     };
@@ -79,11 +77,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
 
   return (
     <>
-      {/* Main background image */}
+      {/* Fixed Background Image - Always Display */}
       <div
-        className={`absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 ease-in-out ${
-          imagesLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: 'cover',

@@ -29,7 +29,6 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   const getRandomImageIndex = () => Math.floor(Math.random() * heroBackgrounds.length);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(getRandomImageIndex());
-  const [imageLoaded, setImageLoaded] = useState(false);
   
   // Use the provided regionImage or use our randomly selected image
   const bgImage = regionImage || heroBackgrounds[currentImageIndex];
@@ -38,20 +37,13 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   const locationText = "Chicago";
   
   useEffect(() => {
-    // Preload the current background image
-    const img = new Image();
-    img.src = bgImage;
-    img.onload = () => {
-      setImageLoaded(true);
-    };
-    
     // Set up image rotation
     const rotationInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroBackgrounds.length);
     }, 5000);
     
     return () => clearInterval(rotationInterval);
-  }, [bgImage]);
+  }, []);
   
   return (
     <section 
@@ -63,11 +55,9 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       <meta itemProp="serviceType" content="Vehicle Wrapping" />
       <meta itemProp="areaServed" content={locationText} />
       
-      {/* Background image with static fallback instead of spinner */}
+      {/* Background image - no conditional rendering or loading state */}
       <div 
-        className={`absolute inset-0 z-0 w-full h-full transition-opacity duration-1000 ${
-          imageLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
+        className="absolute inset-0 z-0 w-full h-full"
         style={{ 
           backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
@@ -75,14 +65,6 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
         }}
         aria-hidden="true"
       />
-      
-      {/* Static background fallback (replace the spinning wheel) */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-b from-wrap-blue to-black z-0">
-          <div className="bg-blend-multiply bg-cover bg-center opacity-30" 
-               style={{ backgroundImage: `url(${heroBackgrounds[0]})` }}></div>
-        </div>
-      )}
       
       {/* Darker overlay for text readability */}
       <div className="absolute inset-0 bg-black opacity-70 z-1" aria-hidden="true"></div>
