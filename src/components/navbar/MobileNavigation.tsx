@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Printer, GraduationCap, ExternalLink, Shield, FileText, Users, MapPin } from 'lucide-react';
+import { Phone, Printer, GraduationCap, FileText, Users, MapPin } from 'lucide-react';
 
 const MobileNavigation: React.FC = () => {
   return (
@@ -65,10 +65,10 @@ const MobileNavigation: React.FC = () => {
               <GraduationCap className="mr-1 h-3 w-3" />
               Training Classes
             </Link>
-            <Link to="/vinyl-wrap-care-guide" className="text-sm text-wrap-grey hover:text-wrap-red">
+            <Link to="/resources/vinyl-wrap-care-guide" className="text-sm text-wrap-grey hover:text-wrap-red">
               Vinyl Wrap Care Guide
             </Link>
-            <Link to="/ceramic-coating-faq" className="text-sm text-wrap-grey hover:text-wrap-red">
+            <Link to="/resources/ceramic-coating-faq" className="text-sm text-wrap-grey hover:text-wrap-red">
               Ceramic Coating FAQ
             </Link>
             <Link to="/blog" className="text-sm text-wrap-grey hover:text-wrap-red">

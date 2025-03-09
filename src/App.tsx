@@ -45,6 +45,9 @@ import Illinois from './pages/regions/Illinois';
 import Wisconsin from './pages/regions/Wisconsin';
 import Indiana from './pages/regions/Indiana';
 import Michigan from './pages/regions/Michigan';
+import Iowa from './pages/regions/Iowa';
+import Missouri from './pages/regions/Missouri';
+import Ohio from './pages/regions/Ohio';
 import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
 import ScrollToTop from './components/utils/ScrollToTop';
 
@@ -70,6 +73,9 @@ function App() {
             <Route path="/regions/wisconsin" element={<Wisconsin />} />
             <Route path="/regions/indiana" element={<Indiana />} />
             <Route path="/regions/michigan" element={<Michigan />} />
+            <Route path="/regions/iowa" element={<Iowa />} />
+            <Route path="/regions/missouri" element={<Missouri />} />
+            <Route path="/regions/ohio" element={<Ohio />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/warranty-information" element={<WarrantyInformation />} />
             <Route path="/wrap-insurance" element={<WrapInsurance />} />

@@ -21,14 +21,15 @@ const ShopFooter: React.FC<ShopFooterProps> = ({ setActiveCategory }) => {
       </div>
       
       <div className="flex flex-wrap justify-center gap-4">
-        <Button 
-          variant="outline"
-          className="border-wrap-blue text-wrap-blue"
-          onClick={() => window.location.href = '/contact'}
-        >
-          <Mail className="mr-2 h-4 w-4" />
-          Get Answers to Your Questions
-        </Button>
+        <Link to="/contact">
+          <Button 
+            variant="outline"
+            className="border-wrap-blue text-wrap-blue"
+          >
+            <Mail className="mr-2 h-4 w-4" />
+            Get Answers to Your Questions
+          </Button>
+        </Link>
         
         <a
           href="tel:+13125971286"
@@ -38,22 +39,24 @@ const ShopFooter: React.FC<ShopFooterProps> = ({ setActiveCategory }) => {
           Speak to a Vehicle Wrap Expert
         </a>
         
-        <Button 
-          variant="default"
-          className="bg-wrap-red hover:bg-wrap-red/90"
-          onClick={() => window.location.href = '/locations'}
-        >
-          <MapPin className="mr-2 h-4 w-4" />
-          Find Vehicle Wraps Near Me
-        </Button>
+        <Link to="/locations">
+          <Button 
+            variant="default"
+            className="bg-wrap-red hover:bg-wrap-red/90"
+          >
+            <MapPin className="mr-2 h-4 w-4" />
+            Find Vehicle Wraps Near Me
+          </Button>
+        </Link>
         
-        <Button 
-          variant="default"
-          className="bg-wrap-blue hover:bg-wrap-blue/90"
-          onClick={() => window.location.href = '/print-ship'}
-        >
-          Explore Print & Ship Services <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <Link to="/print-ship">
+          <Button 
+            variant="default"
+            className="bg-wrap-blue hover:bg-wrap-blue/90"
+          >
+            Explore Print & Ship Services <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
       </div>
       
       {/* Social Check-in Section */}

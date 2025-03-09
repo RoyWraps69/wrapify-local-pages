@@ -54,13 +54,13 @@ const ResourcesDropdown = () => {
                       <GraduationCap className="mr-1 h-3 w-3" />
                       Training Classes
                     </Link>
-                    <Link to="/vinyl-wrap-care-guide" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    <Link to="/resources/vinyl-wrap-care-guide" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Vinyl Wrap Care Guide
                     </Link>
-                    <Link to="/ceramic-coating-faq" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    <Link to="/resources/ceramic-coating-faq" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Ceramic Coating FAQ
                     </Link>
-                    <Link to="/design-template-library" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    <Link to="/resources/design-template-library" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Design Templates
                     </Link>
                     <Link to="/wrap-insurance" className="text-sm text-wrap-grey hover:text-wrap-red">
@@ -69,10 +69,10 @@ const ResourcesDropdown = () => {
                     <Link to="/warranty-information" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Warranty Information
                     </Link>
-                    <Link to="/wrap-installation-process" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    <Link to="/support/wrap-installation-process" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Installation Process
                     </Link>
-                    <Link to="/payment-options" className="text-sm text-wrap-grey hover:text-wrap-red">
+                    <Link to="/support/payment-options" className="text-sm text-wrap-grey hover:text-wrap-red">
                       Payment Options
                     </Link>
                     <Link to="/blog" className="text-sm text-wrap-grey hover:text-wrap-red">

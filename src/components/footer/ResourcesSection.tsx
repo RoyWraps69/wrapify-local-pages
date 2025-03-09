@@ -43,7 +43,7 @@ const ResourcesSection = () => {
       title: "Resources",
       links: [
         { to: "/resources/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
-        { to: "/downloads/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true },
+        { to: "/resources/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true },
         { to: "/resources/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
         { to: "/resources/design-template-library", label: "Design Template Library" },
         { to: "/wrap-insurance", label: "Wrap Insurance" },
@@ -61,7 +61,7 @@ const ResourcesSection = () => {
     {
       title: "Support",
       links: [
-        { to: "/support/warranty-information", label: "Warranty Information" },
+        { to: "/warranty-information", label: "Warranty Information" },
         { to: "/support/wrap-installation-process", label: "Installation Process" },
         { to: "/support/payment-options", label: "Payment Options" },
       ]
