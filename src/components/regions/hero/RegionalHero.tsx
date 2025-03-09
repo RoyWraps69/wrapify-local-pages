@@ -29,8 +29,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   const getRandomImageIndex = () => Math.floor(Math.random() * heroBackgrounds.length);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(getRandomImageIndex());
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   // Use the provided regionImage or use our randomly selected image
   const bgImage = regionImage || heroBackgrounds[currentImageIndex];
@@ -39,25 +38,12 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   const locationText = "Chicago";
   
   useEffect(() => {
-    // Preload all background images
-    Promise.all(
-      heroBackgrounds.map((src) => {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-      })
-    )
-      .then(() => {
-        console.log("All hero images preloaded successfully");
-        setImagesLoaded(true);
-      })
-      .catch((error) => {
-        console.error("Error preloading hero images:", error);
-        setImageError(true);
-      });
+    // Preload the current background image
+    const img = new Image();
+    img.src = bgImage;
+    img.onload = () => {
+      setImageLoaded(true);
+    };
     
     // Set up image rotation
     const rotationInterval = setInterval(() => {
@@ -65,7 +51,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
     }, 5000);
     
     return () => clearInterval(rotationInterval);
-  }, []);
+  }, [bgImage]);
   
   return (
     <section 
@@ -77,22 +63,24 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       <meta itemProp="serviceType" content="Vehicle Wrapping" />
       <meta itemProp="areaServed" content={locationText} />
       
-      {/* Background image with improved error handling */}
-      {imagesLoaded ? (
-        <div 
-          className="absolute inset-0 z-0 w-full h-full bg-cover bg-center bg-gray-800 transition-opacity duration-1000"
-          style={{ 
-            backgroundImage: `url(${bgImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-          aria-hidden="true"
-        />
-      ) : (
+      {/* Background image with static fallback instead of spinner */}
+      <div 
+        className={`absolute inset-0 z-0 w-full h-full transition-opacity duration-1000 ${
+          imageLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ 
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+        aria-hidden="true"
+      />
+      
+      {/* Static background fallback (replace the spinning wheel) */}
+      {!imageLoaded && (
         <div className="absolute inset-0 bg-gradient-to-b from-wrap-blue to-black z-0">
-          <div className="flex items-center justify-center h-full">
-            <div className="w-16 h-16 border-4 border-t-wrap-red border-gray-200 rounded-full animate-spin"></div>
-          </div>
+          <div className="bg-blend-multiply bg-cover bg-center opacity-30" 
+               style={{ backgroundImage: `url(${heroBackgrounds[0]})` }}></div>
         </div>
       )}
       

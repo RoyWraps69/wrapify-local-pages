@@ -50,7 +50,8 @@ const ServicePage: React.FC = () => {
   
   // Select a random image if the service doesn't have one, or if we want a random one
   const getRandomHeroImage = () => {
-    return additionalHeroImages[Math.floor(Math.random() * additionalHeroImages.length)];
+    const randomIndex = Math.floor(Math.random() * additionalHeroImages.length);
+    return additionalHeroImages[randomIndex];
   };
   
   // Make sure we have a valid hero image - use service.hero, or fall back to a random one
