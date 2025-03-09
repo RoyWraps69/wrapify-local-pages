@@ -32,5 +32,23 @@ export const colorChangeWrapsData: ServiceInfo = {
       title: 'Cost-Effective Alternative',
       description: 'Significantly less expensive than a quality paint job with similar visual impact.'
     }
+  ],
+  faqs: [
+    {
+      question: "How long does a color change wrap last?",
+      answer: "With proper care and maintenance, a quality color change wrap typically lasts 5-7 years. Factors that affect longevity include climate conditions, exposure to sunlight, how the vehicle is stored, and regular maintenance. Premium materials from brands like 3M and Avery Dennison that we use tend to maintain their appearance longer than economy alternatives."
+    },
+    {
+      question: "Can I take my wrapped vehicle through a car wash?",
+      answer: "Yes, but with caution. After allowing your wrap to fully cure (72 hours after installation), touchless car washes are best. Avoid brush washes and high-pressure washes directed at the edges of the wrap. Hand washing with mild automotive detergent is the ideal way to maintain your wrap's appearance and maximize its lifespan."
+    },
+    {
+      question: "Will removing the wrap damage my original paint?",
+      answer: "When professionally installed and removed, a vehicle wrap will not damage factory paint that was in good condition before wrapping. In fact, the wrap provides protection for your original paint during its lifetime. Professional removal techniques and proper installation methods ensure that your vehicle's original finish remains intact."
+    },
+    {
+      question: "Can you match a specific color I have in mind?",
+      answer: "Yes! Beyond our extensive catalog of colors and finishes, we can color-match to specific samples or color codes. Many vinyl manufacturers offer color-matching services for commercial clients, and we can also create custom printed wraps to achieve specific colors or color combinations that aren't available in standard vinyl options."
+    }
   ]
 };
