@@ -45,27 +45,18 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
 
   // Handle image preloading
   useEffect(() => {
+    // Immediately set images as loaded to show something
+    setInternalImagesLoaded(true);
+    onImagesLoaded(true, false);
+    
+    // Also try to preload images for smoother experience
     const loadImages = async () => {
       try {
-        // Attempt to preload at least one image from the heroBackgrounds
-        let imageLoaded = false;
-        
         for (let i = 0; i < heroBackgrounds.length; i++) {
-          const success = await preloadImage(heroBackgrounds[i]);
-          if (success) {
-            imageLoaded = true;
-            break;
-          }
+          preloadImage(heroBackgrounds[i]);
         }
-        
-        // Always set images as loaded to remove spinner and show content
-        setInternalImagesLoaded(true);
-        onImagesLoaded(true, !imageLoaded); 
-        
       } catch (error) {
         console.error("Error loading images:", error);
-        setInternalImagesLoaded(true);
-        onImagesLoaded(true, true);
       }
     };
     
@@ -74,6 +65,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
 
   // Get current background based on index, with fallback if index is out of range
   const heroBackground = heroBackgrounds[currentBgIndex] || heroBackgrounds[0];
+  
+  // Log the current background being used
+  console.log('Current hero background:', heroBackground);
 
   return (
     <>

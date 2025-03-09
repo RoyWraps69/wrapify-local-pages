@@ -54,6 +54,9 @@ const ServicePage: React.FC = () => {
   // Make sure we have a valid hero image - use service.hero, or fall back to a random one
   const heroImage = service.hero || getRandomHeroImage();
   
+  // Log the hero image URL to help debug
+  console.log('Service hero image URL:', heroImage);
+  
   // Check if we're on vehicle-wraps page to show additional content
   const isVehicleWraps = serviceSlug === 'vehicle-wraps';
   
