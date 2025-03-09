@@ -23,5 +23,27 @@ export const commercialFleetWrapsData: ServiceInfo = {
       title: 'Vehicle Protection',
       description: 'High-quality vinyl helps protect your vehicles from minor scratches and road debris.'
     }
+  ],
+  faqs: [
+    {
+      question: "How many vehicles can you wrap at once?",
+      answer: "Our facility can accommodate multiple vehicle installations simultaneously. For large fleets, we create a phased installation schedule to minimize downtime for your business operations."
+    },
+    {
+      question: "Do you offer design services for fleet graphics?",
+      answer: "Yes, our in-house design team specializes in creating effective fleet graphics. We can work from your existing branding or develop new concepts specifically optimized for vehicle visibility and impact."
+    },
+    {
+      question: "Can you match our company colors exactly?",
+      answer: "Yes, we use color-matching technology to ensure your fleet wraps perfectly match your brand colors. We can match Pantone colors, CMYK values, or even sample physical materials to create consistent branding."
+    },
+    {
+      question: "How long will fleet wraps last in commercial use?",
+      answer: "Commercial fleet wraps typically last 5-7 years with proper care, even with daily use. We use high-quality 3M and Avery Dennison vinyl specifically designed for commercial applications and durability."
+    },
+    {
+      question: "Do you offer fleet management programs?",
+      answer: "Yes, we provide fleet management programs for clients with multiple vehicles. This includes scheduled maintenance checks, touch-ups when needed, and tracking installation dates to plan for future replacements."
+    }
   ]
 };

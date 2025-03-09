@@ -24,10 +24,27 @@ const serviceData: Record<string, ServiceInfo> = {
 export const getServiceData = (serviceType: string | undefined): ServiceInfo => {
   // Default to "Not Found" service if serviceType doesn't match any keys
   if (!serviceType || !serviceData[serviceType]) {
+    // Log which service type was requested but not found
+    console.log(`Service not found: "${serviceType}"`);
+    
+    // For debugging: show all available services
+    console.log("Available services:", Object.keys(serviceData));
+    
     return notFoundServiceData;
   }
   
   return serviceData[serviceType];
+};
+
+// Helper function to convert a service title to a slug
+export const getServiceSlug = (title: string): string => {
+  return title.toLowerCase().replace(/\s+/g, '-');
+};
+
+// Helper function to get a service by title
+export const getServiceByTitle = (title: string): ServiceInfo => {
+  const slug = getServiceSlug(title);
+  return getServiceData(slug);
 };
 
 export type { ServiceInfo, ServiceBenefit } from './services/types';
