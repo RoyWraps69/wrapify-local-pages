@@ -15,8 +15,9 @@ import RelatedServices from '@/components/services/RelatedServices';
 import PageSEO from '@/components/seo/PageSEO';
 import ServiceNotFound from '@/components/services/ServiceNotFound';
 import VehicleWrapsContent from '@/components/services/VehicleWrapsContent';
-import ServiceSchemaGenerator from '@/components/services/ServiceSchemaGenerator';
-import ServiceKeywordsGenerator from '@/components/services/ServiceKeywordsGenerator';
+import { generateServiceSchemas } from '@/components/services/ServiceSchemaGenerator';
+import { generateServiceKeywords } from '@/components/services/ServiceKeywordsGenerator';
+import { generateOrganizationSchema } from '@/utils/seo/schemaGenerator';
 
 // Define a set of additional vehicle images to supplement service-specific images
 const additionalHeroImages = [
@@ -84,7 +85,7 @@ const ServicePage: React.FC = () => {
   const canonicalUrl = `https://wrappingtheworld.com/services/${serviceSlug}`;
 
   // Generate structured data
-  const structuredData = ServiceSchemaGenerator({
+  const structuredData = generateServiceSchemas({
     serviceTitle: service.title,
     serviceDescription: service.description,
     pageUrl: canonicalUrl,
@@ -93,7 +94,7 @@ const ServicePage: React.FC = () => {
   });
 
   // Generate keywords
-  const keywords = ServiceKeywordsGenerator({ serviceTitle: service.title });
+  const keywords = generateServiceKeywords({ serviceTitle: service.title });
 
   return (
     <>

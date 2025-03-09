@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   generateServiceSchema, 
@@ -17,13 +16,14 @@ interface ServiceSchemaGeneratorProps {
   faqs: FAQ[];
 }
 
-const ServiceSchemaGenerator: React.FC<ServiceSchemaGeneratorProps> = ({
+// Modified to be a function that returns an array of schema objects, not a React component
+export const generateServiceSchemas = ({
   serviceTitle,
   serviceDescription,
   pageUrl,
   heroImage,
   faqs
-}) => {
+}: ServiceSchemaGeneratorProps): any[] => {
   // Generate structured data for the service page
   const serviceSchema = generateServiceSchema({
     pageTitle: serviceTitle,
@@ -58,7 +58,12 @@ const ServiceSchemaGenerator: React.FC<ServiceSchemaGeneratorProps> = ({
   
   const faqSchema = generateFAQSchema(serviceFAQs);
 
-  return [serviceSchema, webPageSchema, orgSchema, breadcrumbSchema, faqSchema];
+  return [serviceSchema, webPageSchema, orgSchema, breadcrumbSchema, faqSchema].filter(Boolean);
+};
+
+// Keep the component for backward compatibility, but make it return null
+const ServiceSchemaGenerator: React.FC<ServiceSchemaGeneratorProps> = (props) => {
+  return null;
 };
 
 export default ServiceSchemaGenerator;
