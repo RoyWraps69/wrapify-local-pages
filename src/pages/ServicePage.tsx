@@ -19,14 +19,14 @@ import { generateServiceSchemas } from '@/components/services/ServiceSchemaGener
 import { generateServiceKeywords } from '@/components/services/ServiceKeywordsGenerator';
 import { generateOrganizationSchema } from '@/utils/seo/schemaGenerator';
 
-// Define a set of additional vehicle images to supplement service-specific images
+// Define a set of reliable background images
 const additionalHeroImages = [
   '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
   '/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png', // Pink Dodge
   '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png', // Silver Mercedes
   '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png', // Blue Camaro
-  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
-  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
+  '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png', // White Bentley
+  '/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png', // Golden Tixx SUV
 ];
 
 const ServicePage: React.FC = () => {
@@ -45,14 +45,16 @@ const ServicePage: React.FC = () => {
   // Log whether we found the service or not
   console.log(`Service found:`, service.title !== 'Service Not Found');
   
-  // Select a random image if the service doesn't have one, or if we want a random one
+  // Select a random image from our verified working images
   const getRandomHeroImage = () => {
     const randomIndex = Math.floor(Math.random() * additionalHeroImages.length);
     return additionalHeroImages[randomIndex];
   };
   
-  // Make sure we have a valid hero image - use service.hero, or fall back to a random one
-  const heroImage = service.hero || getRandomHeroImage();
+  // Make sure we have a valid hero image - always use one of our known working images
+  const heroImage = additionalHeroImages.includes(service.hero || '') 
+    ? service.hero 
+    : getRandomHeroImage();
   
   // Log the hero image URL to help debug
   console.log('Service hero image URL:', heroImage);
@@ -68,7 +70,7 @@ const ServicePage: React.FC = () => {
           title="Service Not Found | Wrapping The World"
           description="The service you're looking for isn't available. Please check our main services page for all available vehicle wrapping and protection services."
           canonicalUrl="/services"
-          ogImage="/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png"
+          ogImage="/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png"
           keywords="vehicle wraps, commercial fleet wraps, ceramic coating, paint protection film"
           structuredData={[generateOrganizationSchema()]}
           location="Chicago"
@@ -128,7 +130,7 @@ const ServicePage: React.FC = () => {
           }}
         />
         
-        <section className="py-16 bg-gradient-to-b from-wrap-blue/5 to-transparent">
+        <section className="py-16">
           <div className="container mx-auto px-4">
             <ServiceDescription 
               title={service.title}

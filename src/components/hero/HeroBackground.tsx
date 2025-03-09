@@ -25,8 +25,6 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   currentBgIndex,
   onImagesLoaded
 }) => {
-  const [internalImagesLoaded, setInternalImagesLoaded] = useState(false);
-  
   // Function to preload a single image and handle success/error
   const preloadImage = useCallback((src: string): Promise<boolean> => {
     return new Promise((resolve) => {
@@ -46,7 +44,6 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
   // Handle image preloading
   useEffect(() => {
     // Immediately set images as loaded to show something
-    setInternalImagesLoaded(true);
     onImagesLoaded(true, false);
     
     // Also try to preload images for smoother experience
@@ -82,7 +79,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({
         }}
       />
       
-      {/* Lighter overlay for better visibility */}
+      {/* Darker overlay for better text visibility */}
       <div className="absolute inset-0 bg-black opacity-50 z-1"></div>
     </>
   );

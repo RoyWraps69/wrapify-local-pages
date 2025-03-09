@@ -30,8 +30,10 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   
   const [currentImageIndex, setCurrentImageIndex] = useState(getRandomImageIndex());
   
-  // Use the provided regionImage or use our randomly selected image - ensure valid URL
-  const bgImage = regionImage || heroBackgrounds[currentImageIndex];
+  // Use a valid background image for sure
+  const bgImage = regionImage && regionImage.includes('/lovable-uploads/') 
+    ? regionImage 
+    : heroBackgrounds[currentImageIndex];
   
   // Log the image being used to troubleshoot
   console.log('Hero background image URL:', bgImage);
@@ -40,23 +42,19 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
   const locationText = "Chicago";
   
   useEffect(() => {
-    // Pre-load current image
-    const img = new Image();
-    img.src = bgImage;
-    img.onload = () => console.log('Background image loaded successfully:', bgImage);
-    img.onerror = () => console.error('Failed to load background image:', bgImage);
-    
-    // Set up image rotation
+    // Set up image rotation for random images
     const rotationInterval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroBackgrounds.length);
+      if (!regionImage || !regionImage.includes('/lovable-uploads/')) {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroBackgrounds.length);
+      }
     }, 5000);
     
     return () => clearInterval(rotationInterval);
-  }, [bgImage]);
+  }, [regionImage]);
   
   return (
     <section 
-      className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden bg-wrap-blue"
+      className="text-white py-20 min-h-[90vh] flex items-center relative overflow-hidden"
       itemScope 
       itemType="https://schema.org/Service"
     >
@@ -64,7 +62,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
       <meta itemProp="serviceType" content="Vehicle Wrapping" />
       <meta itemProp="areaServed" content={locationText} />
       
-      {/* Background image - using direct inline styling for more reliable rendering */}
+      {/* Background image with direct inline styling */}
       <div 
         className="absolute inset-0 z-0 w-full h-full"
         style={{ 
