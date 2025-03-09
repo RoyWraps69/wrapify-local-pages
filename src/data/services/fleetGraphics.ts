@@ -5,7 +5,7 @@ export const fleetGraphicsData: ServiceInfo = {
   title: 'Fleet Graphics',
   description: 'Elevate your business fleet with consistent, professional vehicle graphics. Our fleet branding solutions help you create a strong, unified brand presence on the road.',
   longDescription: "Fleet graphics are a strategic investment in your business visibility and brand recognition. Our fleet graphics solutions can be tailored to any size business, from small operations with a few vehicles to large corporations with extensive fleets. We develop consistent branding that creates immediate recognition while our scalable production processes ensure that each vehicle in your fleet receives the same high-quality graphics and precise installation. With vehicle tracking and management systems, we can coordinate installations to minimize downtime for your fleet. From simple decals and lettering to partial or full wraps, our fleet graphics programs can be customized to meet your objectives and budget.",
-  hero: '/lovable-uploads/9523f1f5-8b31-4d2f-b869-620325b6ea59.png', // Fleet of Rivian trucks
+  hero: '/lovable-uploads/7ac46be0-393d-4b31-a43a-37b37644190f.png', // Bratcher fleet vans (replacing incorrect Mercedes image)
   images: [
     '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png', // MH Equipment Service Van
     '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Frontier Vans
