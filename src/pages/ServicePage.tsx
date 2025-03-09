@@ -136,6 +136,7 @@ const ServicePage: React.FC = () => {
               title={service.title}
               description={service.description}
               longDescription={service.longDescription}
+              images={service.images}
             />
             
             {isVehicleWraps && <VehicleWrapsContent />}

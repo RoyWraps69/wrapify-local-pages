@@ -15,5 +15,6 @@ export interface ServiceInfo {
   longDescription: string;
   hero: string;
   benefits: ServiceBenefit[];
-  faqs?: FAQ[]; // Added optional faqs property
+  faqs?: FAQ[];
+  images?: string[]; // Added images array for service-specific photos
 }
