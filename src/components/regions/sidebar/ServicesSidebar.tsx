@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
-import { ServiceInfo } from '@/data/serviceData';
+import { ServiceInfo, getServiceSlug } from '@/data/serviceData';
 
 interface ServicesSidebarProps {
   regionName: string;
@@ -31,7 +31,7 @@ const ServicesSidebar: React.FC<ServicesSidebarProps> = ({
           services.map((service, index) => (
             <li key={index}>
               <Link 
-                to={`/services/${service.slug || service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                to={`/services/${getServiceSlug(service.title)}`}
                 className="flex items-center gap-2 hover:text-wrap-red transition-colors"
               >
                 <ExternalLink size={16} />
