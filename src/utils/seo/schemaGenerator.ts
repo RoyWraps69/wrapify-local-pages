@@ -1,3 +1,4 @@
+
 import { generateWebPageSchema, generateBreadcrumbSchema, generateOrganizationSchema } from './schemas/baseSchemas';
 import { 
   generateInsuranceSchemas as importedGenerateInsuranceSchemas,
@@ -11,6 +12,42 @@ export { generateWarrantySchemas };
 // Re-export the imported schemas generators
 export const generateInsuranceSchemas = importedGenerateInsuranceSchemas;
 export const generateTrainingClassesSchemas = importedGenerateTrainingClassesSchemas;
+
+/**
+ * Generates Schema.org structured data for a region page
+ */
+export const generateRegionSchema = ({
+  regionName,
+  mainCity,
+  description,
+  cities,
+}: {
+  regionName: string;
+  mainCity: string;
+  description: string;
+  cities: string[];
+}) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Place",
+    "name": `${regionName} Vehicle Wrapping Services`,
+    "description": description,
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": regionName,
+      "addressCountry": "US"
+    },
+    "containsPlace": cities.map(city => ({
+      "@type": "City",
+      "name": city
+    })),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "name": `Vehicle Wraps in ${regionName}`,
+      "description": `Professional vehicle wrapping services in ${regionName} including ${mainCity} and surrounding areas.`
+    }
+  };
+};
 
 /**
  * Generates a Schema.org Service schema for a service page
