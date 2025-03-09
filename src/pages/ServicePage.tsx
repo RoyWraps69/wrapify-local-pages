@@ -22,6 +22,16 @@ import {
   generateOrganizationSchema
 } from '@/utils/seo/schemaGenerator';
 
+// Define a set of additional vehicle images to supplement service-specific images
+const additionalHeroImages = [
+  '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
+  '/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png', // Pink Dodge
+  '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png', // Silver Mercedes
+  '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png', // Blue Camaro
+  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
+  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
+];
+
 const ServicePage: React.FC = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   
@@ -38,8 +48,13 @@ const ServicePage: React.FC = () => {
   // Log whether we found the service or not
   console.log(`Service found:`, service.title !== 'Service Not Found');
   
-  // Make sure we have a valid hero image
-  const heroImage = service.hero || '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png';
+  // Select a random image if the service doesn't have one, or if we want a random one
+  const getRandomHeroImage = () => {
+    return additionalHeroImages[Math.floor(Math.random() * additionalHeroImages.length)];
+  };
+  
+  // Make sure we have a valid hero image - use service.hero, or fall back to a random one
+  const heroImage = service.hero || getRandomHeroImage();
   
   // Check if we're on vehicle-wraps page to show additional content
   const isVehicleWraps = serviceSlug === 'vehicle-wraps';

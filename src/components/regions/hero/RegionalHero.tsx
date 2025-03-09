@@ -14,15 +14,29 @@ const heroBackgrounds = [
   '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png', // MH Equipment Service Van
   '/lovable-uploads/b74857d0-710d-4089-9183-4df0575dc986.png', // Frontier Vans
   '/lovable-uploads/22a51c46-7b31-4b55-8ad9-fa67c3bd74fc.png', // Cement Truck
+  '/lovable-uploads/590d1c5f-1242-4641-8775-d67442eb5985.png', // Blue car
+  '/lovable-uploads/95d134ce-6de1-4844-8afe-676d99851eda.png', // Pink Dodge
+  '/lovable-uploads/5b84cf7f-3fd3-4c9e-9af4-b30550fc0240.png', // Silver Mercedes
+  '/lovable-uploads/1caa5cd6-72b9-428d-a535-c34684e282f1.png', // Blue Camaro 
+  '/lovable-uploads/ee67b247-2078-4b74-b272-25c84ef8f0cf.png', // White Bentley
+  '/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png', // Golden Tixx SUV
+  '/lovable-uploads/beb6dd1d-1473-408c-acfe-c487df340eed.png', // Pink car
+  '/lovable-uploads/da66fc1b-34ee-4085-b73c-49b58773faf2.png', // Green car
 ];
 
 const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Get a random index for initial image selection
+  const getRandomImageIndex = () => Math.floor(Math.random() * heroBackgrounds.length);
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(getRandomImageIndex());
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   
-  // Use the provided regionImage or cycle through our reliable image set
+  // Use the provided regionImage or use our randomly selected image
   const bgImage = regionImage || heroBackgrounds[currentImageIndex];
+  
+  // The location text for the map pin should always be Chicago for service pages
+  const locationText = "Chicago";
   
   useEffect(() => {
     // Preload all background images
@@ -61,7 +75,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
     >
       <meta itemProp="name" content={`Vehicle Wrapping Services in ${regionName}`} />
       <meta itemProp="serviceType" content="Vehicle Wrapping" />
-      <meta itemProp="areaServed" content={regionName} />
+      <meta itemProp="areaServed" content={locationText} />
       
       {/* Background image with improved error handling */}
       {imagesLoaded ? (
@@ -114,7 +128,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
               in {regionName}
             </h1>
             <p className="text-xl max-w-2xl mb-8">
-              Premium commercial fleet wraps, ceramic coatings, and paint protection services throughout {regionName}. Your local source for exceptional vehicle transformation.
+              Premium commercial fleet wraps, ceramic coatings, and paint protection services throughout {locationText}. Your local source for exceptional vehicle transformation.
             </p>
             
             <div className="flex flex-wrap gap-4">
@@ -155,7 +169,7 @@ const RegionalHero: React.FC<RegionalHeroProps> = ({ regionName, regionImage }) 
             <div className="mt-6 pt-4 border-t border-white/20">
               <div className="flex items-center text-white/80">
                 <MapPin size={18} className="mr-2 text-wrap-red" />
-                <span itemProp="serviceArea">Serving all of {regionName} and surrounding areas</span>
+                <span itemProp="serviceArea">Serving all of {locationText} and surrounding areas</span>
               </div>
             </div>
           </div>
