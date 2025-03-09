@@ -8,7 +8,8 @@ interface ServiceBenefitsProps {
 }
 
 const ServiceBenefits: React.FC<ServiceBenefitsProps> = ({ benefits, serviceName }) => {
-  if (benefits.length === 0) {
+  // Don't render anything if we have the "Service Not Found" title or no benefits
+  if (benefits.length === 0 || serviceName === 'Service Not Found') {
     return null;
   }
 

@@ -21,6 +21,11 @@ const ServiceDescription: React.FC<ServiceDescriptionProps> = ({
   longDescription,
   images = fallbackImages
 }) => {
+  // Don't render anything if we have the "Service Not Found" title
+  if (title === 'Service Not Found') {
+    return null;
+  }
+  
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   
