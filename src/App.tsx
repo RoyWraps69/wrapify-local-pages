@@ -15,6 +15,9 @@ import Regional from './pages/regions/RegionPage';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import MemberDashboard from './pages/MemberDashboard';
+import Locations from './pages/Locations';
+import WrapInsurance from './pages/WrapInsurance';
+import Blog from './pages/Blog';
 import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
 import ChatbotWithSchema from './components/chatbot/ChatbotWithSchema';
 import { ShoppingCartProvider } from './components/print-ship/shopping-cart/ShoppingCart';
@@ -47,7 +50,13 @@ function App() {
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/training" element={<Training />} />
                 <Route path="/print-ship" element={<PrintShip />} />
+                <Route path="/locations" element={<Locations />} />
+                <Route path="/wrap-insurance" element={<WrapInsurance />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<Blog />} />
                 <Route path="/regional/:regionName" element={<Regional />} />
+                <Route path="/regions/:regionName" element={<Regional />} />
+                <Route path="/locations/:townName" element={<Regional />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/member-dashboard" element={<MemberDashboard />} />
