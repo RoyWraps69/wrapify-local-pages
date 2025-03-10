@@ -1,72 +1,82 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { caseStudies, CaseStudy } from '@/data/caseStudies';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
-import { caseStudies, CaseStudy } from '@/data/caseStudies';
-
-// Import our new components
-import CaseStudyHeader from '@/components/case-studies/detail/CaseStudyHeader';
 import CaseStudyContent from '@/components/case-studies/detail/CaseStudyContent';
 import CaseStudySidebar from '@/components/case-studies/detail/CaseStudySidebar';
 import CaseStudySEO from '@/components/case-studies/detail/CaseStudySEO';
 import CaseStudyDetailLoader from '@/components/case-studies/detail/CaseStudyDetailLoader';
 
-const CaseStudyDetail = () => {
+const CaseStudyDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [caseStudy, setCaseStudy] = useState<CaseStudy | null>(null);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  
+  const [loading, setLoading] = useState(true);
+  const [caseStudy, setCaseStudy] = useState<CaseStudy | null>(null);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-    
-    // Find the case study by slug
-    const foundCaseStudy = caseStudies.find(study => study.slug === slug);
-    
-    if (foundCaseStudy) {
-      setCaseStudy(foundCaseStudy);
-      setLoading(false);
-    } else {
-      // If not found, wait a moment then navigate to case studies
-      setTimeout(() => {
-        navigate('/case-studies');
-      }, 100);
-    }
+    // Simulate loading time (remove in production)
+    const timer = setTimeout(() => {
+      if (slug) {
+        const foundCaseStudy = caseStudies.find(cs => cs.slug === slug);
+        
+        if (foundCaseStudy) {
+          setCaseStudy(foundCaseStudy);
+          setLoading(false);
+        } else {
+          // Case study not found, redirect to case studies listing
+          navigate('/case-studies');
+        }
+      }
+    }, 800);
+
+    return () => clearTimeout(timer);
   }, [slug, navigate]);
-  
-  if (loading || !caseStudy) {
+
+  if (loading) {
     return <CaseStudyDetailLoader />;
   }
-  
+
+  if (!caseStudy) {
+    return null; // This should never happen due to the redirect, but TypeScript needs it
+  }
+
   return (
-    <>
-      <CaseStudySEO caseStudy={caseStudy}>
-        <meta property="article:section" content="Case Studies" />
-        <meta property="article:tag" content={`${caseStudy.industry} Wraps`} />
-        <meta property="article:tag" content="Vehicle Wrapping" />
-        <meta property="article:tag" content={caseStudy.location} />
-      </CaseStudySEO>
-      
+    <CaseStudySEO caseStudy={caseStudy}>
       <Navbar />
       
       <main className="pt-24 pb-16">
-        {/* Hero Section */}
-        <CaseStudyHeader caseStudy={caseStudy} />
-        
-        {/* Main Content */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              <CaseStudyContent caseStudy={caseStudy} />
-              <CaseStudySidebar caseStudy={caseStudy} />
+        <div className="container mx-auto px-4">
+          <div className="mb-10">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-wrap-blue mb-4">
+              {caseStudy.title}
+            </h1>
+            <p className="text-lg text-wrap-grey mb-4">
+              {caseStudy.description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="bg-wrap-blue/10 text-wrap-blue px-3 py-1 rounded-full text-sm">
+                {caseStudy.industry}
+              </span>
+              <span className="bg-wrap-red/10 text-wrap-red px-3 py-1 rounded-full text-sm">
+                {caseStudy.service}
+              </span>
+              <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
+                {caseStudy.location}
+              </span>
             </div>
           </div>
-        </section>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <CaseStudyContent caseStudy={caseStudy} />
+            <CaseStudySidebar caseStudy={caseStudy} />
+          </div>
+        </div>
       </main>
       
       <Footer />
-    </>
+    </CaseStudySEO>
   );
 };
 
