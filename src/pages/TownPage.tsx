@@ -1,23 +1,15 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/footer/Footer';
 import { getTownData } from '@/utils/townFunctions';
 import { normalizeSlug } from '@/utils/towns/slugUtils';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
-import TownPageContent from '@/components/town/layout/TownPageContent';
 import { createTownFAQs } from '@/components/town/data/TownFAQData';
-import PageSEO from '@/components/seo/PageSEO';
-import RegionalHero from '@/components/regions/hero/RegionalHero';
 import { toast } from 'sonner';
-import InitImageObserver from '@/components/utils/ImageObserver';
-import { 
-  generateLocalBusinessSchema, 
-  generateServiceSchema, 
-  generateWebPageSchema,
-  generateFAQSchema
-} from '@/utils/seo/schemaGenerator';
-import ChatbotWithSchema from '@/components/chatbot/ChatbotWithSchema';
+import TownPageLoading from '@/components/town/loading/TownPageLoading';
+import TownPageError from '@/components/town/error/TownPageError';
+import TownPageSEO from '@/components/town/seo/TownPageSEO';
+import TownPageLayout from '@/components/town/layout/TownPageLayout';
 
 const townBackgroundImages = [
   '/lovable-uploads/e9a53717-c591-4709-9eb6-1f0e8b80cc25.png',  // MH Equipment
@@ -98,130 +90,29 @@ const TownPage: React.FC = () => {
   }, [townSlug, navigate]);
   
   if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <div className="flex-grow flex items-center justify-center bg-gray-50">
-          <div className="text-center">
-            <div className="w-16 h-16 border-4 border-t-wrap-red border-gray-200 rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-wrap-grey">Loading information for {townSlug}...</p>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
+    return <TownPageLoading townSlug={townSlug} />;
   }
   
   if (error || !townData) {
-    return (
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <div className="flex-grow flex items-center justify-center">
-          <div className="text-center max-w-md p-8">
-            <h1 className="text-3xl font-bold text-wrap-blue mb-4">Town Not Found</h1>
-            <p className="text-wrap-grey mb-6">
-              We couldn&apos;t find information for &quot;{townSlug}&quot;. This location may not be in our service area yet.
-            </p>
-            <div className="flex justify-center">
-              <button 
-                onClick={() => navigate('/locations')} 
-                className="bg-wrap-blue text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition-all"
-              >
-                See All Locations
-              </button>
-            </div>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
+    return <TownPageError townSlug={townSlug} />;
   }
   
-  const { name, state } = townData;
-  const stateFullName = 
-    state === 'IL' ? 'Illinois' : 
-    state === 'MI' ? 'Michigan' : 
-    state === 'IN' ? 'Indiana' : 
-    state === 'WI' ? 'Wisconsin' : state;
-  
-  const pageTitle = `Professional Vehicle Wraps & Ceramic Coatings in ${name}, ${stateFullName} | Wrapping The World`;
-  const pageDescription = `Premium quality vehicle wraps, ceramic coatings, and paint protection film in ${name}, ${stateFullName}. Transform your business vehicles with custom wraps from the Midwest's top-rated vehicle enhancement company.`;
-  const pageUrl = `/locations/${townSlug}`;
-  const canonicalUrl = `https://wrappingtheworld.com/locations/${townSlug}`;
-  
-  const convertJSXFaqsToStringFaqs = (jsxFaqs: { question: string; answer: React.ReactNode }[]) => {
-    return jsxFaqs.map(faq => ({
-      question: faq.question,
-      answer: typeof faq.answer === 'string' 
-        ? faq.answer 
-        : React.isValidElement(faq.answer) 
-          ? (faq.answer.props.children || '').toString() 
-          : ''
-    }));
-  };
-  
-  const locationFaqs = createTownFAQs({ townName: name });
-  
-  const faqSchema = generateFAQSchema(convertJSXFaqsToStringFaqs(locationFaqs));
-  
-  const localBusinessSchema = generateLocalBusinessSchema({ townName: name });
-  const serviceSchema = generateServiceSchema({ 
-    pageTitle: `Vehicle Wrapping Services in ${name}`, 
-    pageDescription: pageDescription, 
-    pageUrl: canonicalUrl, 
-    townName: name 
-  });
-  const webPageSchema = generateWebPageSchema({
-    pageTitle: pageTitle,
-    pageDescription: pageDescription,
-    pageUrl: canonicalUrl,
-    imageUrl: townBackgroundImage,
-    datePublished: "2023-01-15T08:00:00+08:00",
-    dateModified: new Date().toISOString()
-  });
-  
-  const keywords = `vehicle wraps ${name}, commercial fleet wraps ${name}, ${stateFullName} vehicle branding, car wraps ${name}, ceramic coating ${name}, paint protection film ${stateFullName}, business vehicle graphics ${name}, ${name} wrap shop, mobile advertising ${name}, premium vehicle wraps ${stateFullName}`;
+  // Create FAQs for this town
+  const locationFaqs = createTownFAQs({ townName: townData.name });
 
   return (
     <>
-      <PageSEO
-        title={pageTitle}
-        description={pageDescription}
-        canonicalUrl={pageUrl}
-        ogImage={townBackgroundImage}
-        keywords={keywords}
-        structuredData={[localBusinessSchema, serviceSchema, webPageSchema, faqSchema]}
-        location={name}
-        publishedTime="2023-01-15T08:00:00+08:00"
-        modifiedTime={new Date().toISOString()}
-      >
-        <meta name="geo.region" content={`US-${state}`} />
-        <meta name="geo.placename" content={name} />
-        <meta name="geo.position" content={`${townData.latitude || 41.8781};${townData.longitude || -87.6298}`} />
-        <meta name="ICBM" content={`${townData.latitude || 41.8781}, ${townData.longitude || -87.6298}`} />
-      </PageSEO>
+      <TownPageSEO 
+        townData={townData} 
+        townBackgroundImage={townBackgroundImage}
+        locationFaqs={locationFaqs}
+      />
       
-      <InitImageObserver />
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        
-        <main className="flex-grow">
-          <RegionalHero regionName={name} regionImage={townBackgroundImage} />
-          
-          <TownPageContent 
-            townData={townData}
-            locationFaqs={locationFaqs}
-          />
-        </main>
-        
-        {townData && (
-          <ChatbotWithSchema 
-            initialMessage={`Hello! I'm your virtual assistant for ${townData.name}, ${stateFullName}. How can I help you with vehicle wraps, ceramic coatings, or paint protection services in your area?`} 
-          />
-        )}
-        
-        <Footer />
-      </div>
+      <TownPageLayout
+        townData={townData}
+        townBackgroundImage={townBackgroundImage}
+        locationFaqs={locationFaqs}
+      />
     </>
   );
 };
