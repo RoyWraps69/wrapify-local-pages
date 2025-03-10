@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { CaseStudy } from '@/data/caseStudies';
+import { InlineLeadForm } from '@/components/leads';
 
 interface CaseStudyContentProps {
   caseStudy: CaseStudy;
@@ -20,6 +21,12 @@ const CaseStudyContent: React.FC<CaseStudyContentProps> = ({ caseStudy }) => {
       <div className="prose prose-lg max-w-none">
         <div dangerouslySetInnerHTML={{ __html: caseStudy.content }} />
       </div>
+      
+      {/* Inline Lead Capture Form */}
+      <InlineLeadForm 
+        service={caseStudy.industry}
+        location={caseStudy.location}
+      />
       
       {/* Image Gallery */}
       {caseStudy.gallery && caseStudy.gallery.length > 0 && (
