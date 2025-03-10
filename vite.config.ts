@@ -34,8 +34,14 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false,
-    minify: true,
+    sourcemap: mode === 'development', // Only in development
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Remove console logs in production
+        drop_debugger: true,
+      }
+    },
     assetsDir: 'assets',
     // Improved asset handling
     assetsInlineLimit: 4096, // Inline assets smaller than 4kb
@@ -56,25 +62,60 @@ export default defineConfig(({ mode }) => ({
         // Ensure that dynamic imports have meaningful chunk names
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+        assetFileNames: ({ name }) => {
+          // Special handling based on file extensions for better caching
+          if (/\.(gif|jpe?g|png|svg|webp)$/.test(name ?? '')) {
+            return 'assets/images/[name]-[hash][extname]';
+          }
+          
+          if (/\.(woff|woff2|eot|ttf|otf)$/.test(name ?? '')) {
+            return 'assets/fonts/[name]-[hash][extname]';
+          }
+           
+          if (/\.css$/.test(name ?? '')) {
+            return 'assets/css/[name]-[hash][extname]';
+          }
+            
+          return 'assets/[ext]/[name]-[hash].[ext]';
+        },
       }
     },
     // Add automatic CSS purging in production
     cssCodeSplit: true,
     cssMinify: true,
     emptyOutDir: true,
-    // Ensure compatibility with Netlify
+    // Ensure compatibility with Cloudflare and Netlify
     target: 'es2015',
+    // Optimize modules for better loading performance
+    modulePreload: {
+      polyfill: true,
+    },
+    // Compress files for better delivery
+    reportCompressedSize: false, // Reduces build time
   },
-  // Base path for production (important for Netlify)
+  // Base path for production
   base: '/',
   esbuild: {
     // Enable JSX in .js files
     jsx: 'automatic',
+    // Remove console logs in production
+    drop: mode === 'production' ? ['console', 'debugger'] : [],
   },
   // Optimize dependencies that may slow down dev server
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
     exclude: ['lovable-tagger'] // Exclude lovable-tagger from optimization
+  },
+  preview: {
+    // Configure preview server to mimic production
+    port: 8080,
+    cors: true,
+    headers: {
+      'Cache-Control': 'public, max-age=31536000, immutable',
+    },
+  },
+  // Fix sitemap generation issue
+  define: {
+    'process.env.VITE_APP_BASE_URL': JSON.stringify('https://wrappingtheworld.com'),
   },
 }));

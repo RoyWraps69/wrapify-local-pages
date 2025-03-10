@@ -17,33 +17,50 @@
   to = "/index.html"
   status = 200
   
-# Cache control for static assets
+# Optimize for Cloudflare CDN - Allow Cloudflare to cache all assets
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    # Enable Cloudflare cache
+    CDN-Cache-Control = "public, max-age=31536000, immutable"
     
 # Cache for fonts
 [[headers]]
   for = "/assets/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    CDN-Cache-Control = "public, max-age=31536000, immutable"
 
 # Cache for images (can be revalidated)
 [[headers]]
   for = "*.png"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+    CDN-Cache-Control = "public, max-age=604800"
+    # Tell Cloudflare to optimize and compress these images
+    cf-polish = "lossy"
 
 [[headers]]
   for = "*.jpg"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+    CDN-Cache-Control = "public, max-age=604800"
+    cf-polish = "lossy"
 
 [[headers]]
   for = "*.jpeg"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+    CDN-Cache-Control = "public, max-age=604800"
+    cf-polish = "lossy"
+
+[[headers]]
+  for = "*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    CDN-Cache-Control = "public, max-age=604800"
+    cf-polish = "lossy"
 
 # Performance optimization headers for all pages
 [[headers]]
@@ -53,6 +70,9 @@
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Content-Type-Options = "nosniff"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Ensure HTTPS is used
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     # Enable compression
     Content-Encoding = "br"
     # Preload key assets
@@ -62,8 +82,8 @@
 [context.production.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Add specific settings for preview deployments
 [context.deploy-preview]
@@ -72,8 +92,8 @@
 [context.deploy-preview.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Branch deploy settings
 [context.branch-deploy]
@@ -82,8 +102,8 @@
 [context.branch-deploy.environment]
   NODE_ENV = "production"
   VITE_BASE_URL = "/"
-  NODE_VERSION = "16"
-  NPM_VERSION = "8"
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 # Enable bundler
 [build.processing]
