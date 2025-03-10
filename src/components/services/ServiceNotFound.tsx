@@ -14,23 +14,23 @@ const ServiceNotFound: React.FC = () => {
           We couldn't find the service you're looking for. Please check our available services below.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <a href="/services/vehicle-wraps" className="p-4 bg-wrap-blue/5 rounded-lg hover:bg-wrap-blue/10 transition-colors">
+          <Link to="/services/vehicle-wraps" className="p-4 bg-wrap-blue/5 rounded-lg hover:bg-wrap-blue/10 transition-colors">
             <h3 className="font-semibold text-wrap-blue mb-2">Vehicle Wraps</h3>
             <p className="text-sm text-wrap-grey">Transform your vehicle with high-quality wraps</p>
-          </a>
-          <a href="/services/commercial-fleet-wraps" className="p-4 bg-wrap-blue/5 rounded-lg hover:bg-wrap-blue/10 transition-colors">
+          </Link>
+          <Link to="/services/commercial-fleet-wraps" className="p-4 bg-wrap-blue/5 rounded-lg hover:bg-wrap-blue/10 transition-colors">
             <h3 className="font-semibold text-wrap-blue mb-2">Commercial Fleet Wraps</h3>
             <p className="text-sm text-wrap-grey">Brand your business fleet with custom wraps</p>
-          </a>
-          <a href="/services/ceramic-coatings" className="p-4 bg-wrap-blue/5 rounded-lg hover:bg-wrap-blue/10 transition-colors">
+          </Link>
+          <Link to="/services/ceramic-coatings" className="p-4 bg-wrap-blue/5 rounded-lg hover:bg-wrap-blue/10 transition-colors">
             <h3 className="font-semibold text-wrap-blue mb-2">Ceramic Coatings</h3>
             <p className="text-sm text-wrap-grey">Protect your vehicle with advanced coating</p>
-          </a>
+          </Link>
         </div>
-        <a href="/services" className="inline-flex items-center mt-10 px-6 py-3 bg-wrap-blue text-white rounded-md hover:bg-wrap-blue/90 transition-colors">
+        <Link to="/services" className="inline-flex items-center mt-10 px-6 py-3 bg-wrap-blue text-white rounded-md hover:bg-wrap-blue/90 transition-colors">
           View All Services
           <ArrowRight className="ml-2 h-4 w-4" />
-        </a>
+        </Link>
       </div>
     </main>
   );

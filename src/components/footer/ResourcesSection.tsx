@@ -44,7 +44,7 @@ const ResourcesSection = () => {
       title: "Resources",
       links: [
         { to: "/resources/vinyl-wrap-care-guide", label: "Vinyl Wrap Care Guide" },
-        { to: "/resources/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true },
+        { to: "/downloads/vinyl-wrap-care-guide.pdf", label: "Download Care Guide PDF", isDownload: true },
         { to: "/resources/ceramic-coating-faq", label: "Ceramic Coating FAQ" },
         { to: "/resources/design-template-library", label: "Design Template Library" },
         { to: "/wrap-insurance", label: "Wrap Insurance" },

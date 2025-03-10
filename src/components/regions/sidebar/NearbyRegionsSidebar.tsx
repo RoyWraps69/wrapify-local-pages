@@ -28,7 +28,7 @@ const NearbyRegionsSidebar: React.FC<NearbyRegionsSidebarProps> = ({
       </h3>
       <ul className="space-y-2">
         {displayRegions.map((region) => (
-          <li key={region.slug}>
+          <li key={region.slug || region.name}>
             <Link 
               to={`/regions/${region.slug}`}
               className="flex items-center gap-2 text-wrap-blue hover:text-wrap-red transition-colors"

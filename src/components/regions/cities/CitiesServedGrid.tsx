@@ -46,7 +46,7 @@ const CitiesServedGrid: React.FC<CitiesServedGridProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {displayCities.map((city) => (
           <Link 
-            key={city.slug}
+            key={city.slug || city.name}
             to={`/locations/${city.slug}`}
             className="block p-4 border border-gray-200 rounded-lg hover:border-wrap-blue hover:shadow-md transition-all"
           >

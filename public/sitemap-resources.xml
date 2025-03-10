@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -13,7 +14,7 @@
   
   <!-- Guides and FAQs -->
   <url>
-    <loc>https://wrappingtheworld.com/vinyl-wrap-care-guide</loc>
+    <loc>https://wrappingtheworld.com/resources/vinyl-wrap-care-guide</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -33,7 +34,7 @@
   
   <!-- Templates and Design Resources -->
   <url>
-    <loc>https://wrappingtheworld.com/design-template-library</loc>
+    <loc>https://wrappingtheworld.com/resources/design-template-library</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
