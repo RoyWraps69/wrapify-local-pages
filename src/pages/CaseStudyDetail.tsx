@@ -60,7 +60,7 @@ const CaseStudyDetail: React.FC = () => {
                 {caseStudy.industry}
               </span>
               <span className="bg-wrap-red/10 text-wrap-red px-3 py-1 rounded-full text-sm">
-                {caseStudy.service}
+                {caseStudy.client}
               </span>
               <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
                 {caseStudy.location}
