@@ -23,6 +23,7 @@ const ResourceColumn = ({ title, links }: ResourceColumnProps) => (
               className="text-wrap-light/70 text-sm hover:text-wrap-red transition-colors"
               target="_blank"
               rel="noopener noreferrer"
+              download
             >
               {link.label}
             </a>

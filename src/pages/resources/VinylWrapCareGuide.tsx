@@ -17,8 +17,14 @@ const VinylWrapCareGuide = () => {
     // Create an analytics event if needed
     console.log('PDF Guide Downloaded');
     
-    // Direct link to the PDF file
-    window.open('/downloads/vinyl-wrap-care-guide.pdf', '_blank');
+    // Direct link to the PDF file with download attribute to ensure it downloads
+    const link = document.createElement('a');
+    link.href = '/downloads/vinyl-wrap-care-guide.pdf';
+    link.download = 'Vinyl-Wrap-Care-Guide.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (

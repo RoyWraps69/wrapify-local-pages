@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -19,22 +18,17 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
-      <image:loc>https://wrappingtheworld.com/images/resources/vinyl-wrap-care-guide.jpg</image:loc>
+      <image:loc>https://wrappingtheworld.com/lovable-uploads/bff2ffbd-315a-4e58-8617-6f61aace585a.png</image:loc>
       <image:title>Vinyl Wrap Care Guide</image:title>
       <image:caption>How to maintain and care for your vehicle wrap</image:caption>
     </image:image>
   </url>
   
   <url>
-    <loc>https://wrappingtheworld.com/ceramic-coating-faq</loc>
+    <loc>https://wrappingtheworld.com/downloads/vinyl-wrap-care-guide.pdf</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://wrappingtheworld.com/images/resources/ceramic-coating-faq.jpg</image:loc>
-      <image:title>Ceramic Coating FAQ</image:title>
-      <image:caption>Frequently asked questions about ceramic coating</image:caption>
-    </image:image>
+    <priority>0.5</priority>
   </url>
   
   <!-- Templates and Design Resources -->
