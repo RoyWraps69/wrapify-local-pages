@@ -5,8 +5,8 @@ import { ArrowLeft, MapPin, Briefcase, BarChart, Phone, ArrowRight } from 'lucid
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/footer/Footer';
 import PageSEO from '@/components/seo/PageSEO';
-import { Helmet } from 'react-helmet-async';
 import { caseStudies, CaseStudy } from '@/data/caseStudies';
+import { generateCaseStudyPageSchemas } from '@/utils/seo/schemas/caseStudySchema';
 
 const CaseStudyDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -46,24 +46,37 @@ const CaseStudyDetail = () => {
     );
   }
   
+  // Generate all structured data for this case study
+  const structuredData = generateCaseStudyPageSchemas(caseStudy);
+  
+  // Generate page title, description and keywords for SEO
+  const pageTitle = `${caseStudy.title} | Wrapping The World Case Study`;
+  const pageDescription = caseStudy.description;
+  const keywords = `vehicle wrap case study, ${caseStudy.industry} vehicle branding, fleet graphics case study, ${caseStudy.location} vehicle wraps, commercial wrap success story, custom vehicle graphics, ${caseStudy.industry} branding`;
+  
   return (
     <>
-      <Helmet>
-        <title>{caseStudy.title} | Wrapping The World Case Study</title>
-        <meta 
-          name="description" 
-          content={caseStudy.description}
-        />
-        <link rel="canonical" href={`https://wrappingtheworld.com/case-studies/${caseStudy.slug}`} />
-      </Helmet>
-      
       <PageSEO
-        title={`${caseStudy.title} | Wrapping The World Case Study`}
-        description={caseStudy.description}
+        title={pageTitle}
+        description={pageDescription}
         canonicalUrl={`/case-studies/${caseStudy.slug}`}
         ogImage={caseStudy.image}
-        keywords={`vehicle wrap case study, ${caseStudy.industry} vehicle branding, fleet graphics case study, ${caseStudy.location} vehicle wraps, commercial wrap success story`}
-      />
+        keywords={keywords}
+        structuredData={structuredData}
+        publishedTime={new Date(caseStudy.completionDate).toISOString()}
+        modifiedTime={new Date().toISOString()}
+        author="Wrapping The World"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Case Studies", url: "/case-studies" },
+          { name: caseStudy.title, url: `/case-studies/${caseStudy.slug}` }
+        ]}
+      >
+        <meta property="article:section" content="Case Studies" />
+        <meta property="article:tag" content={`${caseStudy.industry} Wraps`} />
+        <meta property="article:tag" content="Vehicle Wrapping" />
+        <meta property="article:tag" content={caseStudy.location} />
+      </PageSEO>
       
       <Navbar />
       

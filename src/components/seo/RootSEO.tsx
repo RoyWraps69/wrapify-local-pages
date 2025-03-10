@@ -8,6 +8,7 @@ interface RootSEOProps {
 
 /**
  * Root SEO component with global settings for all pages
+ * This provides the base SEO elements following Google's best practices
  */
 const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
   const siteUrl = canonicalUrl || 'https://wrappingtheworld.com';
@@ -22,7 +23,10 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
       
       {/* Favicon and App Icons */}
       <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+      <link rel="manifest" href="/site.webmanifest" />
       
       {/* Open Graph Default Tags */}
       <meta property="og:site_name" content="Wrapping The World" />
@@ -30,6 +34,7 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
       
       {/* Twitter Default Tags */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@wrappingworld" />
       
       {/* Google Search Console Verification (placeholder) */}
       <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
@@ -40,10 +45,16 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
       {/* Geo Tags for Local SEO */}
       <meta name="geo.region" content="US-IL" />
       <meta name="geo.placename" content="Chicago" />
+      <meta name="geo.position" content="41.8781;-87.6298" />
+      <meta name="ICBM" content="41.8781, -87.6298" />
       
-      {/* Preconnect to essential third-party domains */}
+      {/* Language and country */}
+      <meta httpEquiv="content-language" content="en-us" />
+      
+      {/* Preconnect to essential third-party domains for performance */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
       
       {/* Organization Schema */}
       <script type="application/ld+json">
@@ -53,21 +64,13 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
           "name": "Wrapping The World",
           "url": "https://wrappingtheworld.com",
           "logo": "https://wrappingtheworld.com/logo.png",
-          "foundingDate": "2010",
-          "founders": [
-            {
-              "@type": "Person",
-              "name": "Wrapping The World Founder"
-            }
+          "sameAs": [
+            "https://www.facebook.com/wrappingtheworld",
+            "https://www.instagram.com/wrappingtheworld",
+            "https://twitter.com/wrappingworld",
+            "https://www.linkedin.com/company/wrapping-the-world",
+            "https://www.youtube.com/c/wrappingtheworld"
           ],
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "4711 N. Lamon Ave",
-            "addressLocality": "Chicago",
-            "addressRegion": "IL",
-            "postalCode": "60630",
-            "addressCountry": "US"
-          },
           "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+1-312-597-1286",
@@ -75,13 +78,14 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
             "areaServed": "US",
             "availableLanguage": "English"
           },
-          "sameAs": [
-            "https://www.facebook.com/wrappingtheworld",
-            "https://www.instagram.com/wrappingtheworld",
-            "https://twitter.com/wrappingworld",
-            "https://www.linkedin.com/company/wrapping-the-world",
-            "https://www.youtube.com/c/wrappingtheworld"
-          ]
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "4711 N. Lamon Ave",
+            "addressLocality": "Chicago",
+            "addressRegion": "IL",
+            "postalCode": "60630",
+            "addressCountry": "US"
+          }
         })}
       </script>
       
@@ -106,9 +110,9 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
               "url": "https://wrappingtheworld.com/logo.png"
             }
           },
-          "copyrightYear": currentYear,
           "inLanguage": "en-US",
-          "dateModified": `${currentYear}-09-20`
+          "copyrightYear": currentYear,
+          "dateModified": `${currentYear}-${new Date().toISOString().slice(5, 10)}`
         })}
       </script>
       
@@ -150,12 +154,6 @@ const RootSEO: React.FC<RootSEOProps> = ({ canonicalUrl }) => {
               "opens": "09:00",
               "closes": "15:00"
             }
-          ],
-          "sameAs": [
-            "https://www.facebook.com/wrappingtheworld",
-            "https://www.instagram.com/wrappingtheworld",
-            "https://twitter.com/wrappingworld",
-            "https://www.linkedin.com/company/wrapping-the-world"
           ],
           "areaServed": [
             {
