@@ -20,10 +20,14 @@ export const useChatbot = () => useContext(ChatbotContext);
 
 interface ChatbotProviderProps {
   children: React.ReactNode;
+  locationName?: string;
 }
 
-export const ChatbotProvider: React.FC<ChatbotProviderProps> = ({ children }) => {
-  const [locationName, setLocationName] = useState<string>("Chicago");
+export const ChatbotProvider: React.FC<ChatbotProviderProps> = ({ 
+  children,
+  locationName: initialLocationName 
+}) => {
+  const [locationName, setLocationName] = useState<string>(initialLocationName || "Chicago");
   const location = useLocation();
   
   // Detect location from URL when component mounts or URL changes
@@ -46,9 +50,11 @@ export const ChatbotProvider: React.FC<ChatbotProviderProps> = ({ children }) =>
       }
     }
     
-    // Default to Chicago if no location found
-    setLocationName("Chicago");
-  }, [location.pathname]);
+    // Don't override if a location was already set
+    if (!initialLocationName) {
+      setLocationName("Chicago");
+    }
+  }, [location.pathname, initialLocationName]);
   
   return (
     <ChatbotContext.Provider value={{ locationName, setLocationName }}>
