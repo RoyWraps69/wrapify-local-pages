@@ -18,6 +18,7 @@ import MemberDashboard from './pages/MemberDashboard';
 import Locations from './pages/Locations';
 import WrapInsurance from './pages/WrapInsurance';
 import Blog from './pages/Blog';
+import CustomDomainSetup from './pages/CustomDomainSetup';
 import { ChatbotProvider } from './components/chatbot/ChatbotProvider';
 import ChatbotWithSchema from './components/chatbot/ChatbotWithSchema';
 import { ShoppingCartProvider } from './components/print-ship/shopping-cart/ShoppingCart';
@@ -60,6 +61,11 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/member-dashboard" element={<MemberDashboard />} />
+                <Route path="/custom-domain-setup" element={<CustomDomainSetup />} />
+                <Route path="/deployment-guide" element={() => {
+                  window.location.href = '/DEPLOYMENT.md';
+                  return null;
+                }} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <ChatbotWithSchema />

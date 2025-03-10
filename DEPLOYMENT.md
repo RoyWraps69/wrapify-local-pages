@@ -107,6 +107,10 @@ If your application uses environment variables, make sure to set them up in your
 - In Vercel: Project settings > Environment Variables
 - For GitHub Pages: You'll need to include them during the build process
 
+## Custom Domain Setup
+
+For detailed instructions on setting up a custom domain with your deployment, see the [Custom Domain Setup Guide](/custom-domain-setup) in the application.
+
 ## Troubleshooting
 
 If you encounter routing issues on Netlify, the `netlify.toml` file includes the necessary redirects to handle client-side routing.
