@@ -21,6 +21,7 @@ import TrainingClasses from './pages/TrainingClasses';
 import ThankYou from './pages/ThankYou';
 import Blog from './pages/Blog';
 import CaseStudies from './pages/CaseStudies';
+import CaseStudyDetail from './pages/CaseStudyDetail';
 import OurTeam from './pages/about/OurTeam';
 import Careers from './pages/about/Careers';
 import PrintShip from './pages/PrintShip';
@@ -83,6 +84,7 @@ function App() {
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
             <Route path="/locations/:townSlug" element={<TownPage />} />
             <Route path="/towns" element={<Towns />} />
             <Route path="/print-ship" element={<PrintShip />} />
