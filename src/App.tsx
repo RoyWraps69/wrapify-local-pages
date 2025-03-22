@@ -39,8 +39,8 @@ function App() {
         
         <Toaster />
         <ShoppingCartProvider>
-          <ChatbotProvider>
-            <Router>
+          <Router>
+            <ChatbotProvider>
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
@@ -69,8 +69,8 @@ function App() {
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <ChatbotWithSchema />
-            </Router>
-          </ChatbotProvider>
+            </ChatbotProvider>
+          </Router>
         </ShoppingCartProvider>
       </div>
     </RetargetingPixels>
