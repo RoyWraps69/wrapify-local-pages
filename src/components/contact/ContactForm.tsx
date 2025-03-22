@@ -76,26 +76,31 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Call our Netlify function to send the email
-      const response = await fetch('/.netlify/functions/sendEmail', {
+      // Create a FormData object
+      const formDataObj = new FormData();
+      
+      // Add all form fields to FormData
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObj.append(key, value);
+      });
+      
+      // Add the recipient email
+      formDataObj.append('_to', 'roy@chicagofleetwraps.com');
+      
+      // Add subject
+      formDataObj.append('_subject', 'New Contact Form Submission');
+      
+      // Submit to FormSubmit service
+      const response = await fetch('https://formsubmit.co/ajax/roy@chicagofleetwraps.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataObj
       });
       
       const result = await response.json();
       
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.message || 'Failed to send message');
       }
-      
-      // Log the email recipients for debugging
-      console.log('Email sent to multiple recipients:');
-      console.log('- info@wrappingtheworld.com');
-      console.log('- roy@chicagofleetwraps.com');
-      console.log('- patti@chicagofleetwraps.com');
       
       // Reset form
       setFormData({

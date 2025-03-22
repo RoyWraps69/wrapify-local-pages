@@ -1,0 +1,3 @@
+
+# Redirect any requests that were going to Netlify functions to FormSubmit
+/.netlify/functions/sendEmail https://formsubmit.co/roy@chicagofleetwraps.com 301

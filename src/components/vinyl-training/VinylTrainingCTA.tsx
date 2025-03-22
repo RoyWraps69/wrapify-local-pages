@@ -27,23 +27,28 @@ const VinylTrainingCTA: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Call Netlify function to send the email
-      const response = await fetch('/.netlify/functions/sendEmail', {
+      // Create FormData object
+      const formDataObj = new FormData();
+      
+      // Add all form fields to FormData
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObj.append(key, value);
+      });
+      
+      // Add form configuration
+      formDataObj.append('_subject', `Vinyl Wrap Training Inquiry: ${formData.course}`);
+      formDataObj.append('_to', 'roy@chicagofleetwraps.com');
+      
+      // Submit to FormSubmit
+      const response = await fetch('https://formsubmit.co/ajax/roy@chicagofleetwraps.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          subject: `Vinyl Wrap Training Inquiry: ${formData.course}`,
-          vehicleType: formData.course // Reuse existing field in the function
-        }),
+        body: formDataObj
       });
       
       const result = await response.json();
       
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.message || 'Failed to send message');
       }
       
       setFormData({
@@ -119,7 +124,11 @@ const VinylTrainingCTA: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold text-wrap-blue mb-4">Request Information</h3>
             
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleSubmit} action="https://formsubmit.co/roy@chicagofleetwraps.com" method="POST">
+              <input type="hidden" name="_subject" value="Vinyl Wrap Training Inquiry" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-wrap-grey text-sm mb-1">Name</label>

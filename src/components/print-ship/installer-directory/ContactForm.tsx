@@ -32,23 +32,32 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedInstaller, onBack }) 
     setIsSubmitting(true);
     
     try {
-      // Call our Netlify function to send the email
-      const response = await fetch('/.netlify/functions/sendEmail', {
+      // Create FormData object
+      const formDataObj = new FormData();
+      
+      // Add all form fields to FormData
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObj.append(key, value);
+      });
+      
+      // Add installer information
+      formDataObj.append('installer', selectedInstaller.name);
+      formDataObj.append('installer_email', selectedInstaller.email);
+      
+      // Add form configuration
+      formDataObj.append('_subject', `Installer Network Inquiry: ${selectedInstaller.name}`);
+      formDataObj.append('_to', 'roy@chicagofleetwraps.com');
+      
+      // Submit to FormSubmit
+      const response = await fetch('https://formsubmit.co/ajax/roy@chicagofleetwraps.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          subject: `Installer Network Inquiry: ${selectedInstaller.name}`,
-          vehicleType: `Installer: ${selectedInstaller.name}` // Reuse existing field
-        }),
+        body: formDataObj
       });
       
       const result = await response.json();
       
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.message || 'Failed to send message');
       }
       
       // Show success message

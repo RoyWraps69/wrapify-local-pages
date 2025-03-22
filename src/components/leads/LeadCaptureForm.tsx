@@ -30,29 +30,24 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     setLoading(true);
 
     try {
-      // Call the Netlify function to send email
-      const response = await fetch('/.netlify/functions/sendEmail', {
+      // Create FormData object
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('location', location);
+      formData.append('_subject', `Lead Capture: Quote Request for ${location}`);
+      formData.append('_to', 'roy@chicagofleetwraps.com');
+      
+      // Submit to FormSubmit
+      const response = await fetch('https://formsubmit.co/ajax/roy@chicagofleetwraps.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          subject: `Lead Capture: Quote Request for ${location}`,
-          message: `New lead capture from popup form.
-Name: ${name}
-Email: ${email}
-Location: ${location}
-Source: Lead Capture Popup`,
-          vehicleType: location // Reuse existing field in the function
-        }),
+        body: formData
       });
       
       const result = await response.json();
       
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to send message');
+        throw new Error(result.message || 'Failed to send message');
       }
       
       // Track conversion for retargeting if available

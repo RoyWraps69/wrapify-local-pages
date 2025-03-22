@@ -30,11 +30,26 @@ const InlineLeadForm: React.FC<InlineLeadFormProps> = ({
     setIsSubmitting(true);
 
     try {
-      // In production, this would send data to your CRM or email marketing system
-      console.log('Lead captured:', { name, email, service, location });
+      // Create FormData object
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('service', service);
+      formData.append('location', location);
+      formData.append('_subject', `Lead Form: ${service} in ${location}`);
+      formData.append('_to', 'roy@chicagofleetwraps.com');
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 800));
+      // Submit to FormSubmit
+      const response = await fetch('https://formsubmit.co/ajax/roy@chicagofleetwraps.com', {
+        method: 'POST',
+        body: formData
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to send message');
+      }
       
       // Track conversion for retargeting
       if (window.fbq) {
