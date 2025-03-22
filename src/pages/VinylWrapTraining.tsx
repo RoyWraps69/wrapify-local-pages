@@ -12,8 +12,13 @@ import VinylTrainingCTA from '../components/vinyl-training/VinylTrainingCTA';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import PageSEO from '../components/seo/PageSEO';
+import { generateVinylWrapTrainingSchemas } from '@/utils/seo/schemaGenerator';
 
 const VinylWrapTraining: React.FC = () => {
+  // Generate structured data for the vinyl wrap training page
+  const { courseSchema, faqSchema, reviewSchema } = generateVinylWrapTrainingSchemas();
+  const structuredData = [courseSchema, faqSchema, reviewSchema];
+
   return (
     <>
       <PageSEO
@@ -21,6 +26,7 @@ const VinylWrapTraining: React.FC = () => {
         description="Master the art of vinyl wrap installation with our hands-on professional training courses. Learn from industry experts with decades of experience in vehicle wrapping."
         canonicalUrl="/vinyl-wrap-training"
         keywords="vinyl wrap training, vehicle wrap installation course, car wrapping classes, professional wrap training, vinyl installation techniques, wrap certification program, hands-on wrap training"
+        structuredData={structuredData}
       >
         <meta property="og:image" content="https://wrappingtheworld.com/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png" />
         <meta name="twitter:image" content="https://wrappingtheworld.com/lovable-uploads/ce7b5e03-583f-41eb-b5cd-69934107cf9f.png" />
