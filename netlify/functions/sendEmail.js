@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport({
 
 // Recipients for all email notifications
 const recipients = [
-  'info@wrappingtheworld.com',
   'roy@chicagofleetwraps.com',
+  'info@wrappingtheworld.com',
   'patti@chicagofleetwraps.com'
 ];
 
@@ -27,7 +27,7 @@ exports.handler = async function(event, context) {
 
   try {
     const data = JSON.parse(event.body);
-    const { name, email, phone, vehicleType, message } = data;
+    const { name, email, phone, vehicleType, message, subject } = data;
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -41,7 +41,7 @@ exports.handler = async function(event, context) {
     const mailOptions = {
       from: `"Wrapping The World Website" <${process.env.SMTP_USER}>`,
       to: recipients.join(', '),
-      subject: `New Contact Form Submission from ${name}`,
+      subject: subject || `New Contact Form Submission from ${name}`,
       text: `
 Name: ${name}
 Email: ${email}
@@ -64,6 +64,9 @@ ${message}
 
     // Send email
     await transporter.sendMail(mailOptions);
+
+    // Log delivery information
+    console.log(`Email sent successfully to: ${recipients.join(', ')}`);
 
     return {
       statusCode: 200,

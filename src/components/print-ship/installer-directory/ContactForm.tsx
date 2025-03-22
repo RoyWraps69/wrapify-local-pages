@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Loader2 } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -20,29 +20,61 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedInstaller, onBack }) 
     phone: "",
     message: `I would like to inquire about installation services for vehicle wraps from ${selectedInstaller.name}.`
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Here you would typically send this data to your backend
-    toast({
-      title: "Request Sent",
-      description: `Your inquiry has been sent to ${selectedInstaller.name}. They will contact you shortly.`,
-    });
-    
-    // Reset form and go back
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: ""
-    });
-    onBack();
+    try {
+      // Call our Netlify function to send the email
+      const response = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          subject: `Installer Network Inquiry: ${selectedInstaller.name}`,
+          vehicleType: `Installer: ${selectedInstaller.name}` // Reuse existing field
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+      
+      // Show success message
+      toast({
+        title: "Request Sent",
+        description: `Your inquiry has been sent to ${selectedInstaller.name}. They will contact you shortly.`,
+      });
+      
+      // Reset form and go back
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
+      });
+      onBack();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -128,8 +160,15 @@ const ContactForm: React.FC<ContactFormProps> = ({ selectedInstaller, onBack }) 
         </div>
         
         <div className="pt-2">
-          <Button type="submit" className="w-full">
-            Send Inquiry
+          <Button type="submit" className="w-full" disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Sending...
+              </>
+            ) : (
+              'Send Inquiry'
+            )}
           </Button>
         </div>
       </form>

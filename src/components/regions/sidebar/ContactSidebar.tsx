@@ -39,8 +39,8 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({
         
         <div className="flex items-center gap-3">
           <Mail size={20} className="text-wrap-red" />
-          <a href="mailto:info@wrappingtheworld.com" className="text-wrap-blue hover:text-wrap-red transition-colors">
-            info@wrappingtheworld.com
+          <a href="mailto:roy@chicagofleetwraps.com" className="text-wrap-blue hover:text-wrap-red transition-colors">
+            roy@chicagofleetwraps.com
           </a>
         </div>
       </div>

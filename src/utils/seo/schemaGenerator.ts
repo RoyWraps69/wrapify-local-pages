@@ -190,17 +190,33 @@ export const generateContactPageSchema = () => {
 };
 
 // Region schema for state pages
-export const generateRegionSchema = (regionName: string) => {
+export const generateRegionSchema = (region: any) => {
+  // Handle both string inputs and object inputs
+  const regionName = typeof region === 'string' ? region : region.regionName;
+  const mainCity = typeof region === 'string' ? '' : region.mainCity;
+  
   return {
     "@context": "https://schema.org",
     "@type": "Place",
-    "name": regionName,
-    "description": `Vehicle wrapping and protection services throughout ${regionName}. Premium wraps, ceramic coatings, and paint protection film for businesses and individuals.`,
-    "url": `https://wrappingtheworld.com/regions/${regionName.toLowerCase()}`,
-    "hasMap": `https://maps.google.com/maps?q=${regionName}`,
+    "name": `${regionName} Vehicle Wrap Services`,
+    "description": typeof region === 'string' 
+      ? `Professional vehicle wrapping services in ${regionName}` 
+      : region.description || `Professional vehicle wrapping services in ${regionName}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": regionName,
+      "addressCountry": "US"
+    },
     "geo": {
       "@type": "GeoCoordinates",
-      "name": regionName
+      "latitude": "41.8781",
+      "longitude": "-87.6298"
+    },
+    "url": `https://wrappingtheworld.com/regions/${regionName.toLowerCase().replace(/\s+/g, '-')}`,
+    "telephone": "+13125971286",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://wrappingtheworld.com/regions/${regionName.toLowerCase().replace(/\s+/g, '-')}`
     }
   };
 };

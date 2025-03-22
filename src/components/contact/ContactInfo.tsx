@@ -34,7 +34,7 @@ const ContactInfo = () => {
           <div>
             <h3 className="font-medium">Email</h3>
             <p className="text-wrap-grey">
-              <a href="mailto:info@wrappingtheworld.com" className="hover:underline">info@wrappingtheworld.com</a>
+              <a href="mailto:roy@chicagofleetwraps.com" className="hover:underline">roy@chicagofleetwraps.com</a>
             </p>
             <p className="text-wrap-grey text-sm">For quotes and project inquiries</p>
           </div>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { X } from 'lucide-react';
+import { X, Loader2 } from 'lucide-react';
 
 interface LeadCaptureFormProps {
   onClose: () => void;
@@ -30,13 +30,32 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
     setLoading(true);
 
     try {
-      // In production, this would send data to your CRM or email marketing system
-      console.log('Lead captured:', { name, email, location });
+      // Call the Netlify function to send email
+      const response = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: `Lead Capture: Quote Request for ${location}`,
+          message: `New lead capture from popup form.
+Name: ${name}
+Email: ${email}
+Location: ${location}
+Source: Lead Capture Popup`,
+          vehicleType: location // Reuse existing field in the function
+        }),
+      });
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 800));
+      const result = await response.json();
       
-      // Track conversion for retargeting
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+      
+      // Track conversion for retargeting if available
       if (window.fbq) {
         window.fbq('track', 'Lead', { content_name: 'lead_capture_popup' });
       }
@@ -112,7 +131,12 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               className="w-full bg-wrap-red hover:bg-wrap-red/90"
               disabled={loading}
             >
-              {loading ? 'Submitting...' : buttonText}
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Submitting...
+                </>
+              ) : buttonText}
             </Button>
           </form>
           

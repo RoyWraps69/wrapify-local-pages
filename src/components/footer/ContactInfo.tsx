@@ -22,8 +22,8 @@ const ContactInfo = () => {
         </li>
         <li className="flex items-center space-x-3">
           <Mail size={20} className="text-wrap-red flex-shrink-0" />
-          <a href="mailto:info@wrappingtheworld.com" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
-            info@wrappingtheworld.com
+          <a href="mailto:roy@chicagofleetwraps.com" className="text-wrap-light/80 hover:text-wrap-red transition-colors">
+            roy@chicagofleetwraps.com
           </a>
         </li>
       </ul>

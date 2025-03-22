@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import VinylTrainingHero from '../components/vinyl-training/VinylTrainingHero';
@@ -13,11 +13,19 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import PageSEO from '../components/seo/PageSEO';
 import { generateVinylWrapTrainingSchemas } from '@/utils/seo/schemaGenerator';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const VinylWrapTraining: React.FC = () => {
+  const isMobile = useIsMobile();
+  
   // Generate structured data for the vinyl wrap training page
   const { courseSchema, faqSchema, reviewSchema } = generateVinylWrapTrainingSchemas();
   const structuredData = [courseSchema, faqSchema, reviewSchema];
+  
+  // Ensure page starts at the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -34,6 +42,7 @@ const VinylWrapTraining: React.FC = () => {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Wrapping The World" />
         <meta property="og:locale" content="en_US" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
       </PageSEO>
 
       <Navbar />
@@ -44,7 +53,7 @@ const VinylWrapTraining: React.FC = () => {
         {/* Breadcrumb navigation */}
         <div className="bg-gray-50 border-b border-gray-100">
           <div className="container mx-auto px-4 py-3">
-            <nav className="flex text-sm">
+            <nav className="flex text-sm overflow-x-auto whitespace-nowrap">
               <Link to="/" className="text-wrap-grey hover:text-wrap-red">Home</Link>
               <ChevronRight className="mx-2 h-4 w-4 text-gray-400" />
               <Link to="/training" className="text-wrap-grey hover:text-wrap-red">Training</Link>

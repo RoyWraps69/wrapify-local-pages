@@ -43,6 +43,27 @@
   transform: translateX(-100%);
 }
 
+/* Page scrolling behavior */
+html {
+  scroll-behavior: instant; /* Forces immediate scrolling */
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
 /* Media queries */
 @media (max-width: 640px) {
   .container {
@@ -58,6 +79,22 @@
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
   }
+
+  /* Improve tap targets on mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Fix issues with mobile viewport */
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+}
+
+/* Fix form focus styling for mobile */
+input:focus, textarea:focus, select:focus {
+  @apply outline-none ring-2 ring-wrap-blue;
 }
 
 /* Print styles */
@@ -106,4 +143,34 @@
 .hero-section {
   @apply relative min-h-[600px] flex items-center py-20 px-4;
   background: transparent;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  /* Stack grid items on mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Make text more readable on mobile */
+  p, .text-sm {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Adjust headings for mobile */
+  h1, .text-4xl, .text-5xl {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2, .text-3xl {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Fix issue with RegionPage.tsx */
+.region-schema {
+  display: none;
 }
