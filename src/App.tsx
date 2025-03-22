@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Index';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -62,10 +62,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/member-dashboard" element={<MemberDashboard />} />
                 <Route path="/custom-domain-setup" element={<CustomDomainSetup />} />
-                <Route path="/deployment-guide" element={() => {
-                  window.location.href = '/DEPLOYMENT.md';
-                  return null;
-                }} />
+                <Route 
+                  path="/deployment-guide" 
+                  element={<Navigate to="/DEPLOYMENT.md" replace />} 
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <ChatbotWithSchema />
