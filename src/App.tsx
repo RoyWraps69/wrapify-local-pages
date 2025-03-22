@@ -10,6 +10,7 @@ import CaseStudyDetail from './pages/CaseStudyDetail';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Training from './pages/TrainingClasses';
+import VinylWrapTraining from './pages/VinylWrapTraining';
 import PrintShip from './pages/PrintShip';
 import NotFound from './pages/NotFound';
 import Regional from './pages/regions/RegionPage';
@@ -54,6 +55,7 @@ function App() {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/gallery" element={<Gallery />} />
                   <Route path="/training" element={<Training />} />
+                  <Route path="/vinyl-wrap-training" element={<VinylWrapTraining />} />
                   <Route path="/print-ship" element={<PrintShip />} />
                   <Route path="/locations" element={<Locations />} />
                   <Route path="/wrap-insurance" element={<WrapInsurance />} />
