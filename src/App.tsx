@@ -28,8 +28,10 @@ import { RetargetingPixels } from './components/leads';
 import { LeadCapturePopup } from './components/leads';
 
 function App() {
+  const helmetContext = {}; // Create a single context object
+
   return (
-    <HelmetProvider>
+    <HelmetProvider context={helmetContext}>
       <RetargetingPixels>
         <div className="App">
           {/* Add lead capture popup - it will automatically manage when to display */}

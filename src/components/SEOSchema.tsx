@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { createBusinessSchema } from '@/utils/seo/businessSchema';
@@ -43,7 +44,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
       <meta name="keywords" content={townKeywords} />
       <meta name="author" content="Wrapping The World" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta http-equiv="content-language" content="en-us" />
+      <meta httpEquiv="content-language" content="en-us" />
       
       <meta property="og:type" content="website" />
       <meta property="og:url" content={pageUrl} />
