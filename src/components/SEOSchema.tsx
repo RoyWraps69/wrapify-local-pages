@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import { createBusinessSchema } from '@/utils/seo/businessSchema';
 import { createServiceSchema } from '@/utils/seo/serviceSchema';
 import { createFAQSchema } from '@/utils/seo/faqSchema';
@@ -77,11 +76,7 @@ const SEOSchema: React.FC<SEOSchemaProps> = ({
 };
 
 export const SEOWrapper: React.FC<React.PropsWithChildren> = ({ children }) => {
-  return (
-    <HelmetProvider>
-      {children}
-    </HelmetProvider>
-  );
+  return <>{children}</>;
 };
 
 export default SEOSchema;

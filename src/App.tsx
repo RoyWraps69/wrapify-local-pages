@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Home from './pages/Index';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -28,52 +29,54 @@ import { LeadCapturePopup } from './components/leads';
 
 function App() {
   return (
-    <RetargetingPixels>
-      <div className="App">
-        {/* Add lead capture popup - it will automatically manage when to display */}
-        <LeadCapturePopup 
-          delay={15000} 
-          exitIntentOnly={false} 
-          scrollDepth={40}
-        />
-        
-        <Toaster />
-        <ShoppingCartProvider>
-          <Router>
-            <ChatbotProvider>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/case-studies" element={<CaseStudies />} />
-                <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/training" element={<Training />} />
-                <Route path="/print-ship" element={<PrintShip />} />
-                <Route path="/locations" element={<Locations />} />
-                <Route path="/wrap-insurance" element={<WrapInsurance />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<Blog />} />
-                <Route path="/regional/:regionName" element={<Regional />} />
-                <Route path="/regions/:regionName" element={<Regional />} />
-                <Route path="/locations/:townName" element={<Regional />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/member-dashboard" element={<MemberDashboard />} />
-                <Route path="/custom-domain-setup" element={<CustomDomainSetup />} />
-                <Route 
-                  path="/deployment-guide" 
-                  element={<Navigate to="/DEPLOYMENT.md" replace />} 
-                />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-              <ChatbotWithSchema />
-            </ChatbotProvider>
-          </Router>
-        </ShoppingCartProvider>
-      </div>
-    </RetargetingPixels>
+    <HelmetProvider>
+      <RetargetingPixels>
+        <div className="App">
+          {/* Add lead capture popup - it will automatically manage when to display */}
+          <LeadCapturePopup 
+            delay={15000} 
+            exitIntentOnly={false} 
+            scrollDepth={40}
+          />
+          
+          <Toaster />
+          <ShoppingCartProvider>
+            <Router>
+              <ChatbotProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/case-studies" element={<CaseStudies />} />
+                  <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/training" element={<Training />} />
+                  <Route path="/print-ship" element={<PrintShip />} />
+                  <Route path="/locations" element={<Locations />} />
+                  <Route path="/wrap-insurance" element={<WrapInsurance />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:slug" element={<Blog />} />
+                  <Route path="/regional/:regionName" element={<Regional />} />
+                  <Route path="/regions/:regionName" element={<Regional />} />
+                  <Route path="/locations/:townName" element={<Regional />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/member-dashboard" element={<MemberDashboard />} />
+                  <Route path="/custom-domain-setup" element={<CustomDomainSetup />} />
+                  <Route 
+                    path="/deployment-guide" 
+                    element={<Navigate to="/DEPLOYMENT.md" replace />} 
+                  />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+                <ChatbotWithSchema />
+              </ChatbotProvider>
+            </Router>
+          </ShoppingCartProvider>
+        </div>
+      </RetargetingPixels>
+    </HelmetProvider>
   );
 }
 

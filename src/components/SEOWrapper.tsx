@@ -10,13 +10,12 @@ interface SEOWrapperProps {
  * Wrapper component to provide Helmet context for all pages
  * This allows us to manage SEO across the site in a consistent way
  * while enabling page-specific optimizations
+ * 
+ * Note: This component is now redundant since we're using HelmetProvider at the App level,
+ * but keeping it for backwards compatibility.
  */
 const SEOWrapper: React.FC<SEOWrapperProps> = ({ children }) => {
-  return (
-    <HelmetProvider>
-      {children}
-    </HelmetProvider>
-  );
+  return <>{children}</>;
 };
 
 export default SEOWrapper;
