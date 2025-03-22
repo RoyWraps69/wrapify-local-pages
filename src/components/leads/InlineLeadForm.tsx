@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -37,10 +36,9 @@ const InlineLeadForm: React.FC<InlineLeadFormProps> = ({
       formData.append('service', service);
       formData.append('location', location);
       formData.append('_subject', `Lead Form: ${service} in ${location}`);
-      formData.append('_to', 'roy@chicagofleetwraps.com');
       
       // Submit to FormSubmit
-      const response = await fetch('https://formsubmit.co/ajax/roy@chicagofleetwraps.com', {
+      const response = await fetch('https://formsubmit.co/roy@chicagofleetwraps.com', {
         method: 'POST',
         body: formData
       });
