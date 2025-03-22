@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -14,7 +15,7 @@ const ScrollToTop = () => {
     // Otherwise, scroll to the top of the page
     window.scrollTo({
       top: 0,
-      behavior: 'instant' // Changed from 'smooth' for immediate positioning
+      behavior: 'instant' // Using 'instant' instead of 'smooth' for immediate positioning
     });
   }, [pathname, hash]);
   
