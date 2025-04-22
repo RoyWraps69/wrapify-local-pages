@@ -1,4 +1,3 @@
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
@@ -38,8 +37,8 @@ export default defineConfig(({ mode }) => ({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console logs in production
-        drop_debugger: true,
+        drop_console: mode === 'production',
+        drop_debugger: mode === 'production'
       }
     },
     assetsDir: 'assets',
