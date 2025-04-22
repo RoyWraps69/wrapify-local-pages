@@ -88,13 +88,6 @@ export const wrapMaterials: WrapMaterial[] = [
   }
 ];
 
-export interface DesignOption {
-  id: string;
-  name: string;
-  description: string;
-  priceAdjustment: number;
-}
-
 export const designOptions: DesignOption[] = [
   {
     id: 'no_design',
