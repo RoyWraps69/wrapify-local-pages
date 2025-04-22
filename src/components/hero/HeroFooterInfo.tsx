@@ -14,7 +14,7 @@ const HeroFooterInfo: React.FC<HeroFooterInfoProps> = ({
   return (
     <>
       <div className="mt-8 flex flex-wrap items-center justify-center text-white/70">
-        <span className="text-sm neon-glow">Serving {townName} and nearby areas</span>
+        <span className="text-sm neon-glow">{townName ? `Serving ${townName} and nearby areas` : 'Serving nationwide'}</span>
         <span className="mx-3 hidden sm:inline">•</span>
         <span className="text-sm neon-glow">Quality <a href="https://www.3m.com/3M/en_US/graphics-signage-us/graphics-films/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyber-blue transition-colors underline">3M</a> & <a href="https://graphics.averydennison.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-cyber-red transition-colors underline">Avery Dennison</a> Materials</span>
         <span className="mx-3 hidden sm:inline">•</span>

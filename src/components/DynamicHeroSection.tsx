@@ -11,7 +11,7 @@ interface DynamicHeroSectionProps {
 }
 
 const DynamicHeroSection: React.FC<DynamicHeroSectionProps> = ({ 
-  townName = 'Chicago',
+  townName = '',
   backgroundImage
 }) => {
   const [isVisible, setIsVisible] = useState(false);

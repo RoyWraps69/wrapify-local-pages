@@ -28,17 +28,17 @@ const Index = () => {
   
   return (
     <>
-      <HomePageSchema townName="Chicago" topTownNames={topTownNames} />
+      <HomePageSchema townName="" topTownNames={topTownNames} />
       
       <Navbar />
       <main>
-        <DynamicHeroSection townName="Chicago" />
-        <ServicesSection townName="Chicago" />
-        <WhyChooseUsSection townName="Chicago" />
-        <TestimonialSection townName="Chicago" />
+        <DynamicHeroSection townName="" />
+        <ServicesSection townName="" />
+        <WhyChooseUsSection townName="" />
+        <TestimonialSection townName="" />
         <NationwideSection />
-        <FAQSection townName="Chicago" />
-        <ServiceAreasSection townName="Chicago" />
+        <FAQSection townName="" />
+        <ServiceAreasSection townName="" />
       </main>
       <ChatbotWithSchema initialMessage="Hello! How can I help you with vehicle wraps or ceramic coatings today? Ask me about services, pricing, or locations near you." />
       <Footer />
