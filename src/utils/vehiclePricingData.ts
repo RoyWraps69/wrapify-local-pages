@@ -1,3 +1,4 @@
+
 // Define the vehicle category and pricing structures
 export interface VehicleSize {
   category: string;
@@ -67,21 +68,24 @@ export const wrapMaterials: WrapMaterial[] = [
     name: 'Standard Printed Vinyl (Briteline)',
     description: 'High-quality standard printed vinyl, perfect for business and commercial applications.',
     pricePerSqFt: 4.25,
-    durabilityYears: 5
+    durabilityYears: 5,
+    features: ['Digitally printed graphics', 'UV laminated', 'Suitable for flat surfaces']
   },
   {
     id: 'premium_vinyl',
     name: 'Premium Vinyl (Avery 1105)',
     description: 'Superior quality vinyl with enhanced durability and vibrancy.',
     pricePerSqFt: 5.00,
-    durabilityYears: 7
+    durabilityYears: 7,
+    features: ['Superior conformability', 'Enhanced color vibrancy', 'Air release technology']
   },
   {
     id: 'color_change',
     name: 'Color Change Vinyl',
     description: 'Premium color change vinyl for complete vehicle transformations.',
     pricePerSqFt: 6.00,
-    durabilityYears: 8
+    durabilityYears: 8,
+    features: ['Matte or gloss finish options', 'Heat-conformable material', 'Resistant to UV fading']
   }
 ];
 
