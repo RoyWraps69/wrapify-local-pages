@@ -27,13 +27,13 @@ const HeroHeadline: React.FC<HeroHeadlineProps> = ({ townName }) => {
         </span>
         <br />
         <span className="text-white relative inline-block light-streak overflow-hidden">
-          {townName || "Chicago"}
+          {townName || ""}
         </span>
       </h1>
       
       {/* SEO-optimized subheading with town name */}
       <h2 className="text-xl md:text-2xl text-white/90 mb-2 font-light">
-        <span className="italic">Chicago's Premier Vehicle Wrap Service</span>
+        <span className="italic">Premier Vehicle Wrap Service</span>
       </h2>
       
       {/* Nationwide service indicator */}
