@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import HeroHeadline from './HeroHeadline';
@@ -38,7 +37,7 @@ const HeroContentContainer: React.FC<HeroContentContainerProps> = ({
           <HeroHeadline townName={townName} />
           
           <p className="text-lg text-white mb-6 max-w-2xl mx-auto">
-            <span className="font-bold">WRAPPING THE WORLD</span> offers premier vehicle wrapping and protection services near {townName}. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
+            <span className="font-bold">WRAPPING THE WORLD</span> offers premier vehicle wrapping and protection services. From business fleet branding and color change wraps to ceramic coatings and paint protection film, we transform and protect cars with quality materials and expert installation.
           </p>
           
           <HeroServiceFeatures />
