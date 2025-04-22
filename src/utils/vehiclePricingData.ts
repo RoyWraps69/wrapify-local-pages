@@ -1,4 +1,3 @@
-
 // Define the vehicle category and pricing structures
 export interface VehicleSize {
   category: string;
@@ -97,6 +96,18 @@ export interface DesignOption {
 }
 
 export const designOptions: DesignOption[] = [
+  {
+    id: 'no_design',
+    name: 'Print Files Only',
+    description: 'Panels cut up into print files, no design work required',
+    priceAdjustment: 0.00
+  },
+  {
+    id: 'file_prep',
+    name: 'Print File Preparation',
+    description: 'Professional slicing and preparation of existing design files for printing',
+    priceAdjustment: 99.00
+  },
   {
     id: 'basic',
     name: 'Standard Design',
