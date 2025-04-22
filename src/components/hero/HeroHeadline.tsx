@@ -16,7 +16,7 @@ const HeroHeadline: React.FC<HeroHeadlineProps> = ({ townName }) => {
       {/* Animated badge with sparkle effect */}
       <div className="inline-flex items-center gap-1 px-4 py-1 bg-gradient-to-r from-wrap-red/80 to-wrap-red rounded-full text-sm font-medium mb-6 shadow-lg animate-pulse">
         <Sparkles className="text-white w-4 h-4" />
-        <span className="text-white">WRAPPING THE WORLD - Premium Car Wraps in {townName}</span>
+        <span className="text-white">WRAPPING THE WORLD - Premium Car Wraps</span>
         <Sparkles className="text-white w-4 h-4" />
       </div>
       
