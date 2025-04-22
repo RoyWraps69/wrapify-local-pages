@@ -1,4 +1,3 @@
-
 // Define the vehicle category and pricing structures
 export interface VehicleSize {
   category: string;
@@ -64,28 +63,25 @@ export interface WrapMaterial {
 
 export const wrapMaterials: WrapMaterial[] = [
   {
-    id: "standard",
-    name: "Standard Vinyl",
-    description: "Quality vinyl with 5-7 year durability",
-    pricePerSqFt: 10.13, // Increased by 35% from 7.50
-    durabilityYears: 5,
-    features: ["Digitally printed graphics", "UV laminated", "Conformable to simple curves"]
+    id: 'standard_vinyl',
+    name: 'Standard Printed Vinyl (Briteline)',
+    description: 'High-quality standard printed vinyl, perfect for business and commercial applications.',
+    pricePerSqFt: 4.25,
+    durabilityYears: 5
   },
   {
-    id: "premium",
-    name: "Premium Cast Vinyl",
-    description: "High-performance vinyl with 7-9 year durability",
-    pricePerSqFt: 14.51, // Increased by 35% from 10.75
-    durabilityYears: 7,
-    features: ["Superior conformability", "Enhanced color vibrancy", "Resistant to shrinking and lifting"]
+    id: 'premium_vinyl',
+    name: 'Premium Vinyl (Avery 1105)',
+    description: 'Superior quality vinyl with enhanced durability and vibrancy.',
+    pricePerSqFt: 5.00,
+    durabilityYears: 7
   },
   {
-    id: "color-change",
-    name: "Color Change Wrap",
-    description: "Specialty color change films with unique finishes",
-    pricePerSqFt: 18.83, // Increased by 35% from 13.95
-    durabilityYears: 5,
-    features: ["Matte, gloss, satin, or metallic finishes", "Air-release technology", "Highly conformable"]
+    id: 'color_change',
+    name: 'Color Change Vinyl',
+    description: 'Premium color change vinyl for complete vehicle transformations.',
+    pricePerSqFt: 6.00,
+    durabilityYears: 8
   }
 ];
 
@@ -98,22 +94,16 @@ export interface DesignOption {
 
 export const designOptions: DesignOption[] = [
   {
-    id: "basic",
-    name: "Basic Design",
-    description: "Simple design with your logo and contact information",
-    priceAdjustment: 0
+    id: 'basic',
+    name: 'Standard Design',
+    description: 'Professional design with up to 2 revisions included',
+    priceAdjustment: 399.00
   },
   {
-    id: "standard",
-    name: "Standard Design",
-    description: "Custom design with brand elements and vehicle contour consideration",
-    priceAdjustment: 473 // Increased by 35% from 350
-  },
-  {
-    id: "premium",
-    name: "Premium Design",
-    description: "Full custom design with 3D mockups and multiple revision rounds",
-    priceAdjustment: 1013 // Increased by 35% from 750
+    id: 'premium',
+    name: 'Premium Design',
+    description: 'Custom premium design with unlimited revisions and enhanced graphics',
+    priceAdjustment: 699.00
   }
 ];
 
@@ -127,23 +117,23 @@ export interface ShippingOption {
 
 export const shippingOptions: ShippingOption[] = [
   {
-    id: "standard",
-    name: "Standard Shipping",
-    description: "Regular ground shipping in protective packaging",
+    id: 'standard',
+    name: 'Standard Shipping',
+    description: 'Regular ground shipping in protective packaging',
     price: 101, // Increased by 35% from 75
     estimatedDays: "5-7 business days"
   },
   {
-    id: "expedited",
-    name: "Expedited Shipping",
-    description: "Faster delivery with tracking and insurance",
+    id: 'expedited',
+    name: 'Expedited Shipping',
+    description: 'Faster delivery with tracking and insurance',
     price: 203, // Increased by 35% from 150
     estimatedDays: "2-3 business days"
   },
   {
-    id: "rush",
-    name: "Rush Shipping",
-    description: "Priority overnight delivery for urgent projects",
+    id: 'rush',
+    name: 'Rush Shipping',
+    description: 'Priority overnight delivery for urgent projects',
     price: 338, // Increased by 35% from 250
     estimatedDays: "1-2 business days"
   }
