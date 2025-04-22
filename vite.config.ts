@@ -33,7 +33,7 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: 'dist',
-    sourcemap: mode === 'development', // Only in development
+    sourcemap: mode === 'development',
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -42,27 +42,21 @@ export default defineConfig(({ mode }) => ({
       }
     },
     assetsDir: 'assets',
-    // Improved asset handling
-    assetsInlineLimit: 4096, // Inline assets smaller than 4kb
-    // Configure asset handling
+    assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
         manualChunks: {
-          // Vendor chunks
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-ui': ['src/components/ui/index.ts'],
           'vendor-hooks': ['react-hook-form', '@tanstack/react-query'],
           'vendor-animation': ['framer-motion'],
-          // Feature based chunks
           'feature-towns': ['src/components/town/layout/TownPageContent.tsx'],
           'feature-shopping': ['src/components/print-ship/shopping-cart/ShoppingCart.tsx'],
           'feature-print': ['src/components/print-ship/PrintShipSection.tsx'],
         },
-        // Ensure that dynamic imports have meaningful chunk names
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: ({ name }) => {
-          // Special handling based on file extensions for better caching
           if (/\.(gif|jpe?g|png|svg|webp)$/.test(name ?? '')) {
             return 'assets/images/[name]-[hash][extname]';
           }
@@ -79,41 +73,31 @@ export default defineConfig(({ mode }) => ({
         },
       }
     },
-    // Add automatic CSS purging in production
     cssCodeSplit: true,
     cssMinify: true,
     emptyOutDir: true,
-    // Ensure compatibility with Cloudflare and Netlify
     target: 'es2015',
-    // Optimize modules for better loading performance
     modulePreload: {
       polyfill: true,
     },
-    // Compress files for better delivery
-    reportCompressedSize: false, // Reduces build time
+    reportCompressedSize: false,
   },
-  // Base path for production
   base: '/',
   esbuild: {
-    // Enable JSX in .js files
     jsx: 'automatic',
-    // Remove console logs in production
     drop: mode === 'production' ? ['console', 'debugger'] : [],
   },
-  // Optimize dependencies that may slow down dev server
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
-    exclude: ['lovable-tagger'] // Exclude lovable-tagger from optimization
+    exclude: ['lovable-tagger'],
   },
   preview: {
-    // Configure preview server to mimic production
     port: 8080,
     cors: true,
     headers: {
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   },
-  // Fix sitemap generation issue
   define: {
     'process.env.VITE_APP_BASE_URL': JSON.stringify('https://wrappingtheworld.com'),
   },
