@@ -52,9 +52,9 @@ const PriceBreakdown: React.FC<PriceBreakdownProps> = ({
       >
         <span className="flex items-center">
           <Wrench className="w-4 h-4 mr-2 text-white/70" />
-          Printing & Installation
+          Printing Service
         </span>
-        <span>Included</span>
+        <span>Separate Fee</span>
       </motion.div>
       
       {(selectedAddOns?.length > 0 && price.addOnsFee) && (
