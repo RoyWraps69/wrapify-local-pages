@@ -1,3 +1,4 @@
+
 // Define the vehicle category and pricing structures
 export interface VehicleSize {
   category: string;
@@ -87,6 +88,13 @@ export const wrapMaterials: WrapMaterial[] = [
     features: ['Matte or gloss finish options', 'Heat-conformable material', 'Resistant to UV fading']
   }
 ];
+
+export interface DesignOption {
+  id: string;
+  name: string;
+  description: string;
+  priceAdjustment: number;
+}
 
 export const designOptions: DesignOption[] = [
   {
