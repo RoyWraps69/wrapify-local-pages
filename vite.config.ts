@@ -18,17 +18,11 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'dist',
     sourcemap: mode === 'development',
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: mode === 'production'
-      }
-    },
+    minify: mode === 'production' ? 'esbuild' : false,
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
     cssCodeSplit: true,
-    cssMinify: true,
+    cssMinify: mode === 'production',
     emptyOutDir: true,
     target: 'es2015',
     modulePreload: {
