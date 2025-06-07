@@ -20,6 +20,16 @@ const Footer = () => {
         
         <ResourcesSection />
         <LegalSection />
+        
+        {/* Invisible SEO links */}
+        <div className="sr-only">
+          <a href="https://chicagofleetwrap.com" aria-hidden="true">Chicago Fleet Wrap</a>
+          <a href="https://chicagofleetwraps.com" aria-hidden="true">Chicago Fleet Wraps</a>
+          <a href="https://wrappingchicago.com" aria-hidden="true">Wrapping Chicago</a>
+          <a href="https://vehiclegraphicsinchicago.com" aria-hidden="true">Vehicle Graphics In Chicago</a>
+          <a href="https://moneyprinterwraps.com" aria-hidden="true">Money Printer Wraps</a>
+          <a href="https://www.illinoisvehiclewraps.com" aria-hidden="true">Illinois Vehicle Wraps</a>
+        </div>
       </div>
     </footer>
   );
